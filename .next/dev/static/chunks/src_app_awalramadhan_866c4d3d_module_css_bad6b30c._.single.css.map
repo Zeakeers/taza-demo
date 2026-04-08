@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/src/app/awalramadhan_866c4d3d.module.css"],"sourcesContent":["@font-face {\n    \nfont-family: 'awalRamadhan';\n    src: url('@vercel/turbopack-next/internal/font/local/font?{%22path%22:%22../../public/font/a_awal_ramadhan/aAwalRamadhan.ttf%22,%22preload%22:true,%22has_size_adjust%22:true}') format('truetype');\n    font-display: swap;\n    \n}\n\n@font-face {\n    font-family: 'awalRamadhan Fallback';\n    src: local(\"Arial\");\n    ascent-override: 89.31%;\ndescent-override: 65.39%;\nline-gap-override: 11.52%;\nsize-adjust: 77.96%;\n\n}\n\n.className {\n    font-family: 'awalRamadhan', 'awalRamadhan Fallback';\n    \n}\n.variable {\n    --font-ramadhan-local: 'awalRamadhan', 'awalRamadhan Fallback';\n}\n\n"],"names":[],"mappings":"AAAA;;;;;;AAQA;;;;;;;;;AAUA;;;;AAIA"}}]
+}

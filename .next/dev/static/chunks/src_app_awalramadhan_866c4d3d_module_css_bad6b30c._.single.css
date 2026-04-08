@@ -1,0 +1,25 @@
+/* [project]/src/app/awalramadhan_866c4d3d.module.css [app-client] (css) */
+@font-face {
+  font-family: awalRamadhan;
+  src: url("../media/aAwalRamadhan-s.p.0bc405f8.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: awalRamadhan Fallback;
+  src: local(Arial);
+  ascent-override: 89.31%;
+  descent-override: 65.39%;
+  line-gap-override: 11.52%;
+  size-adjust: 77.96%;
+}
+
+.awalramadhan_866c4d3d-module__6GM7JG__className {
+  font-family: awalRamadhan, awalRamadhan Fallback;
+}
+
+.awalramadhan_866c4d3d-module__6GM7JG__variable {
+  --font-ramadhan-local: "awalRamadhan", "awalRamadhan Fallback";
+}
+
+/*# sourceMappingURL=src_app_awalramadhan_866c4d3d_module_css_bad6b30c._.single.css.map*/
