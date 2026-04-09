@@ -50,7 +50,7 @@ export default function Navbar() {
         <div className="flex gap-2 md:gap-5 mr-3 md:mr-5 shrink-0">
           <Link
             href="/program"
-            className="md:h-8 h-7 px-2 md:px-3 text-sm md:text-base border-2 border-gray-800 text-black flex items-center justify-center font-medium"
+            className="md:h-8 h-7 px-3 md:px-4 text-sm md:text-[15px] border-2 border-zinc-800/80 rounded-lg text-zinc-800 hover:bg-zinc-800 hover:text-white hover:shadow-md transition-all duration-300 flex items-center justify-center font-semibold"
           >
             Program
           </Link>
