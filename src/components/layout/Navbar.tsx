@@ -11,8 +11,11 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Toggle sticky navbar when scrolled down more than 120px
-      setIsScrolled(window.scrollY > 120);
+      setIsScrolled((prev) => {
+        if (!prev && window.scrollY > 100) return true;
+        if (prev && window.scrollY < 20) return false;
+        return prev;
+      });
     };
 
     window.addEventListener("scroll", handleScroll);
