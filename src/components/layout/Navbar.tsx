@@ -32,10 +32,10 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className={`sticky top-0 w-full z-[1000] flex flex-col transition-all duration-300 bg-white ${isScrolled ? 'shadow-md shadow-black/5' : ''}`}>
-      
-      {/* 1. Bagian Hijau (Top Bar) - Akan mengecil perlahan dan menghilang saat di-scroll menyatu */}
-      <div className={`w-full flex gap-3 md:gap-5 justify-between items-center bg-[#5DA630] overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'h-0 opacity-0' : 'h-12 md:h-16 opacity-100'}`}>
+    <nav className={`sticky w-full z-[1000] flex flex-col transition-all duration-500 bg-white ${isScrolled ? 'top-[-48px] md:top-[-64px] shadow-md shadow-black/5' : 'top-0'}`}>
+
+      {/* 1. Bagian Hijau (Top Bar) - Akan bergeser ke atas tapi ukurannya tetap untuk mencegah reflow */}
+      <div className={`w-full flex gap-3 md:gap-5 justify-between items-center bg-[#5DA630] overflow-hidden transition-all duration-500 ease-in-out h-12 md:h-16 ${isScrolled ? 'opacity-0' : 'opacity-100'}`}>
         <Link href="/" aria-label="Ke halaman utama">
           <Image
             src="/images/icon/Taman Zakat Horizontal.png"
@@ -64,9 +64,9 @@ export default function Navbar() {
       </div>
 
       {/* 2. Bagian Putih (Bottom Menu) - Akan berubah komposisi (menyatu jadi versi scroll down) */}
-      <div className={`w-full bg-white backdrop-blur transition-all duration-500 ease-in-out flex items-center ${isScrolled ? 'h-16 md:h-[72px]' : 'h-14 md:h-auto py-2 md:py-3 shadow-sm'}`}>
+      <div className={`w-full bg-white backdrop-blur transition-all duration-500 ease-in-out flex items-center h-16 md:h-[72px] ${isScrolled ? '' : 'shadow-sm'}`}>
         <div className="w-full mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between relative h-full">
-          
+
           {/* Logo Kiri (Muncul saat Scrolled - efek turun/drop dari atas) */}
           <div className={`absolute left-4 md:left-6 lg:left-8 flex items-center transition-all duration-500 ease-in-out ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'}`}>
             <Link href="/" aria-label="Ke halaman utama" className="shrink-0 flex items-center">
@@ -104,7 +104,7 @@ export default function Navbar() {
                   <path d="M6 9l6 6 6-6" />
                 </svg>
               </Link>
-              
+
               {/* Dropdown Menu */}
               <div className={`absolute left-0 sm:left-1/2 sm:-translate-x-1/2 top-full ${isScrolled ? 'pt-4' : 'pt-2 md:pt-3'} opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-300 z-50`}>
                 <div className="flex w-[260px] md:w-[280px] flex-col overflow-hidden bg-white shadow-xl shadow-black/5 border border-zinc-100 whitespace-normal text-left rounded-xl text-black">
@@ -121,7 +121,7 @@ export default function Navbar() {
                         <span className="font-medium text-[14px] sm:text-[15px] text-zinc-700 group-hover/item:text-zinc-900 transition-colors">{item.title}</span>
                         <div className="opacity-0 -translate-x-2 w-0 overflow-hidden group-hover/item:w-5 group-hover/item:overflow-visible group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 h-5 rounded-full bg-[#8DC63F] border border-black flex items-center justify-center">
                           <svg className="w-3 h-3 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                            <path d="M5 12h14M12 5l7 7-7 7" />
                           </svg>
                         </div>
                       </div>
@@ -161,7 +161,7 @@ export default function Navbar() {
                         <span className="font-medium text-[14px] sm:text-[15px] text-zinc-700 group-hover/item:text-zinc-900 transition-colors">{item.title}</span>
                         <div className="opacity-0 -translate-x-2 w-0 overflow-hidden group-hover/item:w-5 group-hover/item:overflow-visible group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 h-5 rounded-full bg-[#8DC63F] border border-black flex items-center justify-center">
                           <svg className="w-3 h-3 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                            <path d="M5 12h14M12 5l7 7-7 7" />
                           </svg>
                         </div>
                       </div>
@@ -184,29 +184,29 @@ export default function Navbar() {
                 Tata Kelola
               </Link>
             </li>
-            
+
             {/* Tampil sebagai bulatan di mobile, teks biasa saat desktop statis, tampil saat scroll*/}
             <li className="shrink-0 flex md:hidden">
-               <Link
+              <Link
                 href="/program"
                 className={`group inline-flex w-full cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] ${isScrolled ? 'flex' : 'hidden'}`}
-               >
+              >
                 Program
-               </Link>
+              </Link>
             </li>
             <li className={`shrink-0 hidden md:flex ${isScrolled ? 'block' : 'hidden opacity-0'}`}>
-               <Link
+              <Link
                 href="/program"
                 className="group inline-flex w-full cursor-pointer items-center gap-1.5 transition-all duration-300 outline-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-2 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
-               >
+              >
                 Program
-               </Link>
+              </Link>
             </li>
           </ul>
 
           {/* tampilan mobile */}
           <div className={`flex md:hidden absolute transition-all duration-500 ease-in-out right-4 items-center`}>
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(true)}
               className="text-zinc-800 p-1 focus:outline-none hover:text-[#5DA630] transition-colors"
               aria-label="Buka Menu"
@@ -232,13 +232,13 @@ export default function Navbar() {
 
       {/* tampilan mobile */}
       {/* Background Overlay */}
-      <div 
+      <div
         className={`fixed inset-0 bg-black/60 z-[1001] md:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
         onClick={() => setIsMobileMenuOpen(false)}
       />
 
       {/* Sidebar Panel */}
-      <div 
+      <div
         className={`fixed top-0 right-0 h-full w-[280px] bg-white z-[1002] shadow-2xl md:hidden flex flex-col transition-transform duration-300 ease-in-out transform ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <div className="flex items-center justify-between p-4 border-b border-zinc-100">
@@ -249,7 +249,7 @@ export default function Navbar() {
             height={36}
             className="h-7 w-auto"
           />
-          <button 
+          <button
             onClick={() => setIsMobileMenuOpen(false)}
             className="p-2 text-zinc-500 hover:text-zinc-800 transition-colors bg-zinc-50 rounded-full"
           >
@@ -262,19 +262,19 @@ export default function Navbar() {
         <div className="flex-1 overflow-y-auto py-4 px-2">
           <ul className="flex flex-col gap-2 text-[15px] font-[600] text-zinc-800">
             <li>
-              <Link 
-                href="/about" 
+              <Link
+                href="/about"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
               >
                 Tentang Kami
               </Link>
             </li>
-            
+
             {/* Dropdown Mobile - Simplified as accordion or just links */}
             <li className="flex flex-col pt-2 mt-2 border-t border-zinc-50">
-              <Link 
-                href="/layanan" 
+              <Link
+                href="/layanan"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-[600]"
               >
@@ -291,8 +291,8 @@ export default function Navbar() {
             </li>
 
             <li className="flex flex-col pt-2 mt-2 border-t border-zinc-50">
-              <Link 
-                href="/kolaborasi" 
+              <Link
+                href="/kolaborasi"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-[600]"
               >
@@ -307,18 +307,18 @@ export default function Navbar() {
             </li>
 
             <li className="mt-2">
-              <Link 
+              <Link
                 href="/tata-kelola"
                 onClick={() => setIsMobileMenuOpen(false)}
-              className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
+                className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
               >
                 Tata Kelola
-                </Link>
+              </Link>
             </li>
-            
+
             <li className="mt-2">
-              <Link 
-                href="/program" 
+              <Link
+                href="/program"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
               >
@@ -327,7 +327,7 @@ export default function Navbar() {
             </li>
           </ul>
         </div>
-        
+
         <div className="p-4 border-t border-zinc-100 bg-zinc-50">
           <a
             href="#"
