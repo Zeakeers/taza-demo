@@ -1,5 +1,6 @@
+"use client";
 import { HelpCircle, Search } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const faqList = Array(8).fill({
   question:
@@ -9,14 +10,55 @@ const faqList = Array(8).fill({
 });
 
 export default function FAQPage() {
+  const decorRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (decorRef.current) {
+      observer.observe(decorRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <style>{`
-        body {
-          overflow-x: hidden;
+        @keyframes slideInX {
+          0% {
+            transform: translateX(50vw);
+            opacity: 0;
+          }
+          100% {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        .off-screen {
+          transform: translateX(50vw);
+          opacity: 0;
+        }
+        .anim-slide-1 {
+          animation: slideInX 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0s both;
+        }
+        .anim-slide-2 {
+          animation: slideInX 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s both;
+        }
+        .anim-slide-3 {
+          animation: slideInX 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
         }
       `}</style>
-      <main className="w-full bg-white">
+      <main className="w-full bg-white overflow-x-clip">
         {/* Container utama */}
       <div className="mx-auto w-full max-w-[1200px] px-6 py-16 md:px-10 lg:px-12">
         {/* Title & Search */}
@@ -67,7 +109,7 @@ export default function FAQPage() {
 
           {/* Right Column - Popular Topics */}
           <div className="relative w-full lg:translate-x-16 xl:translate-x-28">
-            <div className="sticky top-[120px] h-fit w-full bg-[#F4F9F2] p-8 md:p-10 pb-10">
+            <div ref={decorRef} className="sticky top-[120px] h-fit w-full bg-[#F4F9F2] p-8 md:p-10 pb-10">
               <h3 className="relative z-10 mb-5 text-[17px] font-bold text-zinc-800">
                 Populer Topic
               </h3>
@@ -90,10 +132,18 @@ export default function FAQPage() {
               </div>
 
               {/* Decorative shapes overflowing to the right screen edge */}
-              <div className="absolute left-[55%] md:left-[60%] top-[15%] xl:top-[8%] flex flex-col w-[800px] xl:w-[1000px] rotate-[-12deg] pointer-events-none hidden sm:flex z-0">
-                <div className="h-[60px] w-full bg-[#89BD43] shadow-[0_4px_10px_rgba(0,0,0,0.05)] translate-x-[40px]"></div>
-                <div className="h-[80px] w-full bg-[#BBE567] shadow-[0_4px_10px_rgba(0,0,0,0.05)]"></div>
-                <div className="h-[85px] w-full border-[1.5px] border-zinc-300 bg-transparent translate-x-[20px]"></div>
+              <div 
+                className="absolute left-[55%] md:left-[60%] top-[15%] xl:top-[8%] flex flex-col gap-0 w-[800px] xl:w-[1000px] pointer-events-none z-0 rotate-[-12deg]"
+              >
+                <div className={isVisible ? 'anim-slide-1' : 'off-screen'}>
+                  <div className="h-[60px] w-full bg-[#89BD43] shadow-[0_4px_10px_rgba(0,0,0,0.05)] translate-x-[40px]"></div>
+                </div>
+                <div className={isVisible ? 'anim-slide-2' : 'off-screen'}>
+                  <div className="h-[80px] w-full bg-[#BBE567] shadow-[0_4px_10px_rgba(0,0,0,0.05)]"></div>
+                </div>
+                <div className={isVisible ? 'anim-slide-3' : 'off-screen'}>
+                  <div className="h-[85px] w-full border-[1.5px] border-zinc-300 bg-transparent translate-x-[20px]"></div>
+                </div>
               </div>
             </div>
           </div>
