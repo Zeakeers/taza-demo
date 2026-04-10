@@ -10,8 +10,10 @@ export default function HitungZakatPage() {
   const [gaji, setGaji] = useState("");
   const [penghasilanLain, setPenghasilanLain] = useState("");
   const [jumlahEmas, setJumlahEmas] = useState("");
-  const [hargaEmas, setHargaEmas] = useState("1.350.000"); // Default estimasi harga emas
-  
+  const [hargaEmas, setHargaEmas] = useState("2.864.143"); // Default estimasi harga emas
+  const [jumlahJiwa, setJumlahJiwa] = useState("1");
+  const [hargaBeras, setHargaBeras] = useState("50.000"); // Default BAZNAS
+
   const [showResult, setShowResult] = useState(false);
   const [zakatResult, setZakatResult] = useState(0);
   const [isNisab, setIsNisab] = useState(false);
@@ -50,7 +52,7 @@ export default function HitungZakatPage() {
     if (jenisZakat === "PENGHASILAN") {
       const totalGaji = parseInt(gaji.replace(/\D/g, "") || "0", 10);
       const totalLain = parseInt(penghasilanLain.replace(/\D/g, "") || "0", 10);
-      
+
       if (!gaji) {
         alert("Mohon isi Gaji per bulan Anda.");
         return;
@@ -58,7 +60,7 @@ export default function HitungZakatPage() {
 
       const total = totalGaji + totalLain;
       const result = Math.floor(total * 0.025);
-      
+
       setZakatResult(result);
       setIsNisab(total >= NISHAB_PER_BULAN);
       setShowResult(true);
@@ -77,6 +79,20 @@ export default function HitungZakatPage() {
       setZakatResult(result);
       setIsNisab(beratEmas >= 85);
       setShowResult(true);
+    } else if (jenisZakat === "FITRAH") {
+      const jiwa = parseInt(jumlahJiwa.replace(/\D/g, "") || "0", 10);
+      const nominalBeras = parseInt(hargaBeras.replace(/\D/g, "") || "0", 10);
+
+      if (!jiwa || jiwa < 1) {
+        alert("Mohon isi Jumlah Jiwa minimal 1 orang.");
+        return;
+      }
+
+      const totalFitrah = jiwa * nominalBeras;
+
+      setZakatResult(totalFitrah);
+      setIsNisab(true); // Fitrah wajib bagi seluruh muslim
+      setShowResult(true);
     }
   };
 
@@ -84,6 +100,8 @@ export default function HitungZakatPage() {
     setGaji("");
     setPenghasilanLain("");
     setJumlahEmas("");
+    setJumlahJiwa("1");
+    setHargaBeras("45.000");
     setShowResult(false);
     setZakatResult(0);
     setIsNisab(false);
@@ -93,7 +111,7 @@ export default function HitungZakatPage() {
     <div className="min-h-screen bg-white">
       {/* Container utama dengan max-width */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
-        
+
         {/* Header Section */}
         <div className="text-center mb-10 flex flex-col items-center">
           <Image
@@ -122,9 +140,9 @@ export default function HitungZakatPage() {
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-3 mb-10 z-10 relative">
             <span className="text-zinc-900 font-semibold text-lg">Jenis Zakat :</span>
-            
+
             <div className="relative" ref={dropdownRef}>
-              <button 
+              <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center justify-between gap-3 bg-[#2a6d40] hover:bg-[#205531] text-white text-[15px] font-semibold py-2.5 px-6 rounded-full outline-none cursor-pointer transition-all min-w-[220px] shadow-sm border border-[#1e4e2d]"
               >
@@ -152,7 +170,7 @@ export default function HitungZakatPage() {
 
           {/* Form Container */}
           <div className="border border-zinc-200 rounded-xl overflow-hidden bg-white shadow-sm mb-8">
-            
+
             {/* Description Box */}
             <div className="bg-[#F2F9EC] p-5 md:p-6 border-b border-zinc-200 border-l-4 border-l-[#0B9B43]">
               {jenisZakat === "PENGHASILAN" ? (
@@ -169,16 +187,21 @@ export default function HitungZakatPage() {
                   </p>
                 </div>
               ) : (
-                <p className="text-zinc-700 text-sm md:text-[15px] leading-relaxed">
-                  Zakat Fitrah adalah zakat yang diwajibkan bagi setiap jiwa baik lelaki dan perempuan muslim yang dilakukan pada bulan Ramadhan hingga menjelang shalat Idul Fitri.
-                </p>
+                <div className="space-y-1">
+                  <p className="text-zinc-800 font-semibold text-[15px]">
+                    Rumus : <span className="font-normal text-zinc-700">Jumlah Jiwa × Harga Beras (per jiwa)</span>
+                  </p>
+                  <p className="text-sm text-zinc-600 mt-2 leading-relaxed">
+                    Zakat Fitrah wajib bagi setiap muslim yang hidup pada bulan Ramadhan. Besarannya setara dengan 2,5 kg atau 3,5 liter beras/makanan pokok yang biasa dikonsumsi. Nominal harga dapat disesuaikan dengan nilai beras di domisili Anda.
+                  </p>
+                </div>
               )}
             </div>
 
             {/* Inputs Box */}
             <div className="p-5 md:p-8">
               <div className="space-y-5">
-                
+
                 {jenisZakat === "PENGHASILAN" && (
                   <>
                     <div>
@@ -244,6 +267,40 @@ export default function HitungZakatPage() {
                   </>
                 )}
 
+                {jenisZakat === "FITRAH" && (
+                  <>
+                    <div>
+                      <label className="block text-zinc-800 font-medium mb-2">Jumlah Jiwa (Orang)</label>
+                      <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
+                        <input
+                          type="number"
+                          value={jumlahJiwa}
+                          onChange={(e) => setJumlahJiwa(e.target.value)}
+                          placeholder="1"
+                          min="1"
+                          className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                        />
+                        <span className="bg-zinc-200 px-4 py-2.5 text-zinc-700 font-medium border-l border-zinc-300">Orang</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-zinc-800 font-medium mb-2">Harga Beras / Makanan Pokok (per Jiwa)</label>
+                      <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all bg-white">
+                        <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
+                        <input
+                          type="text"
+                          value={hargaBeras}
+                          onChange={(e) => setHargaBeras(formatRupiah(e.target.value))}
+                          placeholder="0"
+                          className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                        />
+                      </div>
+                      <p className="text-xs text-zinc-500 mt-2">*Nilai default ini (Rp 50.000) adalah estimasi dari BAZNAS untuk sebagian besar wilayah. Silakan ganti sesuai harga beras 2.5kg di kota Anda (misal Rp 55.000, Rp 60.000, dll).</p>
+                    </div>
+                  </>
+                )}
+
                 <div className="pt-4 flex flex-wrap gap-3">
                   <button
                     onClick={handleHitung}
@@ -268,21 +325,21 @@ export default function HitungZakatPage() {
           {showResult && (
             <div className="bg-[#0B9B43] rounded-xl p-6 md:p-8 text-center text-white mb-10 shadow-lg animate-in slide-in-from-bottom-4 fade-in duration-500">
               <h3 className="text-xl md:text-2xl font-bold mb-2">
-                {isNisab 
-                  ? (jenisZakat === "EMAS" ? "Zakat Emas Anda" : "Zakat Penghasilan Anda") 
+                {isNisab
+                  ? (jenisZakat === "EMAS" ? "Zakat Emas Anda" : jenisZakat === "FITRAH" ? "Zakat Fitrah Anda" : "Zakat Penghasilan Anda")
                   : (jenisZakat === "EMAS" ? "Sedekah Emas Anda" : "Sedekah Penghasilan Anda")}
               </h3>
               <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
                 Rp {formatRupiah(zakatResult.toString())}
               </div>
-              
+
               {!isNisab ? (
                 <div className="flex flex-col items-center">
                   <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
                     <div className="mt-1 md:mt-0 flex-shrink-0 w-2 h-2 rounded-full bg-white/80" />
                     <p>
-                      {jenisZakat === "EMAS" 
-                        ? "Emas Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah" 
+                      {jenisZakat === "EMAS"
+                        ? "Emas Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah"
                         : "Penghasilan Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah"}
                     </p>
                   </div>
@@ -290,7 +347,11 @@ export default function HitungZakatPage() {
               ) : (
                 <div className="flex flex-col items-center">
                   <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
-                    <p>Alhamdulillah, harta Anda telah mencapai nisab. Mari tunaikan kewajiban zakat Anda.</p>
+                    <p>
+                      {jenisZakat === "FITRAH"
+                        ? "Mari sucikan diri dan sempurnakan ibadah dengan menunaikan Zakat Fitrah Anda."
+                        : "Alhamdulillah, harta Anda telah mencapai nisab. Mari tunaikan kewajiban zakat Anda."}
+                    </p>
                   </div>
                 </div>
               )}
@@ -314,13 +375,13 @@ export default function HitungZakatPage() {
               <h4 className="font-bold text-zinc-900 mb-2">Ketentuan Zakat</h4>
               <p className="text-zinc-600 text-sm">Nisab : 85 gram emas | Haul : 1 tahun | Tarif: 2,5%</p>
             </div>
-            
+
             <div className="flex flex-col items-center">
               <HeartHandshake className="w-12 h-12 text-[#0B9B43] mb-4" strokeWidth={1.5} />
               <h4 className="font-bold text-zinc-900 mb-2">Manfaat Zakat</h4>
               <p className="text-zinc-600 text-sm">Zakat menyucikan harta dan membantu sesama</p>
             </div>
-            
+
             <div className="flex flex-col items-center">
               <Phone className="w-12 h-12 text-[#0B9B43] mb-4" strokeWidth={1.5} />
               <h4 className="font-bold text-zinc-900 mb-2">Konsultasi</h4>
@@ -331,7 +392,7 @@ export default function HitungZakatPage() {
           {/* Warning / Disclaimer */}
           <div className="border border-[#F2C94C] border-l-[10px] bg-white p-6 md:p-8 rounded-[28px] shadow-sm mb-10">
             <div className="flex items-center gap-3 mb-4">
-              <TriangleAlert className="w-7 h-7 text-[#F2C94C] fill-[#F2C94C]" strokeWidth={0} />
+              <TriangleAlert className="w-7 h-7 text-white" fill="#F2C94C" strokeWidth={2.5} />
               <h4 className="text-lg md:text-xl font-bold text-zinc-900">Disclaimer Penting</h4>
             </div>
             <p className="text-zinc-800 font-semibold mb-3 text-[15px] md:text-base">Perhitungan ini menggunakan :</p>
