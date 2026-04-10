@@ -324,7 +324,7 @@ export default function AboutPage() {
                             </h3>
                           </div>
                         ) : (
-                          <div className={`scale-[0.8] sm:scale-90 md:scale-100 origin-left flex items-center ${m.year === '2019' ? 'bg-white rounded-xl shadow-md p-4 z-20 relative' : ''}`}>{m.logoRender()}</div>
+                          <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-left flex items-center">{m.logoRender()}</div>
                         )}
                       </div>
                     </div>
