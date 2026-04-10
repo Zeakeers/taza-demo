@@ -1,0 +1,268 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { BookOpen, HeartHandshake, Phone, TriangleAlert, Calculator, RotateCcw, HandHeart, ChevronDown } from "lucide-react";
+
+export default function HitungZakatPage() {
+  const [jenisZakat, setJenisZakat] = useState("PENGHASILAN");
+  const [gaji, setGaji] = useState("");
+  const [penghasilanLain, setPenghasilanLain] = useState("");
+  const [showResult, setShowResult] = useState(false);
+  const [zakatResult, setZakatResult] = useState(0);
+  const [isNisab, setIsNisab] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Asumsi nisab 85 gram emas setahun / 12 bulan
+  // ~ Rp 8.000.000 (Asumsi) / bulan
+  const NISHAB_PER_BULAN = 8000000;
+
+  const formatRupiah = (value: string) => {
+    return value.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
+  const handleGajiChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGaji(formatRupiah(e.target.value));
+  };
+
+  const handlePenghasilanLainChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPenghasilanLain(formatRupiah(e.target.value));
+  };
+
+  const handleHitung = () => {
+    const totalGaji = parseInt(gaji.replace(/\D/g, "") || "0", 10);
+    const totalLain = parseInt(penghasilanLain.replace(/\D/g, "") || "0", 10);
+    
+    // User requested: "untuk kolom penghasilan lain lain itu tidak harus di isi"
+    if (!gaji) {
+      alert("Mohon isi Gaji per bulan Anda.");
+      return;
+    }
+
+    const total = totalGaji + totalLain;
+    const result = Math.floor(total * 0.025);
+    
+    setZakatResult(result);
+    setIsNisab(total >= NISHAB_PER_BULAN);
+    setShowResult(true);
+  };
+
+  const handleReset = () => {
+    setGaji("");
+    setPenghasilanLain("");
+    setShowResult(false);
+    setZakatResult(0);
+    setIsNisab(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* Container utama dengan max-width */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+        
+        {/* Header Section */}
+        <div className="text-center mb-10 flex flex-col items-center">
+          <Image
+            src="/images/icon/Taman zakat hijau hitam.png"
+            alt="Logo Taman Zakat"
+            width={320}
+            height={80}
+            className="h-14 md:h-20 w-auto mb-6"
+          />
+          <h1 className="text-xl md:text-2xl font-bold text-zinc-900 uppercase tracking-wide max-w-2xl">
+            TUNAIKAN ZAKAT, INFAK, DAN SEDEKAH ANDA DENGAN <span className="text-[#5DA630]">AMAN DAN MUDAH</span>
+          </h1>
+        </div>
+
+        {/* Content Section */}
+        <div className="max-w-3xl mx-auto">
+          {/* Kalkulator Header */}
+          <div className="mb-6">
+            <h2 className="text-2xl font-bold text-[#5DA630] mb-3 border-b-2 border-[#5DA630] inline-block pb-1">
+              Kalkulator Zakat
+            </h2>
+            <p className="text-zinc-700 text-[15px] leading-relaxed">
+              Kalkulator zakat adalah layanan untuk mempermudah perhitungan jumlah zakat yang harus ditunaikan oleh setiap umat muslim sesuai ketetapan syariah. Oleh karena itu, bagi Anda yang ingin mengetahui berapa jumlah zakat yang harus ditunaikan, silahkan gunakan fasilitas Kalkulator Zakat dibawah ini.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 mb-10 z-10 relative">
+            <span className="text-zinc-900 font-semibold text-lg">Jenis Zakat :</span>
+            
+            <div className="relative" ref={dropdownRef}>
+              <button 
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                className="flex items-center justify-between gap-3 bg-[#2a6d40] hover:bg-[#205531] text-white text-[15px] font-semibold py-2.5 px-6 rounded-full outline-none cursor-pointer transition-all min-w-[220px] shadow-sm border border-[#1e4e2d]"
+              >
+                {jenisZakat}
+                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} strokeWidth={3} />
+              </button>
+
+              <div className={`absolute top-full left-0 mt-2 w-full bg-white border border-zinc-200 rounded-xl shadow-xl overflow-hidden z-20 transition-all duration-300 origin-top ${isDropdownOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
+                {["PENGHASILAN", "MAAL (HARTA)", "FITRAH"].map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => {
+                      setJenisZakat(option);
+                      setIsDropdownOpen(false);
+                    }}
+                    className={`w-full text-left px-5 py-3.5 text-[14px] font-semibold transition-colors ${jenisZakat === option ? 'bg-[#F2F9EC] text-[#2a6d40]' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'} border-b border-zinc-100 last:border-b-0`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Form Container */}
+          <div className="border border-zinc-200 rounded-xl overflow-hidden bg-white shadow-sm mb-8">
+            {/* Description Box */}
+            <div className="bg-[#F2F9EC] p-5 md:p-6 border-b border-zinc-200">
+              <p className="text-zinc-700 text-sm md:text-[15px] leading-relaxed">
+                Zakat penghasilan atau yang dikenal juga sebagai zakat profesi adalah bagian dari zakat mal yang wajib dikeluarkan atas harta yang berasal dari pendapatan / penghasilan rutin dari pekerjaan yang tidak melanggar syariah. Nishab zakat penghasilan sebesar 85 gram emas per tahun. Kadar zakat penghasilan senilai 2,5%. Dalam praktiknya, zakat penghasilan dapat ditunaikan setiap bulan dengan nilai nishab per bulannya adalah setara dengan nilai seperduabelas dari 85 gram emas, dengan kadar 2.5%. Jadi apabila penghasilan setiap bulan telah melebihi nilai nishab bulanan, maka wajib dikeluarkan zakatnya sebesar 2,5% dari penghasilannya tersebut.
+              </p>
+            </div>
+
+            {/* Inputs Box */}
+            <div className="p-5 md:p-8">
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-zinc-800 font-medium mb-2">Gaji saya per bulan</label>
+                  <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
+                    <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
+                    <input
+                      type="text"
+                      value={gaji}
+                      onChange={handleGajiChange}
+                      placeholder="0"
+                      className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-zinc-800 font-medium mb-2">Penghasilan lain-lain per bulan</label>
+                  <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
+                    <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
+                    <input
+                      type="text"
+                      value={penghasilanLain}
+                      onChange={handlePenghasilanLainChange}
+                      placeholder="0"
+                      className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-4 flex flex-wrap gap-3">
+                  <button
+                    onClick={handleHitung}
+                    className="flex items-center gap-2 bg-[#0B9B43] hover:bg-[#098338] text-white font-medium py-2.5 px-6 rounded-md transition-colors"
+                  >
+                    <Calculator className="w-5 h-5" />
+                    Hitung Zakat
+                  </button>
+                  <button
+                    onClick={handleReset}
+                    className="flex items-center gap-2 bg-zinc-500 hover:bg-zinc-600 text-white font-medium py-2.5 px-6 rounded-md transition-colors"
+                  >
+                    <RotateCcw className="w-5 h-5" />
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Conditional Result Box */}
+          {showResult && (
+            <div className="bg-[#0B9B43] rounded-xl p-6 md:p-8 text-center text-white mb-10 shadow-lg animate-in slide-in-from-bottom-4 fade-in duration-500">
+              <h3 className="text-xl md:text-2xl font-bold mb-2">
+                {isNisab ? "Zakat Penghasilan Anda" : "Sedekah Penghasilan Anda"}
+              </h3>
+              <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
+                Rp {formatRupiah(zakatResult.toString())}
+              </div>
+              
+              {!isNisab ? (
+                <div className="flex flex-col items-center">
+                  <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
+                    <div className="mt-1 md:mt-0 flex-shrink-0 w-2 h-2 rounded-full bg-white/80" />
+                    <p>Penghasilan Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah</p>
+                  </div>
+                </div>
+              ) : (
+                <div className="flex flex-col items-center">
+                  <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
+                    <p>Alhamdulillah, penghasilan Anda telah mencapai nisab. Mari tunaikan kewajiban zakat Anda.</p>
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-6">
+                <Link
+                  href="/layanan/konfirmasi-donasi"
+                  className="inline-flex items-center gap-2 bg-white text-zinc-900 font-bold py-3 px-8 rounded-md hover:bg-zinc-100 hover:scale-105 transition-all"
+                >
+                  <HandHeart className="w-5 h-5" />
+                  {isNisab ? "Zakat Sekarang" : "Sedekah Sekarang"}
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Bottom Info Icons */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-10 border-t border-zinc-200 text-center">
+            <div className="flex flex-col items-center">
+              <BookOpen className="w-12 h-12 text-[#0B9B43] mb-4" strokeWidth={1.5} />
+              <h4 className="font-bold text-zinc-900 mb-2">Ketentuan Zakat</h4>
+              <p className="text-zinc-600 text-sm">Nisab : 85 gram emas | Haul : 1 tahun | Tarif: 2,5%</p>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <HeartHandshake className="w-12 h-12 text-[#0B9B43] mb-4" strokeWidth={1.5} />
+              <h4 className="font-bold text-zinc-900 mb-2">Manfaat Zakat</h4>
+              <p className="text-zinc-600 text-sm">Zakat menyucikan harta dan membantu sesama</p>
+            </div>
+            
+            <div className="flex flex-col items-center">
+              <Phone className="w-12 h-12 text-[#0B9B43] mb-4" strokeWidth={1.5} />
+              <h4 className="font-bold text-zinc-900 mb-2">Konsultasi</h4>
+              <p className="text-zinc-600 text-sm">Hubungi TAZA untuk konsultasi lebih lanjut</p>
+            </div>
+          </div>
+
+          {/* Warning / Disclaimer */}
+          <div className="border border-[#F2C94C] border-l-[10px] bg-white p-6 md:p-8 rounded-[28px] shadow-sm mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <TriangleAlert className="w-7 h-7 text-[#F2C94C] fill-[#F2C94C]" strokeWidth={0} />
+              <h4 className="text-lg md:text-xl font-bold text-zinc-900">Disclaimer Penting</h4>
+            </div>
+            <p className="text-zinc-800 font-semibold mb-3 text-[15px] md:text-base">Perhitungan ini menggunakan :</p>
+            <ul className="list-disc list-outside ml-6 text-zinc-700 text-[14px] md:text-[15px] space-y-2 marker:text-zinc-500 font-medium">
+              <li>Fatwa MUI No. 3 Tahun 2003 tentang Zakat Penghasilan</li>
+              <li>Keputusan Majma' Fiqih Islami (OKI) tentang Zakat Kontemporer</li>
+              <li>Pendapat mayoritas ulama kontemporer (Dr. Yusuf Qardhawi, dll)</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
+}
