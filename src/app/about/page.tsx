@@ -127,7 +127,7 @@ const milestones = [
     align: "right" as const,
     logoRender: () => (
       <div className="flex items-center justify-center">
-         <Image src="/images/icon/iklas_beramal-removebg-preview 1.svg" alt="Kemenag" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
+        <Image src="/images/icon/iklas_beramal-removebg-preview 1.svg" alt="Kemenag" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
       </div>
     )
   },
@@ -139,7 +139,7 @@ const milestones = [
     align: "left" as const,
     logoRender: () => (
       <div className="flex items-center justify-center">
-         <Image src="/images/icon/WTP.svg" alt="WTP" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
+        <Image src="/images/icon/WTP.svg" alt="WTP" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
       </div>
     )
   },
@@ -164,11 +164,11 @@ export type TeamMember = {
 
 export const kepengurusanData: Record<KepengurusanTab, TeamMember[]> = {
   "Board of Director": [
-    { name: "Nama Direktur 1", role: "Jabatan Direktur", image: "" },
+    { name: "H. Slamet Budiono, S.H., M.M", role: "Jabatan Direktur", image: "" },
     { name: "Nama Direktur 2", role: "Jabatan Direktur", image: "" },
   ],
   "Board of Trustee": [
-    { name: "H. Slamet Budiono, S.H., M.M", role: "Chief Executive Officer", image: "" },
+    { name: "Nama Trustee 1", role: "Chief Executive Officer", image: "" },
     { name: "Nama Trustee 2", role: "Role Trustee", image: "" },
   ],
   "Board of Trustees": [
@@ -232,7 +232,7 @@ export default function AboutPage() {
           className="object-cover object-center"
           priority
         />
-        
+
         {/* Container for the Card */}
         <div className="relative z-20 mx-auto w-full max-w-[1240px] h-full flex items-center justify-center md:justify-end px-4 sm:px-6 lg:px-8">
           {/* Card */}
@@ -240,7 +240,7 @@ export default function AboutPage() {
             <h1 className="text-black text-[24px] md:text-[28px] font-bold leading-tight">
               The craziest thing we can<br />do is nothing.
             </h1>
-            
+
             <div className="mt-6 text-zinc-800 text-[11px] md:text-xs font-bold tracking-wider uppercase flex flex-col items-center">
               <div className="flex items-center gap-2">
                 <span className="w-5 h-[1.5px] bg-zinc-800 block"></span>
@@ -248,11 +248,11 @@ export default function AboutPage() {
               </div>
               <span className="mt-1">TAMAN ZAKAT</span>
             </div>
-            
+
             <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed">
               Slamet journey from nightclub promoter to founding a global nonprofit is proof that anyone can make a difference. Join his mission to bring clean and safe water to everyone on earth.
             </p>
-            
+
             <button className="mt-8 bg-[#FDBA12] hover:bg-[#E5A810] text-black font-semibold px-8 py-3 rounded-sm transition-colors duration-200">
               Small Kindness
             </button>
@@ -289,39 +289,39 @@ export default function AboutPage() {
                     className="relative w-full h-[50vh] md:h-[60vh] milestone-container"
                   >
                     <div className="sticky top-[20vh] w-full flex flex-row items-center justify-between py-6 md:py-8 pointer-events-none z-10 transition-transform duration-300">
-                      
+
                       {/* Left Side Content */}
                       <div className="w-1/2 flex justify-end pr-4 sm:pr-8 md:pr-14 pointer-events-auto">
                         {m.align === "left" ? (
                           <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
                         ) : (
                           <div className="flex flex-col text-right p-2 sm:p-4 md:p-0">
-                             <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
-                               {m.year}
-                             </span>
-                             <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
-                               {m.title}
-                             </h3>
+                            <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
+                              {m.year}
+                            </span>
+                            <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
+                              {m.title}
+                            </h3>
                           </div>
                         )}
                       </div>
 
                       {/* Center dot */}
-                      <div 
-                        className={`flex absolute left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full bg-transparent border-2 z-20 transition-colors duration-500`} 
-                        style={{ borderColor: activeColor }} 
+                      <div
+                        className={`flex absolute left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full bg-transparent border-2 z-20 transition-colors duration-500`}
+                        style={{ borderColor: activeColor }}
                       />
 
                       {/* Right Side Content */}
                       <div className="w-1/2 flex justify-start pl-4 sm:pl-8 md:pl-14 pointer-events-auto">
                         {m.align === "left" ? (
-                           <div className="flex flex-col text-left p-2 sm:p-4 md:p-0">
-                             <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
-                               {m.year}
-                             </span>
-                             <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
-                               {m.title}
-                             </h3>
+                          <div className="flex flex-col text-left p-2 sm:p-4 md:p-0">
+                            <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
+                              {m.year}
+                            </span>
+                            <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
+                              {m.title}
+                            </h3>
                           </div>
                         ) : (
                           <div className={`scale-[0.8] sm:scale-90 md:scale-100 origin-left flex items-center ${m.year === '2019' ? 'bg-white rounded-xl shadow-md p-4 z-20 relative' : ''}`}>{m.logoRender()}</div>
@@ -351,11 +351,10 @@ export default function AboutPage() {
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
-                  className={`px-4 sm:px-8 pb-3 text-[15px] md:text-lg font-semibold whitespace-nowrap outline-none flex-auto text-center ${
-                    activeTab === t
+                  className={`px-4 sm:px-8 pb-3 text-[15px] md:text-lg font-semibold whitespace-nowrap outline-none flex-auto text-center ${activeTab === t
                       ? "text-black"
                       : "text-zinc-700 hover:text-black"
-                  }`}
+                    }`}
                 >
                   {t}
                 </button>
@@ -408,11 +407,10 @@ export default function AboutPage() {
                   <button
                     key={tab}
                     onClick={() => setActiveKepengurusan(tab)}
-                    className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${
-                      activeKepengurusan === tab
+                    className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${activeKepengurusan === tab
                         ? "bg-[#9FB3C8] text-white"
                         : "bg-transparent text-black hover:bg-black/5"
-                    }`}
+                      }`}
                   >
                     {tab}
                   </button>
@@ -424,22 +422,22 @@ export default function AboutPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
                   {kepengurusanData[activeKepengurusan].map((member, idx) => (
                     <div key={idx} className="flex flex-col bg-[#FAF7F0] rounded-xl overflow-hidden shadow-[0_4px_25px_rgba(180,210,180,0.4)] pb-8 border border-white">
-                       {/* Foto */}
-                       {member.image ? (
-                         <div className="relative w-full h-56 md:h-64 rounded-t-xl overflow-hidden">
-                           <Image src={member.image} alt={member.name} fill className="object-cover" />
-                         </div>
-                       ) : (
-                         <div className="w-full h-56 md:h-64 bg-[#EAEAEA] rounded-t-xl flex items-center justify-center">
-                           <span className="text-zinc-400 text-sm font-medium">Foto area</span>
-                         </div>
-                       )}
-                       
-                       {/* Nama & Posisi */}
-                       <div className="flex flex-col items-center pt-5 px-4 text-center bg-[#FAF7F0]">
-                         <h4 className="text-[#3b7ee2] font-medium text-[15px] md:text-[16px]">{member.name}</h4>
-                         <p className="text-zinc-500 text-[12px] md:text-[13px] mt-1.5 font-medium">{member.role}</p>
-                       </div>
+                      {/* Foto */}
+                      {member.image ? (
+                        <div className="relative w-full h-56 md:h-64 rounded-t-xl overflow-hidden">
+                          <Image src={member.image} alt={member.name} fill className="object-cover" />
+                        </div>
+                      ) : (
+                        <div className="w-full h-56 md:h-64 bg-[#EAEAEA] rounded-t-xl flex items-center justify-center">
+                          <span className="text-zinc-400 text-sm font-medium">Foto area</span>
+                        </div>
+                      )}
+
+                      {/* Nama & Posisi */}
+                      <div className="flex flex-col items-center pt-5 px-4 text-center bg-[#FAF7F0]">
+                        <h4 className="text-[#3b7ee2] font-medium text-[15px] md:text-[16px]">{member.name}</h4>
+                        <p className="text-zinc-500 text-[12px] md:text-[13px] mt-1.5 font-medium">{member.role}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -491,12 +489,12 @@ export default function AboutPage() {
 
                 {/* gamabr bagian kiri*/}
                 <div className="w-full h-full border border-zinc-200/60 bg-[#FAFAFA] relative z-10 mt-6 md:mt-0 shadow-[10px_10px_15px_rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden">
-                   
-                   {/* hapus saja kalo sudah ada gamabrnya */}
-                   <span className="text-zinc-400 text-sm font-medium">Foto area</span>
-                   
-                   {/* Contoh kode Image siap pakai, hilangkan tanda komentar untuk menggunakannya */}
-                   {/* 
+
+                  {/* hapus saja kalo sudah ada gamabrnya */}
+                  <span className="text-zinc-400 text-sm font-medium">Foto area</span>
+
+                  {/* Contoh kode Image siap pakai, hilangkan tanda komentar untuk menggunakannya */}
+                  {/* 
                    <Image 
                      src="/images/your-image-path.jpg" 
                      alt="You have our word image" 
@@ -505,7 +503,7 @@ export default function AboutPage() {
                    /> 
                    */}
                 </div>
-                
+
                 {/* Taza Badge top right corner */}
                 <div className="absolute top-2 -right-5 md:-top-6 md:-right-8 z-20">
                   <div className="relative h-[68px] w-[68px]">
@@ -556,12 +554,12 @@ export default function AboutPage() {
 
               {/* Right Text */}
               <div className="flex-1 text-center md:text-left pt-4 md:pt-14 md:pl-8">
-                 <h3 className="text-black text-[22px] md:text-[26px] leading-tight mb-4 font-semibold text-zinc-800">
-                   You have our word—and more
-                 </h3>
-                 <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
-                   When charity: water began, we made a bold promise: 100% of public donations would go directly to fund clean water projects. Private donors cover our operating costs so 100% of your money can fund water projects.
-                 </p>
+                <h3 className="text-black text-[22px] md:text-[26px] leading-tight mb-4 font-semibold text-zinc-800">
+                  You have our word—and more
+                </h3>
+                <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
+                  When charity: water began, we made a bold promise: 100% of public donations would go directly to fund clean water projects. Private donors cover our operating costs so 100% of your money can fund water projects.
+                </p>
               </div>
             </div>
           </div>
