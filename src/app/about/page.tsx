@@ -94,7 +94,7 @@ const milestones = [
     align: "left" as const,
     logoRender: () => (
       <div className="py-4 px-6 md:pr-10">
-        <Image src="/images/icon/Taman Zakat Logo.svg" alt="Taman Zakat" width={180} height={80} className="relative z-10 w-32 md:w-40" />
+        <Image src="/images/icon/Taman Zakat Logo.svg" alt="Taman Zakat" width={240} height={100} className="relative z-10 w-40 md:w-56 lg:w-64" />
       </div>
     )
   },
@@ -105,7 +105,7 @@ const milestones = [
     align: "right" as const,
     logoRender: () => (
       <div className="py-4 px-6 md:pr-10">
-        <Image src="/images/icon/Forum Zakat.svg" alt="FOZ" width={130} height={60} className="w-24 md:w-32 object-contain" />
+        <Image src="/images/icon/Forum Zakat.svg" alt="FOZ" width={200} height={100} className="w-32 md:w-48 lg:w-56 object-contain" />
       </div>
     )
   },
@@ -116,7 +116,7 @@ const milestones = [
     align: "left" as const,
     logoRender: () => (
       <div className="py-4 px-6 md:pr-10">
-        <Image src="/images/icon/Logo baznas.svg" alt="BAZNAS" width={140} height={100} className="relative z-10 w-28 md:w-40" />
+        <Image src="/images/icon/Logo baznas.svg" alt="BAZNAS" width={200} height={140} className="relative z-10 w-36 md:w-48 lg:w-56" />
       </div>
     )
   },
@@ -127,7 +127,7 @@ const milestones = [
     align: "right" as const,
     logoRender: () => (
       <div className="flex items-center justify-center">
-         <Image src="/images/icon/iklas_beramal-removebg-preview 1.svg" alt="Kemenag" width={120} height={120} className="w-24 md:w-32 object-contain" />
+         <Image src="/images/icon/iklas_beramal-removebg-preview 1.svg" alt="Kemenag" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
       </div>
     )
   },
@@ -139,7 +139,7 @@ const milestones = [
     align: "left" as const,
     logoRender: () => (
       <div className="flex items-center justify-center">
-         <Image src="/images/icon/WTP.svg" alt="WTP" width={120} height={120} className="w-24 md:w-32 object-contain" />
+         <Image src="/images/icon/WTP.svg" alt="WTP" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
       </div>
     )
   },
@@ -296,10 +296,10 @@ export default function AboutPage() {
                           <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
                         ) : (
                           <div className="flex flex-col text-right p-2 sm:p-4 md:p-0">
-                             <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
+                             <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
-                             <h3 className="text-sm md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
+                             <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
                                {m.title}
                              </h3>
                           </div>
@@ -316,10 +316,10 @@ export default function AboutPage() {
                       <div className="w-1/2 flex justify-start pl-4 sm:pl-8 md:pl-14 pointer-events-auto">
                         {m.align === "left" ? (
                            <div className="flex flex-col text-left p-2 sm:p-4 md:p-0">
-                             <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
+                             <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
-                             <h3 className="text-sm md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
+                             <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
                                {m.title}
                              </h3>
                           </div>
