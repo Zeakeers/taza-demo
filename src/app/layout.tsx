@@ -28,6 +28,9 @@ const awalRamadhan = localFont({
 export const metadata: Metadata = {
   title: "Taman Zakat Indonesia",
   description: "Website resmi Taman Zakat Indonesia sebagai media informasi dan penyaluran donasi.",
+  icons: {
+    icon: "/images/icon/taman zakat  logo .svg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
