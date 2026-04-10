@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/footer";
-import "./globals.css";
+import "./styles/globals.css";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
