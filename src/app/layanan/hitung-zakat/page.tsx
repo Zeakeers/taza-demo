@@ -9,6 +9,9 @@ export default function HitungZakatPage() {
   const [jenisZakat, setJenisZakat] = useState("PENGHASILAN");
   const [gaji, setGaji] = useState("");
   const [penghasilanLain, setPenghasilanLain] = useState("");
+  const [jumlahEmas, setJumlahEmas] = useState("");
+  const [hargaEmas, setHargaEmas] = useState("1.350.000"); // Default estimasi harga emas
+  
   const [showResult, setShowResult] = useState(false);
   const [zakatResult, setZakatResult] = useState(0);
   const [isNisab, setIsNisab] = useState(false);
@@ -44,26 +47,43 @@ export default function HitungZakatPage() {
   };
 
   const handleHitung = () => {
-    const totalGaji = parseInt(gaji.replace(/\D/g, "") || "0", 10);
-    const totalLain = parseInt(penghasilanLain.replace(/\D/g, "") || "0", 10);
-    
-    // User requested: "untuk kolom penghasilan lain lain itu tidak harus di isi"
-    if (!gaji) {
-      alert("Mohon isi Gaji per bulan Anda.");
-      return;
-    }
+    if (jenisZakat === "PENGHASILAN") {
+      const totalGaji = parseInt(gaji.replace(/\D/g, "") || "0", 10);
+      const totalLain = parseInt(penghasilanLain.replace(/\D/g, "") || "0", 10);
+      
+      if (!gaji) {
+        alert("Mohon isi Gaji per bulan Anda.");
+        return;
+      }
 
-    const total = totalGaji + totalLain;
-    const result = Math.floor(total * 0.025);
-    
-    setZakatResult(result);
-    setIsNisab(total >= NISHAB_PER_BULAN);
-    setShowResult(true);
+      const total = totalGaji + totalLain;
+      const result = Math.floor(total * 0.025);
+      
+      setZakatResult(result);
+      setIsNisab(total >= NISHAB_PER_BULAN);
+      setShowResult(true);
+    } else if (jenisZakat === "EMAS") {
+      const beratEmas = parseFloat(jumlahEmas) || 0;
+      const nominalHargaEmas = parseInt(hargaEmas.replace(/\D/g, "") || "0", 10);
+
+      if (!jumlahEmas) {
+        alert("Mohon isi Jumlah Emas yang dimiliki.");
+        return;
+      }
+
+      const totalNilai = beratEmas * nominalHargaEmas;
+      const result = Math.floor(totalNilai * 0.025);
+
+      setZakatResult(result);
+      setIsNisab(beratEmas >= 85);
+      setShowResult(true);
+    }
   };
 
   const handleReset = () => {
     setGaji("");
     setPenghasilanLain("");
+    setJumlahEmas("");
     setShowResult(false);
     setZakatResult(0);
     setIsNisab(false);
@@ -113,12 +133,13 @@ export default function HitungZakatPage() {
               </button>
 
               <div className={`absolute top-full left-0 mt-2 w-full bg-white border border-zinc-200 rounded-xl shadow-xl overflow-hidden z-20 transition-all duration-300 origin-top ${isDropdownOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'}`}>
-                {["PENGHASILAN", "MAAL (HARTA)", "FITRAH"].map((option) => (
+                {["PENGHASILAN", "EMAS", "FITRAH"].map((option) => (
                   <button
                     key={option}
                     onClick={() => {
                       setJenisZakat(option);
                       setIsDropdownOpen(false);
+                      setShowResult(false); // Sembunyikan hasil kalau ganti jenis
                     }}
                     className={`w-full text-left px-5 py-3.5 text-[14px] font-semibold transition-colors ${jenisZakat === option ? 'bg-[#F2F9EC] text-[#2a6d40]' : 'text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900'} border-b border-zinc-100 last:border-b-0`}
                   >
@@ -131,43 +152,97 @@ export default function HitungZakatPage() {
 
           {/* Form Container */}
           <div className="border border-zinc-200 rounded-xl overflow-hidden bg-white shadow-sm mb-8">
+            
             {/* Description Box */}
-            <div className="bg-[#F2F9EC] p-5 md:p-6 border-b border-zinc-200">
-              <p className="text-zinc-700 text-sm md:text-[15px] leading-relaxed">
-                Zakat penghasilan atau yang dikenal juga sebagai zakat profesi adalah bagian dari zakat mal yang wajib dikeluarkan atas harta yang berasal dari pendapatan / penghasilan rutin dari pekerjaan yang tidak melanggar syariah. Nishab zakat penghasilan sebesar 85 gram emas per tahun. Kadar zakat penghasilan senilai 2,5%. Dalam praktiknya, zakat penghasilan dapat ditunaikan setiap bulan dengan nilai nishab per bulannya adalah setara dengan nilai seperduabelas dari 85 gram emas, dengan kadar 2.5%. Jadi apabila penghasilan setiap bulan telah melebihi nilai nishab bulanan, maka wajib dikeluarkan zakatnya sebesar 2,5% dari penghasilannya tersebut.
-              </p>
+            <div className="bg-[#F2F9EC] p-5 md:p-6 border-b border-zinc-200 border-l-4 border-l-[#0B9B43]">
+              {jenisZakat === "PENGHASILAN" ? (
+                <p className="text-zinc-700 text-sm md:text-[15px] leading-relaxed">
+                  Zakat penghasilan atau yang dikenal juga sebagai zakat profesi adalah bagian dari zakat mal yang wajib dikeluarkan atas harta yang berasal dari pendapatan / penghasilan rutin dari pekerjaan yang tidak melanggar syariah. Nishab zakat penghasilan sebesar 85 gram emas per tahun. Kadar zakat penghasilan senilai 2,5%. Dalam praktiknya, zakat penghasilan dapat ditunaikan setiap bulan dengan nilai nishab per bulannya adalah setara dengan nilai seperduabelas dari 85 gram emas, dengan kadar 2.5%. Jadi apabila penghasilan setiap bulan telah melebihi nilai nishab bulanan, maka wajib dikeluarkan zakatnya sebesar 2,5% dari penghasilannya tersebut.
+                </p>
+              ) : jenisZakat === "EMAS" ? (
+                <div className="space-y-1">
+                  <p className="text-zinc-800 font-semibold text-[15px]">
+                    Rumus : <span className="font-normal text-zinc-700">Jumlah Emas (gram) × Harga Emas × 2.5%</span>
+                  </p>
+                  <p className="text-zinc-800 font-semibold text-[15px]">
+                    Nisab : <span className="font-normal text-zinc-700">85 gram Emas</span>
+                  </p>
+                </div>
+              ) : (
+                <p className="text-zinc-700 text-sm md:text-[15px] leading-relaxed">
+                  Zakat Fitrah adalah zakat yang diwajibkan bagi setiap jiwa baik lelaki dan perempuan muslim yang dilakukan pada bulan Ramadhan hingga menjelang shalat Idul Fitri.
+                </p>
+              )}
             </div>
 
             {/* Inputs Box */}
             <div className="p-5 md:p-8">
               <div className="space-y-5">
-                <div>
-                  <label className="block text-zinc-800 font-medium mb-2">Gaji saya per bulan</label>
-                  <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
-                    <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
-                    <input
-                      type="text"
-                      value={gaji}
-                      onChange={handleGajiChange}
-                      placeholder="0"
-                      className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
-                    />
-                  </div>
-                </div>
+                
+                {jenisZakat === "PENGHASILAN" && (
+                  <>
+                    <div>
+                      <label className="block text-zinc-800 font-medium mb-2">Gaji saya per bulan</label>
+                      <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
+                        <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
+                        <input
+                          type="text"
+                          value={gaji}
+                          onChange={handleGajiChange}
+                          placeholder="0"
+                          className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                        />
+                      </div>
+                    </div>
 
-                <div>
-                  <label className="block text-zinc-800 font-medium mb-2">Penghasilan lain-lain per bulan</label>
-                  <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
-                    <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
-                    <input
-                      type="text"
-                      value={penghasilanLain}
-                      onChange={handlePenghasilanLainChange}
-                      placeholder="0"
-                      className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
-                    />
-                  </div>
-                </div>
+                    <div>
+                      <label className="block text-zinc-800 font-medium mb-2">Penghasilan lain-lain per bulan</label>
+                      <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
+                        <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
+                        <input
+                          type="text"
+                          value={penghasilanLain}
+                          onChange={handlePenghasilanLainChange}
+                          placeholder="0"
+                          className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                        />
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {jenisZakat === "EMAS" && (
+                  <>
+                    <div>
+                      <label className="block text-zinc-800 font-medium mb-2">Jumlah Emas yang dimiliki</label>
+                      <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all">
+                        <input
+                          type="number"
+                          value={jumlahEmas}
+                          onChange={(e) => setJumlahEmas(e.target.value)}
+                          placeholder="0"
+                          className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                        />
+                        <span className="bg-zinc-200 px-4 py-2.5 text-zinc-700 font-medium border-l border-zinc-300">gram</span>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-zinc-800 font-medium mb-2">Harga Emas Saat Ini (per gram)</label>
+                      <div className="flex items-center border border-zinc-300 rounded-lg overflow-hidden focus-within:border-[#5DA630] focus-within:ring-1 focus-within:ring-[#5DA630] transition-all bg-white">
+                        <span className="bg-zinc-50 px-4 py-2.5 text-zinc-600 font-medium border-r border-zinc-300">Rp.</span>
+                        <input
+                          type="text"
+                          value={hargaEmas}
+                          onChange={(e) => setHargaEmas(formatRupiah(e.target.value))}
+                          placeholder="0"
+                          className="w-full px-4 py-2.5 text-zinc-900 font-semibold outline-none"
+                        />
+                      </div>
+                      <p className="text-xs text-zinc-500 mt-2">*Harga emas ini dapat Anda edit secara manual sesuai dengan harga emas per hari ini.</p>
+                    </div>
+                  </>
+                )}
 
                 <div className="pt-4 flex flex-wrap gap-3">
                   <button
@@ -193,7 +268,9 @@ export default function HitungZakatPage() {
           {showResult && (
             <div className="bg-[#0B9B43] rounded-xl p-6 md:p-8 text-center text-white mb-10 shadow-lg animate-in slide-in-from-bottom-4 fade-in duration-500">
               <h3 className="text-xl md:text-2xl font-bold mb-2">
-                {isNisab ? "Zakat Penghasilan Anda" : "Sedekah Penghasilan Anda"}
+                {isNisab 
+                  ? (jenisZakat === "EMAS" ? "Zakat Emas Anda" : "Zakat Penghasilan Anda") 
+                  : (jenisZakat === "EMAS" ? "Sedekah Emas Anda" : "Sedekah Penghasilan Anda")}
               </h3>
               <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4">
                 Rp {formatRupiah(zakatResult.toString())}
@@ -203,13 +280,17 @@ export default function HitungZakatPage() {
                 <div className="flex flex-col items-center">
                   <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
                     <div className="mt-1 md:mt-0 flex-shrink-0 w-2 h-2 rounded-full bg-white/80" />
-                    <p>Penghasilan Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah</p>
+                    <p>
+                      {jenisZakat === "EMAS" 
+                        ? "Emas Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah" 
+                        : "Penghasilan Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah"}
+                    </p>
                   </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center">
                   <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
-                    <p>Alhamdulillah, penghasilan Anda telah mencapai nisab. Mari tunaikan kewajiban zakat Anda.</p>
+                    <p>Alhamdulillah, harta Anda telah mencapai nisab. Mari tunaikan kewajiban zakat Anda.</p>
                   </div>
                 </div>
               )}
