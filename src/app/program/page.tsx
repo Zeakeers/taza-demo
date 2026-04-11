@@ -328,7 +328,7 @@ export default function ProgramPage() {
 
               {/* CONTENT */}
               <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
-                Laporkan Penyaluran
+                Laporan Penyaluran
               </h3>
 
               <p className="mt-2 text-sm leading-snug text-zinc-700">
@@ -374,7 +374,7 @@ export default function ProgramPage() {
       </main>
 
       {/* bottom*/}
-      <section className="w-full bg-[#F8EED3] py-16 md:py-20 lg:py-24">
+      {/* <section className="w-full bg-[#F8EED3] py-16 md:py-20 lg:py-24">
         <div className="mx-auto w-full max-w-4xl px-6 text-center">
           <h2 className="font-newsreader text-2xl font-medium text-zinc-900">
             You deserve to give with confidence
@@ -388,7 +388,7 @@ export default function ProgramPage() {
             companies and organizations agree.
           </p>
         </div>
-      </section>
+      </section> */}
       {/* End */}
     </section>
   );
