@@ -221,7 +221,7 @@ export default function Navbar() {
           <div className={`hidden md:flex items-center absolute right-4 md:right-6 lg:right-8 transition-all duration-500 ease-in-out ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'}`}>
             <a
               href="#"
-              className="h-8 md:h-10 px-4 md:px-6 flex items-center justify-center rounded-md text-[14px] font-[600] text-[#196135] bg-white border border-zinc-200 shadow-sm hover:shadow-md hover:border-[#5DA630] transition-all whitespace-nowrap shrink-0"
+              className="h-8 md:h-10 px-4 md:px-6 flex items-center justify-center rounded-md text-[14px] font-[600] text-white bg-[#5DA630] shadow-md hover:bg-[#4d8f28] transition-all whitespace-nowrap shrink-0"
             >
               Donasi
             </a>
