@@ -61,9 +61,9 @@ export default function NoRekeningPage() {
     <div className="bg-[#fcfee1] min-h-screen">
       {/* Hero Section */}
       <div className="relative w-full h-[450px] md:h-[500px]">
-        <Image 
-          src="/images/gambardetaile/hero no rekening.svg" 
-          alt="Hero Pilihan Rekening Donasi" 
+        <Image
+          src="/images/gambardetaile/hero no rekening.svg"
+          alt="Hero Pilihan Rekening Donasi"
           fill
           priority
           className="object-cover object-[center_34%]"
@@ -72,7 +72,7 @@ export default function NoRekeningPage() {
 
       <div className="w-full pb-20 -mt-32 md:-mt-44 relative z-10 px-4 md:px-8">
         <div className="max-w-[1100px] mx-auto bg-white pt-10 md:pt-14 pb-16 md:pb-20 px-6 md:px-12 shadow-sm">
-          
+
           {/* Header Title and Description */}
           <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center md:items-start mb-8 w-full">
             <div className="md:w-5/12 flex py-2 items-center justify-center md:justify-start">
@@ -86,7 +86,7 @@ export default function NoRekeningPage() {
               </p>
             </div>
           </div>
-          
+
           {/* Separator Line */}
           <div className="w-full h-[2px] bg-[#d4d4d4] mb-16 mx-auto"></div>
 
@@ -102,23 +102,23 @@ export default function NoRekeningPage() {
                 {/* Cards Container */}
                 <div className="flex flex-wrap justify-center gap-6 md:gap-8 w-full max-w-4xl">
                   {sec.accounts.map((acc, accIdx) => (
-                    <div 
-                      key={accIdx} 
+                    <div
+                      key={accIdx}
                       className="w-[300px] flex flex-col overflow-hidden bg-white rounded-xl border border-zinc-400/60 group hover:transform hover:-translate-y-1 transition-all duration-300 shadow-sm"
                     >
                       {/* Top White Box */}
                       <div className="h-[95px] w-full relative">
                         <div className="relative w-full h-full flex items-center justify-center p-4">
-                          <Image 
-                            src={acc.logo} 
-                            alt={acc.name} 
+                          <Image
+                            src={acc.logo}
+                            alt={acc.name}
                             width={acc.width}
                             height={acc.height}
                             className={`object-contain max-h-[45px] transition-transform duration-300 group-hover:scale-105`}
                           />
                         </div>
                       </div>
-                      
+
                       {/* Bottom Green Box */}
                       <div className="bg-gradient-to-r from-[#89DC45] to-[#496B2D] px-6 py-4 flex flex-col justify-center flex-1">
                         <p className="text-white text-sm font-medium mb-1">Nomer Rekening</p>
@@ -129,7 +129,7 @@ export default function NoRekeningPage() {
                     </div>
                   ))}
                 </div>
-                
+
                 {/* Separator Line for all but last section */}
                 {secIdx < sections.length - 1 && (
                   <div className="mt-16 w-full max-w-3xl flex items-center justify-center relative">
