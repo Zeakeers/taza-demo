@@ -352,8 +352,8 @@ export default function AboutPage() {
                   key={t}
                   onClick={() => setActiveTab(t)}
                   className={`px-4 sm:px-8 pb-3 text-[15px] md:text-lg font-semibold whitespace-nowrap outline-none flex-auto text-center ${activeTab === t
-                      ? "text-black"
-                      : "text-zinc-700 hover:text-black"
+                    ? "text-black"
+                    : "text-zinc-700 hover:text-black"
                     }`}
                 >
                   {t}
@@ -408,8 +408,8 @@ export default function AboutPage() {
                     key={tab}
                     onClick={() => setActiveKepengurusan(tab)}
                     className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${activeKepengurusan === tab
-                        ? "bg-[#9FB3C8] text-white"
-                        : "bg-transparent text-black hover:bg-black/5"
+                      ? "bg-[#9FB3C8] text-white"
+                      : "bg-transparent text-black hover:bg-black/5"
                       }`}
                   >
                     {tab}
@@ -569,8 +569,8 @@ export default function AboutPage() {
         <section className="bg-[#32446B] py-20 relative mt-0 pb-28">
           {/* Title Badge Overlapping */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[320px] sm:max-w-[400px]">
-            <div className="bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.15)] px-6 py-4 border-b-4 border-zinc-200 text-center">
-              <h2 className="text-xl md:text-2xl font-semibold text-[#6B96D9]">
+            <div className="bg-[#1F4E27] rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.15)] px-6 py-4 border-b-4 border-zinc-200 text-center">
+              <h2 className="text-xl md:text-2xl font-semibold text-white">
                 Penghargaan Taman Zakat
               </h2>
             </div>
@@ -611,7 +611,7 @@ export default function AboutPage() {
         </section>
 
         {/* OPPORTUNITIES CTA */}
-        <section className="bg-[#f8eed3]">
+        {/* <section className="bg-[#f8eed3]">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 md:py-10 text-center flex flex-col items-center">
             <div className="text-[#9FB3C8] text-[13px] md:text-[15px] font-medium tracking-widest uppercase mb-4">
               OPPORTUNITIES
@@ -626,7 +626,7 @@ export default function AboutPage() {
               Salurkan Kebaikan
             </a>
           </div>
-        </section>
+        </section> */}
 
         {/* OVERLAY MODAL */}
         {activeModalInfo && (
