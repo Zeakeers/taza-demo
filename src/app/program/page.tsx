@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function ProgramPage() {
   const gridBgOffsetY = "150px";
 
@@ -10,11 +12,12 @@ export default function ProgramPage() {
         {/* text */}
         <div className="w-full md:w-1/2 bg-[#30353B] flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 sm:py-10 md:px-12 lg:px-16 text-center md:text-left items-center md:items-start">
           <h1 className="text-white text-xl md:text-3xl lg:text-4xl font-light font-newsreader pb-2 border-b-2 border-[#7FC248]">
-            It's time to take action.
+            It&apos;s time to take action.
           </h1>
           <p className="text-white text-sm md:text-lg font-light leading-relaxed max-w-xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, maiores porro
-            quaerat, vitae sed odio maxime facilis voluptatum alias consectetur veritatis quod ad.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Laboriosam, maiores porro quaerat, vitae sed odio maxime facilis
+            voluptatum alias consectetur veritatis quod ad.
           </p>
         </div>
       </header>
@@ -26,8 +29,9 @@ export default function ProgramPage() {
             You have our word—and more
           </h2>
           <p className="text-center text-md md:text-xl lg:text-xl text-zinc-700 max-w-3xl mx-auto">
-            How do you know your money is actually making a difference? It’s simple: we show you.
-            After all, seeing is believing — and we want you to believe in us.
+            How do you know your money is actually making a difference? It’s
+            simple: we show you. After all, seeing is believing — and we want
+            you to believe in us.
           </p>
 
           <div className="flex gap-5 items-center justify-around mt-16">
@@ -38,8 +42,8 @@ export default function ProgramPage() {
                 We give 100%
               </h3>
               <p className="text-center mt-2 text-[13px] md:text-base lg:text-base max-w-52 text-zinc-600">
-                100% of the money donated to charity: water goes directly to funding clean water
-                projects.{" "}
+                100% of the money donated to charity: water goes directly to
+                funding clean water projects.{" "}
               </p>
             </div>
             {/* circle 1 */}
@@ -49,8 +53,8 @@ export default function ProgramPage() {
                 We give 100%
               </h3>
               <p className="text-center mt-2 text-[13px] md:text-base lg:text-base max-w-52 text-zinc-600">
-                100% of the money donated to charity: water goes directly to funding clean water
-                projects.{" "}
+                100% of the money donated to charity: water goes directly to
+                funding clean water projects.{" "}
               </p>
             </div>
             {/* circle 1 */}
@@ -60,8 +64,8 @@ export default function ProgramPage() {
                 We give 100%
               </h3>
               <p className="text-center mt-2 text-[13px] md:text-base lg:text-base max-w-52 text-zinc-600">
-                100% of the money donated to charity: water goes directly to funding clean water
-                projects.{" "}
+                100% of the money donated to charity: water goes directly to
+                funding clean water projects.{" "}
               </p>
             </div>
           </div>
@@ -84,17 +88,19 @@ export default function ProgramPage() {
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
                   <img
-                    src="/images/gambardetaile/bidang dakwah.svg"
+                    src="/images/gambardetaile/bidang dakwa.svg"
                     alt="Bidang Dakwah"
-                    className="w-full h-auto object-contain"
+                    className="block w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
-                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                  <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Dakwah{" "}
-                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
+                        ➔
+                      </span>
                     </h4>
-                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-white leading-tight sm:leading-snug">
                       Join our monthly giving community to give clean water{" "}
                       <br className="hidden lg:block" />
                       (and so much more) each and every month.
@@ -110,17 +116,19 @@ export default function ProgramPage() {
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
                   <img
-                    src="/images/gambardetaile/bidang ekonomi.svg"
+                    src="/images/gambardetaile/bidang eko.svg"
                     alt="Bidang Ekonomi"
-                    className="w-full h-auto object-contain"
+                    className="block w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
-                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                  <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Ekonomi{" "}
-                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
+                        ➔
+                      </span>
                     </h4>
-                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-white leading-tight sm:leading-snug">
                       Join our monthly giving community to give clean water{" "}
                       <br className="hidden lg:block" />
                       (and so much more) each and every month.
@@ -135,18 +143,26 @@ export default function ProgramPage() {
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img
-                    src="/images/gambardetaile/bidang kemanusian.svg"
-                    alt="Bidang Kemanusiaan"
-                    className="w-full h-auto object-contain"
-                  />
+                  <div className="relative w-full aspect-[2525/2247] overflow-hidden">
+                    <Image
+                      src="/images/gambardetaile/BIDANG Kemanusia.svg"
+                      alt="Bidang Kemanusiaan"
+                      fill
+                      priority
+                      unoptimized
+                      sizes="(min-width: 1280px) 620px, (min-width: 640px) calc(50vw - 5rem), 100vw"
+                      className="object-contain"
+                    />
+                  </div>
                   {/* Kotak Keterangan */}
-                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                  <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Kemanusiaan{" "}
-                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
+                        ➔
+                      </span>
                     </h4>
-                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-white leading-tight sm:leading-snug">
                       Join our monthly giving community to give clean water{" "}
                       <br className="hidden lg:block" />
                       (and so much more) each and every month.
@@ -162,17 +178,19 @@ export default function ProgramPage() {
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
                   <img
-                    src="/images/gambardetaile/bidang kesehatan.svg"
+                    src="/images/gambardetaile/bidang keseha.svg"
                     alt="Bidang Kesehatan"
-                    className="w-full h-auto object-contain"
+                    className="block w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
-                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                  <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Kesehatan{" "}
-                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
+                        ➔
+                      </span>
                     </h4>
-                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-white leading-tight sm:leading-snug">
                       Join our monthly giving community to give clean water{" "}
                       <br className="hidden lg:block" />
                       (and so much more) each and every month.
@@ -184,21 +202,23 @@ export default function ProgramPage() {
               {/* ================= CARD 5 ================= */}
               <a
                 href="/program/pendidikan"
-                className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
+                className="w-full sm:col-span-2 sm:justify-self-center sm:w-[calc(50%-1rem)] relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
                   <img
                     src="/images/gambardetaile/bidang pendidikan.svg"
                     alt="Bidang Pendidikan"
-                    className="w-full h-auto object-contain"
+                    className="block w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
-                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                  <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Pendidikan{" "}
-                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
+                        ➔
+                      </span>
                     </h4>
-                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-white leading-tight sm:leading-snug">
                       Join our monthly giving community to give clean water{" "}
                       <br className="hidden lg:block" />
                       (and so much more) each and every month.
@@ -227,11 +247,13 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">Bayar Zakat</h3>
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+                Bayar Zakat
+              </h3>
 
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Tunaikan zakat maal, zakat fitrah, dan zakat lainnya dengan mudah, aman, dan
-                terpercaya.
+                Tunaikan zakat maal, zakat fitrah, dan zakat lainnya dengan
+                mudah, aman, dan terpercaya.
               </p>
 
               <a
@@ -257,8 +279,8 @@ export default function ProgramPage() {
               </h3>
 
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Bantu berbagai program sosial seperti pendidikan, kesehatan, dan bantuan
-                kemanusiaan.
+                Bantu berbagai program sosial seperti pendidikan, kesehatan, dan
+                bantuan kemanusiaan.
               </p>
 
               <a
@@ -279,7 +301,9 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">Fundraiser</h3>
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+                Fundraiser
+              </h3>
 
               <p className="mt-2 text-sm leading-snug text-zinc-700">
                 Mulai kampanye kebaikan Anda dan ajak orang lain berdonasi
@@ -303,10 +327,13 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">Ajukan Bantuan</h3>
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+                Ajukan Bantuan
+              </h3>
 
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Ajukan bantuan untuk diri sendiri atau orang lain yang membutuhkan.
+                Ajukan bantuan untuk diri sendiri atau orang lain yang
+                membutuhkan.
               </p>
 
               <a
@@ -332,8 +359,8 @@ export default function ProgramPage() {
               </h3>
 
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Pantau transparansi dan akuntabilitas penyaluran zakat serta donasi Anda secara
-                terbuka.
+                Pantau transparansi dan akuntabilitas penyaluran zakat serta
+                donasi Anda secara terbuka.
               </p>
 
               <a
@@ -359,7 +386,8 @@ export default function ProgramPage() {
               </h3>
 
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Kami berkomitmen menjalankan amanah secara profesional dan transparan.
+                Kami berkomitmen menjalankan amanah secara profesional dan
+                transparan.
               </p>
 
               <a
