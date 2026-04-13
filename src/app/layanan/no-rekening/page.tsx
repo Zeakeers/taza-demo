@@ -17,14 +17,6 @@ interface SectionData {
 
 const sections: SectionData[] = [
   {
-    title: "Dana Sosial",
-    accounts: [
-      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7900950057", width: 140, height: 40 },
-      { logo: "/images/logo bank/bank mandiri.svg", name: "Mandiri", number: "1410075075051", width: 140, height: 40 },
-      { logo: "/images/logo bank/bank-jatim-logo 1.svg", name: "Bank Jatim", number: "1862032515", width: 140, height: 40 }
-    ]
-  },
-  {
     title: "Zakat",
     accounts: [
       { logo: "/images/logo bank/bank-negara-indonesia-(bni)-logo 2.svg", name: "BNI", number: "1900-9500-54", width: 110, height: 35 },
@@ -46,12 +38,6 @@ const sections: SectionData[] = [
     title: "Jariyah",
     accounts: [
       { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7930-4482-90", width: 140, height: 40 }
-    ]
-  },
-  {
-    title: "Non Halal",
-    accounts: [
-      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7900960063", width: 140, height: 40 }
     ]
   }
 ];
@@ -146,7 +132,7 @@ export default function NoRekeningPage() {
       </div>
 
       {/* Footer / Confirm Section */}
-      <div className="bg-[#262626] w-full py-14 px-6 relative z-10 border-t border-zinc-800">
+      <div className="bg-[#262626] w-full py-10 px-4 relative z-10 border-t border-zinc-800">
         <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-2">
           <div className="md:w-2/3 text-white">
             <p className="text-[15px] md:text-lg leading-[1.7] md:leading-[1.6] text-center md:text-left font-medium opacity-95">
