@@ -1,51 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const infoLinks = ["Profile Lembaga", "Berita", "Artikel", "Mitra Korporat"];
-
 export default function Footer() {
   return (
     <footer className="w-full text-zinc-900">
-      {/* Bahian Atas */}
+      {/* Bagian Atas / Newsletter */}
       <section className="w-full bg-[#1F4E27]">
-        <div className="mx-auto w-full max-w-[1200px] px-6 py-12 md:px-10 md:py-14 lg:px-12 lg:py-12">
+        <div className="mx-auto w-full max-w-[1200px] px-6 py-12 md:px-10 lg:px-12 lg:py-14">
           <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1.35fr] lg:gap-12">
             <div>
-              <h2 className="text-2xl leading-[1.05] font-medium text-white md:text-3xl">
-                Stay in touch
+              <h2 className="text-2xl leading-[1.1] font-bold text-white md:text-3xl">
+                Terhubung dalam Kebaikan
               </h2>
-              <p className="mt-4 text-lg text-zinc-100/95 md:text-xl md:leading-[1.1]">
-                xxxxxxxxxxxxxxxxxxxxxxxx
-                <br />
-                xxxxxxxxxxxxxxxxxxxx
+              <p className="mt-3 text-base md:text-lg text-zinc-200/90 leading-relaxed max-w-xl">
+                Dapatkan update program terbaru, laporan penyaluran dana, dan berbagai kisah inspiratif seputar kebaikan langsung ke email Anda.
               </p>
             </div>
 
-            <form className="w-full max-w-md md:max-w-lg lg:max-w-lg justify-self-end rounded-md bg-white p-2 shadow-sm">
+            <form className="w-full max-w-md md:max-w-xl justify-self-start lg:justify-self-end rounded-xl bg-white/10 backdrop-blur-md focus-within:bg-white focus-within:ring-2 ring-[#7FC248] p-2 shadow-sm transition-all duration-300">
               <label htmlFor="footer-email" className="sr-only">
-                Enter Your Email Addres
+                Masukkan Alamat Email
               </label>
-              <div className="flex items-center gap-3">
-                <Image
-                  src="/images/icon/email.svg"
-                  alt="Email icon"
-                  width={24}
-                  height={24}
-                  className=" w-9 object-contain"
-                />
-
+              <div className="flex items-center gap-3 w-full">
+                <div className="pl-3 hidden sm:block">
+                  <svg className="w-6 h-6 text-[#7FC248]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
                 <input
                   id="footer-email"
                   type="email"
-                  placeholder="Enter Your Email Addres"
-                  className="h-10 w-full min-w-0 border-none bg-transparent px-1 text-sm text-zinc-600 outline-none placeholder:text-sm placeholder:text-zinc-500 md:text-base md:placeholder:text-base"
+                  placeholder="Masukkan Alamat Email Anda..."
+                  className="h-11 w-full min-w-0 border-none bg-transparent px-3 text-sm text-zinc-100 focus-within:text-zinc-800 outline-none placeholder:text-zinc-200 focus-within:placeholder:text-zinc-400 md:text-base transition-colors"
+                  required
                 />
-
                 <button
                   type="submit"
-                  className="h-10 shrink-0 rounded-full bg-[#7FC248] px-4 text-xs font-semibold text-white shadow-[0_2px_6px_rgba(0,0,0,0.25)] transition hover:brightness-95 md:text-sm"
+                  className="h-11 shrink-0 rounded-lg bg-[#7FC248] px-6 text-sm font-bold text-white shadow-lg transition-transform hover:scale-[1.02] active:scale-[0.98] outline-none"
                 >
-                  subscribe
+                  Langganan
                 </button>
               </div>
             </form>
@@ -53,109 +46,122 @@ export default function Footer() {
         </div>
       </section>
 
-      {/* Bagian Bawah */}
-      <section className="w-full bg-white px-5 py-4">
-        {/*Logo  taman zakat */}
-        <div>
-          <img
-            src="/images/icon/Taman zakat hijau hitam.png"
-            alt="Icon Taman Zakat"
-            className="w-36 object-contain md:w-32"
-          />
-        </div>
+      {/* Bagian Bawah / Main Footer */}
+      <section className="w-full bg-[#FAF7F0] px-5 py-12 md:py-16">
+        <div className="mx-auto max-w-[1200px]">
+          {/* Grid Utama */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14">
 
-        {/* grid 3 dibawah*/}
-        <div>
-          <div className="mt-2 mb-4 grid grid-cols-1 gap-8 md:grid-cols-3">
-            {/* Grid 1 */}
-            <div className="w-full">
-              <div className="space-y-3">
-                <h3 className="text-[#196135] text-lg font-semibold">
-                  Yayasan Taman Zakat Indonesia
-                </h3>
-                <div className="flex items-center">
-                  {/* Garis */}
-                  <div className="flex-1 h-[2px] bg-black"></div>
+            {/* Grid 1: Profil & Sosial Media */}
+            <div className="md:col-span-4 flex flex-col gap-6">
+              <Image
+                src="/images/icon/Taman zakat hijau hitam.png"
+                alt="Logo Taman Zakat"
+                width={200}
+                height={56}
+                className="w-40 object-contain"
+              />
+              <p className="text-zinc-600 text-[15px] leading-relaxed">
+                Lembaga Filantropi Profesional dan terpercaya yang berfokus pada sarana dakwah untuk Pengembangan Al-Qur'an, Pendidikan, Kesehatan, dan Kemanusiaan.
+              </p>
 
-                  {/* Lingkaran */}
-                  <div className="w-1 h-1 bg-black rounded-full"></div>
-                </div>
-                <p className="text-black text-base ">
-                  Lembaga Filantropi Profesional dan terpercaya yang berfokus pada Sarana dakwah
-                  untuk Pengembangan Alqur’an, Pendidikan, Kesehatan dan Kemanusiaan.
-                </p>
-              </div>
-              {/* Medsos */}
-              <div className="flex gap-5 md:gap-7 mt-6 md:mt-12">
-                {/* Youtube */}
-                <a href="#" className="w-12 h-12 bg-red-600 rounded-full"></a>
-                {/* instagram */}
-                <a href="#" className="w-12 h-12 bg-blue-600 rounded-full"></a>
-                {/* instagram */}
-                <a href="#" className="w-12 h-12 bg-amber-400 rounded-full"></a>
+              {/* Media Sosial Bar */}
+              <div className="flex gap-4 mt-2">
+                <a href="#" aria-label="Telegram" className="w-10 h-10 rounded-full bg-white shadow-sm border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-[#2AABEE] hover:border-[#2AABEE] hover:shadow-md transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" /></svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-white shadow-sm border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-[#0077b5] hover:border-[#0077b5] hover:shadow-md transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+                </a>
+                <a href="#" aria-label="YouTube" className="w-10 h-10 rounded-full bg-white shadow-sm border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-[#FF0000] hover:border-[#FF0000] hover:shadow-md transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
+                </a>
+                <a href="#" aria-label="Facebook" className="w-10 h-10 rounded-full bg-white shadow-sm border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-[#1877F2] hover:border-[#1877F2] hover:shadow-md transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" /></svg>
+                </a>
+                <a href="#" aria-label="Instagram" className="w-10 h-10 rounded-full bg-white shadow-sm border border-zinc-200 flex items-center justify-center text-zinc-400 hover:text-[#E1306C] hover:border-[#E1306C] hover:shadow-md transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" /></svg>
+                </a>
               </div>
             </div>
-            {/* Grid 2 */}
-            <div className="w-full">
-              <div className="space-y-3">
-                <h3 className="text-black text-lg font-semibold">Informasi Kami</h3>
-                <div className="flex items-center">
-                  {/* Garis */}
-                  <div className="flex-1 h-[2px] bg-black"></div>
 
-                  {/* Lingkaran */}
-                  <div className="w-1 h-1 bg-black rounded-full"></div>
-                </div>
-                {/* Redirect */}
-                <div className="flex flex-col gap-2 text-base text-zinc-800 font-medium md:text-lg">
-                  <a href="">Profile Lembaga</a>
-                  <a href="">Berita</a>
-                  <a href="">Artikel</a>
-                  <a href="">Mitra Korporat</a>
-                </div>
+            {/* Grid 2: Tautan Informasi */}
+            <div className="md:col-span-3 flex flex-col pt-2">
+              <h3 className="text-zinc-900 text-lg font-bold flex items-center gap-2 mb-6">
+                <span className="w-8 h-1 bg-[#5DA630] rounded-full"></span>
+                Informasi Kami
+              </h3>
+              <div className="flex flex-col gap-3.5">
+                {["Profile Lembaga", "Berita", "Artikel", "Mitra Korporat"].map((item, i) => (
+                  <Link key={i} href="#" className="group flex items-center gap-2.5 text-zinc-600 hover:text-[#5DA630] transition-colors font-medium">
+                    <svg className="w-4 h-4 opacity-40 group-hover:opacity-100 group-hover:translate-x-1 group-hover:text-[#5DA630] transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                    {item}
+                  </Link>
+                ))}
               </div>
             </div>
-            {/* Grid 3 */}
-            <div className="w-full">
-              <div className="space-y-3">
-                <h3 className="text-black text-lg font-semibold">Kantor Layanan</h3>
-                <div className="flex items-center">
-                  {/* Garis */}
-                  <div className="flex-1 h-[2px] bg-black"></div>
 
-                  {/* Lingkaran */}
-                  <div className="w-1 h-1 bg-black rounded-full"></div>
-                </div>
-                {/* Alamat */}
-                <p className="text-black text-base">
-                  Kantor Pusat : Jl. Wisma Trosobo IV No. 33 , Kel. Trosobo, Kec. Taman, Kab.
-                  Sidoarjo, Prov. Jawa Timur
+            {/* Grid 3: Kantor Layanan & Maps */}
+            <div className="md:col-span-5 flex flex-col pt-2">
+              <h3 className="text-zinc-900 text-lg font-bold flex items-center gap-2 mb-6">
+                <span className="w-8 h-1 bg-[#5DA630] rounded-full"></span>
+                Kantor Layanan
+              </h3>
+
+              <div className="text-zinc-600 mb-6 flex flex-col gap-3">
+                <p className="text-[15px] leading-relaxed font-medium">
+                  <strong className="text-zinc-800 flex items-center gap-2 mb-1 cursor-default">
+                    <svg className="w-[18px] h-[18px] text-[#5DA630]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Kantor Pusat:
+                  </strong>
+                  Jl. Wisma Trosobo IV No. 33, Kel. Trosobo,<br />
+                  Kec. Taman, Kab. Sidoarjo, Prov. Jawa Timur
+                </p>
+
+                <p className="text-[15px] leading-relaxed font-medium flex items-center gap-2">
+                  <svg className="w-[18px] h-[18px] text-[#5DA630]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  0822-3009-9009
                 </p>
               </div>
+
               {/* Kotak iframe maps */}
-              <div className="w-full bg-black h-56 mt-6 rounded-md overflow-hidden">
+              <div className="w-full h-48 md:h-60 rounded-xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-white relative group">
+                <div className="absolute inset-0 bg-[#5DA630]/10 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 z-10"></div>
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7913.660161193402!2d112.63428567770998!3d-7.372933699999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7e34e63a9d993%3A0xf355095502d2e683!2sTaman%20Zakat%20Pusat!5e0!3m2!1sid!2sid!4v1771820846657!5m2!1sid!2sid"
-                  width="600"
-                  height="450"
+                  width="100%"
+                  height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full h-full"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </div>
 
-            {/* End Grid */}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-black py-2">
-        <p className="text-center text-sm text-zinc-100">
-          © 2026 Taman Zakat. Designed by Taman Zakat Team.
-        </p>
+      {/* Copyright */}
+      <section className="w-full bg-[#194020] py-4">
+        <div className="mx-auto max-w-[1200px] px-6 text-center md:flex md:justify-between md:items-center">
+          <p className="text-sm font-medium text-zinc-300/80">
+            © 2026 Taman Zakat. Designed by Taman Zakat Team.
+          </p>
+          <div className="hidden text-sm font-medium text-zinc-400 md:flex gap-5 mt-4 md:mt-0">
+            <Link href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
+            <Link href="#" className="hover:text-white transition-colors">Kebijakan Privasi</Link>
+          </div>
+        </div>
       </section>
     </footer>
   );
