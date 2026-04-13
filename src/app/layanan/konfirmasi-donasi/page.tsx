@@ -33,7 +33,7 @@ export default function KonfirmasiDonasiPage() {
               { label: 'No WhatsApp', type: 'text' },
               // { label: 'Email', type: 'email' },
               { label: 'Tanggal Transfer', type: 'date' },
-              { label: 'Bank Tujuan', type: 'text' },
+              // { label: 'Bank Tujuan', type: 'text' },
               { label: 'Program', type: 'text' },
               { label: 'Nominal', type: 'number' }
             ].map((field, idx) => (

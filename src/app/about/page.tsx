@@ -386,10 +386,10 @@ export default function AboutPage() {
         </section>
 
         {/* SUSUNAN KEPENGURUSAN */}
-        <section className="py-16 md:py-24 bg-[#FAF7F0]">
+        <section className="py-16 md:py-24 bg-white">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
-              <span className="text-[#3b7ee2] text-[13px] md:text-[15px] font-medium tracking-wide uppercase">
+              <span className="text-[#7FC248] text-[13px] md:text-[15px] font-medium tracking-wide uppercase">
                 THE EXECUTIVE TEAM
               </span>
               <h2 className="text-center text-[28px] md:text-[36px] font-medium text-black mt-4">
@@ -402,14 +402,14 @@ export default function AboutPage() {
 
             <div className="mt-14 flex flex-col md:flex-row gap-10 lg:gap-20 items-stretch">
               {/* Sidebar Tabs */}
-              <div className="w-full md:w-[35%] flex flex-col border border-zinc-300 rounded-2xl py-8 px-4 gap-4 bg-[#FAF7F0] self-start shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+              <div className="w-full md:w-[35%] flex flex-col border border-zinc-300 rounded-2xl py-8 px-4 gap-4 bg-[#5DA630] self-start shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
                 {kepengurusanTabs.map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveKepengurusan(tab)}
                     className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${activeKepengurusan === tab
-                      ? "bg-[#9FB3C8] text-white"
-                      : "bg-transparent text-black hover:bg-black/5"
+                      ? "bg-[#7FC248] text-white"
+                      : "bg-transparent text-white hover:bg-black/5"
                       }`}
                   >
                     {tab}
@@ -421,7 +421,7 @@ export default function AboutPage() {
               <div className="w-full md:w-[65%]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
                   {kepengurusanData[activeKepengurusan].map((member, idx) => (
-                    <div key={idx} className="flex flex-col bg-[#FAF7F0] rounded-xl overflow-hidden shadow-[0_4px_25px_rgba(180,210,180,0.4)] pb-8 border border-white">
+                    <div key={idx} className="flex flex-col bg-[#7FC248] rounded-xl overflow-hidden shadow-[0_4px_25px_rgba(180,210,180,0.4)] pb-8 border border-white">
                       {/* Foto */}
                       {member.image ? (
                         <div className="relative w-full h-56 md:h-64 rounded-t-xl overflow-hidden">
@@ -434,9 +434,9 @@ export default function AboutPage() {
                       )}
 
                       {/* Nama & Posisi */}
-                      <div className="flex flex-col items-center pt-5 px-4 text-center bg-[#FAF7F0]">
-                        <h4 className="text-[#3b7ee2] font-medium text-[15px] md:text-[16px]">{member.name}</h4>
-                        <p className="text-zinc-500 text-[12px] md:text-[13px] mt-1.5 font-medium">{member.role}</p>
+                      <div className="flex flex-col items-center pt-5 px-4 text-center bg-[#7FC248]">
+                        <h4 className="text-white font-medium text-[15px] md:text-[16px]">{member.name}</h4>
+                        <p className="text-white text-[12px] md:text-[13px] mt-1.5 font-medium">{member.role}</p>
                       </div>
                     </div>
                   ))}
@@ -447,9 +447,9 @@ export default function AboutPage() {
         </section>
 
         {/* STATS COUNTER */}
-        <section className="py-16 md:py-24 bg-[#0A0A0A]">
+        <section className="py-16 md:py-24 bg-[#7FC248]">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center text-[#9FB3C8] text-[20px] md:text-[24px] mb-12 md:mb-16 tracking-wide font-medium">
+            <h2 className="text-center text-white text-[20px] md:text-[24px] mb-12 md:mb-16 tracking-wide font-medium">
               Taman Zakat impact to date
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-8 text-center">
@@ -457,21 +457,21 @@ export default function AboutPage() {
                 <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">47</h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Wilayah Jangkauan
-                  <button onClick={() => setActiveModalInfo(statDetails.wilayah)} className="w-[18px] h-[18px] rounded-full bg-[#7FC248] text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                  <button onClick={() => setActiveModalInfo(statDetails.wilayah)} className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
                 </div>
               </div>
               <div className="flex flex-col items-center">
                 <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">102.088</h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Penerima Manfaat
-                  <button onClick={() => setActiveModalInfo(statDetails.manfaat)} className="w-[18px] h-[18px] rounded-full bg-[#7FC248] text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                  <button onClick={() => setActiveModalInfo(statDetails.manfaat)} className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
                 </div>
               </div>
               <div className="flex flex-col items-center">
                 <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">19</h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Aksi Kebaikan
-                  <button onClick={() => setActiveModalInfo(statDetails.kebaikan)} className="w-[18px] h-[18px] rounded-full bg-[#7FC248] text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                  <button onClick={() => setActiveModalInfo(statDetails.kebaikan)} className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
                 </div>
               </div>
             </div>
@@ -566,7 +566,7 @@ export default function AboutPage() {
         </section>
 
         {/* PENGHARGAAN TAMAN ZAKAT */}
-        <section className="bg-[#32446B] py-20 relative mt-0 pb-28">
+        <section className="bg-[#5DA630] py-20 relative mt-0 pb-28">
           {/* Title Badge Overlapping */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[320px] sm:max-w-[400px]">
             <div className="bg-[#1F4E27] rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.15)] px-6 py-4 border-b-4 border-zinc-200 text-center">
