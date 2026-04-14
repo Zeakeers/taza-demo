@@ -1,5 +1,5 @@
 "use client";
-import { HelpCircle, Search } from "lucide-react";
+import { HelpCircle, Search, ChevronDown } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 
 const faqList = Array(8).fill({
@@ -8,6 +8,38 @@ const faqList = Array(8).fill({
   answer:
     "Harap tunggu 5-10 menit, pastikan nominal sesuai kode unik, lalu unggah bukti transfer di menu konfirmasi atau hubungi admin WhatsApp",
 });
+
+const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="flex items-start gap-3">
+      <HelpCircle
+        className="mt-0.5 h-[22px] w-[22px] shrink-0 text-[#a5d65a]"
+        strokeWidth={2}
+      />
+      <div className="flex-1">
+        <button 
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex w-fit items-center gap-3 group text-left cursor-pointer focus:outline-none bg-[#8DC63F] text-white px-4 py-2.5 rounded-md transition-transform active:scale-[0.98]"
+        >
+          <h3 className="text-[15px] font-[600] md:text-base md:leading-snug">
+            {item.question}
+          </h3>
+          <ChevronDown className={`w-5 h-5 text-white transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+        
+        <div className={`grid transition-all duration-300 overflow-hidden ${isOpen ? 'grid-rows-[1fr] opacity-100 mt-3 mb-2' : 'grid-rows-[0fr] opacity-0 mt-0 mb-0'}`}>
+          <div className="min-h-0">
+            <p className="text-sm text-zinc-600 md:text-[15px] md:leading-relaxed text-left px-1">
+              {item.answer}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function FAQPage() {
   const decorRef = useRef<HTMLDivElement>(null);
@@ -89,20 +121,7 @@ export default function FAQPage() {
               <h2 className="mb-6 text-lg font-bold text-black md:text-xl">Pencarian terbanyak</h2>
               <div className="flex flex-col gap-6">
                 {faqList.map((item, index) => (
-                  <div key={index} className="flex items-start gap-3">
-                    <HelpCircle
-                      className="mt-0.5 h-[22px] w-[22px] shrink-0 text-[#a5d65a]"
-                      strokeWidth={2}
-                    />
-                    <div>
-                      <h3 className="text-[15px] font-[600] text-[#7eb338] md:text-base md:leading-snug">
-                        {item.question}
-                      </h3>
-                      <p className="mt-1.5 text-sm text-zinc-600 md:text-[15px] md:leading-relaxed text-left">
-                        {item.answer}
-                      </p>
-                    </div>
-                  </div>
+                  <FAQItem key={index} item={item} />
                 ))}
               </div>
             </div>

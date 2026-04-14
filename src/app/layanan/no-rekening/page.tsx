@@ -132,10 +132,10 @@ export default function NoRekeningPage() {
       </div>
 
       {/* Footer / Confirm Section */}
-      <div className="bg-[#262626] w-full py-10 px-4 relative z-10 border-t border-zinc-800">
-        <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 py-2">
+      <div className="bg-[#111111] w-full py-5 px-4 relative z-10">
+        <div className="max-w-[1100px] mx-auto flex flex-col md:flex-row items-center justify-between gap-5 py-0">
           <div className="md:w-2/3 text-white">
-            <p className="text-[15px] md:text-lg leading-[1.7] md:leading-[1.6] text-center md:text-left font-medium opacity-95">
+            <p className="text-[15.5px] md:text-[19px] leading-[1.6] md:leading-[1.5] text-center md:text-left font-semibold text-[#f8fcf5] tracking-wide">
               Apabila akad donasi yang di transfer tidak sesuai<br className="hidden md:block" />
               dengan pos rekening diatas, silakan konfirmasi atau<br className="hidden md:block" />
               mohon keikhlasannya untuk kami golongkan sebagai<br className="hidden md:block" />
@@ -144,11 +144,11 @@ export default function NoRekeningPage() {
           </div>
           <div className="md:w-1/3 flex justify-center md:justify-end">
             <Link href="/layanan/konfirmasi-donasi" passHref>
-              <button className="bg-white hover:bg-zinc-100 transition-colors shadow-lg px-8 py-3 rounded-md flex flex-col items-center group cursor-pointer border border-transparent hover:border-zinc-300">
-                <span className="text-black font-bold text-lg flex items-center gap-2 group-hover:gap-3 transition-all">
+              <button className="bg-white hover:bg-[#83b953] transition-all duration-300 drop-shadow-md px-8 py-2.5 rounded-md flex flex-col items-center group cursor-pointer border border-transparent hover:scale-105">
+                <span className="text-zinc-900 group-hover:text-white font-bold text-lg flex items-center gap-2 group-hover:gap-3 transition-all">
                   Konfirmasi <span className="text-xl">&rarr;</span>
                 </span>
-                <span className="text-[10px] text-zinc-500 font-medium tracking-wide">
+                <span className="text-[10px] text-zinc-500 group-hover:text-white/90 font-medium tracking-wide">
                   Silakan melakukan konfirmasi
                 </span>
               </button>
