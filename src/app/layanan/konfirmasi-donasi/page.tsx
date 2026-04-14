@@ -29,16 +29,18 @@ export default function KonfirmasiDonasiPage() {
           {/* Form */}
           <form className="flex flex-col gap-4 md:gap-5 relative z-20">
             {[
-              { label: 'Nama Lengkap', type: 'text' },
-              { label: 'No WhatsApp', type: 'text' },
+              { label: 'Nama Lengkap', type: 'text', required: true },
+              { label: 'No WhatsApp', type: 'text', required: true },
               // { label: 'Email', type: 'email' },
-              { label: 'Tanggal Transfer', type: 'date' },
+              { label: 'Tanggal Transfer', type: 'date', required: true },
               // { label: 'Bank Tujuan', type: 'text' },
-              { label: 'Program', type: 'text' },
-              { label: 'Nominal', type: 'number' }
+              { label: 'Program', type: 'text', required: true },
+              { label: 'Nominal', type: 'number', required: true }
             ].map((field, idx) => (
               <div key={idx} className="flex flex-col">
-                <label className="text-zinc-600 mb-1.5 ml-1 text-[15px] font-medium">{field.label}</label>
+                <label className="text-zinc-600 mb-1.5 ml-1 text-[15px] font-medium">
+                  {field.label} {field.required && <span className="text-red-500">*</span>}
+                </label>
                 <input
                   type={field.type}
                   className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-[18px] px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/30 focus:border-[#5DA630] transition-colors"
@@ -47,7 +49,9 @@ export default function KonfirmasiDonasiPage() {
             ))}
 
             <div className="flex flex-col mt-1">
-              <label className="text-zinc-600 mb-2 ml-1 text-[15px] font-medium">Bukti Pembayaran</label>
+              <label className="text-zinc-600 mb-2 ml-1 text-[15px] font-medium">
+                Bukti Pembayaran <span className="text-red-500">*</span>
+              </label>
               <div className="flex items-center">
                 <input type="file"
                   className="block w-full text-sm text-zinc-500
