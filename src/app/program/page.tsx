@@ -145,7 +145,7 @@ export default function ProgramPage() {
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
                   <div className="relative w-full aspect-[2525/2247] overflow-hidden">
                     <Image
-                      src="/images/gambardetaile/BIDANG Kemanusia.svg"
+                      src="/images/gambardetaile/bidang kemanusia.svg"
                       alt="Bidang Kemanusiaan"
                       fill
                       priority
