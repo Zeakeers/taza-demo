@@ -6,9 +6,19 @@ import { useEffect, useState } from "react";
 
 const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
 
+type QurbanAnimationState = {
+  cardX: number;
+  cardDura: number;
+  goatX: number;
+  goatDura: number;
+  goatImg: string;
+  goatFlip: number;
+  goatVisible: boolean;
+};
+
 export default function QurbanPage() {
   const [animateHero, setAnimateHero] = useState(false);
-  const [anim, setAnim] = useState({
+  const [anim, setAnim] = useState<QurbanAnimationState>({
     cardX: -150,
     cardDura: 0,
     goatX: -150,
@@ -20,7 +30,7 @@ export default function QurbanPage() {
 
   useEffect(() => {
     let isMounted = true;
-    const update = (patch: any) => {
+    const update = (patch: Partial<QurbanAnimationState>) => {
       if (isMounted) setAnim((prev) => ({ ...prev, ...patch }));
     };
     const delay = (ms: number) => new Promise(res => setTimeout(res, ms));

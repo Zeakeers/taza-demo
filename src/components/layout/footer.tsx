@@ -62,7 +62,7 @@ export default function Footer() {
                 className="w-40 object-contain"
               />
               <p className="text-zinc-600 text-[15px] leading-relaxed">
-                Lembaga Filantropi Profesional dan terpercaya yang berfokus pada sarana dakwah untuk Pengembangan Al-Qur'an, Pendidikan, Kesehatan, dan Kemanusiaan.
+                Lembaga Filantropi Profesional dan terpercaya yang berfokus pada sarana dakwah untuk Pengembangan Al-Qur&apos;an, Pendidikan, Kesehatan, dan Kemanusiaan.
               </p>
 
               {/* Media Sosial Bar */}

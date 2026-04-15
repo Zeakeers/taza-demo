@@ -58,7 +58,7 @@ export default function WakafPage() {
               Wakaf Umum
             </h1>
             <p className="text-[14px] md:text-[15px] text-zinc-300 leading-relaxed mb-6 lg:mb-10">
-              Bergabunglah sebagai Donatur Rutin Bulanan Taman Zakat, dan jadilah bagian dari keluarga besar yang menghadirkan manfaat berkelanjutan melalui Wakaf Al-Qur'an, Ambulance Gratis, Wakaf Omah Qur'an, dan berbagai program kebaikan lainnya.
+              Bergabunglah sebagai Donatur Rutin Bulanan Taman Zakat, dan jadilah bagian dari keluarga besar yang menghadirkan manfaat berkelanjutan melalui Wakaf Al-Qur&apos;an, Ambulance Gratis, Wakaf Omah Qur&apos;an, dan berbagai program kebaikan lainnya.
             </p>
             
             <div className="relative inline-block">
