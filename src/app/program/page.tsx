@@ -364,7 +364,7 @@ export default function ProgramPage() {
               </p>
 
               <a
-                href="#"
+                href="/tata-kelola"
                 className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
               >
                 Lihat Laporan
