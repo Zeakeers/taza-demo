@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const svg = fs.readFileSync('./public/maps/indonesia.svg', 'utf8');
 
