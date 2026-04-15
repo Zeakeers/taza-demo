@@ -53,7 +53,7 @@ export default function Home() {
               </div>
             </div>
             <p className="text-base sm:text-lg text-black font-medium leading-relaxed mt-2 sm:mt-0 px-4 pt-2">
-              Lembaga Filantropi Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk Pengembangan Alqur'an, Pendidikan, Kesehatan dan Kemanusiaan
+              Lembaga Filantropi Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk Pengembangan Alqur&apos;an, Pendidikan, Kesehatan dan Kemanusiaan
             </p>
           </div>
         </section>
@@ -139,7 +139,7 @@ export default function Home() {
         <section className="bg-[#FAEED3] w-full py-16 text-center shadow-inner">
           <p className="text-[#A2BAF5] text-xs sm:text-sm tracking-[0.3em] font-bold mb-3 uppercase">OPPORTUNITIES</p>
           <h2 className="text-3xl font-bold mb-4 text-black">Change the world with us</h2>
-          <p className="text-sm font-medium text-black mb-6">we've been opening at the position under</p>
+          <p className="text-sm font-medium text-black mb-6">we&apos;ve been opening at the position under</p>
           <button className="text-xs font-bold text-black border-b-2 border-black pb-1 hover:text-[#7FC248] hover:border-[#7FC248] transition-colors">
             SEE ALL OUR AVAILABLE ROLE
           </button>
