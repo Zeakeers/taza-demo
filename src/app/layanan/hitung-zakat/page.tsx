@@ -337,20 +337,34 @@ export default function HitungZakatPage() {
                 <div className="flex flex-col items-center">
                   <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
                     <div className="mt-1 md:mt-0 flex-shrink-0 w-2 h-2 rounded-full bg-white/80" />
-                    <p>
-                      {jenisZakat === "EMAS"
-                        ? "Emas Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah"
-                        : "Penghasilan Anda Belum Mencapai Nisab. Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah"}
+                    <p className="font-medium">
+                      {jenisZakat === "EMAS" ? (
+                        <>
+                          <span className="font-extrabold uppercase tracking-wide">Emas Anda Belum Mencapai Nisab.</span>{" "}
+                          Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah.
+                        </>
+                      ) : (
+                        <>
+                          <span className="font-extrabold uppercase tracking-wide">Penghasilan Anda Belum Mencapai Nisab.</span>{" "}
+                          Namun Anda Bisa Tetap Melakukan Kebaikan Dengan Bersedekah.
+                        </>
+                      )}
                     </p>
                   </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center">
                   <div className="flex items-start md:items-center gap-2 text-sm md:text-base text-white/90 max-w-xl mx-auto text-left md:text-center">
-                    <p>
+                    <p className="font-medium">
                       {jenisZakat === "FITRAH"
                         ? "Mari sucikan diri dan sempurnakan ibadah dengan menunaikan Zakat Fitrah Anda."
-                        : "Alhamdulillah, harta Anda telah mencapai nisab. Mari tunaikan kewajiban zakat Anda."}
+                        : (
+                          <>
+                            Alhamdulillah,{" "}
+                            <span className="font-extrabold uppercase tracking-wide">harta Anda telah mencapai nisab.</span>{" "}
+                            Mari tunaikan kewajiban zakat Anda.
+                          </>
+                        )}
                     </p>
                   </div>
                 </div>
