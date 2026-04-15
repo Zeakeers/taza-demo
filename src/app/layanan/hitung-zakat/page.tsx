@@ -412,7 +412,7 @@ export default function HitungZakatPage() {
             <p className="text-zinc-800 font-semibold mb-3 text-[15px] md:text-base">Perhitungan ini menggunakan :</p>
             <ul className="list-disc list-outside ml-6 text-zinc-700 text-[14px] md:text-[15px] space-y-2 marker:text-zinc-500 font-medium">
               <li>Fatwa MUI No. 3 Tahun 2003 tentang Zakat Penghasilan</li>
-              <li>Keputusan Majma' Fiqih Islami (OKI) tentang Zakat Kontemporer</li>
+              <li>Keputusan Majma&apos; Fiqih Islami (OKI) tentang Zakat Kontemporer</li>
               <li>Pendapat mayoritas ulama kontemporer (Dr. Yusuf Qardhawi, dll)</li>
             </ul>
           </div>
