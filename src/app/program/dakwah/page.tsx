@@ -272,10 +272,10 @@ export default function BidangDakwahPage() {
           <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
               <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
-                Da'i Pedalaman
+                Da&apos;i Pedalaman
               </h2>
               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Mendukung perjuangan para ustadz dan da'i yang rela menyebarkan syiar Islam hingga ke pelosok dan daerah terpencil. Donasi Anda membantu menyediakan kebutuhan pokok, transportasi, hingga fasilitas penunjang bagi keseharian mereka.
+                Mendukung perjuangan para ustadz dan da&apos;i yang rela menyebarkan syiar Islam hingga ke pelosok dan daerah terpencil. Donasi Anda membantu menyediakan kebutuhan pokok, transportasi, hingga fasilitas penunjang bagi keseharian mereka.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <div className="relative inline-block">
