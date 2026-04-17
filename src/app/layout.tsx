@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/footer";
+import WhatsAppFloat from "@/components/ui/whatsapp-float";
 import "./styles/globals.css";
 
 const notoSans = Noto_Sans({
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="min-h-screen">{children}</main>
 
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   );
