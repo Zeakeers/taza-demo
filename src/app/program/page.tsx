@@ -86,12 +86,14 @@ export default function ProgramPage() {
                 href="/program/dakwah"
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
-                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img
-                    src="/images/gambardetaile/bidang dakwa.svg"
-                    alt="Bidang Dakwah"
-                    className="block w-full h-auto object-contain"
-                  />
+                <div className="w-full relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <div className="w-full h-64 sm:h-72 md:h-80 flex items-center justify-center">
+                    <img
+                      src="/images/gambardetaile/bidang dakwa.svg"
+                      alt="Bidang Dakwah"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
@@ -114,12 +116,14 @@ export default function ProgramPage() {
                 href="/program/ekonomi"
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
-                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img
-                    src="/images/gambardetaile/bidang eko.svg"
-                    alt="Bidang Ekonomi"
-                    className="block w-full h-auto object-contain"
-                  />
+                <div className="w-full relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <div className="w-full h-64 sm:h-72 md:h-80 flex items-center justify-center">
+                    <img
+                      src="/images/gambardetaile/bidang eko.svg"
+                      alt="Bidang Ekonomi"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
@@ -142,16 +146,12 @@ export default function ProgramPage() {
                 href="/program/kemanusiaan"
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
-                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <div className="relative w-full aspect-[2525/2247] overflow-hidden">
-                    <Image
+                <div className="w-full relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <div className="w-full h-64 sm:h-72 md:h-80 flex items-center justify-center">
+                    <img
                       src="/images/gambardetaile/bidang kemanusia.svg"
                       alt="Bidang Kemanusiaan"
-                      fill
-                      priority
-                      unoptimized
-                      sizes="(min-width: 1280px) 620px, (min-width: 640px) calc(50vw - 5rem), 100vw"
-                      className="object-contain"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   {/* Kotak Keterangan */}
@@ -176,12 +176,14 @@ export default function ProgramPage() {
                 href="/program/kesehatan"
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
-                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img
-                    src="/images/gambardetaile/bidang keseha.svg"
-                    alt="Bidang Kesehatan"
-                    className="block w-full h-auto object-contain"
-                  />
+                <div className="w-full relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <div className="w-full h-64 sm:h-72 md:h-80 flex items-center justify-center">
+                    <img
+                      src="/images/gambardetaile/bidang keseha.svg"
+                      alt="Bidang Kesehatan"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
@@ -204,12 +206,14 @@ export default function ProgramPage() {
                 href="/program/pendidikan"
                 className="w-full sm:col-span-2 sm:justify-self-center sm:w-[calc(50%-1rem)] relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
-                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img
-                    src="/images/gambardetaile/bidang pendidikan.svg"
-                    alt="Bidang Pendidikan"
-                    className="block w-full h-auto object-contain"
-                  />
+                <div className="w-full relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <div className="w-full h-64 sm:h-72 md:h-80 flex items-center justify-center">
+                    <img
+                      src="/images/gambardetaile/bidang pendidikan.svg"
+                      alt="Bidang Pendidikan"
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
