@@ -293,7 +293,7 @@ export default function TataKelolaPage() {
                       Pengesahan Pendirian
                     </div>
                   </div>
-
+                  
                   <div className="w-full flex justify-center mb-1">
                     <div className="bg-[#A52A2A] text-white text-[10px] px-3 py-1 rounded-sm w-[90%] font-medium">
                       AHU-AH.01.06.0008536.Tahun 2021
