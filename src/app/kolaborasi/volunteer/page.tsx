@@ -39,12 +39,12 @@ const benefits = [
 ]
 
 const areas = [
-  { label: 'Pendidikan', color: 'bg-[#EBF5D5] text-[#3a7d27] border-[#b5d98b]' },
-  { label: 'Kesehatan', color: 'bg-[#FDE8EC] text-[#c02350] border-[#f5aec0]' },
-  { label: 'Lingkungan', color: 'bg-[#E8F4FD] text-[#1e6fa8] border-[#aed4f0]' },
-  { label: 'Pemberdayaan Ekonomi', color: 'bg-[#FFF8E1] text-[#b8860b] border-[#ffe082]' },
-  { label: 'Sosial Kemasyarakatan', color: 'bg-[#F3E8FF] text-[#7c3aed] border-[#d5b0f5]' },
-  { label: 'Kemanusiaan & Bencana', color: 'bg-[#FFF0E5] text-[#c2470a] border-[#f5c09a]' },
+  { label: 'Pendidikan',            color: 'bg-[#EBF5D5] text-[#2d6e1f] border-[#a3cc72]' },
+  { label: 'Kesehatan',             color: 'bg-[#D6EDCA] text-[#3a7d27] border-[#8dc05e]' },
+  { label: 'Lingkungan',            color: 'bg-[#C8E6BC] text-[#2e6b1e] border-[#78b04a]' },
+  { label: 'Pemberdayaan Ekonomi',  color: 'bg-[#DDEFD0] text-[#336120] border-[#90c467]' },
+  { label: 'Sosial Kemasyarakatan', color: 'bg-[#E4F2D8] text-[#3d7a29] border-[#9ecb6e]' },
+  { label: 'Kemanusiaan & Bencana', color: 'bg-[#CFE8BE] text-[#285c18] border-[#6fa842]' },
 ]
 
 export default function VolunteerPage() {
@@ -95,21 +95,14 @@ export default function VolunteerPage() {
             </a>
           </div>
 
-          {/* stamp / image */}
-          <div className="flex-shrink-0 relative">
-            <div className="w-56 h-56 sm:w-64 sm:h-64 relative">
-              <Image
-                src="/images/icon/cap volunter.svg"
-                alt="Cap Volunteer"
-                width={280}
-                height={280}
-                className="w-full h-full object-contain drop-shadow-2xl"
-                priority
-              />
-            </div>
-            <SparkIcon className="absolute -top-4 -right-4 w-8 h-8 text-[#FFE525]" />
-            <SparkIcon className="absolute -bottom-4 -left-4 w-6 h-6 text-white/60" />
+          {/* sparks dekoratif */}
+          <div className="shrink-0 relative w-40 h-40 hidden md:block">
+            <SparkIcon className="absolute top-0 left-6 w-7 h-7 text-[#FFE525]" />
+            <SparkIcon className="absolute top-10 right-0 w-5 h-5 text-white/50" />
+            <SparkIcon className="absolute bottom-4 right-10 w-6 h-6 text-[#FFE525]/70" />
+            <SparkIcon className="absolute bottom-0 left-0 w-4 h-4 text-white/40" />
           </div>
+
         </div>
 
         {/* wave divider */}
@@ -129,35 +122,6 @@ export default function VolunteerPage() {
               <div className="text-zinc-500 text-sm font-medium">{s.label}</div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* ─── KENAPA JADI VOLUNTEER ─────────────────────────── */}
-      <section className="bg-[#F9FBF5] py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-3">
-              <SparkIcon className="w-5 h-5 text-[#FFE525]" />
-              <span className="text-[#267a38] font-bold uppercase tracking-widest text-sm">Kenapa Jadi Volunteer?</span>
-              <SparkIcon className="w-5 h-5 text-[#FFE525]" />
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-zinc-800 leading-tight">
-              Lebih dari Sekadar Membantu,<br/>
-              <span className="text-[#267a38]">Ini tentang Tumbuh Bersama</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {benefits.map((b, i) => (
-              <div key={i} className="bg-white rounded-2xl p-6 border border-zinc-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex gap-4 items-start">
-                <div className="text-3xl flex-shrink-0 mt-0.5">{b.icon}</div>
-                <div>
-                  <h3 className="font-bold text-zinc-800 text-base mb-1">{b.title}</h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed">{b.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
