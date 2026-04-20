@@ -63,7 +63,7 @@ export default function VolunteerPage() {
   return (
     <div className="bg-white min-h-screen overflow-hidden">
 
-      {/* ─── HERO ─────────────────────────────────────────── */}
+      {/* HERO */}
       <section className="relative bg-gradient-to-br from-[#1a5c2a] via-[#267a38] to-[#3a9e50] pt-24 pb-32 px-4 overflow-hidden">
         {/* decorative circles */}
         <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/5 pointer-events-none" />
@@ -113,7 +113,7 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      {/* ─── STATS ─────────────────────────────────────────── */}
+      {/* STATS */}
       <section className="max-w-4xl mx-auto px-4 -mt-2 pb-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {stats.map((s, i) => (
@@ -125,7 +125,7 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      {/* ─── BIDANG KESUKARELAAN ───────────────────────────── */}
+      {/* BIDANG KESUKARELAAN */}
       <section className="py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-10">
@@ -142,7 +142,7 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      {/* ─── DIVIDER QUOTE ─────────────────────────────────── */}
+      {/* DIVIDER QUOTE */}
       <section className="bg-[#E12B5E] py-12 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <SparkIcon className="w-8 h-8 text-white/40 mx-auto mb-4" />
@@ -153,7 +153,7 @@ export default function VolunteerPage() {
         </div>
       </section>
 
-      {/* ─── FORM PENDAFTARAN ──────────────────────────────── */}
+      {/* FORM PENDAFTARAN */}
       <section id="form-daftar" className="py-16 px-4 bg-[#F9FBF5]">
         <div className="max-w-2xl mx-auto">
 
