@@ -11,58 +11,60 @@ const tabContent: Record<Tab, { topText: React.ReactNode; bottomText: React.Reac
     topText: (
       <>
         <p>
-          Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima manfaat menjadi landasan Taman Zakat Indonesia untuk bergerak sebagai lembaga filantropi profesional dan tepercaya. Berfokus pada sarana dakwah untuk pengembangan Alquran, pendidikan, kesehatan, dan kemanusiaan, kami memfasilitasi perkembangan generasi yang penuh berkah.
+          Yayasan Taman Zakat Indonesia didirikan pada 29 Desember 2018 dengan misi mulia mengentaskan umat dari kemiskinan. Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima manfaat menjadi landasan kami untuk bergerak sebagai lembaga filantropi profesional dan tepercaya.
         </p>
         <p className="mt-6">
-          Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima manfaat menjadi landasan Taman Zakat Indonesia untuk bergerak sebagai lembaga filantropi profesional dan tepercaya. Berfokus Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima manfaat menjadi landasan Taman Zakat Indonesia untuk bergerak sebagai lembaga filantropi profesional dan tepercaya.
+          Berawal dari akta No. 34 oleh notaris Wahyu Hidayat, SH, M.Kn, Taman Zakat terus berkembang hingga kini diakui sebagai LAZ Provinsi yang dipercaya oleh masyarakat luas. Kami berkomitmen menjadi tonggak gerakan kebaikan umat melalui berbagai program berkelanjutan.
         </p>
       </>
     ),
     bottomText: (
       <p>
-        Berfokus pada sarana dakwah untuk pengembangan Alquran, pendidikan, kesehatan, dan kemanusiaan, kami memfasilitasi perkembangan generasi yang penuh berkah.pada sarana dakwah untuk pengembangan Alquran, pendidikan, kesehatan, dan kemanusiaan, kami memfasilitasi perkembangan generasi yang penuh berkah.
+        Hingga tahun 2022, Taman Zakat Indonesia telah membersamai lebih dari 3.000 donatur untuk menyalurkan manfaat kepada lebih dari 300.000 orang di berbagai penjuru wilayah.
       </p>
     ),
   },
   "Visi Misi": {
     topText: (
       <>
-        <p>
-          Visi kami adalah menjadi lembaga pengelola zakat yang amanah, profesional, dan berdampak luas bagi umat. Misi kami meliputi:
+        <h4 className="font-bold text-[#7FC248] mb-2">VISI</h4>
+        <p className="italic mb-6">
+          &quot;Lembaga Filantropi Nasional Terpercaya Dalam Pengembangan Pendidikan, Kesehatan dan Pemberdayaan Masyarakat.&quot;
         </p>
-        <ol className="list-decimal pl-5 mt-4 space-y-2">
-          <li>Mengoptimalkan penghimpunan zakat, infaq, sedekah dan dana sosial kemanusiaan.</li>
-          <li>Menyalurkan dana secara tepat sasaran kepada mustahik.</li>
-          <li>Mengembangkan program pemberdayaan masyarakat yang berkelanjutan.</li>
-          <li>Membangun kepercayaan publik melalui transparansi dan akuntabilitas.</li>
-        </ol>
+        <h4 className="font-bold text-[#7FC248] mb-2">MISI</h4>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Mengoptimalkan seluruh SDM untuk Pemberdayaan Masyarakat</li>
+          <li>Memfasilitasi Layanan Pendidikan dan Kesehatan Masyarakat</li>
+          <li>Membangun Secara Aktif Jaringan Filantropy Nasional dan Internasional</li>
+        </ul>
       </>
     ),
     bottomText: (
-      <p>
-        Kami terus berinovasi dalam menjalankan program-program dakwah untuk Pengembangan Al-Qur&apos;an, Pendidikan, Kesehatan dan Kemanusiaan. Sebagai lembaga filantropi profesional, kami berkomitmen untuk menjadi tulang punggung gerakan kebaikan ummat dengan memfasilitasi perkembangan generasi yang penuh berkah.
-      </p>
+      <>
+        <h4 className="font-bold text-[#7FC248] mb-2">TUJUAN</h4>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Mengembangkan dan menyediakan lembaga pendidikan berkualitas</li>
+          <li>Mengembangkan dan membiayai layanan kesehatan masyarakat yang berkualitas</li>
+          <li>Memberikan layanan sosial pemberdayaan masyarakat yang berdampak masif</li>
+        </ul>
+      </>
     ),
   },
   Legalitas: {
     topText: (
       <>
-        <p>
-          Taman Zakat Indonesia merupakan lembaga yang telah resmi terdaftar dan memiliki legalitas yang lengkap:
-        </p>
-        <ul className="list-disc pl-5 mt-4 space-y-2">
-          <li>SK Kemenkumham RI: lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</li>
-          <li>NPWP Lembaga: lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</li>
-          <li>Terdaftar di BAZNAS (Badan Amil Zakat Nasional)</li>
-          <li>Anggota FOZ (Forum Zakat)</li>
-          <li>Predikat WTP (Wajar Tanpa Pengecualian) dari auditor independen</li>
-          <li>SK Gubernur Jawa Timur tentang Izin Operasional LAZ</li>
+        <p className="mb-4">Taman Zakat Indonesia memiliki legitimasi penuh melalui aspek legal formal berikut:</p>
+        <ul className="list-disc pl-5 space-y-2 text-sm">
+          <li><strong>SK Dirjen Bimas Islam No. 245 Tahun 2021</strong>: Izin Lembaga Amil Zakat Skala Provinsi</li>
+          <li><strong>Rekomendasi BAZNAS Indonesia</strong>: No. 617/ANG/BAZNAS/XI/2020</li>
+          <li><strong>SK Kemenkumham</strong>: AHU-AH.01.06.0008536 Tahun 2021 (Perubahan)</li>
+          <li><strong>SK Keanggotaan FOZ</strong>: No. 130/SK/PH-FOZ/X/2019 (NA 130.FOZ.2019)</li>
         </ul>
       </>
     ),
     bottomText: (
       <p>
-        Seluruh kegiatan penghimpunan dan penyaluran dana dilakukan sesuai dengan peraturan perundang-undangan yang berlaku dan diaudit secara berkala oleh akuntan publik independen.
+        Legalitas ini merupakan bukti komitmen kami dalam mengelola dana zakat, infaq, dan sedekah secara amanah, transparan, dan sesuai peraturan perundang-undangan.
       </p>
     ),
   },
@@ -70,16 +72,16 @@ const tabContent: Record<Tab, { topText: React.ReactNode; bottomText: React.Reac
     topText: (
       <>
         <p>
-          Taman Zakat Indonesia didirikan pada tahun 2016 dengan semangat untuk menjadi lembaga filantropi yang profesional dan terpercaya. Berawal dari kepedulian terhadap kondisi masyarakat, kami terus berkembang dan berinovasi dalam mengelola dana zakat, infaq, sedekah, dan dana sosial kemanusiaan.
+          Taman Zakat merupakan Lembaga Filantropi Profesional yang berfokus pada sarana dakwah untuk pengembangan Al-Qur&apos;an, Pendidikan, Kesehatan dan Kemanusiaan. Berdiri sejak tahun 2018, kami terus berinovasi untuk memberikan dampak maksimal.
         </p>
         <p className="mt-6">
-          Dalam perjalanannya, Taman Zakat Indonesia telah mendapatkan pengakuan dari berbagai pihak, termasuk BAZNAS, FOZ (Forum Zakat), dan mendapatkan predikat WTP (Wajar Tanpa Pengecualian) yang merupakan bukti komitmen kami terhadap transparansi dan akuntabilitas.
+          Visi kami adalah memfasilitasi perkembangan generasi yang penuh berkah. Melalui gerakan #BerbagiBersama, kami mengajak masyarakat untuk meluaskan manfaat dan menjadi mitra terbaik bagi Sobat Zakat semua.
         </p>
       </>
     ),
     bottomText: (
       <p>
-        Kantor Pusat kami berlokasi di Jl. Wisma Trosobo IV No. 33, Kel. Trosobo, Kec. Taman, Kab. Sidoarjo, Prov. Jawa Timur. Kami juga memiliki jaringan layanan yang tersebar di berbagai wilayah Indonesia.
+        Kami bermimpi menjadi salah satu tulang punggung gerakan kebaikan ummat, menghadirkan solusi nyata bagi kemiskinan dan keterdesakan sosial di Indonesia.
       </p>
     ),
   },
@@ -147,12 +149,12 @@ const milestones = [
 
 /* ───────── kepengurusan data ───────── */
 const kepengurusanTabs = [
-  "Board of Director",
-  "Board of Trustee",
-  "Board of Trustees",
-  "Sharia Council",
-  "Sharia Reference",
-  "Expert Council",
+  "Dewan Direksi",
+  "Dewan Pembina",
+  "Dewan Pengawas",
+  "Dewan Syariah",
+  "Referensi Syariah",
+  "Dewan Pakar",
 ] as const;
 type KepengurusanTab = (typeof kepengurusanTabs)[number];
 
@@ -163,25 +165,25 @@ export type TeamMember = {
 };
 
 export const kepengurusanData: Record<KepengurusanTab, TeamMember[]> = {
-  "Board of Director": [
-    { name: "H. Slamet Budiono, S.H., M.M", role: "Jabatan Direktur", image: "" },
-    { name: "Nama Direktur 2", role: "Jabatan Direktur", image: "" },
+  "Dewan Direksi": [
+    { name: "H. Slamet Budiono, S.H., M.M", role: "Direktur Utama", image: "" },
+    { name: "Nama Direktur 2", role: "Direktur Operasional", image: "" },
   ],
-  "Board of Trustee": [
-    { name: "Nama Trustee 1", role: "Chief Executive Officer", image: "" },
-    { name: "Nama Trustee 2", role: "Role Trustee", image: "" },
+  "Dewan Pembina": [
+    { name: "Nama Pembina 1", role: "Ketua Dewan Pembina", image: "" },
+    { name: "Nama Pembina 2", role: "Anggota Dewan Pembina", image: "" },
   ],
-  "Board of Trustees": [
-    { name: "Nama Trustees 1", role: "Role Trustees", image: "" },
+  "Dewan Pengawas": [
+    { name: "Nama Pengawas 1", role: "Ketua Dewan Pengawas", image: "" },
   ],
-  "Sharia Council": [
-    { name: "Nama Sharia Council 1", role: "Role Sharia Council", image: "" },
+  "Dewan Syariah": [
+    { name: "Nama Syariah 1", role: "Ketua Dewan Syariah", image: "" },
   ],
-  "Sharia Reference": [
-    { name: "Nama Sharia Reference 1", role: "Role Sharia Reference", image: "" },
+  "Referensi Syariah": [
+    { name: "Nama Referensi 1", role: "Anggota Referensi Syariah", image: "" },
   ],
-  "Expert Council": [
-    { name: "Nama Expert Council 1", role: "Role Expert Council", image: "" },
+  "Dewan Pakar": [
+    { name: "Nama Pakar 1", role: "Anggota Dewan Pakar", image: "" },
   ],
 };
 
@@ -194,7 +196,7 @@ const statDetails = {
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Sejarah");
-  const [activeKepengurusan, setActiveKepengurusan] = useState<KepengurusanTab>("Board of Trustee");
+  const [activeKepengurusan, setActiveKepengurusan] = useState<KepengurusanTab>("Dewan Direksi");
   const [activeColor, setActiveColor] = useState<string>("#5DA630");
   const [activeModalInfo, setActiveModalInfo] = useState<string | null>(null);
 
@@ -238,23 +240,24 @@ export default function AboutPage() {
           {/* Card */}
           <div className="bg-[#F9F9F9] p-8 md:p-12 w-full max-w-[460px] shadow-2xl flex flex-col items-center text-center">
             <h1 className="text-black text-[24px] md:text-[28px] font-bold leading-tight">
-              The craziest thing we can<br />do is nothing.
+              Hal paling sia-sia adalah <br />saat kita diam tanpa <br />melakukan apa-apa.
             </h1>
 
-            <div className="mt-6 text-zinc-800 text-[11px] md:text-xs font-bold tracking-wider uppercase flex flex-col items-center">
+            <div className="mt-6 mb-4 text-zinc-800 text-[11px] md:text-xs font-bold tracking-wider uppercase flex flex-col items-center">
               <div className="flex items-center gap-2">
-                <span className="w-5 h-[1.5px] bg-zinc-800 block"></span>
-                <span>PAK SLAMET, FOUNDER & CEO OF</span>
+                <span className="w-5 h-[1px] bg-zinc-400 block"></span>
+                <span>H. SLAMET BUDIONO, S.H., M.M</span>
+                <span className="w-5 h-[1px] bg-zinc-400 block"></span>
               </div>
-              <span className="mt-1">TAMAN ZAKAT</span>
+              <span className="mt-1 text-[#7FC248]">FOUNDER & CEO TAMAN ZAKAT</span>
             </div>
 
-            <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed">
-              Slamet journey from nightclub promoter to founding a global nonprofit is proof that anyone can make a difference. Join his mission to bring clean and safe water to everyone on earth.
+            <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed italic">
+              &quot;Semangat kami adalah memastikan setiap titipan kebaikan Anda mengalir menjadi keberkahan yang nyata bagi mereka yang paling membutuhkan.&quot;
             </p>
 
-            <button className="mt-8 bg-[#FDBA12] hover:bg-[#E5A810] text-black font-semibold px-8 py-3 rounded-sm transition-colors duration-200">
-              Small Kindness
+            <button className="mt-8 bg-[#FDBA12] hover:bg-[#E5A810] text-black font-semibold px-8 py-3 rounded-sm transition-colors duration-200 uppercase tracking-widest text-xs">
+              Zakat Sekarang
             </button>
           </div>
         </div>
@@ -389,14 +392,14 @@ export default function AboutPage() {
         <section className="py-16 md:py-24 bg-white">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
-              <span className="text-[#7FC248] text-[13px] md:text-[15px] font-medium tracking-wide uppercase">
-                THE EXECUTIVE TEAM
+              <span className="text-[#7FC248] text-[13px] md:text-[15px] font-bold tracking-[0.2em] uppercase">
+                STRUKTUR ORGANISASI
               </span>
-              <h2 className="text-center text-[28px] md:text-[36px] font-medium text-black mt-4">
-                Change the world with us
+              <h2 className="text-center text-[28px] md:text-[40px] font-bold text-black mt-4">
+                Sinergi Kebaikan untuk Ummat
               </h2>
-              <p className="text-center text-[15px] md:text-[18px] text-black mt-5 max-w-[800px] mx-auto leading-relaxed">
-                Our executive team brings a wealth of experience, passion, and vision to guide our work and ensure we stay true to our values.
+              <p className="text-center text-[15px] md:text-[18px] text-gray-600 mt-5 max-w-[850px] mx-auto leading-relaxed font-medium">
+                Tim eksekutif kami terdiri dari para profesional dan praktisi filantropi yang berdedikasi tinggi untuk memastikan setiap amanah donatur terkelola secara transparan, akuntabel, dan berdampak luas.
               </p>
             </div>
 
@@ -555,10 +558,10 @@ export default function AboutPage() {
               {/* Right Text */}
               <div className="flex-1 text-center md:text-left pt-4 md:pt-14 md:pl-8">
                 <h3 className="text-black text-[22px] md:text-[26px] leading-tight mb-4 font-semibold text-zinc-800">
-                  You have our word—and more
+                  Kepuasan Anda adalah Amanah Kami
                 </h3>
                 <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
-                  When charity: water began, we made a bold promise: 100% of public donations would go directly to fund clean water projects. Private donors cover our operating costs so 100% of your money can fund water projects.
+                  Setiap dana Zakat, Infaq, dan Sedekah yang Anda percayakan kepada kami akan dikelola dengan standar audit yang ketat. Kami memastikan 100% amanah disalurkan kepada program-program Al-Qur&apos;an, Pendidikan, Kesehatan, dan Kemanusiaan.
                 </p>
               </div>
             </div>
