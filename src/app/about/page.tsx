@@ -18,31 +18,12 @@ const tabContent: Record<
         </p>
         <p className="mt-6">
           Berawal dari akta No. 34 oleh notaris Wahyu Hidayat, SH, M.Kn, Taman Zakat terus berkembang hingga kini diakui sebagai LAZ Provinsi yang dipercaya oleh masyarakat luas. Kami berkomitmen menjadi tonggak gerakan kebaikan umat melalui berbagai program berkelanjutan.
-          Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima
-          manfaat menjadi landasan Taman Zakat Indonesia untuk bergerak sebagai
-          lembaga filantropi profesional dan tepercaya. Berfokus pada sarana
-          dakwah untuk pengembangan Alquran, pendidikan, kesehatan, dan
-          kemanusiaan, kami memfasilitasi perkembangan generasi yang penuh
-          berkah.
-        </p>
-        <p className="mt-6">
-          Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima
-          manfaat menjadi landasan Taman Zakat Indonesia untuk bergerak sebagai
-          lembaga filantropi profesional dan tepercaya. Berfokus Semangat untuk
-          mengalirkan kebaikan dari para donatur kepada penerima manfaat menjadi
-          landasan Taman Zakat Indonesia untuk bergerak sebagai lembaga
-          filantropi profesional dan tepercaya.
         </p>
       </>
     ),
     bottomText: (
       <p>
         Hingga tahun 2022, Taman Zakat Indonesia telah membersamai lebih dari 3.000 donatur untuk menyalurkan manfaat kepada lebih dari 300.000 orang di berbagai penjuru wilayah.
-        Berfokus pada sarana dakwah untuk pengembangan Alquran, pendidikan,
-        kesehatan, dan kemanusiaan, kami memfasilitasi perkembangan generasi
-        yang penuh berkah.pada sarana dakwah untuk pengembangan Alquran,
-        pendidikan, kesehatan, dan kemanusiaan, kami memfasilitasi perkembangan
-        generasi yang penuh berkah.
       </p>
     ),
   },
@@ -86,13 +67,7 @@ const tabContent: Record<
     ),
     bottomText: (
       <p>
-
         Legalitas ini merupakan bukti komitmen kami dalam mengelola dana zakat, infaq, dan sedekah secara amanah, transparan, dan sesuai peraturan perundang-undangan.
-
-        Seluruh kegiatan penghimpunan dan penyaluran dana dilakukan sesuai
-        dengan peraturan perundang-undangan yang berlaku dan diaudit secara
-        berkala oleh akuntan publik independen.
-
       </p>
     ),
   },
@@ -100,34 +75,16 @@ const tabContent: Record<
     topText: (
       <>
         <p>
-
           Taman Zakat merupakan Lembaga Filantropi Profesional yang berfokus pada sarana dakwah untuk pengembangan Al-Qur&apos;an, Pendidikan, Kesehatan dan Kemanusiaan. Berdiri sejak tahun 2018, kami terus berinovasi untuk memberikan dampak maksimal.
         </p>
         <p className="mt-6">
           Visi kami adalah memfasilitasi perkembangan generasi yang penuh berkah. Melalui gerakan #BerbagiBersama, kami mengajak masyarakat untuk meluaskan manfaat dan menjadi mitra terbaik bagi Sobat Zakat semua.
-
-          Taman Zakat Indonesia didirikan pada tahun 2016 dengan semangat untuk
-          menjadi lembaga filantropi yang profesional dan terpercaya. Berawal
-          dari kepedulian terhadap kondisi masyarakat, kami terus berkembang dan
-          berinovasi dalam mengelola dana zakat, infaq, sedekah, dan dana sosial
-          kemanusiaan.
-        </p>
-        <p className="mt-6">
-          Dalam perjalanannya, Taman Zakat Indonesia telah mendapatkan pengakuan
-          dari berbagai pihak, termasuk BAZNAS, FOZ (Forum Zakat), dan
-          mendapatkan predikat WTP (Wajar Tanpa Pengecualian) yang merupakan
-          bukti komitmen kami terhadap transparansi dan akuntabilitas.
         </p>
       </>
     ),
     bottomText: (
       <p>
-
         Kami bermimpi menjadi salah satu tulang punggung gerakan kebaikan ummat, menghadirkan solusi nyata bagi kemiskinan dan keterdesakan sosial di Indonesia.
-        Kantor Pusat kami berlokasi di Jl. Wisma Trosobo IV No. 33, Kel.
-        Trosobo, Kec. Taman, Kab. Sidoarjo, Prov. Jawa Timur. Kami juga memiliki
-        jaringan layanan yang tersebar di berbagai wilayah Indonesia.
-
       </p>
     ),
   },
@@ -321,9 +278,6 @@ export default function AboutPage() {
           <div className="bg-[#F9F9F9] p-8 md:p-12 w-full max-w-[460px] shadow-2xl flex flex-col items-center text-center">
             <h1 className="text-black text-[24px] md:text-[28px] font-bold leading-tight">
               Hal paling sia-sia adalah <br />saat kita diam tanpa <br />melakukan apa-apa.
-              The craziest thing we can
-              <br />
-              do is nothing.
             </h1>
 
             <div className="mt-6 mb-4 text-zinc-800 text-[11px] md:text-xs font-bold tracking-wider uppercase flex flex-col items-center">
@@ -337,11 +291,6 @@ export default function AboutPage() {
 
             <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed italic">
               &quot;Semangat kami adalah memastikan setiap titipan kebaikan Anda mengalir menjadi keberkahan yang nyata bagi mereka yang paling membutuhkan.&quot;
-            </p>
-            <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed">
-              Slamet journey from nightclub promoter to founding a global
-              nonprofit is proof that anyone can make a difference. Join his
-              mission to bring clean and safe water to everyone on earth.
             </p>
 
             <button className="mt-8 bg-[#FDBA12] hover:bg-[#E5A810] text-black font-semibold px-8 py-3 rounded-sm transition-colors duration-200 uppercase tracking-widest text-xs">
@@ -501,10 +450,6 @@ export default function AboutPage() {
               <p className="text-center text-[15px] md:text-[18px] text-gray-600 mt-5 max-w-[850px] mx-auto leading-relaxed font-medium">
                 Tim eksekutif kami terdiri dari para profesional dan praktisi filantropi yang berdedikasi tinggi untuk memastikan setiap amanah donatur terkelola secara transparan, akuntabel, dan berdampak luas.
               </p>
-              <p className="text-center text-[15px] md:text-[18px] text-black mt-5 max-w-[800px] mx-auto leading-relaxed">
-                Our executive team brings a wealth of experience, passion, and
-                vision to guide our work and ensure we stay true to our values.
-              </p>
             </div>
 
             <div className="mt-14 flex flex-col md:flex-row gap-10 lg:gap-20 items-stretch">
@@ -572,7 +517,7 @@ export default function AboutPage() {
         <section className="py-16 md:py-24 bg-[#7FC248]">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
             <h2 className="text-center text-white text-[20px] md:text-[24px] mb-12 md:mb-16 tracking-wide font-medium">
-              Taman Zakat impact to date
+              Dampak Penyaluran Taman Zakat
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-8 text-center">
               <div className="flex flex-col items-center">
@@ -701,16 +646,12 @@ export default function AboutPage() {
               </div>
 
               {/* Right Text */}
-              <div className="flex-1 text-center md:text-left pt-4 md:pt-14 md:pl-8">
+              <div className="flex-1 text-center md:text-left pt-4 md:pt-0 md:pl-8">
                 <h3 className="text-black text-[22px] md:text-[26px] leading-tight mb-4 font-semibold text-zinc-800">
                   Kepuasan Anda adalah Amanah Kami
                 </h3>
                 <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
                   Setiap dana Zakat, Infaq, dan Sedekah yang Anda percayakan kepada kami akan dikelola dengan standar audit yang ketat. Kami memastikan 100% amanah disalurkan kepada program-program Al-Qur&apos;an, Pendidikan, Kesehatan, dan Kemanusiaan.
-                  When charity: water began, we made a bold promise: 100% of
-                  public donations would go directly to fund clean water
-                  projects. Private donors cover our operating costs so 100% of
-                  your money can fund water projects.
                 </p>
               </div>
             </div>
@@ -798,7 +739,7 @@ export default function AboutPage() {
                 <span className="text-2xl leading-none">&times;</span>
               </button>
               <h4 className="text-[#9FB3C8] text-[13px] md:text-[14px] font-bold tracking-widest uppercase mb-6">
-                THE DETAILES
+                DETAIL INFORMASI
               </h4>
               <p className="text-black text-[15px] md:text-[16px] leading-[1.6] font-medium">
                 {activeModalInfo}
