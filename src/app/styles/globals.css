@@ -11,14 +11,8 @@
   --color-black: #222520;
   --font-sans: var(--font-poppins);
   --font-mono: var(--font-geist-mono);
-<<<<<<< HEAD
-  --font-newsreader: var(--font-newsreader-google);
-  --font-poppins: var(--font-poppins-google);
-  --font-ramadhan: var(--font-ramadhan-local);
-=======
   --font-newsreader: var(--font-poppins);
   --font-ramadhan: var(--font-poppins);
->>>>>>> adi
 }
 
 @media (prefers-color-scheme: dark) {
