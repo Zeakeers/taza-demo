@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Newsreader, Noto_Sans } from "next/font/google";
+import { Newsreader, Noto_Sans, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 
 import Navbar from "@/components/layout/Navbar";
@@ -20,6 +20,13 @@ const newsreader = Newsreader({
   display: "swap",
 });
 
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-poppins-google",
+  display: "swap",
+});
+
 const awalRamadhan = localFont({
   src: "../../public/font/a_awal_ramadhan/aAwalRamadhan.ttf",
   variable: "--font-ramadhan-local",
@@ -28,16 +35,23 @@ const awalRamadhan = localFont({
 
 export const metadata: Metadata = {
   title: "Taman Zakat Indonesia",
-  description: "Website resmi Taman Zakat Indonesia sebagai media informasi dan penyaluran donasi.",
+  description:
+    "Website resmi Taman Zakat Indonesia sebagai media informasi dan penyaluran donasi.",
   icons: {
     icon: "/images/icon/taman zakat  logo .svg",
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="id">
-      <body className={`${notoSans.className} ${newsreader.variable} ${awalRamadhan.variable} antialiased bg-white text-zinc-900`}>
+      <body
+        className={`${notoSans.className} ${newsreader.variable} ${poppins.variable} ${awalRamadhan.variable} antialiased bg-white text-zinc-900`}
+      >
         <Navbar />
 
         <main className="min-h-screen">{children}</main>

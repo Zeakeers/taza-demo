@@ -8,15 +8,18 @@ export default function DesaPeloporPage() {
       <header className="w-full bg-[#222520] py-10 md:py-20 px-3 gap-5 flex flex-col items-center justify-center">
         {/* judul */}
         <div className="inline-block">
-          <h1 className="text-white text-xl md:text-2xl font-newsreader font-bold">Desa Pelopor</h1>
+          <h1 className="text-white text-xl md:text-2xl font-poppins font-bold">
+            Desa Pelopor
+          </h1>
           <hr className="w-full border-t-2 border-[#7FC248] mt-2" />
         </div>
         <p className="text-center max-w-full md:max-w-6xl mx-auto text-white">
-          adalah Program pemberdayaan dalam cangkupan wilayah desa (dan sebagian kelurahan), melalui
-          pendekatan terintegrasi yaitu, Program pembinaan masyarakat , ekonomi, pendidikan,
-          kesehatan, lingkungan hingga kesiapsiagaan bencana, dengan target tumbuh dan berkembangnya
-          kelembagaan lokal. Untuk mengatasi permasalahannya sendiri serta berkolaborasi denga pihak
-          lain terutama pemerintah desa.
+          adalah Program pemberdayaan dalam cangkupan wilayah desa (dan sebagian
+          kelurahan), melalui pendekatan terintegrasi yaitu, Program pembinaan
+          masyarakat , ekonomi, pendidikan, kesehatan, lingkungan hingga
+          kesiapsiagaan bencana, dengan target tumbuh dan berkembangnya
+          kelembagaan lokal. Untuk mengatasi permasalahannya sendiri serta
+          berkolaborasi denga pihak lain terutama pemerintah desa.
         </p>
       </header>
       {/* bener kecil */}
@@ -41,7 +44,7 @@ export default function DesaPeloporPage() {
                     d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
                   />
                 </defs>
-                <text fontSize="30" fontWeight="500" className="font-newsreader">
+                <text fontSize="30" fontWeight="500" className="font-poppins">
                   <textPath
                     href="#desa-pelopor-badge-path"
                     startOffset="50%"
@@ -83,16 +86,19 @@ export default function DesaPeloporPage() {
           </figure>
 
           <article className="w-full text-center text-black md:w-[52%]">
-            <h2 className="font-newsreader text-xl font-semibold leading-tight md:text-2xl">
-              The 100% Model is powered by a small and dedicated group of private donors
+            <h2 className="font-poppins text-xl font-semibold leading-tight md:text-2xl">
+              The 100% Model is powered by a small and dedicated group of
+              private donors
             </h2>
             <p className="mx-auto mt-4 max-w-[62ch] text-sm leading-relaxed md:text-xl">
-              These entrepreneurs, artists, musicians and business leaders fund our operating costs
-              - costs that include office rent, staff salaries and benefits, flights and even the
-              toner for our copy machine. By committing multi-year support for operations funding,
-              Well Members allow us to plan for the future, creating efficiency and stability. And
-              Members of The Well provide more than just financial support - they are also some of
-              our most loyal teammates, our most visionary partners, and our most outspoken
+              These entrepreneurs, artists, musicians and business leaders fund
+              our operating costs - costs that include office rent, staff
+              salaries and benefits, flights and even the toner for our copy
+              machine. By committing multi-year support for operations funding,
+              Well Members allow us to plan for the future, creating efficiency
+              and stability. And Members of The Well provide more than just
+              financial support - they are also some of our most loyal
+              teammates, our most visionary partners, and our most outspoken
               champions.
             </p>
           </article>
@@ -101,16 +107,19 @@ export default function DesaPeloporPage() {
         {/* gambar bawah + description*/}
         <div className="mx-auto mt-10 flex w-full max-w-6xl flex-col gap-8 md:mt-28 md:flex-row md:items-center md:gap-10">
           <article className="w-full text-center text-black md:w-[52%]">
-            <h2 className="font-newsreader text-xl font-semibold leading-tight md:text-2xl">
-              The 100% Model is powered by a small and dedicated group of private donors
+            <h2 className="font-poppins text-xl font-semibold leading-tight md:text-2xl">
+              The 100% Model is powered by a small and dedicated group of
+              private donors
             </h2>
             <p className="mx-auto mt-4 max-w-[62ch] text-sm leading-relaxed md:text-xl">
-              These entrepreneurs, artists, musicians and business leaders fund our operating costs
-              - costs that include office rent, staff salaries and benefits, flights and even the
-              toner for our copy machine. By committing multi-year support for operations funding,
-              Well Members allow us to plan for the future, creating efficiency and stability. And
-              Members of The Well provide more than just financial support - they are also some of
-              our most loyal teammates, our most visionary partners, and our most outspoken
+              These entrepreneurs, artists, musicians and business leaders fund
+              our operating costs - costs that include office rent, staff
+              salaries and benefits, flights and even the toner for our copy
+              machine. By committing multi-year support for operations funding,
+              Well Members allow us to plan for the future, creating efficiency
+              and stability. And Members of The Well provide more than just
+              financial support - they are also some of our most loyal
+              teammates, our most visionary partners, and our most outspoken
               champions.
             </p>
           </article>
@@ -131,7 +140,7 @@ export default function DesaPeloporPage() {
       {/* SOCIOENTERPRENEUR & FIELD INSPECTOR DI DESA */}
       <section className="w-full bg-white px-4 pb-12 pt-8 md:pb-16 md:pt-12">
         <div className="mx-auto w-full max-w-6xl">
-          <h2 className="text-center font-newsreader text-xl font-semibold uppercase tracking-wide text-black md:text-2xl">
+          <h2 className="text-center font-poppins text-xl font-semibold uppercase tracking-wide text-black md:text-2xl">
             Socioenterpreneur &amp; Field Inspector Di Desa
           </h2>
 
@@ -173,13 +182,17 @@ export default function DesaPeloporPage() {
           </figure>
 
           <article className="w-full text-center text-black md:w-1/2">
-            <h2 className="font-newsreader text-2xl font-semibold md:text-2xl">Kepeloporan</h2>
+            <h2 className="font-poppins text-2xl font-semibold md:text-2xl">
+              Kepeloporan
+            </h2>
             <p className="mx-auto mt-4 max-w-[58ch] text-sm leading-relaxed md:text-lg">
-              Angel Investors and entrepreneurs, Michael and Xochi Birch joined our mission in 2008,
-              just two years into charity: water&apos;s existence. They became the first family to
-              donate a one-time gift of $1 million to support operations, at a critical time in the
-              organization&apos;s growth. Their radical generosity allowed us to focus on building
-              an innovative and inspiring brand that would one day reinvent charity for millions.
+              Angel Investors and entrepreneurs, Michael and Xochi Birch joined
+              our mission in 2008, just two years into charity: water&apos;s
+              existence. They became the first family to donate a one-time gift
+              of $1 million to support operations, at a critical time in the
+              organization&apos;s growth. Their radical generosity allowed us to
+              focus on building an innovative and inspiring brand that would one
+              day reinvent charity for millions.
             </p>
           </article>
         </div>

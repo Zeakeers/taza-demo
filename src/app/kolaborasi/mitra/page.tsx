@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function MitraPage() {
   return (
-    <div className="bg-white min-h-screen overflow-hidden relative">
+    <div className="bg-white min-h-screen overflow-hidden relative font-poppins">
 
       <div className="max-w-[1200px] mx-auto px-4 md:px-8 py-16 md:py-24">
 

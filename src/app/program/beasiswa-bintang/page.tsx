@@ -8,7 +8,7 @@ export default function BeasiswaBintangPage() {
       <header className="w-full bg-[#222520] py-10 md:py-20 px-3 gap-5 flex flex-col items-center justify-center">
         {/* judul */}
         <div className="inline-block">
-          <h1 className="text-white text-xl md:text-2xl font-newsreader font-bold">
+          <h1 className="text-white text-xl md:text-2xl font-poppins font-bold">
             Beasiswa Bintang
           </h1>
           <hr className="w-full border-t-2 border-[#7FC248] mt-2" />
@@ -30,7 +30,7 @@ export default function BeasiswaBintangPage() {
 
           <a href="#" className="relative z-10 inline-block">
             <div className="relative rounded-sm bg-[#7FC248] px-3 md:px-5 py-2">
-              <div className="relative z-10 inline-flex items-center gap-2 text-base font-semibold font-newsreader text-white">
+              <div className="relative z-10 inline-flex items-center gap-2 text-base font-semibold font-poppins text-white">
                 <span>Donasi Disini</span>
                 <Image
                   src="/images/icon/Donation.svg"
@@ -77,7 +77,7 @@ export default function BeasiswaBintangPage() {
                           d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
                         />
                       </defs>
-                      <text fontSize="30" fontWeight="500" className="font-newsreader">
+                      <text fontSize="30" fontWeight="500" className="font-poppins">
                         <textPath
                           href="#beasiswa-badge-path"
                           startOffset="50%"
@@ -106,7 +106,7 @@ export default function BeasiswaBintangPage() {
           </div>
 
           <article className="w-full text-black md:w-1/2">
-            <h2 className="font-newsreader text-lg font-semibold leading-tight md:text-2xl">
+            <h2 className="font-poppins text-lg font-semibold leading-tight md:text-2xl">
               Dekat dengan Rasulullah lewat Amalan ini...
             </h2>
             <p className="mt-3 text-xs leading-relaxed md:text-base">
@@ -125,7 +125,7 @@ export default function BeasiswaBintangPage() {
             </p>
             <a
               href="#"
-              className="mt-6 inline-block font-newsreader text-base text-[#3a5f2a] underline decoration-1 underline-offset-4"
+              className="mt-6 inline-block font-poppins text-base text-[#3a5f2a] underline decoration-1 underline-offset-4"
             >
               Donasi Disini
             </a>
@@ -134,7 +134,7 @@ export default function BeasiswaBintangPage() {
 
         {/* Sebaran Aksi Taman Zakat */}
         <section className="flex flex-col items-center mt-12 md:mt-24">
-          <h2 className="font-newsreader font-semibold text-xl md:text-2xl text-black">
+          <h2 className="font-poppins font-semibold text-xl md:text-2xl text-black">
             Sebaran Aksi Taman Zakat
           </h2>
           <p className="text-black font-light text-sm md:text-base mb-2 md:mb-4">Tahun 2020</p>
@@ -150,7 +150,7 @@ export default function BeasiswaBintangPage() {
           </p>
 
           <a href="#" className="inline-block">
-            <h1 className="text-zinc-700 text-base md:text-lg font-newsreader font-medium">
+            <h1 className="text-zinc-700 text-base md:text-lg font-poppins font-medium">
               Lihat Detail Disini
             </h1>
             <hr className="w-full border-t-2 border-[#7FC248] mt-1 md:mt-0" />
@@ -181,7 +181,7 @@ export default function BeasiswaBintangPage() {
 
                 <a href="#" className="relative z-10 inline-block">
                   <div className="relative rounded-sm bg-[#7FC248] px-3 md:px-5 py-2">
-                    <div className="relative z-10 inline-flex items-center gap-2 text-base font-semibold font-newsreader text-white">
+                    <div className="relative z-10 inline-flex items-center gap-2 text-base font-semibold font-poppins text-white">
                       <span>Donasi Disini</span>
                       <Image
                         src="/images/icon/Donation.svg"

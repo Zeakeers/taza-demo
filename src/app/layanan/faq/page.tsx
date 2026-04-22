@@ -13,7 +13,7 @@ const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="flex items-start gap-3">
+    <div className="flex items-start gap-3 font-poppins">
       <HelpCircle
         className="mt-0.5 h-[22px] w-[22px] shrink-0 text-[#a5d65a]"
         strokeWidth={2}

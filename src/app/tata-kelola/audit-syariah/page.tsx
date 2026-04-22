@@ -2,7 +2,7 @@ import RightBarAudit from "@/components/layout/rightbar-audit";
 
 export default function AuditSyariah() {
   return (
-    <section className="bg-white min-h-screen p-10 md:p-14">
+    <section className="bg-white min-h-screen p-10 md:p-14 font-poppins">
       {/* isi konten audit */}
       <div className="min-h-[100px] flex flex-col md:flex-row justify-between gap-8 md:gap-4">
         <div className="flex-1">
@@ -25,14 +25,13 @@ export default function AuditSyariah() {
             lakukan adalah wajar, sesuai dengan prinsip dan standar akuntansi
             yang berlaku di Indonesia.
           </p>
- 
-            <a
-              href="/tata-kelola/audit"
-              className=" bg-[#5DA630] text-white px-7 py-2.5 rounded-full hover:bg-[#4A8A25] transition-colors"
-            >
-              Detail Audit Syariah
-            </a>
-          
+
+          <a
+            href="/tata-kelola/audit"
+            className=" bg-[#5DA630] text-white px-7 py-2.5 rounded-full hover:bg-[#4A8A25] transition-colors"
+          >
+            Detail Audit Syariah
+          </a>
         </div>
 
         {/* kanan */}

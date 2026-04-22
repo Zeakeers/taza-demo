@@ -16,7 +16,7 @@ export default function BidangEkonomiPage() {
   }, []);
 
   return (
-    <main className="min-h-screen w-full bg-white overflow-x-hidden">
+    <main className="min-h-screen w-full bg-white overflow-x-hidden font-poppins">
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -104,7 +104,11 @@ export default function BidangEkonomiPage() {
                         d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
                       />
                     </defs>
-                    <text fontSize="28" fontWeight="500" className="font-newsreader">
+                    <text
+                      fontSize="28"
+                      fontWeight="500"
+                      className="font-poppins"
+                    >
                       <textPath
                         href="#ambulan-badge-path"
                         startOffset="50%"
@@ -130,7 +134,7 @@ export default function BidangEkonomiPage() {
               </div>
             </div>
 
-            <h1 className="text-[26px] md:text-[32px] font-newsreader font-bold text-black mb-5 mt-4 ml-6 md:ml-8 text-left drop-shadow-sm">
+            <h1 className="text-[26px] md:text-[32px] font-poppins font-bold text-black mb-5 mt-4 ml-6 md:ml-8 text-left drop-shadow-sm">
               Bidang <span className="text-[#8cc63f]">Ekonomi</span>
             </h1>
 
@@ -174,7 +178,7 @@ export default function BidangEkonomiPage() {
                   className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                 >
                   <div className="relative rounded-sm bg-[#7FC248] px-5 py-2.5 md:px-6 md:py-3">
-                    <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white md:text-[18px]">
+                    <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white md:text-[18px]">
                       <span>Donasi Disini</span>
                       <Image
                         src="/images/icon/Donation.svg"
@@ -197,16 +201,18 @@ export default function BidangEkonomiPage() {
         <div className="max-w-5xl w-full flex flex-col md:flex-row items-center justify-between gap-10">
           <div className="w-full md:w-1/2 order-2 md:order-1 flex justify-center md:justify-start">
             <div className="max-w-md w-full">
-              <h2 className="text-2xl md:text-3xl font-newsreader font-bold text-black mb-4">
+              <h2 className="text-2xl md:text-3xl font-poppins font-bold text-black mb-4">
                 Program Ekonomi
               </h2>
               <p className="text-zinc-700 text-sm md:text-base md:leading-relaxed text-left">
-                Taman Zakat adalah lembaga amil zakat nasional milik masyarakat Indonesia yang
-                mengelola zakat, infak, sedekah, serta dana kemanusiaan lainnya melalui serangkaian
-                program salah satunya adalah kesehatan. Isu permasalahan yang diintervensi Rumah
-                Zakat dalam bidang kesehatan adalah stunting & wasting (gizi buruk), ancaman
-                kesejahteraan lansia (pemenuhan kebutuhan dasar, penelantaran, dll), akses terhadap
-                air minum dan sanitasi yang layak, dan kerawanan pangan.
+                Taman Zakat adalah lembaga amil zakat nasional milik masyarakat
+                Indonesia yang mengelola zakat, infak, sedekah, serta dana
+                kemanusiaan lainnya melalui serangkaian program salah satunya
+                adalah kesehatan. Isu permasalahan yang diintervensi Rumah Zakat
+                dalam bidang kesehatan adalah stunting & wasting (gizi buruk),
+                ancaman kesejahteraan lansia (pemenuhan kebutuhan dasar,
+                penelantaran, dll), akses terhadap air minum dan sanitasi yang
+                layak, dan kerawanan pangan.
               </p>
             </div>
           </div>
@@ -244,13 +250,15 @@ export default function BidangEkonomiPage() {
           </div>
           <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
                 Tebar Hewan Kurban
               </h2>
               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Hanya dengan <span className="text-[#FF5B5B] font-bold">Rp10.000</span>, Anda bisa
-                menjadi bagian dari harapan—membantu memutus kesenjangan pangan dan menghadirkan
-                makanan bagi saudara dhuafa yang sedang berjuang di masa sulit ini.
+                Hanya dengan{" "}
+                <span className="text-[#FF5B5B] font-bold">Rp10.000</span>, Anda
+                bisa menjadi bagian dari harapan—membantu memutus kesenjangan
+                pangan dan menghadirkan makanan bagi saudara dhuafa yang sedang
+                berjuang di masa sulit ini.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <div className="relative inline-block">
@@ -263,7 +271,7 @@ export default function BidangEkonomiPage() {
                     className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                   >
                     <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
                         <span>Donasi Disini</span>
                         <Image
                           src="/images/icon/Donation.svg"
@@ -290,13 +298,14 @@ export default function BidangEkonomiPage() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
                 Berbagi Fitrah
               </h2>
               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Program infak ambulans Taman Zakat diharapkan dapat mengurangi hambatan-hambatan
-                bagi warga desa untuk mendapatkan fasilitas kesehatan yang layak dan terjamin dalam
-                pertolongan pertama pada kesehatan.
+                Program infak ambulans Taman Zakat diharapkan dapat mengurangi
+                hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas
+                kesehatan yang layak dan terjamin dalam pertolongan pertama pada
+                kesehatan.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
@@ -312,7 +321,7 @@ export default function BidangEkonomiPage() {
                     className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                   >
                     <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
                         <span>Donasi Disini</span>
                         <Image
                           src="/images/icon/Donation.svg"
@@ -365,13 +374,15 @@ export default function BidangEkonomiPage() {
           </div>
           <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
                 Zakat Maal
               </h2>
               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Hanya dengan <span className="text-[#FF5B5B] font-bold">Rp10.000</span>, Anda bisa
-                menjadi bagian dari harapan—membantu memutus kesenjangan pangan dan menghadirkan
-                makanan bagi saudara dhuafa yang sedang berjuang di masa sulit ini.
+                Hanya dengan{" "}
+                <span className="text-[#FF5B5B] font-bold">Rp10.000</span>, Anda
+                bisa menjadi bagian dari harapan—membantu memutus kesenjangan
+                pangan dan menghadirkan makanan bagi saudara dhuafa yang sedang
+                berjuang di masa sulit ini.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <div className="relative inline-block">
@@ -384,7 +395,7 @@ export default function BidangEkonomiPage() {
                     className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                   >
                     <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
                         <span>Donasi Disini</span>
                         <Image
                           src="/images/icon/Donation.svg"
@@ -411,13 +422,14 @@ export default function BidangEkonomiPage() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
                 Bingkisan Kado Lebaran
               </h2>
               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Program infak ambulans Taman Zakat diharapkan dapat mengurangi hambatan-hambatan
-                bagi warga desa untuk mendapatkan fasilitas kesehatan yang layak dan terjamin dalam
-                pertolongan pertama pada kesehatan.
+                Program infak ambulans Taman Zakat diharapkan dapat mengurangi
+                hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas
+                kesehatan yang layak dan terjamin dalam pertolongan pertama pada
+                kesehatan.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
@@ -433,7 +445,7 @@ export default function BidangEkonomiPage() {
                     className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                   >
                     <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
                         <span>Donasi Disini</span>
                         <Image
                           src="/images/icon/Donation.svg"
@@ -485,13 +497,15 @@ export default function BidangEkonomiPage() {
           </div>
           <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
                 Berbagi Ifhtar Istimewa
               </h2>
               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Hanya dengan <span className="text-[#FF5B5B] font-bold">Rp10.000</span>, Anda bisa
-                menjadi bagian dari harapan—membantu memutus kesenjangan pangan dan menghadirkan
-                makanan bagi saudara dhuafa yang sedang berjuang di masa sulit ini.
+                Hanya dengan{" "}
+                <span className="text-[#FF5B5B] font-bold">Rp10.000</span>, Anda
+                bisa menjadi bagian dari harapan—membantu memutus kesenjangan
+                pangan dan menghadirkan makanan bagi saudara dhuafa yang sedang
+                berjuang di masa sulit ini.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <div className="relative inline-block">
@@ -504,7 +518,7 @@ export default function BidangEkonomiPage() {
                     className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                   >
                     <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
                         <span>Donasi Disini</span>
                         <Image
                           src="/images/icon/Donation.svg"
@@ -531,13 +545,14 @@ export default function BidangEkonomiPage() {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
                 Stimulasi Pelaku Usaha Sejahtera
               </h2>
               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Program infak ambulans Taman Zakat diharapkan dapat mengurangi hambatan-hambatan
-                bagi warga desa untuk mendapatkan fasilitas kesehatan yang layak dan terjamin dalam
-                pertolongan pertama pada kesehatan.
+                Program infak ambulans Taman Zakat diharapkan dapat mengurangi
+                hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas
+                kesehatan yang layak dan terjamin dalam pertolongan pertama pada
+                kesehatan.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
@@ -553,7 +568,7 @@ export default function BidangEkonomiPage() {
                     className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                   >
                     <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
                         <span>Donasi Disini</span>
                         <Image
                           src="/images/icon/Donation.svg"
@@ -640,11 +655,12 @@ export default function BidangEkonomiPage() {
 
           {/* Right: Text */}
           <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right mt-4 md:mt-0">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-newsreader font-bold text-black mb-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-poppins font-bold text-black mb-3">
               Dari Amanah Menjadi Manfaat
             </h2>
             <p className="text-zinc-800 text-sm md:text-[16px] leading-relaxed mb-6 font-medium max-w-sm">
-              Amanah Anda kami jaga, dan kami pastikan sampai menjadi manfaat nyata.
+              Amanah Anda kami jaga, dan kami pastikan sampai menjadi manfaat
+              nyata.
             </p>
             <div className="relative inline-block">
               <div
@@ -656,7 +672,7 @@ export default function BidangEkonomiPage() {
                 className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
               >
                 <div className="relative rounded-sm bg-[#7FC248] px-5 py-2.5 md:px-6 md:py-3">
-                  <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                  <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
                     <span>Donasi Disini</span>
                     <Image
                       src="/images/icon/Donation.svg"
@@ -679,7 +695,6 @@ export default function BidangEkonomiPage() {
         <div className="absolute top-0 left-0 right-0 h-[45%] md:h-[42%] bg-white z-0"></div>
 
         <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 flex flex-col md:flex-row md:items-end justify-center min-h-[300px] md:min-h-[340px]">
-          
           {/* Tanda petik berpotongan di perbatasan putih & krem */}
           <div className="absolute top-[45%] md:top-[42%] left-1/2 transform -translate-x-1/2 z-0">
             <div className="text-[#F1E0B3] text-[90px] md:text-[160px] font-serif leading-none select-none relative -top-[25px] md:-top-[45px]">
@@ -689,11 +704,12 @@ export default function BidangEkonomiPage() {
 
           {/* Bagian Teks (Berada di Kiri, Rata Kanan) */}
           <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right relative z-10 pb-6 md:pb-20 pr-0 md:pr-16 lg:pr-28 pt-8 md:pt-16">
-            <h3 className="text-xl md:text-[28px] font-newsreader font-bold text-black mb-2 md:mb-4">
+            <h3 className="text-xl md:text-[28px] font-poppins font-bold text-black mb-2 md:mb-4">
               Sedekah Beras Dhuafa
             </h3>
             <p className="text-zinc-600 text-sm md:text-[16px] max-w-[280px] font-medium leading-relaxed">
-              Gotong royong dalam kebaikan, jangan biarkan saudaramu dalam kelaparan
+              Gotong royong dalam kebaikan, jangan biarkan saudaramu dalam
+              kelaparan
             </p>
           </div>
 
@@ -707,7 +723,6 @@ export default function BidangEkonomiPage() {
               className="w-[180px] sm:w-[200px] md:w-[220px] h-auto object-contain drop-shadow-xl"
             />
           </div>
-
         </div>
       </section>
     </main>

@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function KantorLayananPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-poppins">
       {/* Header Space filler if needed, but navbar is sticky top-0 */}
       <div className="pt-20 md:pt-32 pb-16 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
         <div className="text-center mb-16">

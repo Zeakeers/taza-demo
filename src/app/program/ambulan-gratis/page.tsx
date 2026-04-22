@@ -256,7 +256,7 @@ export default function AmbulanGratisPage() {
                             d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
                           />
                         </defs>
-                        <text fontSize="30" fontWeight="500" className="font-newsreader">
+                        <text fontSize="30" fontWeight="500" className="font-poppins">
                           <textPath
                             href="#ambulan-badge-path"
                             startOffset="50%"
@@ -285,7 +285,7 @@ export default function AmbulanGratisPage() {
                 {/* Upper content area with padding */}
                 <div className="px-6 pt-8 pb-6 md:px-8 md:pt-10 md:pb-6">
                   {/* Title */}
-                  <h1 className="mt-4 font-newsreader text-lg font-bold leading-tight text-black md:text-xl">
+                  <h1 className="mt-4 font-poppins text-lg font-bold leading-tight text-black md:text-xl">
                     Salurankan Sedekahmu Untuk Layanan Ambulan Gratis
                   </h1>
 
@@ -305,7 +305,7 @@ export default function AmbulanGratisPage() {
                       className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
                     >
                       <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                        <div className="relative z-10 inline-flex items-center gap-2 text-sm font-semibold font-newsreader text-white md:text-base">
+                        <div className="relative z-10 inline-flex items-center gap-2 text-sm font-semibold font-poppins text-white md:text-base">
                           <span>Donasi Disini</span>
                           <Image
                             src="/images/icon/Donation.svg"
@@ -362,10 +362,10 @@ export default function AmbulanGratisPage() {
       {/* ==================== KUTIPAN HADITS ==================== */}
       <section className="w-full bg-white px-4 py-10 md:py-14" ref={hadithRef}>
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-newsreader text-lg font-semibold italic text-[#3a7d1c] md:text-2xl leading-relaxed">
+          <h2 className="font-poppins text-lg font-semibold italic text-[#3a7d1c] md:text-2xl leading-relaxed">
             Rasulullah Shallallahu &apos;alaihi wasallam bersabda:
           </h2>
-          <blockquote className="relative mt-4 font-newsreader text-base italic leading-relaxed text-zinc-700 md:text-lg">
+          <blockquote className="relative mt-4 font-poppins text-base italic leading-relaxed text-zinc-700 md:text-lg">
             {/* Invisible text to reserve space and prevent layout shifts */}
             <div className="invisible" aria-hidden="true">
               &ldquo;{HADITH_TEXT}&rdquo; (HR. Muslim)
@@ -383,7 +383,7 @@ export default function AmbulanGratisPage() {
       {/* ==================== FASILITAS AMBULANCE GRATIS ==================== */}
       <section className="w-full bg-[#FAF7F0] px-4 py-10 md:py-16">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center font-newsreader text-xl font-semibold text-black md:text-2xl">
+          <h2 className="text-center font-poppins text-xl font-semibold text-black md:text-2xl">
             Fasilitas Ambulance Gratis
           </h2>
           <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-relaxed text-zinc-600 md:text-base">
@@ -407,7 +407,7 @@ export default function AmbulanGratisPage() {
                   className="h-10 w-10 md:h-20 md:w-20"
                 />
               </div>
-              <h3 className="mt-4 font-newsreader text-base font-semibold text-black md:text-lg">
+              <h3 className="mt-4 font-poppins text-base font-semibold text-black md:text-lg">
                 Layanan Antar Jemput Pasien Dhuafa
               </h3>
               <p className="mt-1 text-sm text-zinc-600">Pasien/Gratis</p>
@@ -427,7 +427,7 @@ export default function AmbulanGratisPage() {
                   className="h-10 w-10 md:h-20 md:w-20"
                 />
               </div>
-              <h3 className="mt-4 font-newsreader text-base font-semibold text-black md:text-lg">
+              <h3 className="mt-4 font-poppins text-base font-semibold text-black md:text-lg">
                 Mobil Sehat Keliling
               </h3>
               <p className="mt-1 text-sm text-zinc-600">Bantuan</p>
@@ -447,7 +447,7 @@ export default function AmbulanGratisPage() {
                   className="h-10 w-10 md:h-20 md:w-20"
                 />
               </div>
-              <h3 className="mt-4 font-newsreader text-base font-semibold text-black md:text-lg">
+              <h3 className="mt-4 font-poppins text-base font-semibold text-black md:text-lg">
                 Mobil Tanggap Bencana
               </h3>
               <p className="mt-1 text-sm text-zinc-600">Darurat/Setting</p>
@@ -486,7 +486,7 @@ export default function AmbulanGratisPage() {
 
           {/* Deskripsi */}
           <article className="w-full text-black md:w-1/2">
-            <h2 className="font-newsreader text-lg font-semibold leading-tight md:text-2xl">
+            <h2 className="font-poppins text-lg font-semibold leading-tight md:text-2xl">
               Ambulan Gratis Taman Zakat
             </h2>
             <p className="mt-3 text-xs leading-relaxed md:text-base">
@@ -497,7 +497,7 @@ export default function AmbulanGratisPage() {
             </p>
             <a
               href="#donasi"
-              className="mt-6 inline-block font-newsreader text-base text-[#3a5f2a] underline decoration-1 underline-offset-4"
+              className="mt-6 inline-block font-poppins text-base text-[#3a5f2a] underline decoration-1 underline-offset-4"
             >
               Baca Penuh
             </a>
@@ -508,10 +508,10 @@ export default function AmbulanGratisPage() {
       {/* ==================== SEBARAN AKSI TAMAN ZAKAT ==================== */}
       <section className="w-full bg-[#1B2A4A] px-4 py-10 md:py-14">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-center font-newsreader text-xl font-semibold italic text-white md:text-2xl">
+          <h2 className="text-center font-poppins text-xl font-semibold italic text-white md:text-2xl">
             Sebaran Aksi Taman Zakat
           </h2>
-          <p className="mt-1 text-center font-newsreader text-sm text-white/70 md:text-base">
+          <p className="mt-1 text-center font-poppins text-sm text-white/70 md:text-base">
             Tahun 2020
           </p>
 
@@ -534,7 +534,7 @@ export default function AmbulanGratisPage() {
           <div className="mt-6 text-center">
             <a
               href="#"
-              className="inline-block font-newsreader text-sm text-zinc-800 underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70 md:text-base"
+              className="inline-block font-poppins text-sm text-zinc-800 underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70 md:text-base"
             >
               Lihat Detail Disini
             </a>
@@ -569,7 +569,7 @@ export default function AmbulanGratisPage() {
         className="w-full bg-[#222520] px-4 py-14 md:py-20"
       >
         <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-newsreader text-xl font-bold uppercase tracking-wider text-white md:text-3xl">
+          <h2 className="font-poppins text-xl font-bold uppercase tracking-wider text-white md:text-3xl">
             Donasi Ambulance Gratis
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/80 md:text-base">
@@ -589,7 +589,7 @@ export default function AmbulanGratisPage() {
               className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
             >
               <div className="relative rounded-sm bg-[#7FC248] px-5 py-2.5 md:px-7 md:py-3">
-                <div className="relative z-10 inline-flex items-center gap-2 text-base font-semibold font-newsreader text-white md:text-lg">
+                <div className="relative z-10 inline-flex items-center gap-2 text-base font-semibold font-poppins text-white md:text-lg">
                   <span>Donasi Disini</span>
                   <Image
                     src="/images/icon/Donation.svg"
