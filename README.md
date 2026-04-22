@@ -1,7 +1,7 @@
 # Taman Zakat Indonesia
 
 <p align="center">
-  <img src="public/images/icon/Taman%20zakat%20hijau%20hitam.png" alt="Taman Zakat Logo" width="400">
+  <img src="public/images/icon/logo%20taza%20font%20putih.png" alt="Taman Zakat Logo" width="400">
 </p>
 
 Website resmi **Taman Zakat Indonesia** yang berfungsi sebagai platform informasi, edukasi, dan penyaluran donasi bagi masyarakat. Website ini dirancang dengan antarmuka modern yang futuristik, responsif, dan mudah digunakan.
