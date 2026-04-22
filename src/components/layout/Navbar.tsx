@@ -154,7 +154,6 @@ export default function Navbar() {
                     { title: "Mitra Kami", desc: "Informasi rekanan layanan dan partner koalisi kebaikan Taman Zakat.", href: "/kolaborasi/mitra" },
                     { title: "Permohonan Bantuan", desc: "Formulir pengajuan untuk permohonan bantuan kepada Taman Zakat.", href: "/kolaborasi/permohonan-bantuan" },
                     { title: "Volunteer", desc: "Daftarkan diri Anda menjadi bagian dari volunteer Taman Zakat.", href: "/kolaborasi/volunteer" },
-                    { title: "Relawan Kebaikan", desc: "Formulir pendaftaran relawan kebaikan Taman Zakat.", href: "/kolaborasi/relawan-kebaikan" }
                   ].map((item, idx, arr) => (
                     <Link key={idx} href={item.href} className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== arr.length - 1 ? 'border-b border-zinc-100' : ''}`}>
                       <div className="flex items-center gap-2">
@@ -302,7 +301,6 @@ export default function Navbar() {
                 <Link href="/kolaborasi/mitra" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Mitra</Link>
                 <Link href="/kolaborasi/permohonan-bantuan" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Permohonan Bantuan</Link>
                 <Link href="/kolaborasi/volunteer" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Volunteer</Link>
-                <Link href="/kolaborasi/relawan-kebaikan" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Relawan Kebaikan</Link>
               </div>
             </li>
 
