@@ -51,7 +51,7 @@ export default function TataKelolaPage() {
   };
 
   return (
-    <div className="bg-white text-zinc-800 min-h-screen">
+    <div className="bg-white text-zinc-800 min-h-screen font-poppins">
       <div className="mx-auto max-w-[1280px] px-4 md:px-8 lg:px-12 py-10 md:py-16 flex relative">
         <div className="hidden md:block w-36 relative shrink-0">
           <div className="sticky top-32 h-[80vh]">
@@ -293,7 +293,7 @@ export default function TataKelolaPage() {
                       Pengesahan Pendirian
                     </div>
                   </div>
-                  
+
                   <div className="w-full flex justify-center mb-1">
                     <div className="bg-[#A52A2A] text-white text-[10px] px-3 py-1 rounded-sm w-[90%] font-medium">
                       AHU-AH.01.06.0008536.Tahun 2021

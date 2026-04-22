@@ -6,27 +6,56 @@ import Image from "next/image";
 const tabs = ["Sejarah", "Visi Misi", "Legalitas", "Profile"] as const;
 type Tab = (typeof tabs)[number];
 
-const tabContent: Record<Tab, { topText: React.ReactNode; bottomText: React.ReactNode }> = {
+const tabContent: Record<
+  Tab,
+  { topText: React.ReactNode; bottomText: React.ReactNode }
+> = {
   Sejarah: {
     topText: (
       <>
         <p>
+<<<<<<< HEAD
           Yayasan Taman Zakat Indonesia didirikan pada 29 Desember 2018 dengan misi mulia mengentaskan umat dari kemiskinan. Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima manfaat menjadi landasan kami untuk bergerak sebagai lembaga filantropi profesional dan tepercaya.
         </p>
         <p className="mt-6">
           Berawal dari akta No. 34 oleh notaris Wahyu Hidayat, SH, M.Kn, Taman Zakat terus berkembang hingga kini diakui sebagai LAZ Provinsi yang dipercaya oleh masyarakat luas. Kami berkomitmen menjadi tonggak gerakan kebaikan umat melalui berbagai program berkelanjutan.
+=======
+          Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima
+          manfaat menjadi landasan Taman Zakat Indonesia untuk bergerak sebagai
+          lembaga filantropi profesional dan tepercaya. Berfokus pada sarana
+          dakwah untuk pengembangan Alquran, pendidikan, kesehatan, dan
+          kemanusiaan, kami memfasilitasi perkembangan generasi yang penuh
+          berkah.
+        </p>
+        <p className="mt-6">
+          Semangat untuk mengalirkan kebaikan dari para donatur kepada penerima
+          manfaat menjadi landasan Taman Zakat Indonesia untuk bergerak sebagai
+          lembaga filantropi profesional dan tepercaya. Berfokus Semangat untuk
+          mengalirkan kebaikan dari para donatur kepada penerima manfaat menjadi
+          landasan Taman Zakat Indonesia untuk bergerak sebagai lembaga
+          filantropi profesional dan tepercaya.
+>>>>>>> enggar_revisi
         </p>
       </>
     ),
     bottomText: (
       <p>
+<<<<<<< HEAD
         Hingga tahun 2022, Taman Zakat Indonesia telah membersamai lebih dari 3.000 donatur untuk menyalurkan manfaat kepada lebih dari 300.000 orang di berbagai penjuru wilayah.
+=======
+        Berfokus pada sarana dakwah untuk pengembangan Alquran, pendidikan,
+        kesehatan, dan kemanusiaan, kami memfasilitasi perkembangan generasi
+        yang penuh berkah.pada sarana dakwah untuk pengembangan Alquran,
+        pendidikan, kesehatan, dan kemanusiaan, kami memfasilitasi perkembangan
+        generasi yang penuh berkah.
+>>>>>>> enggar_revisi
       </p>
     ),
   },
   "Visi Misi": {
     topText: (
       <>
+<<<<<<< HEAD
         <h4 className="font-bold text-[#7FC248] mb-2">VISI</h4>
         <p className="italic mb-6">
           &quot;Lembaga Filantropi Nasional Terpercaya Dalam Pengembangan Pendidikan, Kesehatan dan Pemberdayaan Masyarakat.&quot;
@@ -48,23 +77,80 @@ const tabContent: Record<Tab, { topText: React.ReactNode; bottomText: React.Reac
           <li>Memberikan layanan sosial pemberdayaan masyarakat yang berdampak masif</li>
         </ul>
       </>
+=======
+        <p>
+          Visi kami adalah menjadi lembaga pengelola zakat yang amanah,
+          profesional, dan berdampak luas bagi umat. Misi kami meliputi:
+        </p>
+        <ol className="list-decimal pl-5 mt-4 space-y-2">
+          <li>
+            Mengoptimalkan penghimpunan zakat, infaq, sedekah dan dana sosial
+            kemanusiaan.
+          </li>
+          <li>Menyalurkan dana secara tepat sasaran kepada mustahik.</li>
+          <li>
+            Mengembangkan program pemberdayaan masyarakat yang berkelanjutan.
+          </li>
+          <li>
+            Membangun kepercayaan publik melalui transparansi dan akuntabilitas.
+          </li>
+        </ol>
+      </>
+    ),
+    bottomText: (
+      <p>
+        Kami terus berinovasi dalam menjalankan program-program dakwah untuk
+        Pengembangan Al-Qur&apos;an, Pendidikan, Kesehatan dan Kemanusiaan.
+        Sebagai lembaga filantropi profesional, kami berkomitmen untuk menjadi
+        tulang punggung gerakan kebaikan ummat dengan memfasilitasi perkembangan
+        generasi yang penuh berkah.
+      </p>
+>>>>>>> enggar_revisi
     ),
   },
   Legalitas: {
     topText: (
       <>
+<<<<<<< HEAD
         <p className="mb-4">Taman Zakat Indonesia memiliki legitimasi penuh melalui aspek legal formal berikut:</p>
         <ul className="list-disc pl-5 space-y-2 text-sm">
           <li><strong>SK Dirjen Bimas Islam No. 245 Tahun 2021</strong>: Izin Lembaga Amil Zakat Skala Provinsi</li>
           <li><strong>Rekomendasi BAZNAS Indonesia</strong>: No. 617/ANG/BAZNAS/XI/2020</li>
           <li><strong>SK Kemenkumham</strong>: AHU-AH.01.06.0008536 Tahun 2021 (Perubahan)</li>
           <li><strong>SK Keanggotaan FOZ</strong>: No. 130/SK/PH-FOZ/X/2019 (NA 130.FOZ.2019)</li>
+=======
+        <p>
+          Taman Zakat Indonesia merupakan lembaga yang telah resmi terdaftar dan
+          memiliki legalitas yang lengkap:
+        </p>
+        <ul className="list-disc pl-5 mt-4 space-y-2">
+          <li>
+            SK Kemenkumham RI: lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Quisquam, quod.
+          </li>
+          <li>
+            NPWP Lembaga: lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Quisquam, quod.
+          </li>
+          <li>Terdaftar di BAZNAS (Badan Amil Zakat Nasional)</li>
+          <li>Anggota FOZ (Forum Zakat)</li>
+          <li>
+            Predikat WTP (Wajar Tanpa Pengecualian) dari auditor independen
+          </li>
+          <li>SK Gubernur Jawa Timur tentang Izin Operasional LAZ</li>
+>>>>>>> enggar_revisi
         </ul>
       </>
     ),
     bottomText: (
       <p>
+<<<<<<< HEAD
         Legalitas ini merupakan bukti komitmen kami dalam mengelola dana zakat, infaq, dan sedekah secara amanah, transparan, dan sesuai peraturan perundang-undangan.
+=======
+        Seluruh kegiatan penghimpunan dan penyaluran dana dilakukan sesuai
+        dengan peraturan perundang-undangan yang berlaku dan diaudit secara
+        berkala oleh akuntan publik independen.
+>>>>>>> enggar_revisi
       </p>
     ),
   },
@@ -72,16 +158,36 @@ const tabContent: Record<Tab, { topText: React.ReactNode; bottomText: React.Reac
     topText: (
       <>
         <p>
+<<<<<<< HEAD
           Taman Zakat merupakan Lembaga Filantropi Profesional yang berfokus pada sarana dakwah untuk pengembangan Al-Qur&apos;an, Pendidikan, Kesehatan dan Kemanusiaan. Berdiri sejak tahun 2018, kami terus berinovasi untuk memberikan dampak maksimal.
         </p>
         <p className="mt-6">
           Visi kami adalah memfasilitasi perkembangan generasi yang penuh berkah. Melalui gerakan #BerbagiBersama, kami mengajak masyarakat untuk meluaskan manfaat dan menjadi mitra terbaik bagi Sobat Zakat semua.
+=======
+          Taman Zakat Indonesia didirikan pada tahun 2016 dengan semangat untuk
+          menjadi lembaga filantropi yang profesional dan terpercaya. Berawal
+          dari kepedulian terhadap kondisi masyarakat, kami terus berkembang dan
+          berinovasi dalam mengelola dana zakat, infaq, sedekah, dan dana sosial
+          kemanusiaan.
+        </p>
+        <p className="mt-6">
+          Dalam perjalanannya, Taman Zakat Indonesia telah mendapatkan pengakuan
+          dari berbagai pihak, termasuk BAZNAS, FOZ (Forum Zakat), dan
+          mendapatkan predikat WTP (Wajar Tanpa Pengecualian) yang merupakan
+          bukti komitmen kami terhadap transparansi dan akuntabilitas.
+>>>>>>> enggar_revisi
         </p>
       </>
     ),
     bottomText: (
       <p>
+<<<<<<< HEAD
         Kami bermimpi menjadi salah satu tulang punggung gerakan kebaikan ummat, menghadirkan solusi nyata bagi kemiskinan dan keterdesakan sosial di Indonesia.
+=======
+        Kantor Pusat kami berlokasi di Jl. Wisma Trosobo IV No. 33, Kel.
+        Trosobo, Kec. Taman, Kab. Sidoarjo, Prov. Jawa Timur. Kami juga memiliki
+        jaringan layanan yang tersebar di berbagai wilayah Indonesia.
+>>>>>>> enggar_revisi
       </p>
     ),
   },
@@ -96,9 +202,15 @@ const milestones = [
     align: "left" as const,
     logoRender: () => (
       <div className="py-4 px-6 md:pr-10">
-        <Image src="/images/icon/Taman Zakat Logo.svg" alt="Taman Zakat" width={240} height={100} className="relative z-10 w-40 md:w-56 lg:w-64" />
+        <Image
+          src="/images/icon/Taman Zakat Logo.svg"
+          alt="Taman Zakat"
+          width={240}
+          height={100}
+          className="relative z-10 w-40 md:w-56 lg:w-64"
+        />
       </div>
-    )
+    ),
   },
   {
     year: "2019",
@@ -107,9 +219,15 @@ const milestones = [
     align: "right" as const,
     logoRender: () => (
       <div className="py-4 px-6 md:pr-10">
-        <Image src="/images/icon/Forum Zakat.svg" alt="FOZ" width={200} height={100} className="w-32 md:w-48 lg:w-56 object-contain" />
+        <Image
+          src="/images/icon/Forum Zakat.svg"
+          alt="FOZ"
+          width={200}
+          height={100}
+          className="w-32 md:w-48 lg:w-56 object-contain"
+        />
       </div>
-    )
+    ),
   },
   {
     year: "2020",
@@ -118,9 +236,15 @@ const milestones = [
     align: "left" as const,
     logoRender: () => (
       <div className="py-4 px-6 md:pr-10">
-        <Image src="/images/icon/Logo baznas.svg" alt="BAZNAS" width={200} height={140} className="relative z-10 w-36 md:w-48 lg:w-56" />
+        <Image
+          src="/images/icon/Logo baznas.svg"
+          alt="BAZNAS"
+          width={200}
+          height={140}
+          className="relative z-10 w-36 md:w-48 lg:w-56"
+        />
       </div>
-    )
+    ),
   },
   {
     year: "2021",
@@ -129,9 +253,15 @@ const milestones = [
     align: "right" as const,
     logoRender: () => (
       <div className="flex items-center justify-center">
-        <Image src="/images/icon/iklas_beramal-removebg-preview 1.svg" alt="Kemenag" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
+        <Image
+          src="/images/icon/iklas_beramal-removebg-preview 1.svg"
+          alt="Kemenag"
+          width={180}
+          height={180}
+          className="w-32 md:w-44 lg:w-52 object-contain"
+        />
       </div>
-    )
+    ),
   },
   {
     year: "2022",
@@ -141,9 +271,15 @@ const milestones = [
     align: "left" as const,
     logoRender: () => (
       <div className="flex items-center justify-center">
-        <Image src="/images/icon/WTP.svg" alt="WTP" width={180} height={180} className="w-32 md:w-44 lg:w-52 object-contain" />
+        <Image
+          src="/images/icon/WTP.svg"
+          alt="WTP"
+          width={180}
+          height={180}
+          className="w-32 md:w-44 lg:w-52 object-contain"
+        />
       </div>
-    )
+    ),
   },
 ];
 
@@ -165,9 +301,19 @@ export type TeamMember = {
 };
 
 export const kepengurusanData: Record<KepengurusanTab, TeamMember[]> = {
+<<<<<<< HEAD
   "Dewan Direksi": [
     { name: "H. Slamet Budiono, S.H., M.M", role: "Direktur Utama", image: "" },
     { name: "Nama Direktur 2", role: "Direktur Operasional", image: "" },
+=======
+  "Board of Director": [
+    {
+      name: "H. Slamet Budiono, S.H., M.M",
+      role: "Jabatan Direktur",
+      image: "",
+    },
+    { name: "Nama Direktur 2", role: "Jabatan Direktur", image: "" },
+>>>>>>> enggar_revisi
   ],
   "Dewan Pembina": [
     { name: "Nama Pembina 1", role: "Ketua Dewan Pembina", image: "" },
@@ -179,8 +325,17 @@ export const kepengurusanData: Record<KepengurusanTab, TeamMember[]> = {
   "Dewan Syariah": [
     { name: "Nama Syariah 1", role: "Ketua Dewan Syariah", image: "" },
   ],
+<<<<<<< HEAD
   "Referensi Syariah": [
     { name: "Nama Referensi 1", role: "Anggota Referensi Syariah", image: "" },
+=======
+  "Sharia Reference": [
+    {
+      name: "Nama Sharia Reference 1",
+      role: "Role Sharia Reference",
+      image: "",
+    },
+>>>>>>> enggar_revisi
   ],
   "Dewan Pakar": [
     { name: "Nama Pakar 1", role: "Anggota Dewan Pakar", image: "" },
@@ -189,14 +344,22 @@ export const kepengurusanData: Record<KepengurusanTab, TeamMember[]> = {
 
 /* ───────── stat details data ───────── */
 const statDetails = {
-  wilayah: "Lorem ipsum dolor sit amet, wilayah jangkauan meliputi berbagai pelosok negeri dengan fokus pada daerah tertinggal. Aliquam erat volutpat. Aenean varius, ipsum.",
-  manfaat: "Curabitur pretium tincidunt lacus, penerima manfaat merupakan dhuafa dan amil yang berhak. Nulla gravida orci a odio. Nullam varius, turpis et commodo.",
-  kebaikan: "Suspendisse dictum feugiat nisl, aksi kebaikan meliputi pendidikan, ekonomi, dan kesehatan. Ut sem vamus vulputate eleifend. Praesent dapibus, neque id cursus.",
+  wilayah:
+    "Lorem ipsum dolor sit amet, wilayah jangkauan meliputi berbagai pelosok negeri dengan fokus pada daerah tertinggal. Aliquam erat volutpat. Aenean varius, ipsum.",
+  manfaat:
+    "Curabitur pretium tincidunt lacus, penerima manfaat merupakan dhuafa dan amil yang berhak. Nulla gravida orci a odio. Nullam varius, turpis et commodo.",
+  kebaikan:
+    "Suspendisse dictum feugiat nisl, aksi kebaikan meliputi pendidikan, ekonomi, dan kesehatan. Ut sem vamus vulputate eleifend. Praesent dapibus, neque id cursus.",
 };
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Sejarah");
+<<<<<<< HEAD
   const [activeKepengurusan, setActiveKepengurusan] = useState<KepengurusanTab>("Dewan Direksi");
+=======
+  const [activeKepengurusan, setActiveKepengurusan] =
+    useState<KepengurusanTab>("Board of Trustee");
+>>>>>>> enggar_revisi
   const [activeColor, setActiveColor] = useState<string>("#5DA630");
   const [activeModalInfo, setActiveModalInfo] = useState<string | null>(null);
 
@@ -213,7 +376,7 @@ export default function AboutPage() {
       {
         // Zona observasi diatur pada 20vh, tepat di mana titik bertabrakan
         rootMargin: "-20% 0px -75% 0px",
-      }
+      },
     );
 
     const elements = document.querySelectorAll(".milestone-container");
@@ -223,7 +386,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <section className="w-full min-h-screen flex flex-col bg-white">
+    <section className="w-full min-h-screen flex flex-col bg-white font-poppins">
       {/* HERO */}
       <header className="relative w-full h-[480px] md:h-[580px] overflow-hidden">
         {/* Background Image */}
@@ -240,7 +403,13 @@ export default function AboutPage() {
           {/* Card */}
           <div className="bg-[#F9F9F9] p-8 md:p-12 w-full max-w-[460px] shadow-2xl flex flex-col items-center text-center">
             <h1 className="text-black text-[24px] md:text-[28px] font-bold leading-tight">
+<<<<<<< HEAD
               Hal paling sia-sia adalah <br />saat kita diam tanpa <br />melakukan apa-apa.
+=======
+              The craziest thing we can
+              <br />
+              do is nothing.
+>>>>>>> enggar_revisi
             </h1>
 
             <div className="mt-6 mb-4 text-zinc-800 text-[11px] md:text-xs font-bold tracking-wider uppercase flex flex-col items-center">
@@ -252,8 +421,15 @@ export default function AboutPage() {
               <span className="mt-1 text-[#7FC248]">FOUNDER & CEO TAMAN ZAKAT</span>
             </div>
 
+<<<<<<< HEAD
             <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed italic">
               &quot;Semangat kami adalah memastikan setiap titipan kebaikan Anda mengalir menjadi keberkahan yang nyata bagi mereka yang paling membutuhkan.&quot;
+=======
+            <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed">
+              Slamet journey from nightclub promoter to founding a global
+              nonprofit is proof that anyone can make a difference. Join his
+              mission to bring clean and safe water to everyone on earth.
+>>>>>>> enggar_revisi
             </p>
 
             <button className="mt-8 bg-[#FDBA12] hover:bg-[#E5A810] text-black font-semibold px-8 py-3 rounded-sm transition-colors duration-200 uppercase tracking-widest text-xs">
@@ -270,11 +446,11 @@ export default function AboutPage() {
           <div className="absolute top-0 left-0 w-full h-[410px] sm:h-[460px] md:h-[540px] bg-white -z-10" />
           <div className="absolute top-[410px] sm:top-[460px] md:top-[540px] bottom-0 left-0 w-full bg-[#FCF8ED] -z-10" />
 
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-0">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-poppins relative z-0">
             <h2 className="text-center text-2xl md:text-3xl font-bold text-black">
               Tonggak Perjalanan
             </h2>
-            <p className="text-center text-sm md:text-base text-zinc-500 mt-2">
+            <p className="text-center text-sm md:text-base font-poppins text-zinc-500 mt-2">
               Momen Penting dalam Transformasi Organisasi
             </p>
 
@@ -292,14 +468,18 @@ export default function AboutPage() {
                     className="relative w-full h-[50vh] md:h-[60vh] milestone-container"
                   >
                     <div className="sticky top-[20vh] w-full flex flex-row items-center justify-between py-6 md:py-8 pointer-events-none z-10 transition-transform duration-300">
-
                       {/* Left Side Content */}
                       <div className="w-1/2 flex justify-end pr-4 sm:pr-8 md:pr-14 pointer-events-auto">
                         {m.align === "left" ? (
-                          <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
+                          <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-right flex items-center">
+                            {m.logoRender()}
+                          </div>
                         ) : (
                           <div className="flex flex-col text-right p-2 sm:p-4 md:p-0">
-                            <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
+                            <span
+                              className="text-2xl md:text-3xl lg:text-4xl font-bold"
+                              style={{ color: m.color }}
+                            >
                               {m.year}
                             </span>
                             <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
@@ -319,7 +499,10 @@ export default function AboutPage() {
                       <div className="w-1/2 flex justify-start pl-4 sm:pl-8 md:pl-14 pointer-events-auto">
                         {m.align === "left" ? (
                           <div className="flex flex-col text-left p-2 sm:p-4 md:p-0">
-                            <span className="text-2xl md:text-3xl lg:text-4xl font-bold" style={{ color: m.color }}>
+                            <span
+                              className="text-2xl md:text-3xl lg:text-4xl font-bold"
+                              style={{ color: m.color }}
+                            >
                               {m.year}
                             </span>
                             <h3 className="text-base md:text-lg lg:text-xl whitespace-pre-line mt-2 font-semibold leading-relaxed text-black">
@@ -327,7 +510,9 @@ export default function AboutPage() {
                             </h3>
                           </div>
                         ) : (
-                          <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-left flex items-center">{m.logoRender()}</div>
+                          <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-left flex items-center">
+                            {m.logoRender()}
+                          </div>
                         )}
                       </div>
                     </div>
@@ -341,7 +526,7 @@ export default function AboutPage() {
         {/* MENGENAL LEBIH DEKAT  (Tabs) */}
         <section id="mengenal" className="py-16 md:py-20 bg-[#FAFAFA]">
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-center text-[26px] md:text-3xl font-bold text-black font-[var(--font-newsreader)]">
+            <h2 className="text-center text-[26px] md:text-3xl font-bold text-black">
               Mengenal Lebih Dekat
             </h2>
             <p className="text-center text-sm md:text-base text-black mt-2 font-medium">
@@ -354,10 +539,11 @@ export default function AboutPage() {
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
-                  className={`px-4 sm:px-8 pb-3 text-[15px] md:text-lg font-semibold whitespace-nowrap outline-none flex-auto text-center ${activeTab === t
-                    ? "text-black"
-                    : "text-zinc-700 hover:text-black"
-                    }`}
+                  className={`px-4 sm:px-8 pb-3 text-[15px] md:text-lg font-semibold whitespace-nowrap outline-none flex-auto text-center ${
+                    activeTab === t
+                      ? "text-black"
+                      : "text-zinc-700 hover:text-black"
+                  }`}
                 >
                   {t}
                 </button>
@@ -370,7 +556,9 @@ export default function AboutPage() {
                 {/* Side Image */}
                 {activeTab === "Sejarah" && (
                   <div className="h-56 sm:h-[260px] w-full md:w-[320px] lg:w-[380px] bg-[#D9D9D9] flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-xl md:text-2xl">Gambar</span>
+                    <span className="text-white font-bold text-xl md:text-2xl">
+                      Gambar
+                    </span>
                   </div>
                 )}
 
@@ -398,8 +586,14 @@ export default function AboutPage() {
               <h2 className="text-center text-[28px] md:text-[40px] font-bold text-black mt-4">
                 Sinergi Kebaikan untuk Ummat
               </h2>
+<<<<<<< HEAD
               <p className="text-center text-[15px] md:text-[18px] text-gray-600 mt-5 max-w-[850px] mx-auto leading-relaxed font-medium">
                 Tim eksekutif kami terdiri dari para profesional dan praktisi filantropi yang berdedikasi tinggi untuk memastikan setiap amanah donatur terkelola secara transparan, akuntabel, dan berdampak luas.
+=======
+              <p className="text-center text-[15px] md:text-[18px] text-black mt-5 max-w-[800px] mx-auto leading-relaxed">
+                Our executive team brings a wealth of experience, passion, and
+                vision to guide our work and ensure we stay true to our values.
+>>>>>>> enggar_revisi
               </p>
             </div>
 
@@ -410,10 +604,11 @@ export default function AboutPage() {
                   <button
                     key={tab}
                     onClick={() => setActiveKepengurusan(tab)}
-                    className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${activeKepengurusan === tab
-                      ? "bg-[#7FC248] text-white"
-                      : "bg-transparent text-white hover:bg-black/5"
-                      }`}
+                    className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${
+                      activeKepengurusan === tab
+                        ? "bg-[#7FC248] text-white"
+                        : "bg-transparent text-white hover:bg-black/5"
+                    }`}
                   >
                     {tab}
                   </button>
@@ -424,22 +619,36 @@ export default function AboutPage() {
               <div className="w-full md:w-[65%]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
                   {kepengurusanData[activeKepengurusan].map((member, idx) => (
-                    <div key={idx} className="flex flex-col bg-[#7FC248] rounded-xl overflow-hidden shadow-[0_4px_25px_rgba(180,210,180,0.4)] pb-8 border border-white">
+                    <div
+                      key={idx}
+                      className="flex flex-col bg-[#7FC248] rounded-xl overflow-hidden shadow-[0_4px_25px_rgba(180,210,180,0.4)] pb-8 border border-white"
+                    >
                       {/* Foto */}
                       {member.image ? (
                         <div className="relative w-full h-56 md:h-64 rounded-t-xl overflow-hidden">
-                          <Image src={member.image} alt={member.name} fill className="object-cover" />
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover"
+                          />
                         </div>
                       ) : (
                         <div className="w-full h-56 md:h-64 bg-[#EAEAEA] rounded-t-xl flex items-center justify-center">
-                          <span className="text-zinc-400 text-sm font-medium">Foto area</span>
+                          <span className="text-zinc-400 text-sm font-medium">
+                            Foto area
+                          </span>
                         </div>
                       )}
 
                       {/* Nama & Posisi */}
                       <div className="flex flex-col items-center pt-5 px-4 text-center bg-[#7FC248]">
-                        <h4 className="text-white font-medium text-[15px] md:text-[16px]">{member.name}</h4>
-                        <p className="text-white text-[12px] md:text-[13px] mt-1.5 font-medium">{member.role}</p>
+                        <h4 className="text-white font-medium text-[15px] md:text-[16px]">
+                          {member.name}
+                        </h4>
+                        <p className="text-white text-[12px] md:text-[13px] mt-1.5 font-medium">
+                          {member.role}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -457,24 +666,45 @@ export default function AboutPage() {
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-8 text-center">
               <div className="flex flex-col items-center">
-                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">47</h3>
+                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">
+                  47
+                </h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Wilayah Jangkauan
-                  <button onClick={() => setActiveModalInfo(statDetails.wilayah)} className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                  <button
+                    onClick={() => setActiveModalInfo(statDetails.wilayah)}
+                    className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer"
+                  >
+                    ?
+                  </button>
                 </div>
               </div>
               <div className="flex flex-col items-center">
-                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">102.088</h3>
+                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">
+                  102.088
+                </h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Penerima Manfaat
-                  <button onClick={() => setActiveModalInfo(statDetails.manfaat)} className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                  <button
+                    onClick={() => setActiveModalInfo(statDetails.manfaat)}
+                    className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer"
+                  >
+                    ?
+                  </button>
                 </div>
               </div>
               <div className="flex flex-col items-center">
-                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">19</h3>
+                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">
+                  19
+                </h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Aksi Kebaikan
-                  <button onClick={() => setActiveModalInfo(statDetails.kebaikan)} className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                  <button
+                    onClick={() => setActiveModalInfo(statDetails.kebaikan)}
+                    className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer"
+                  >
+                    ?
+                  </button>
                 </div>
               </div>
             </div>
@@ -492,9 +722,10 @@ export default function AboutPage() {
 
                 {/* gamabr bagian kiri*/}
                 <div className="w-full h-full border border-zinc-200/60 bg-[#FAFAFA] relative z-10 mt-6 md:mt-0 shadow-[10px_10px_15px_rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden">
-
                   {/* hapus saja kalo sudah ada gamabrnya */}
-                  <span className="text-zinc-400 text-sm font-medium">Foto area</span>
+                  <span className="text-zinc-400 text-sm font-medium">
+                    Foto area
+                  </span>
 
                   {/* Contoh kode Image siap pakai, hilangkan tanda komentar untuk menggunakannya */}
                   {/* 
@@ -527,7 +758,11 @@ export default function AboutPage() {
                             d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
                           />
                         </defs>
-                        <text fontSize="30" fontWeight="500" className="font-newsreader">
+                        <text
+                          fontSize="30"
+                          fontWeight="500"
+                          className="font-poppins"
+                        >
                           <textPath
                             href="#about-badge-path"
                             startOffset="50%"
@@ -561,7 +796,14 @@ export default function AboutPage() {
                   Kepuasan Anda adalah Amanah Kami
                 </h3>
                 <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
+<<<<<<< HEAD
                   Setiap dana Zakat, Infaq, dan Sedekah yang Anda percayakan kepada kami akan dikelola dengan standar audit yang ketat. Kami memastikan 100% amanah disalurkan kepada program-program Al-Qur&apos;an, Pendidikan, Kesehatan, dan Kemanusiaan.
+=======
+                  When charity: water began, we made a bold promise: 100% of
+                  public donations would go directly to fund clean water
+                  projects. Private donors cover our operating costs so 100% of
+                  your money can fund water projects.
+>>>>>>> enggar_revisi
                 </p>
               </div>
             </div>
@@ -633,8 +875,14 @@ export default function AboutPage() {
 
         {/* OVERLAY MODAL */}
         {activeModalInfo && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-4" onClick={() => setActiveModalInfo(null)}>
-            <div className="bg-white rounded-md w-full max-w-xl p-8 md:p-10 relative shadow-2xl cursor-default" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-4"
+            onClick={() => setActiveModalInfo(null)}
+          >
+            <div
+              className="bg-white rounded-md w-full max-w-xl p-8 md:p-10 relative shadow-2xl cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 onClick={() => setActiveModalInfo(null)}
                 className="absolute top-4 right-4 text-zinc-400 hover:text-black w-8 h-8 flex items-center justify-center rounded-full hover:bg-zinc-100 transition-colors"
@@ -651,7 +899,6 @@ export default function AboutPage() {
             </div>
           </div>
         )}
-
       </main>
     </section>
   );

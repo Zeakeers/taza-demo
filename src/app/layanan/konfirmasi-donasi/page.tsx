@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function KonfirmasiDonasiPage() {
   return (
-    <div className="bg-[#f0f5da] min-h-screen py-16 px-4 md:px-8 flex items-center justify-center relative overflow-hidden">
+    <div className="bg-[#f0f5da] min-h-screen py-16 px-4 md:px-8 flex items-center font-poppins justify-center relative overflow-hidden">
       <div className="max-w-lg w-full z-10">
         {/* Card Container */}
         <div className="bg-white rounded-[32px] md:rounded-[40px] shadow-sm relative pt-12 pb-20 px-6 sm:px-12 md:px-14 mx-auto border border-white/50">

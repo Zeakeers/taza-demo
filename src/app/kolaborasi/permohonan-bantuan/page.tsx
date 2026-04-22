@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function PermohonanBantuanPage() {
   return (
-    <div className="bg-[#EBF1D5] min-h-screen py-10 md:py-16 px-4 md:px-8 flex items-center justify-center relative overflow-hidden">
+    <div className="bg-[#EBF1D5] min-h-screen py-10 md:py-16 px-4 md:px-8 flex items-center justify-center relative overflow-hidden font-poppins">
       <div className="max-w-[600px] w-full z-10">
         {/* Card Container */}
         <div className="bg-white rounded-[32px] md:rounded-[40px] shadow-sm relative pt-12 pb-16 px-6 sm:px-10 md:px-12 mx-auto border border-white/50">

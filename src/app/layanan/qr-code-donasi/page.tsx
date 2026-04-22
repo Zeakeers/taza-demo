@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function QRCodeDonasiPage() {
   return (
-    <div className="bg-white text-zinc-800 min-h-screen relative overflow-hidden">
+    <div className="bg-white text-zinc-800 min-h-screen relative overflow-hidden font-poppins">
       <div className="mx-auto max-w-[1280px] px-4 md:px-8 lg:px-12 py-12 md:py-20 relative min-h-[800px]">
         
         {/* Decorative Vertical Line */}

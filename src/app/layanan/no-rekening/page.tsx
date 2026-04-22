@@ -44,7 +44,7 @@ const sections: SectionData[] = [
 
 export default function NoRekeningPage() {
   return (
-    <div className="bg-[#fcfee1] min-h-screen">
+    <div className="bg-[#fcfee1] min-h-screen font-poppins">
       {/* Hero Section */}
       <div className="relative w-full h-[450px] md:h-[500px]">
         <Image

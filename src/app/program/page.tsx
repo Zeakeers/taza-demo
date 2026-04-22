@@ -4,14 +4,14 @@ export default function ProgramPage() {
   const gridBgOffsetY = "150px";
 
   return (
-    <section className="min-h-screen w-full bg-[#faf7f0] overflow-x-hidden">
+    <section className="min-h-screen w-full bg-[#faf7f0] overflow-x-hidden font-poppins">
       {/* header */}
       <header className="w-full flex flex-col bg-black md:flex-row md:h-[400px]">
         {/* Gambar */}
         <div className="w-full md:w-1/2 h-56 sm:h-72 md:h-auto bg-gray-300"></div>
         {/* text */}
         <div className="w-full md:w-1/2 bg-[#30353B] flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 sm:py-10 md:px-12 lg:px-16 text-center md:text-left items-center md:items-start">
-          <h1 className="text-white text-xl md:text-3xl lg:text-4xl font-light font-newsreader pb-2 border-b-2 border-[#7FC248]">
+          <h1 className="text-white text-xl md:text-3xl lg:text-4xl font-light font-poppins pb-2 border-b-2 border-[#7FC248]">
             It&apos;s time to take action.
           </h1>
           <p className="text-white text-sm md:text-lg font-light leading-relaxed max-w-xl">
@@ -25,7 +25,7 @@ export default function ProgramPage() {
       <main className="bg-[#FAF7F0] w-full md:py-10 lg:py-8 px-5">
         {/* pembuka */}
         <section className="w-full">
-          <h2 className="text-2xl md:text-2xl lg:text-3xl text-black font-medium font-newsreader text-center mt-10 mb-2 tracking-wide">
+          <h2 className="text-2xl md:text-2xl lg:text-3xl text-black font-medium font-poppins text-center mt-10 mb-2 tracking-wide">
             You have our word—and more
           </h2>
           <p className="text-center text-md md:text-xl lg:text-xl text-zinc-700 max-w-3xl mx-auto">
@@ -38,7 +38,7 @@ export default function ProgramPage() {
             {/* circle 1 */}
             <div className="flex flex-col items-center justify-center">
               <div className="h-16 md:h-24 lg:h-28 w-16 md:w-24 lg:w-28 rounded-full bg-yellow-300"></div>
-              <h3 className="text-center mt-2 text-black font-medium text-[16px] md:text-lg lg:text-xl font-newsreader">
+              <h3 className="text-center mt-2 text-black font-medium text-[16px] md:text-lg lg:text-xl font-poppins">
                 We give 100%
               </h3>
               <p className="text-center mt-2 text-[13px] md:text-base lg:text-base max-w-52 text-zinc-600">
@@ -49,7 +49,7 @@ export default function ProgramPage() {
             {/* circle 1 */}
             <div className="flex flex-col items-center justify-center">
               <div className="h-16 md:h-24 lg:h-28 w-16 md:w-24 lg:w-28 rounded-full bg-yellow-300"></div>
-              <h3 className="text-center mt-2 text-black font-medium text-[16px] md:text-lg lg:text-xl font-newsreader">
+              <h3 className="text-center mt-2 text-black font-medium text-[16px] md:text-lg lg:text-xl font-poppins">
                 We give 100%
               </h3>
               <p className="text-center mt-2 text-[13px] md:text-base lg:text-base max-w-52 text-zinc-600">
@@ -60,7 +60,7 @@ export default function ProgramPage() {
             {/* circle 1 */}
             <div className="flex flex-col items-center justify-center">
               <div className="h-16 md:h-24 lg:h-28 w-16 md:w-24 lg:w-28 rounded-full bg-yellow-300"></div>
-              <h3 className="text-center mt-2 text-black font-medium text-[16px] md:text-lg lg:text-xl font-newsreader">
+              <h3 className="text-center mt-2 text-black font-medium text-[16px] md:text-lg lg:text-xl font-poppins">
                 We give 100%
               </h3>
               <p className="text-center mt-2 text-[13px] md:text-base lg:text-base max-w-52 text-zinc-600">
@@ -96,7 +96,7 @@ export default function ProgramPage() {
                   </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
+                    <h4 className="font-poppins text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Dakwah{" "}
                       <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
                         ➔
@@ -126,7 +126,7 @@ export default function ProgramPage() {
                   </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
+                    <h4 className="font-poppins text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Ekonomi{" "}
                       <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
                         ➔
@@ -156,7 +156,7 @@ export default function ProgramPage() {
                   </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
+                    <h4 className="font-poppins text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Kemanusiaan{" "}
                       <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
                         ➔
@@ -186,7 +186,7 @@ export default function ProgramPage() {
                   </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
+                    <h4 className="font-poppins text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Kesehatan{" "}
                       <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
                         ➔
@@ -216,7 +216,7 @@ export default function ProgramPage() {
                   </div>
                   {/* Kotak Keterangan */}
                   <div className="mt-0 mx-auto w-[85%] rounded-md border border-zinc-400 bg-[#5DA630] px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
-                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-white">
+                    <h4 className="font-poppins text-sm sm:text-lg md:text-xl font-medium text-white">
                       Bidang Pendidikan{" "}
                       <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">
                         ➔
@@ -236,7 +236,7 @@ export default function ProgramPage() {
 
         {/* Other ways to take action */}
         <section className="mx-auto w-full max-w-6xl mt-14 md:mt-28">
-          <h2 className="text-center text-3xl md:text-4xl font-newsreader text-zinc-900">
+          <h2 className="text-center text-3xl md:text-4xl font-poppins text-zinc-900">
             Other ways to take action
           </h2>
 
@@ -251,7 +251,7 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+              <h3 className="text-2xl font-medium font-poppins text-zinc-900">
                 Bayar Zakat
               </h3>
 
@@ -278,7 +278,7 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+              <h3 className="text-2xl font-medium font-poppins text-zinc-900">
                 Dukung Program Kebaikan
               </h3>
 
@@ -305,7 +305,7 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+              <h3 className="text-2xl font-medium font-poppins text-zinc-900">
                 Fundraiser
               </h3>
 
@@ -331,7 +331,7 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+              <h3 className="text-2xl font-medium font-poppins text-zinc-900">
                 Ajukan Bantuan
               </h3>
 
@@ -358,7 +358,7 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+              <h3 className="text-2xl font-medium font-poppins text-zinc-900">
                 Laporan Penyaluran
               </h3>
 
@@ -385,7 +385,7 @@ export default function ProgramPage() {
               />
 
               {/* CONTENT */}
-              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+              <h3 className="text-2xl font-medium font-poppins text-zinc-900">
                 Legalitas & Transparansi
               </h3>
 
@@ -408,7 +408,7 @@ export default function ProgramPage() {
       {/* bottom*/}
       {/* <section className="w-full bg-[#F8EED3] py-16 md:py-20 lg:py-24">
         <div className="mx-auto w-full max-w-4xl px-6 text-center">
-          <h2 className="font-newsreader text-2xl font-medium text-zinc-900">
+          <h2 className="font-poppins text-2xl font-medium text-zinc-900">
             You deserve to give with confidence
           </h2>
           <p className="mt-6 text-lg md:text-xl leading-relaxed text-zinc-900">

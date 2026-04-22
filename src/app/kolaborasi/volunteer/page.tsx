@@ -61,7 +61,7 @@ export default function VolunteerPage() {
   }
 
   return (
-    <div className="bg-white min-h-screen overflow-hidden">
+    <div className="bg-white min-h-screen overflow-hidden font-poppins">
 
       {/* HERO */}
       <section className="relative bg-gradient-to-br from-[#1a5c2a] via-[#267a38] to-[#3a9e50] pt-24 pb-32 px-4 overflow-hidden">

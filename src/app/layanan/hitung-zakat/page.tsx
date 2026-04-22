@@ -108,7 +108,7 @@ export default function HitungZakatPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white font-poppins">
       {/* Container utama dengan max-width */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
 

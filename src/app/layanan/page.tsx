@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function page() {
   return (
-    <div className="bg-white text-zinc-800 min-h-screen">
+    <div className="bg-white text-zinc-800 min-h-screen font-poppins">
       <div className="mx-auto max-w-[1280px] px-4 md:px-8 lg:px-12 py-10 md:py-16">
         
         {/* Title Section */}

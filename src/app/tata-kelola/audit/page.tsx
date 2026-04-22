@@ -2,7 +2,7 @@ import RightBarAudit from "@/components/layout/rightbar-audit";
 
 export default function AuditKeuangan() {
   return (
-    <section className="bg-white min-h-screen p-10">
+    <section className="bg-white min-h-screen p-10 font-poppins">
       <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between gap-10 w-full">
         {/* kiri */}
         <div className="w-full md:flex-1 md:flex md:justify-center">
