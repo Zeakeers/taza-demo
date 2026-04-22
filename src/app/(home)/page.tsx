@@ -106,13 +106,6 @@ export default function Home() {
             <h2 className="text-2xl sm:text-3xl font-bold text-black text-center mb-10">
               Artikel <span className="text-[#7FC248] font-light">Taman Zakat</span>
             </h2>
-
-            {/* Pagination Dots */}
-            <div className="flex justify-center gap-3">
-              <span className="w-2.5 h-2.5 rounded-full bg-white cursor-pointer hover:bg-gray-400 transition-colors"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-gray-600 shadow-sm cursor-pointer border border-gray-400"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-white cursor-pointer hover:bg-gray-400 transition-colors"></span>
-            </div>
           </div>
 
           <ArtikelSlider />
