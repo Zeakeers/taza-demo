@@ -9,7 +9,7 @@ import ArtikelSlider from "@/components/ui/artikel-slider";
 
 export default function Home() {
   return (
-    <section className="w-full min-h-screen flex flex-col bg-white overflow-x-hidden font-poppins">
+    <section className="w-full min-h-screen flex flex-col bg-white overflow-x-hidden">
       {/* Header */}
       <header>
         <HeroSliderHome />
@@ -22,21 +22,13 @@ export default function Home() {
         {/* Tentang Kami / About */}
         <section className="mt-20 px-4">
           <div className="text-center max-w-3xl mx-auto">
-            <h2 className="text-lg sm:text-xl font-bold uppercase tracking-widest text-[#3B7A1C]">
-              ABOUT
-            </h2>
-            <h3 className="text-2xl sm:text-3xl mt-2 text-black font-bold">
-              <span className="font-bold text-[#7FC248]">TAMAN ZAKAT</span>{" "}
-              INDONESIA
-            </h3>
+            <h2 className="text-lg sm:text-xl font-bold uppercase tracking-widest text-[#3B7A1C]">ABOUT</h2>
+            <h3 className="text-2xl sm:text-3xl font-light mt-2 text-black font-bold"><span className="font-bold text-[#7FC248]">TAMAN ZAKAT</span> INDONESIA</h3>
             <p className="mt-6 text-base sm:text-lg text-black leading-relaxed font-medium">
-              Kami Memfasilitasi perkembangan generasi yang penuh berkah dan
-              kami mempunyai mimpi bisa menjadi salah satu tulang punggung
-              gerakan kebaikan ummat.
+              Kami Memfasilitasi perkembangan generasi yang penuh berkah dan kami mempunyai mimpi bisa menjadi salah satu tulang punggung gerakan kebaikan ummat.
             </p>
             <button className="mt-6 bg-[#7FC248] text-white px-6 py-2.5 rounded-md font-medium inline-flex items-center justify-center gap-2 hover:bg-[#6eb23a] transition-colors shadow-md">
-              Selengkapnya{" "}
-              <span className="text-2xl leading-none -mt-1">&rarr;</span>
+              Selengkapnya <span className="text-2xl leading-none -mt-1">&rarr;</span>
             </button>
           </div>
 
@@ -44,53 +36,26 @@ export default function Home() {
             {/* logo bulat taza animasi */}
             <div className="absolute -top-8 -left-5 md:-top-10 md:-left-8 z-20 hover:scale-105 transition-transform duration-300">
               <div className="relative h-[65px] w-[65px] md:h-[80px] md:w-[80px]">
-                <div
-                  aria-hidden
-                  className="absolute -top-[2px] left-[2px] h-full w-full rounded-full border border-black bg-transparent rotate-[-6deg]"
-                />
+                <div aria-hidden className="absolute -top-[2px] left-[2px] h-full w-full rounded-full border border-black bg-transparent rotate-[-6deg]" />
                 <div className="relative z-10 flex h-full w-full items-center justify-center rounded-full border border-black bg-[#8cc63f]">
-                  <svg
-                    viewBox="0 0 300 300"
-                    aria-hidden
-                    className="absolute inset-0 h-full w-full fill-black transform -rotate-12 animate-[spin_15s_linear_infinite]"
-                  >
+                  <svg viewBox="0 0 300 300" aria-hidden className="absolute inset-0 h-full w-full fill-black transform -rotate-12 animate-[spin_15s_linear_infinite]">
                     <defs>
-                      <path
-                        id="home-kemanusiaan-badge-path"
-                        d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
-                      />
+                      <path id="home-kemanusiaan-badge-path" d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224" />
                     </defs>
-                    <text
-                      fontSize="30"
-                      fontWeight="500"
-                      className="font-poppins tracking-wider"
-                    >
-                      <textPath
-                        href="#home-kemanusiaan-badge-path"
-                        startOffset="50%"
-                        textAnchor="middle"
-                        textLength="660"
-                      >
+                    <text fontSize="30" fontWeight="500" className="font-newsreader tracking-wider">
+                      <textPath href="#home-kemanusiaan-badge-path" startOffset="50%" textAnchor="middle" textLength="660">
                         Taman Zakat - Indonesia - taza -
                       </textPath>
                     </text>
                   </svg>
                   <div className="relative z-10 flex h-[28px] w-[28px] md:h-[35px] md:w-[35px] items-center justify-center rounded-full border-[2px] border-black bg-[#8cc63f]">
-                    <Image
-                      src="/images/icon/hitam logo taza 1.svg"
-                      alt="Logo Taza"
-                      width={24}
-                      height={24}
-                      className="h-[16px] w-auto md:h-[20px]"
-                    />
+                    <Image src="/images/icon/hitam logo taza 1.svg" alt="Logo Taza" width={24} height={24} className="h-[16px] w-auto md:h-[20px]" />
                   </div>
                 </div>
               </div>
             </div>
             <p className="text-base sm:text-lg text-black font-medium leading-relaxed mt-2 sm:mt-0 px-4 pt-2">
-              Lembaga Filantropi Profesional dan terpercaya yang berfokus pada
-              Sarana dakwah untuk Pengembangan Alqur&apos;an, Pendidikan,
-              Kesehatan dan Kemanusiaan
+              Lembaga Filantropi Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk Pengembangan Alqur&apos;an, Pendidikan, Kesehatan dan Kemanusiaan
             </p>
           </div>
         </section>
@@ -105,7 +70,7 @@ export default function Home() {
             <p className="text-center text-sm sm:text-base text-gray-300 mb-12 max-w-4xl mx-auto opacity-90 drop-shadow-md">
               charity: water uses 100% of your donation to fund clean water around the world and then proves every single project you fund, complete with GPS coordinates and photos. Give water. Get proof. Every single time.
             </p>
-
+            
             <div className="border border-gray-600 rounded-lg relative overflow-hidden flex flex-col items-center pt-10 shadow-lg">
                 <Image src="/images/icon/logo taza font putih.png" width={240} height={70} className="h-[45px] sm:h-[50px] w-auto drop-shadow" alt="Taman Zakat Logo" />
                 <p className="text-center text-[10px] sm:text-xs text-gray-400 mt-2 mb-10 font-medium">Last updated: March 6, 2026</p>
@@ -125,9 +90,9 @@ export default function Home() {
                   </div>
                 </div>
 
-              <div className="w-[95%] md:w-[90%] mt-8 pb-6 relative z-20">
-                <IndonesiaMap />
-              </div>
+                <div className="w-[95%] md:w-[90%] mt-8 pb-6 relative z-20">
+                  <IndonesiaMap />
+                </div>
             </div>
           </div>
         </section>
@@ -139,8 +104,7 @@ export default function Home() {
         <section className="bg-[#D3ECC4] border-t border-[#B8DDA1] pt-12 pb-16 w-full mt-10">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-black text-center mb-10">
-              Artikel{" "}
-              <span className="text-[#7FC248] font-light">Taman Zakat</span>
+              Artikel <span className="text-[#7FC248] font-light">Taman Zakat</span>
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -184,6 +148,7 @@ export default function Home() {
             LIHAT SEMUA PELUANG
           </button>
         </section>
+
       </main>
     </section>
   );
