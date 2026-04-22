@@ -134,21 +134,42 @@ export default function TataKelolaPage() {
             <div className="flex flex-col gap-32 relative pb-20 overflow-hidden px-4 md:px-0">
               <div className="flex flex-col lg:flex-row items-center justify-between min-h-[300px] gap-8 lg:gap-0">
                 <div className="relative w-full lg:w-1/2 h-[300px] md:h-[400px]">
+                  {/* ini jangan diganti gambar karena cuma hiasan bg-[#E3F2D4]*/}
                   <div className="absolute top-20 -left-4 md:-left-10 lg:-left-20 w-24 md:w-32 lg:w-[220px] h-[300px] md:h-[400px] bg-[#E3F2D4] z-0"></div>
-                  <div className="absolute top-40 left-10 md:left-20 lg:left-12 w-32 md:w-56 h-32 md:h-48 bg-[#D9D9D9] z-10 shadow-sm"></div>
-                  <div className="absolute top-16 left-36 md:left-56 lg:left-40 w-44 md:w-60 h-44 md:h-60 bg-black z-20 shadow-md"></div>
-                  <div className="absolute top-52 md:top-64 left-52 md:left-80 lg:left-64 w-28 md:w-40 h-28 md:h-40 bg-[#888484] z-30 shadow-sm"></div>
+                  {/* 3 box dibawah diisi gambar dummy */}
+                  <div className="absolute top-40 left-10 md:left-20 lg:left-12 w-32 md:w-56 h-32 md:h-48 z-10 shadow-sm overflow-hidden">
+                    <img
+                      src="https://picsum.photos/seed/laporan1/400/300"
+                      alt="Laporan 1"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute top-16 left-36 md:left-56 lg:left-40 w-44 md:w-60 h-44 md:h-60 z-20 shadow-md overflow-hidden">
+                    <img
+                      src="https://picsum.photos/seed/laporan2/400/400"
+                      alt="Laporan 2"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute top-52 md:top-64 left-52 md:left-80 lg:left-64 w-28 md:w-40 h-28 md:h-40 z-30 shadow-sm overflow-hidden">
+                    <img
+                      src="https://picsum.photos/seed/laporan3/300/300"
+                      alt="Laporan 3"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
 
                 <div className="w-full lg:w-1/2 flex flex-col justify-center items-start pl-0 lg:pl-[10%] z-40 relative">
                   <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3">
-                    We are advancing
+                    Annual Report
                     <br />
-                    equality
+                    2024
                   </h3>
                   <p className="text-sm md:text-base text-zinc-600 mb-6 max-w-sm">
-                    We believe in the inherent dignity of all people and that
-                    inequality is the defining challenge of our time.
+                    Jelajahi rangkaian perjalanan kami selama setahun dalam
+                    menebar manfaat dan mewujudkan kemandirian bagi ribuan
+                    penerima manfaat.
                   </p>
                   <button className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
                     Annual Report
@@ -161,13 +182,14 @@ export default function TataKelolaPage() {
                 <div className="w-full lg:w-1/2 flex flex-col justify-center items-start lg:items-end text-left lg:text-left pr-0 lg:pr-[10%] z-40 relative mt-16 md:mt-0">
                   <div className="lg:max-w-sm">
                     <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3">
-                      We are advancing
+                      Annual Report
                       <br />
-                      equality
+                      2024
                     </h3>
                     <p className="text-sm md:text-base text-zinc-600 mb-6">
-                      We believe in the inherent dignity of all people and that
-                      inequality is the defining challenge of our time.
+                      Sinergi hebat yang melahirkan dampak luas, simak rangkuman
+                      dedikasi kami dalam mengelola amanah untuk memberdayakan
+                      sesama di tahun ini.
                     </p>
                     <div className="flex w-full">
                       <button className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
@@ -179,10 +201,30 @@ export default function TataKelolaPage() {
                 </div>
 
                 <div className="relative w-full lg:w-1/2 h-[300px] md:h-[400px]">
+                  {/* ini jangan diganti gambar karena cuma hiasan bg-[#FAF1E3]*/}
                   <div className="absolute top-10 -right-4 md:-right-10 lg:-right-0 w-24 md:w-32 lg:w-[150px] h-[300px] md:h-[400px] bg-[#FAF1E3] z-0"></div>
-                  <div className="absolute top-36 left-10 md:left-24 lg:left-12 w-40 md:w-56 h-32 md:h-48 bg-[#D9D9D9] z-10 shadow-sm"></div>
-                  <div className="absolute top-16 left-32 md:left-56 lg:left-40 w-40 md:w-56 h-40 md:h-56 bg-black z-20 shadow-md"></div>
-                  <div className="absolute top-48 md:top-64 left-44 md:left-80 lg:left-64 w-32 md:w-44 h-32 md:h-44 bg-[#E0E0E0] z-30 shadow-sm"></div>
+                  {/* 3 box dibawah diisi gambar dummy */}
+                  <div className="absolute top-36 left-10 md:left-24 lg:left-12 w-40 md:w-56 h-32 md:h-48 z-10 shadow-sm overflow-hidden">
+                    <img
+                      src="https://picsum.photos/seed/laporan4/400/300"
+                      alt="Laporan 4"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute top-16 left-32 md:left-56 lg:left-40 w-40 md:w-56 h-40 md:h-56 z-20 shadow-md overflow-hidden">
+                    <img
+                      src="https://picsum.photos/seed/laporan5/400/400"
+                      alt="Laporan 5"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute top-48 md:top-64 left-44 md:left-80 lg:left-64 w-32 md:w-44 h-32 md:h-44 z-30 shadow-sm overflow-hidden">
+                    <img
+                      src="https://picsum.photos/seed/laporan6/300/300"
+                      alt="Laporan 6"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
