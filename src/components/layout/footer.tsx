@@ -140,7 +140,7 @@ export default function Footer() {
                   Kec. Taman, Kab. Sidoarjo, Prov. Jawa Timur
                 </p>
 
-              
+
               </div>
 
               {/* Kotak iframe maps */}
@@ -165,14 +165,10 @@ export default function Footer() {
 
       {/* Copyright */}
       <section className="w-full bg-[#194020] py-4">
-        <div className="mx-auto max-w-[1200px] px-6 text-center md:flex md:justify-between md:items-center">
+        <div className="mx-auto max-w-[1200px] px-6 text-center">
           <p className="text-sm font-medium text-zinc-300/80">
             © 2026 Taman Zakat. Designed by Taman Zakat Team.
           </p>
-          <div className="hidden text-sm font-medium text-zinc-400 md:flex gap-5 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-white transition-colors">Syarat & Ketentuan</Link>
-            <Link href="#" className="hover:text-white transition-colors">Kebijakan Privasi</Link>
-          </div>
         </div>
       </section>
     </footer>
