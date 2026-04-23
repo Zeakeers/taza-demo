@@ -55,7 +55,7 @@ export default function Navbar() {
             Program
           </Link>
           <a
-            href="#"
+            href="https://aksi.tamanzakat.org/"
             className="md:h-8 h-7 md:px-4 px-3 text-sm md:text-base flex items-center justify-center rounded-lg text-[#196135] bg-white shadow-lg font-bold"
           >
             Donasi
@@ -219,7 +219,7 @@ export default function Navbar() {
           {/* tampilan desktop */}
           <div className={`hidden md:flex items-center absolute right-4 md:right-6 lg:right-8 transition-all duration-500 ease-in-out ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'}`}>
             <a
-              href="#"
+              href="https://aksi.tamanzakat.org/"
               className="h-8 md:h-10 px-4 md:px-6 flex items-center justify-center rounded-md text-[14px] font-[600] text-white bg-[#5DA630] shadow-md hover:bg-[#4d8f28] transition-all whitespace-nowrap shrink-0"
             >
               Donasi
@@ -328,7 +328,7 @@ export default function Navbar() {
 
         <div className="p-4 border-t border-zinc-100 bg-zinc-50">
           <a
-            href="#"
+            href="https://aksi.tamanzakat.org/"
             onClick={() => setIsMobileMenuOpen(false)}
             className="w-full h-11 flex items-center justify-center rounded-xl text-[15px] font-[600] text-white bg-[#5DA630] shadow-md hover:bg-[#4d8f28] transition-all"
           >
