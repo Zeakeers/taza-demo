@@ -24,7 +24,7 @@ export default function Home() {
             <h2 className="text-lg sm:text-xl font-bold uppercase tracking-widest text-[#3B7A1C]">
               TENTANG KAMI
             </h2>
-            <h3 className="text-2xl sm:text-3xl font-light mt-2 text-black font-bold">
+            <h3 className="text-2xl sm:text-3xl mt-2 text-black font-bold">
               <span className="font-bold text-[#7FC248]">TAMAN ZAKAT</span>{" "}
               INDONESIA
             </h3>
