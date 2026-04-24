@@ -231,12 +231,12 @@ export default function BidangEkonomiPage() {
       {/* ===================== LIST EKONOMI BLOCKS ===================== */}
 
       {/* Tebar Hewan Kurban */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
+      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
               {/* Shadow matches section background */}
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#F8EED3] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
 
               <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
                 <Image
@@ -356,11 +356,11 @@ export default function BidangEkonomiPage() {
       </section>
 
       {/* Zakat Maal */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
+      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#F8EED3] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
 
               <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
                 <Image
@@ -479,11 +479,11 @@ export default function BidangEkonomiPage() {
       </section>
 
       {/* Berbagi Ifhtar Istimewa */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
+      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#F8EED3] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
 
               <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
                 <Image
@@ -602,7 +602,7 @@ export default function BidangEkonomiPage() {
       </section>
 
       {/* ===================== BOTTOM COLLAGE SECTION ===================== */}
-      <section className="w-full pt-10 md:pt-20 pb-12 md:pb-16 px-4 md:px-12 bg-[#F8EED3] relative overflow-hidden">
+      <section className="w-full pt-10 md:pt-20 pb-12 md:pb-16 px-4 md:px-12 bg-[#EBF5D5] relative overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-14">
           {/* Left: Collage */}
           <div className="w-full md:w-1/2 relative min-h-[350px] sm:min-h-[450px] md:min-h-[750px] lg:min-h-[800px] my-4 md:my-8 flex-shrink-0">

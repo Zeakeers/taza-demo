@@ -277,7 +277,9 @@ export default function AboutPage() {
           {/* Card */}
           <div className="bg-[#F9F9F9] p-8 md:p-12 w-full max-w-[460px] shadow-2xl flex flex-col items-center text-center">
             <h1 className="text-black text-[24px] md:text-[28px] font-bold leading-tight">
-              Hal paling sia-sia adalah <br />saat kita diam tanpa <br />melakukan apa-apa.
+              Hal paling sia-sia adalah <br />
+              saat kita diam tanpa <br />
+              melakukan apa-apa.
             </h1>
 
             <div className="mt-6 mb-4 text-zinc-800 text-[11px] md:text-xs font-bold tracking-wider uppercase flex flex-col items-center">
@@ -286,11 +288,15 @@ export default function AboutPage() {
                 <span>H. SLAMET BUDIONO, S.H., M.M</span>
                 <span className="w-5 h-[1px] bg-zinc-400 block"></span>
               </div>
-              <span className="mt-1 text-[#7FC248]">FOUNDER & CEO TAMAN ZAKAT</span>
+              <span className="mt-1 text-[#7FC248]">
+                FOUNDER & CEO TAMAN ZAKAT
+              </span>
             </div>
 
             <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed italic">
-              &quot;Semangat kami adalah memastikan setiap titipan kebaikan Anda mengalir menjadi keberkahan yang nyata bagi mereka yang paling membutuhkan.&quot;
+              &quot;Semangat kami adalah memastikan setiap titipan kebaikan Anda
+              mengalir menjadi keberkahan yang nyata bagi mereka yang paling
+              membutuhkan.&quot;
             </p>
 
             <button className="mt-8 bg-[#FDBA12] hover:bg-[#E5A810] text-black font-semibold px-8 py-3 rounded-sm transition-colors duration-200 uppercase tracking-widest text-xs">
@@ -448,13 +454,16 @@ export default function AboutPage() {
                 Sinergi Kebaikan untuk Ummat
               </h2>
               <p className="text-center text-[15px] md:text-[18px] text-gray-600 mt-5 max-w-[850px] mx-auto leading-relaxed font-medium">
-                Tim eksekutif kami terdiri dari para profesional dan praktisi filantropi yang berdedikasi tinggi untuk memastikan setiap amanah donatur terkelola secara transparan, akuntabel, dan berdampak luas.
+                Tim eksekutif kami terdiri dari para profesional dan praktisi
+                filantropi yang berdedikasi tinggi untuk memastikan setiap
+                amanah donatur terkelola secara transparan, akuntabel, dan
+                berdampak luas.
               </p>
             </div>
 
             <div className="mt-14 flex flex-col md:flex-row gap-10 lg:gap-20 items-stretch">
               {/* Sidebar Tabs */}
-              <div className="w-full md:w-[35%] flex flex-col border border-zinc-300 rounded-2xl py-8 px-4 gap-4 bg-[#5DA630] self-start shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+              <div className="w-full md:w-[35%] flex flex-col border border-zinc-300 rounded-2xl py-8 px-4 gap-4 bg-[#204f28] self-start shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
                 {kepengurusanTabs.map((tab) => (
                   <button
                     key={tab}
@@ -593,56 +602,7 @@ export default function AboutPage() {
                    */}
                 </div>
 
-                {/* Taza Badge top right corner */}
-                <div className="absolute top-2 -right-5 md:-top-6 md:-right-8 z-20">
-                  <div className="relative h-[68px] w-[68px]">
-                    <div
-                      aria-hidden
-                      className="absolute -top-[2px] left-[2px] h-full w-full rounded-full border border-black bg-transparent rotate-[-6deg]"
-                    />
-                    <div className="relative z-10 flex h-full w-full items-center justify-center rounded-full border border-black bg-[#7FC248]">
-                      {/* Animasi spin infinite untuk teks */}
-                      <svg
-                        viewBox="0 0 300 300"
-                        aria-hidden
-                        className="absolute inset-0 h-full w-full fill-black animate-[spin_10s_linear_infinite]"
-                      >
-                        <defs>
-                          <path
-                            id="about-badge-path"
-                            d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
-                          />
-                        </defs>
-                        <text
-                          fontSize="30"
-                          fontWeight="500"
-                          className="font-poppins"
-                        >
-                          <textPath
-                            href="#about-badge-path"
-                            startOffset="50%"
-                            textAnchor="middle"
-                            textLength="680"
-                            lengthAdjust="spacing"
-                          >
-                            Taman Zakat - Indonesia - taza -
-                          </textPath>
-                        </text>
-                      </svg>
 
-                      {/* Ikon tengah statis */}
-                      <div className="relative z-10 flex h-[32px] w-[32px] items-center justify-center rounded-full border-[2px] border-black bg-[#7FC248]">
-                        <Image
-                          src="/images/icon/hitam logo taza 1.svg"
-                          alt="Logo Taza hitam"
-                          width={26}
-                          height={30}
-                          className="h-[22px] w-auto"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* Right Text */}
@@ -651,7 +611,10 @@ export default function AboutPage() {
                   Kepuasan Anda adalah Amanah Kami
                 </h3>
                 <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
-                  Setiap dana Zakat, Infaq, dan Sedekah yang Anda percayakan kepada kami akan dikelola dengan standar audit yang ketat. Kami memastikan 100% amanah disalurkan kepada program-program Al-Qur&apos;an, Pendidikan, Kesehatan, dan Kemanusiaan.
+                  Setiap dana Zakat, Infaq, dan Sedekah yang Anda percayakan
+                  kepada kami akan dikelola dengan standar audit yang ketat.
+                  Kami memastikan 100% amanah disalurkan kepada program-program
+                  Al-Qur&apos;an, Pendidikan, Kesehatan, dan Kemanusiaan.
                 </p>
               </div>
             </div>
