@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Article = {
   id: number;
@@ -128,6 +128,7 @@ const articles: Article[] = [
 ];
 
 const CATEGORIES = ["Semua", "Kemanusiaan", "Kesehatan", "Sosial", "Pendidikan", "Ekonomi", "Dakwah"];
+const ITEMS_PER_PAGE = 8;
 
 function CategoryBadge({ label }: { label: string }) {
   return (
@@ -138,12 +139,15 @@ function CategoryBadge({ label }: { label: string }) {
 }
 
 function ArrowButton({ small = false }: { small?: boolean }) {
-  const size = small ? "w-6 h-6 text-sm" : "w-8 h-8 text-lg";
+  const size = small ? "w-6 h-6" : "w-8 h-8";
+  const iconSize = small ? "w-3 h-3" : "w-4 h-4";
   return (
     <button
-      className={`${size} rounded-full bg-[#7FC248] text-white flex items-center justify-center leading-none hover:bg-[#5DA630] transition-colors flex-shrink-0`}
+      className={`${size} rounded-full bg-[#7FC248] text-white flex items-center justify-center hover:bg-[#5DA630] transition-colors flex-shrink-0`}
     >
-      ›
+      <svg className={iconSize} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 18l6-6-6-6" />
+      </svg>
     </button>
   );
 }
@@ -252,6 +256,11 @@ function RegularCard({ article }: { article: Article }) {
 export default function NewsPage() {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("Semua");
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [query, activeCategory]);
 
   const filtered = articles.filter((a) => {
     const matchCat = activeCategory === "Semua" || a.category === activeCategory;
@@ -264,14 +273,30 @@ export default function NewsPage() {
   const highlights = filtered.filter((a) => a.tier === "highlight");
   const regulars   = filtered.filter((a) => a.tier === "regular");
 
+  const totalPages = Math.max(1, Math.ceil(regulars.length / ITEMS_PER_PAGE));
+  const paginatedRegulars = regulars.slice(
+    (currentPage - 1) * ITEMS_PER_PAGE,
+    currentPage * ITEMS_PER_PAGE
+  );
+
   const hasPopular = hero.length > 0 || highlights.length > 0;
 
   return (
     <div className="min-h-screen bg-[#F5FCF0]">
 
       {/* ── Hero banner ──────────────────────────────────────── */}
-      <div className="w-full bg-[#1e5b3a] py-14 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+      <div className="w-full relative py-14 px-4 overflow-hidden">
+        {/* Background image dummy */}
+        <img
+          src="https://picsum.photos/seed/berita-taza/1600/500"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Overlay hijau gelap */}
+        <div className="absolute inset-0 bg-[#1e5b3a]/85" />
+
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <p className="text-[#7FC248] text-sm font-semibold uppercase tracking-widest mb-2">
             Tetap Terhubung
           </p>
@@ -309,6 +334,7 @@ export default function NewsPage() {
       </div>
 
       {/* ── Filter kategori ──────────────────────────────────── */}
+
       <div className="sticky top-16 z-30 bg-white border-b border-gray-100 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-3 flex gap-2 overflow-x-auto scrollbar-hide">
           {CATEGORIES.map((cat) => (
@@ -377,10 +403,49 @@ export default function NewsPage() {
                 </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                  {regulars.map((a) => (
+                  {paginatedRegulars.map((a) => (
                     <RegularCard key={a.id} article={a} />
                   ))}
                 </div>
+
+                {/* Pagination */}
+                {totalPages > 1 && (
+                  <div className="flex items-center justify-center gap-2 mt-8">
+                    <button
+                      onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                      disabled={currentPage === 1}
+                      className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-[#7FC248] hover:text-[#7FC248] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M15 18l-6-6 6-6" />
+                      </svg>
+                    </button>
+
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`w-8 h-8 rounded-full text-sm font-medium transition-colors ${
+                          page === currentPage
+                            ? "bg-[#7FC248] text-white shadow-sm"
+                            : "border border-gray-300 text-gray-600 hover:border-[#7FC248] hover:text-[#7FC248]"
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    ))}
+
+                    <button
+                      onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                      disabled={currentPage === totalPages}
+                      className="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:border-[#7FC248] hover:text-[#7FC248] disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+                    >
+                      <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M9 18l6-6-6-6" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
               </section>
             )}
           </>
