@@ -9,7 +9,6 @@ const SparkIcon = ({ className }: { className?: string }) => (
 )
 
 const stats = [
-  { number: '500+', label: 'Relawan Aktif' },
   { number: '10K+', label: 'Penerima Manfaat' },
   { number: '50+', label: 'Program Sosial' },
   { number: '8', label: 'Kota Cakupan' },
@@ -110,9 +109,9 @@ export default function VolunteerPage() {
 
       {/* STATS */}
       <section className="max-w-4xl mx-auto px-4 -mt-2 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           {stats.map((s, i) => (
-            <div key={i} className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-5 text-center hover:shadow-md transition-shadow">
+            <div key={i} className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-5 text-center hover:shadow-md transition-shadow w-40 sm:w-48">
               <div className="text-3xl sm:text-4xl font-black text-[#267a38] mb-1">{s.number}</div>
               <div className="text-zinc-500 text-sm font-medium">{s.label}</div>
             </div>

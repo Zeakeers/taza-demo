@@ -50,7 +50,7 @@ export default function Home() {
         </section>
 
         {/* Map / Stats Section */}
-        <section className="w-full mt-24 relative z-0 pt-16 pb-12 bg-[#0D2B05] sm:bg-[linear-gradient(180deg,#0D2B05_65%,#ffffff_65%)]">
+        <section className="w-full mt-24 relative z-0 pt-16 pb-12 bg-[#0D2B05] sm:bg-[linear-gradient(180deg,#0D2B05_65%,#F4FAF0_65%)]">
           <div className="max-w-[1000px] mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 leading-tight text-white drop-shadow-md">
               Setiap Zakat Anda Mengalirkan <br className="hidden sm:block" />{" "}
