@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-const WA_NUMBER = '628511990024'
+const WA_NUMBER = '6285119990024'
 const WA_MESSAGE = 'Halo Taman Zakat, saya ingin bertanya tentang program yang ada. 😊'
 const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
 
