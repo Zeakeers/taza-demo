@@ -1,0 +1,24 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Models\PageContent;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+*/
+
+// Ambil semua konten untuk halaman tertentu
+Route::get('/content/{page}', function ($page) {
+    $contents = PageContent::where('page_name', $page)->get();
+    
+    // Transformasikan agar mudah dibaca oleh Next.js (key-value)
+    $response = [];
+    foreach ($contents as $item) {
+        $response[$item->section_name] = $item->content;
+    }
+    
+    return response()->json($response);
+});
