@@ -9,6 +9,11 @@ import ArtikelSlider from "@/components/ui/artikel-slider";
 export default function Home() {
   return (
     <section className="w-full min-h-screen flex flex-col bg-white overflow-x-hidden">
+      {/* SEO H1 (Visually Hidden) */}
+      <h1 className="sr-only">
+        Taman Zakat Indonesia - Lembaga Amil Zakat Terpercaya | Donasi Zakat, Sedekah, dan Infak Online
+      </h1>
+
       {/* Header */}
       <header>
         <HeroSliderHome />
