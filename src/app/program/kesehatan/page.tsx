@@ -331,7 +331,7 @@ export default function BidangKesehatanPage() {
         ref={ambulanceRef}
       >
         {/* Background Layer (Cream Area) */}
-        <div className="absolute top-0 left-0 w-full h-[88%] bg-[#F8EED3] z-0" />
+        <div className="absolute top-0 left-0 w-full h-[88%] bg-[#EBF5D5] z-0" />
 
         {/* AMBULANCE RIGHT (Popping Out of Bottom) */}
         <div className="absolute right-[-5%] md:right-[0%] bottom-0 z-20 w-[85%] sm:w-[70%] md:w-[55%] lg:w-[50%] xl:w-[45%] pointer-events-none flex justify-end">
@@ -428,7 +428,7 @@ export default function BidangKesehatanPage() {
       </section>
 
       {/* Operasi Katarak Gratis */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
+      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
@@ -474,7 +474,7 @@ export default function BidangKesehatanPage() {
           <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
             <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
               {/* Card Background Coklat dengan Shadow Kanan Atas Tebal dan Solid */}
-              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#F8EED3] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
 
               <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
                 <Image
@@ -552,7 +552,7 @@ export default function BidangKesehatanPage() {
       </section>
 
       {/* Cek Kesehatan Gratis */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
+      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
             <div className="max-w-md">
@@ -598,7 +598,7 @@ export default function BidangKesehatanPage() {
           <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
             <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
               {/* Card Background Coklat dengan Shadow Kanan Atas Tebal dan Solid */}
-              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#F8EED3] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
 
               <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
                 <Image

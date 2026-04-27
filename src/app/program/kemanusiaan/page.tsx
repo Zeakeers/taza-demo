@@ -286,9 +286,9 @@ export default function BidangKemanusiaanPage() {
       </section>
 
       {/* ===================== PROGRAM ===================== */}
-      <section className="relative w-full py-20 md:py-32 bg-[#faf7f0] overflow-hidden md:overflow-visible">
+      <section className="relative w-full py-20 md:py-32 bg-[#F5FCF0] overflow-hidden md:overflow-visible">
         {/* Background Strip Tengah */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[60%] md:h-[45%] bg-[#F8EED3] z-0 shadow-sm border-y border-[#F8EED3]/80"></div>
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[60%] md:h-[45%] bg-[#D3ECC4] z-0 shadow-sm border-y border-[#D3ECC4]/80"></div>
 
         <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 px-6 md:px-12">
           <div className="w-full md:w-1/2 md:pr-10 py-4 md:py-8 text-center md:text-left">
@@ -320,11 +320,11 @@ export default function BidangKemanusiaanPage() {
       {/* ===================== ALTERNATING PROGRAM LIST ===================== */}
 
       {/* 1. Peduli Palestina */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#FAEDCD]">
+      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FAEDCD] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
 
               {/* Icon Percantik 1 */}
               <div className="absolute -top-5 left-4 md:left-6 z-20 w-[24px] md:w-[28px] h-[55px] md:h-[65px]">
@@ -462,11 +462,11 @@ export default function BidangKemanusiaanPage() {
       </section>
 
       {/* 3. Peduli Bencana Alam */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#FAEDCD]">
+      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FAEDCD] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
 
               {/* Icon Percantik 3 */}
               <div className="absolute -top-[14px] md:-top-[18px] left-[20%] z-20 w-[14px] md:w-[16px] h-[35px] md:h-[45px]">

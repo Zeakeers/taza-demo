@@ -9,7 +9,6 @@ const SparkIcon = ({ className }: { className?: string }) => (
 )
 
 const stats = [
-  { number: '500+', label: 'Relawan Aktif' },
   { number: '10K+', label: 'Penerima Manfaat' },
   { number: '50+', label: 'Program Sosial' },
   { number: '8', label: 'Kota Cakupan' },
@@ -63,46 +62,41 @@ export default function VolunteerPage() {
   return (
     <div className="bg-white min-h-screen overflow-hidden font-poppins">
 
-      {/* HERO */}
-      <section className="relative bg-gradient-to-br from-[#1a5c2a] via-[#267a38] to-[#3a9e50] pt-24 pb-32 px-4 overflow-hidden">
-        {/* decorative circles */}
-        <div className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/5 pointer-events-none" />
-        <div className="absolute top-10 -left-10 w-48 h-48 rounded-full bg-[#FFE525]/10 pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-32 h-32 rounded-full bg-[#E12B5E]/10 pointer-events-none" />
+      {/* HERO BANNER */}
+      <section className="relative w-full h-[420px] sm:h-[500px] md:h-[560px] overflow-hidden">
+        {/* banner image (dummy — ganti src saat gambar tersedia) */}
+        <Image
+          src="/images/gambardetaile/hero bidang kemanusian.svg"
+          alt="Volunteer Banner"
+          fill
+          className="object-cover object-center"
+          priority
+        />
 
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10 relative z-10">
-          <div className="flex-1 text-center md:text-left">
-            {/* badge */}
-            <span className="inline-block bg-[#FFE525] text-[#1a5c2a] text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
-              Bergabung Sekarang
-            </span>
+        {/* overlay gelap agar teks terbaca */}
+        <div className="absolute inset-0 bg-black/55" />
 
-            {/* headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-white leading-tight mb-6">
-              Jadilah Bagian<br />
-              <span className="text-[#FFE525]">Perubahan</span> Nyata
-            </h1>
+        {/* konten teks */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
+          <span className="inline-block bg-[#FFE525] text-[#1a5c2a] text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
+            Bergabung Sekarang
+          </span>
 
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-lg mb-8">
-              Bersama Taman Zakat, setiap langkahmu memberi dampak bagi ribuan keluarga. Jadilah relawan dan ukir kisah yang berarti.
-            </p>
+          <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-white leading-tight mb-5 drop-shadow-lg">
+            Jadilah Bagian<br />
+            <span className="text-[#FFE525]">Perubahan</span> Nyata
+          </h1>
 
-            <a
-              href="#form-daftar"
-              className="inline-block bg-[#E12B5E] hover:bg-[#c72251] text-white font-bold px-10 py-4 rounded-full text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
-            >
-              Daftar Sekarang →
-            </a>
-          </div>
+          <p className="text-white/85 text-base sm:text-lg leading-relaxed max-w-xl mb-8 drop-shadow">
+            Bersama Taman Zakat, setiap langkahmu memberi dampak bagi ribuan keluarga. Jadilah relawan dan ukir kisah yang berarti.
+          </p>
 
-          {/* sparks dekoratif */}
-          <div className="shrink-0 relative w-40 h-40 hidden md:block">
-            <SparkIcon className="absolute top-0 left-6 w-7 h-7 text-[#FFE525]" />
-            <SparkIcon className="absolute top-10 right-0 w-5 h-5 text-white/50" />
-            <SparkIcon className="absolute bottom-4 right-10 w-6 h-6 text-[#FFE525]/70" />
-            <SparkIcon className="absolute bottom-0 left-0 w-4 h-4 text-white/40" />
-          </div>
-
+          <a
+            href="#form-daftar"
+            className="inline-block bg-[#E12B5E] hover:bg-[#c72251] text-white font-bold px-10 py-4 rounded-full text-lg transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:scale-95"
+          >
+            Daftar Sekarang →
+          </a>
         </div>
 
         {/* wave divider */}
@@ -115,9 +109,9 @@ export default function VolunteerPage() {
 
       {/* STATS */}
       <section className="max-w-4xl mx-auto px-4 -mt-2 pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="flex flex-wrap justify-center gap-4">
           {stats.map((s, i) => (
-            <div key={i} className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-5 text-center hover:shadow-md transition-shadow">
+            <div key={i} className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-5 text-center hover:shadow-md transition-shadow w-40 sm:w-48">
               <div className="text-3xl sm:text-4xl font-black text-[#267a38] mb-1">{s.number}</div>
               <div className="text-zinc-500 text-sm font-medium">{s.label}</div>
             </div>

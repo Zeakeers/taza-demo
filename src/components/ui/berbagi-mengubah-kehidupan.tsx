@@ -6,16 +6,16 @@ import Image from "next/image";
 // Placeholder untuk menaruh URL gambar masing-masing kategori
 // Isi string kosong ("") dengan URL gambar, misalnya: "/images/kesehatan.jpg"
 const categories = [
-  { id: "Kesehatan", image: "" },
-  { id: "Ekonomi", image: "" },
-  { id: "Dakwah", image: "" },
-  { id: "Sosial", image: "" },
-  { id: "Kemanusiaan", image: "" },
-  { id: "Pendidikan", image: "" },
+  { id: "Kesehatan",   image: "https://picsum.photos/seed/kesehatan/1200/600" },
+  { id: "Ekonomi",    image: "https://picsum.photos/seed/ekonomi/1200/600" },
+  { id: "Dakwah",     image: "https://picsum.photos/seed/dakwah/1200/600" },
+  { id: "Sosial",     image: "https://picsum.photos/seed/sosial/1200/600" },
+  { id: "Kemanusiaan",image: "https://picsum.photos/seed/kemanusiaan/1200/600" },
+  { id: "Pendidikan", image: "https://picsum.photos/seed/pendidikan/1200/600" },
 ];
 
 export default function BerbagiMengubahKehidupan() {
-  const [activeCategory, setActiveCategory] = useState("Ekonomi");
+  const [activeCategory, setActiveCategory] = useState("Kesehatan");
 
   const currentCategory = categories.find((c) => c.id === activeCategory) || categories[1];
 

@@ -24,7 +24,7 @@ export default function Home() {
             <h2 className="text-lg sm:text-xl font-bold uppercase tracking-widest text-[#3B7A1C]">
               TENTANG KAMI
             </h2>
-            <h3 className="text-2xl sm:text-3xl font-light mt-2 text-black font-bold">
+            <h3 className="text-2xl sm:text-3xl mt-2 text-black font-bold">
               <span className="font-bold text-[#7FC248]">TAMAN ZAKAT</span>{" "}
               INDONESIA
             </h3>
@@ -40,52 +40,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-4xl mx-auto bg-[#EAFCDC] border border-[#7FC248] rounded-xl p-6 sm:p-8 text-center relative mt-16 shadow-sm">
-            {/* logo bulat taza animasi */}
-            <div className="absolute -top-8 -left-5 md:-top-10 md:-left-8 z-20 hover:scale-105 transition-transform duration-300">
-              <div className="relative h-[65px] w-[65px] md:h-[80px] md:w-[80px]">
-                <div
-                  aria-hidden
-                  className="absolute -top-[2px] left-[2px] h-full w-full rounded-full border border-black bg-transparent rotate-[-6deg]"
-                />
-                <div className="relative z-10 flex h-full w-full items-center justify-center rounded-full border border-black bg-[#8cc63f]">
-                  <svg
-                    viewBox="0 0 300 300"
-                    aria-hidden
-                    className="absolute inset-0 h-full w-full fill-black transform -rotate-12 animate-[spin_15s_linear_infinite]"
-                  >
-                    <defs>
-                      <path
-                        id="home-kemanusiaan-badge-path"
-                        d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
-                      />
-                    </defs>
-                    <text
-                      fontSize="30"
-                      fontWeight="500"
-                      className="font-newsreader tracking-wider"
-                    >
-                      <textPath
-                        href="#home-kemanusiaan-badge-path"
-                        startOffset="50%"
-                        textAnchor="middle"
-                        textLength="660"
-                      >
-                        Taman Zakat - Indonesia - taza -
-                      </textPath>
-                    </text>
-                  </svg>
-                  <div className="relative z-10 flex h-[28px] w-[28px] md:h-[35px] md:w-[35px] items-center justify-center rounded-full border-[2px] border-black bg-[#8cc63f]">
-                    <Image
-                      src="/images/icon/hitam logo taza 1.svg"
-                      alt="Logo Taza"
-                      width={24}
-                      height={24}
-                      className="h-[16px] w-auto md:h-[20px]"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            
             <p className="text-base sm:text-lg text-black font-medium leading-relaxed mt-2 sm:mt-0 px-4 pt-2">
               Lembaga Filantropi Profesional dan terpercaya yang berfokus pada
               Sarana dakwah untuk Pengembangan Alqur&apos;an, Pendidikan,
@@ -95,7 +50,7 @@ export default function Home() {
         </section>
 
         {/* Map / Stats Section */}
-        <section className="w-full mt-24 relative z-0 pt-16 pb-12 bg-[linear-gradient(180deg,#000000_62%,#ffffff_62%)] sm:bg-[linear-gradient(180deg,#000000_65%,#ffffff_65%)]">
+        <section className="w-full mt-24 relative z-0 pt-16 pb-12 bg-[#0D2B05] sm:bg-[linear-gradient(180deg,#0D2B05_65%,#F4FAF0_65%)]">
           <div className="max-w-[1000px] mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 leading-tight text-white drop-shadow-md">
               Setiap Zakat Anda Mengalirkan <br className="hidden sm:block" />{" "}
@@ -158,11 +113,11 @@ export default function Home() {
         <BeritaTabs />
 
         {/* Section Artikel (Green BG) */}
-        <section className="bg-[#D3ECC4] border-t border-[#B8DDA1] pt-12 pb-16 w-full mt-10">
+        <section className="bg-[#7fc248] border-t border-[#B8DDA1] pt-12 pb-16 w-full mt-10">
           <div className="max-w-6xl mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl font-bold text-black text-center mb-10">
               Artikel{" "}
-              <span className="text-[#7FC248] font-light">Taman Zakat</span>
+              <span className="text-white font-medium">Taman Zakat</span>
             </h2>
           </div>
 
