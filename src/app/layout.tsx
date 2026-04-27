@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     siteName: "Taman Zakat Indonesia",
     title: "Taman Zakat Indonesia | Berbagi Kebaikan Lewat Zakat & Donasi",
     description:
-      " 플랫폼 untuk menyalurkan zakat, infak, dan sedekah secara aman dan transparan bersama Taman Zakat Indonesia.",
+      "Platform untuk menyalurkan zakat, infak, dan sedekah secara aman dan transparan bersama Taman Zakat Indonesia.",
     images: [
       {
         url: "/images/og-image.jpg", // Pastikan file ini ada atau buat nanti
