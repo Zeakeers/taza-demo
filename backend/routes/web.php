@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PageContentController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -20,4 +20,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    // Manajemen Konten Halaman Home
+    Route::get('/home', [PageContentController::class, 'editHome'])->name('admin.home.edit');
+    Route::post('/home', [PageContentController::class, 'updateHome'])->name('admin.home.update');
 });
