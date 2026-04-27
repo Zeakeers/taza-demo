@@ -1,0 +1,232 @@
+@extends('layouts.admin')
+
+@section('content')
+<div class="space-y-8">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-3xl font-bold text-dark">Manajemen Halaman Home</h1>
+            <p class="text-gray-500 mt-1">Kelola konten visual dan teks untuk halaman utama website.</p>
+        </div>
+        <div class="bg-primary/10 text-primary px-4 py-2 rounded-xl text-sm font-semibold border border-primary/20">
+            Halaman Aktif
+        </div>
+    </div>
+
+    @if(session('success'))
+        <div class="bg-primary text-white p-4 rounded-2xl shadow-lg shadow-primary/20 flex items-center gap-3 animate-bounce">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+        <!-- Sidebar Navigation (Tabs) -->
+        <div class="xl:col-span-1 space-y-2">
+            <button onclick="showSection('hero')" id="tab-hero" class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-white text-dark shadow-sm hover:shadow-md border border-transparent">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Hero Slider
+            </button>
+            <button onclick="showSection('about')" id="tab-about" class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Tentang Kami
+            </button>
+            <button onclick="showSection('stats')" id="tab-stats" class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                Statistik & Map
+            </button>
+            <button onclick="showSection('cta')" id="tab-cta" class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.167H3.38a1.345 1.345 0 01-1.35-1.157 1.346 1.346 0 011.127-1.493l2.229-.351 1.633-4.667a1.76 1.76 0 013.417.592c0 .324-.132.628-.352.88zM15.424 7.21a1.042 1.042 0 011.41 0c2.56 2.56 2.56 6.71 0 9.27a1.042 1.042 0 11-1.41-1.41c1.78-1.78 1.78-4.67 0-6.45a1.042 1.042 0 010-1.41z"/></svg>
+                CTA Kebaikan
+            </button>
+        </div>
+
+        <!-- Content Area -->
+        <div class="xl:col-span-3">
+            <div class="bg-white rounded-[2.5rem] p-4 sm:p-10 shadow-xl border border-white relative overflow-hidden">
+                
+                {{-- Form Hero Slider --}}
+                <div id="section-hero" class="content-section">
+                    <form action="{{ route('admin.home.update') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="section" value="hero">
+                        <div class="flex items-center justify-between mb-8">
+                            <div>
+                                <h2 class="text-2xl font-bold text-dark">Konten Hero Slider</h2>
+                                <p class="text-sm text-gray-400 mt-1">Upload gambar ilustrasi untuk slider utama website.</p>
+                            </div>
+                            <button type="submit" class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
+                        </div>
+
+                        <div class="space-y-8">
+                            @php $heroData = $hero ? $hero->content : ['images' => []]; @endphp
+                            
+                            <!-- Grid Gambar Saat Ini -->
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                @foreach($heroData['images'] ?? [] as $img)
+                                    <div class="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden border border-gray-200">
+                                        <img src="{{ $img }}" class="w-full h-full object-cover">
+                                        <input type="hidden" name="existing_images[]" value="{{ $img }}">
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center">
+                                            <button type="button" onclick="this.closest('.relative').remove()" class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+                                <!-- Upload Box Baru -->
+                                <label class="cursor-pointer flex flex-col items-center justify-center aspect-video border-2 border-dashed border-gray-300 rounded-2xl hover:border-primary hover:bg-primary/5 transition-all">
+                                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                                    <span class="text-xs font-bold text-gray-500 mt-2">Tambah Gambar</span>
+                                    <input type="file" name="new_images[]" multiple class="hidden" onchange="this.form.submit()">
+                                </label>
+                            </div>
+
+                            <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100 flex items-start gap-4">
+                                <div class="bg-blue-500 text-white p-2 rounded-xl shadow-lg shadow-blue-200">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-blue-900 mb-1">Tips Gambar Responsif</h4>
+                                    <p class="text-sm text-blue-700 leading-relaxed">
+                                        Agar tampilan tetap rapi di HP maupun Laptop, gunakan gambar dengan dimensi: <br>
+                                        <span class="font-bold">Lebar: 1920px</span> dan <span class="font-bold">Tinggi: 480px - 640px</span> (Rasio 3:1). <br>
+                                        Gunakan format <span class="font-bold">SVG</span> atau <span class="font-bold">PNG Transparan</span> untuk hasil terbaik.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                {{-- Form Tentang Kami --}}
+                <div id="section-about" class="content-section hidden">
+                    <form action="{{ route('admin.home.update') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="section" value="about">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-2xl font-bold text-dark">Teks Tentang Kami</h2>
+                            <button type="submit" class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
+                        </div>
+
+                        @php $aboutData = $about ? $about->content : ['title' => '', 'sub' => '', 'desc' => '', 'highlight' => '']; @endphp
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block font-bold mb-2">Heading Kategori (Contoh: Tentang Kami)</label>
+                                <input type="text" name="content[title]" value="{{ $aboutData['title'] }}" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-primary transition-all outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-2">Sub-Heading (Contoh: Taman Zakat Indonesia)</label>
+                                <input type="text" name="content[sub]" value="{{ $aboutData['sub'] }}" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-primary transition-all outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-2">Deskripsi Utama</label>
+                                <textarea name="content[desc]" rows="4" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-primary transition-all outline-none">{{ $aboutData['desc'] }}</textarea>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-2">Quote/Highlight (Warna Hijau Muda)</label>
+                                <textarea name="content[highlight]" rows="3" class="w-full px-6 py-4 rounded-2xl bg-gray-100/50 border border-primary/20 focus:bg-white focus:border-primary transition-all outline-none">{{ $aboutData['highlight'] }}</textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                {{-- Form Statistik --}}
+                <div id="section-stats" class="content-section hidden">
+                    <form action="{{ route('admin.home.update') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="section" value="stats">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-2xl font-bold text-dark">Data Statistik Website</h2>
+                            <button type="submit" class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
+                        </div>
+
+                        @php $statsData = $stats ? $stats->content : ['title' => '', 'desc' => '', 'wilayah' => '', 'manfaat' => '', 'aksi' => '']; @endphp
+                        <div class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="md:col-span-2">
+                                    <label class="block font-bold mb-2">Heading Section</label>
+                                    <input type="text" name="content[title]" value="{{ $statsData['title'] }}" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:border-primary transition-all outline-none">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block font-bold mb-2">Subheading/Deskripsi</label>
+                                    <textarea name="content[desc]" rows="3" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:border-primary transition-all outline-none">{{ $statsData['desc'] }}</textarea>
+                                </div>
+                                <div>
+                                    <label class="block font-bold mb-2 text-primary">Wilayah Jangkauan</label>
+                                    <input type="text" name="content[wilayah]" value="{{ $statsData['wilayah'] }}" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:border-primary transition-all outline-none font-bold text-xl">
+                                </div>
+                                <div>
+                                    <label class="block font-bold mb-2 text-primary">Penerima Manfaat</label>
+                                    <input type="text" name="content[manfaat]" value="{{ $statsData['manfaat'] }}" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:border-primary transition-all outline-none font-bold text-xl">
+                                </div>
+                                <div>
+                                    <label class="block font-bold mb-2 text-primary">Aksi Kebaikan</label>
+                                    <input type="text" name="content[aksi]" value="{{ $statsData['aksi'] }}" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:border-primary transition-all outline-none font-bold text-xl">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                {{-- Form CTA --}}
+                <div id="section-cta" class="content-section hidden">
+                    <form action="{{ route('admin.home.update') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="section" value="cta">
+                        <div class="flex items-center justify-between mb-8">
+                            <h2 class="text-2xl font-bold text-dark">Banner Ajakan (CTA) Bottom</h2>
+                            <button type="submit" class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
+                        </div>
+
+                        @php $ctaData = $cta ? $cta->content : ['title' => '', 'desc' => '', 'btn' => '']; @endphp
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block font-bold mb-2">Judul Ajakan</label>
+                                <input type="text" name="content[title]" value="{{ $ctaData['title'] }}" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:border-primary transition-all outline-none">
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-2">Deskripsi Singkat</label>
+                                <textarea name="content[desc]" rows="3" class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:border-primary transition-all outline-none">{{ $ctaData['desc'] }}</textarea>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-2 text-secondary">Teks Tombol</label>
+                                <input type="text" name="content[btn]" value="{{ $ctaData['btn'] }}" class="w-full px-6 py-4 rounded-2xl border-2 border-secondary/20 focus:border-secondary transition-all outline-none font-bold">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showSection(id) {
+        // Hide all
+        document.querySelectorAll('.content-section').forEach(el => el.classList.add('hidden'));
+        // Show target
+        document.getElementById('section-' + id).classList.remove('hidden');
+
+        // Update tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('bg-white', 'text-dark', 'shadow-sm');
+            btn.classList.add('bg-transparent', 'text-gray-500');
+        });
+        const activeBtn = document.getElementById('tab-' + id);
+        activeBtn.classList.remove('bg-transparent', 'text-gray-500');
+        activeBtn.classList.add('bg-white', 'text-dark', 'shadow-sm');
+    }
+
+    function addHeroInput() {
+        const div = document.createElement('div');
+        div.className = 'flex gap-2';
+        div.innerHTML = `
+            <input type="text" name="content[images][]" placeholder="/images/baru.svg" class="flex-1 px-5 py-3 rounded-xl border border-gray-200 outline-none focus:border-primary">
+            <button type="button" onclick="this.parentElement.remove()" class="p-3 text-red-500 hover:bg-red-50 rounded-xl">&times;</button>
+        `;
+        document.getElementById('hero-inputs').appendChild(div);
+    }
+</script>
+@endsection
