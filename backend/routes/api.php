@@ -22,3 +22,8 @@ Route::get('/content/{page}', function ($page) {
     
     return response()->json($response);
 });
+
+// Ambil semua data provinsi
+Route::get('/provinces', function () {
+    return response()->json(\App\Models\Province::orderBy('name')->get());
+});
