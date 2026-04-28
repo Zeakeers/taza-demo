@@ -52,7 +52,7 @@ npm run start
 
 Sistem backend dibangun dengan **Laravel**, bertindak ganda sebagai RESTful API (*Headless*) untuk dikonsumsi Frontend Next.js, dan juga menyediakan Panel Admin (*Blade UI*) untuk pengelolaan konten (CMS).
 
-### 🚀 Menjalankan Server Backend
+### Menjalankan Server Backend
 Buka terminal baru dan jalankan langkah-langkah di bawah ini:
 1. Masuk ke direktori backend: `cd backend`
 2. Instal dependensi Composer (PHP): `composer install`
@@ -61,7 +61,7 @@ Buka terminal baru dan jalankan langkah-langkah di bawah ini:
 5. Lakukan migrasi database beserta data dummy (Seeder): `php artisan migrate --seed`
 6. Mulai server backend: `php artisan serve` (Berjalan di `http://127.0.0.1:8000`)
 
-### 🔌 Daftar Endpoint API
+### Daftar Endpoint API
 
 Aplikasi Next.js (`Frontend`) akan selalu melakukan operasi *fetch* ke rute `/api/*` milik server Laravel.
 
@@ -87,11 +87,11 @@ Aplikasi Next.js (`Frontend`) akan selalu melakukan operasi *fetch* ke rute `/ap
   ]
   ```
 
-### 👥 Manajemen Hak Akses Admin (Roles)
+### Manajemen Hak Akses Admin (Roles)
 Sistem di `/admin` membagi sesi user menjadi 3 tingkatan kontrol (*Role*):
-- **🛠️ Dev Admin (`dev`)**: Punya kendali penuh terhadap sistem dan panel kendali akun.
-- **✏️ Markom Admin (`markom`)**: Hak akses eksklusif untuk mengubah tampilan serta teks Landing Page.
-- **📋 Program Admin (`program`)**: Hak akses untuk memantau formulir pendaftaran relawan dan aliran donasi.
+- ** Dev Admin (`dev`)**: Punya kendali penuh terhadap sistem dan panel kendali akun.
+- ** Markom Admin (`markom`)**: Hak akses eksklusif untuk mengubah tampilan serta teks Landing Page.
+- ** Program Admin (`program`)**: Hak akses untuk memantau formulir pendaftaran relawan dan aliran donasi.
 
 ## License
-Hak Cipta &copy; 2026 **Taman Zakat Indonesia**. Seluruh hak cipta dilindungi undang-undang.
+Hak Cipta &copy; 2026 **Taman Zakat Indonesia**. Dikembangkan oleh tim web Developer Zamedia. Seluruh hak cipta dilindungi undang-undang.
