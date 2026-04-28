@@ -12,7 +12,7 @@ const defaultImages = [
 ];
 
 export default function HeroSliderHome({ images = defaultImages }: { images?: string[] }) {
-    const sliderImages = images.length > 0 ? images : defaultImages;
+  const sliderImages = images.length > 0 ? images : defaultImages;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
