@@ -4,6 +4,7 @@ export interface ProvinceData {
   beneficiaries: string;
   funds: string;
   images: string[];
+  quote?: string;
 }
 
 export const provinceData: Record<string, ProvinceData> = {
