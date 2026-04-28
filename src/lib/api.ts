@@ -16,3 +16,20 @@ export async function getPageContent(page: string) {
     return null;
   }
 }
+
+export async function getProvinces() {
+  try {
+    const res = await fetch(`${API_URL}/provinces`, {
+      next: { revalidate: 0 },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch provinces`);
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    return [];
+  }
+}
