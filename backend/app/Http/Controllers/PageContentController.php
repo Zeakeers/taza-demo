@@ -14,8 +14,9 @@ class PageContentController extends Controller
         $about = PageContent::where('page_name', 'home')->where('section_name', 'about')->first();
         $stats = PageContent::where('page_name', 'home')->where('section_name', 'stats')->first();
         $cta = PageContent::where('page_name', 'home')->where('section_name', 'cta')->first();
+        $provinces = \App\Models\Province::orderBy('name')->get();
 
-        return view('admin.pages.home', compact('hero', 'about', 'stats', 'cta'));
+        return view('admin.pages.home', compact('hero', 'about', 'stats', 'cta', 'provinces'));
     }
 
     public function updateHome(Request $request)
