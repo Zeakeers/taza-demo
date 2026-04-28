@@ -16,27 +16,37 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // User Dev
-        \App\Models\User::create([
-            'name' => 'Dev Admin',
-            'email' => 'dev@tamanzakat.org',
-            'password' => \Illuminate\Support\Facades\Hash::make('password'),
-            'role' => 'dev',
-        ]);
+        \App\Models\User::updateOrCreate(
+            ['email' => 'dev@tamanzakat.org'],
+            [
+                'name' => 'Dev Admin',
+                'password' => \Illuminate\Support\Facades\Hash::make('password'),
+                'role' => 'dev',
+            ]
+        );
 
-        // User Content Manager
-        \App\Models\User::create([
-            'name' => 'Content Manager',
-            'email' => 'content@tamanzakat.org',
-            'password' => \Illuminate\Support\Facades\Hash::make('password'),
-            'role' => 'content_manager',
-        ]);
+        // User Markom
+        \App\Models\User::updateOrCreate(
+            ['email' => 'markom@tamanzakat.org'],
+            [
+                'name' => 'Markom Admin',
+                'password' => \Illuminate\Support\Facades\Hash::make('password'),
+                'role' => 'markom',
+            ]
+        );
 
-        // User Reviewer
-        \App\Models\User::create([
-            'name' => 'Reviewer Form',
-            'email' => 'reviewer@tamanzakat.org',
-            'password' => \Illuminate\Support\Facades\Hash::make('password'),
-            'role' => 'reviewer',
+        // User Program
+        \App\Models\User::updateOrCreate(
+            ['email' => 'program@tamanzakat.org'],
+            [
+                'name' => 'Program Admin',
+                'password' => \Illuminate\Support\Facades\Hash::make('password'),
+                'role' => 'program',
+            ]
+        );
+
+        $this->call([
+            ProvinceSeeder::class,
         ]);
     }
 }
