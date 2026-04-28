@@ -48,5 +48,50 @@ npm run build
 npm run start
 ```
 
+## Backend Laravel & Dokumentasi API
+
+Sistem backend dibangun dengan **Laravel**, bertindak ganda sebagai RESTful API (*Headless*) untuk dikonsumsi Frontend Next.js, dan juga menyediakan Panel Admin (*Blade UI*) untuk pengelolaan konten (CMS).
+
+### 🚀 Menjalankan Server Backend
+Buka terminal baru dan jalankan langkah-langkah di bawah ini:
+1. Masuk ke direktori backend: `cd backend`
+2. Instal dependensi Composer (PHP): `composer install`
+3. Siapkan file konfigurasi environment: `cp .env.example .env`
+4. Bangkitkan *App Key*: `php artisan key:generate`
+5. Lakukan migrasi database beserta data dummy (Seeder): `php artisan migrate --seed`
+6. Mulai server backend: `php artisan serve` (Berjalan di `http://127.0.0.1:8000`)
+
+### 🔌 Daftar Endpoint API
+
+Aplikasi Next.js (`Frontend`) akan selalu melakukan operasi *fetch* ke rute `/api/*` milik server Laravel.
+
+#### 1. API Pengambilan Konten Halaman Dinamis
+- **URL**: `GET /api/content/{page_name}`
+- **Fungsi**: Memuat kumpulan teks atau konfigurasi untuk merender struktur halaman dari database secara dinamis.
+- **Contoh Response**:
+  ```json
+  {
+    "hero_title": "Sedekah Membawa Berkah",
+    "hero_subtitle": "Mari mulai berdonasi."
+  }
+  ```
+
+#### 2. API Wilayah / Provinsi
+- **URL**: `GET /api/provinces`
+- **Fungsi**: Menyuplai data dropdown bagi formulir (seperti Form Permohonan Tambahan, Pendaftaran Relawan, dll).
+- **Contoh Response**:
+  ```json
+  [
+    { "id": 1, "name": "ACEH" },
+    { "id": 2, "name": "SUMATERA UTARA" }
+  ]
+  ```
+
+### 👥 Manajemen Hak Akses Admin (Roles)
+Sistem di `/admin` membagi sesi user menjadi 3 tingkatan kontrol (*Role*):
+- **🛠️ Dev Admin (`dev`)**: Punya kendali penuh terhadap sistem dan panel kendali akun.
+- **✏️ Markom Admin (`markom`)**: Hak akses eksklusif untuk mengubah tampilan serta teks Landing Page.
+- **📋 Program Admin (`program`)**: Hak akses untuk memantau formulir pendaftaran relawan dan aliran donasi.
+
 ## License
 Hak Cipta &copy; 2026 **Taman Zakat Indonesia**. Seluruh hak cipta dilindungi undang-undang.
