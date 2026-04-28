@@ -5,10 +5,11 @@ import HeroSliderHome from "@/components/ui/hero-slider-home";
 import BerbagiMengubahKehidupan from "@/components/ui/berbagi-mengubah-kehidupan";
 import BeritaTabs from "@/components/ui/berita-tabs";
 import ArtikelSlider from "@/components/ui/artikel-slider";
-import { getPageContent } from "@/lib/api";
+import { getPageContent, getProvinces } from "@/lib/api";
 
 export default async function Home() {
   const content = await getPageContent("home");
+  const provinces = await getProvinces();
 
   // --- LOGIKA FALLBACK (Jika di Admin Kosong, Gunakan Default) ---
 
@@ -131,7 +132,7 @@ export default async function Home() {
               </div>
 
               <div className="w-[95%] md:w-[90%] mt-8 pb-6 relative z-20">
-                <IndonesiaMap />
+                <IndonesiaMap provinces={provinces} />
               </div>
             </div>
           </div>
