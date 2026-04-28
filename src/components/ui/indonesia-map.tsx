@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ProvinceModal from "./province-modal";
-import { provinceData, getDefaultData } from "@/data/province-data";
+import { getDefaultData } from "@/data/province-data";
 import { INDONESIA_PATHS } from "@/data/indonesia-paths";
 
-export default function IndonesiaMap() {
+export default function IndonesiaMap({ provinces = [] }: { provinces?: any[] }) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [zoomingId, setZoomingId] = useState<string | null>(null);
 
@@ -18,7 +18,16 @@ export default function IndonesiaMap() {
     }, 600);
   };
 
-  const selectedData = selectedId ? (provinceData[selectedId] || getDefaultData(selectedId, INDONESIA_PATHS.find(p => p.id === selectedId)?.title || "Provinsi")) : null;
+  const dynamicProvinceMap = React.useMemo(() => {
+    return provinces.reduce((acc, curr) => {
+      acc[curr.id] = curr;
+      return acc;
+    }, {});
+  }, [provinces]);
+
+  const selectedData = selectedId 
+    ? (dynamicProvinceMap[selectedId] || getDefaultData(selectedId, INDONESIA_PATHS.find(p => p.id === selectedId)?.title || "Provinsi")) 
+    : null;
 
   return (
     <div className="flex flex-col items-center justify-center w-full mb-20 md:mb-24 px-4 md:px-0">
@@ -35,7 +44,7 @@ export default function IndonesiaMap() {
             
             <AnimatePresence>
               {INDONESIA_PATHS.map((province) => {
-                const isActive = !!provinceData[province.id];
+                const isActive = !!dynamicProvinceMap[province.id]?.is_active;
                 const activeColor = "#3B7A1C"; // Ijo Tua
                 const inactiveColor = "#A2D57D"; // Ijo Muda
                 
@@ -102,7 +111,7 @@ export default function IndonesiaMap() {
 
       <ProvinceModal 
         province={selectedData} 
-        isActive={!!selectedId && !!provinceData[selectedId]}
+        isActive={!!selectedId && !!dynamicProvinceMap[selectedId]?.is_active}
         onClose={() => setSelectedId(null)} 
       />
     </div>
