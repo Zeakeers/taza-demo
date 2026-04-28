@@ -15,8 +15,8 @@
             Dashboard
         </a>
         
-        {{-- Group 1: Manajemen Konten (Untuk Content Manager & Dev) --}}
-        @if(auth()->user()->role == 'dev' || auth()->user()->role == 'content_manager')
+        {{-- Group 1: Manajemen Konten (Untuk Markom & Dev) --}}
+        @if(auth()->user()->role == 'dev' || auth()->user()->role == 'markom')
         <div class="pt-6 pb-2 px-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Manajemen Konten</div>
         
         <a href="{{ route('admin.home.edit') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.home.edit') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all">
@@ -76,8 +76,8 @@
         </a>
         @endif
 
-        {{-- Group 2: Hasil Form User (Untuk Reviewer & Dev) --}}
-        @if(auth()->user()->role == 'dev' || auth()->user()->role == 'reviewer')
+        {{-- Group 2: Hasil Form User (Untuk Program & Dev) --}}
+        @if(auth()->user()->role == 'dev' || auth()->user()->role == 'program')
         <div class="pt-6 pb-2 px-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Data Form & Review</div>
         
         <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
@@ -105,8 +105,8 @@
         @if(auth()->user()->role == 'dev')
         <div class="pt-6 pb-2 px-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Sistem Admin</div>
         
-        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
-            <svg class="w-5 h-5 text-gray-400 group-hover:text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <a href="{{ route('admin.users.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.users.*') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all group">
+            <svg class="w-5 h-5 {{ request()->routeIs('admin.users.*') ? 'text-white' : 'text-gray-400 group-hover:text-secondary' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             Manajemen Akun Admin
         </a>
         @endif
