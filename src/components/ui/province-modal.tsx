@@ -104,7 +104,7 @@ export default function ProvinceModal({ province, isActive, onClose }: ProvinceM
               <div className="mt-10 hidden md:block">
                 <div className="p-8 bg-[#7FC248]/5 rounded-[2.5rem] border border-[#7FC248]/10 relative overflow-hidden group">
                   <p className="text-base font-bold text-[#3B7A1C] italic leading-relaxed relative z-10">
-                    &quot;Setiap rupiah yang Anda salurkan menjadi harapan baru bagi saudara-saudara kita di {province.name}.&quot;
+                    &quot;{province.quote || `Setiap rupiah yang Anda salurkan menjadi harapan baru bagi saudara-saudara kita di ${province.name}.`}&quot;
                   </p>
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function ProvinceModal({ province, isActive, onClose }: ProvinceM
               </div>
 
               <div className="grid grid-cols-2 gap-4 md:gap-6 auto-rows-[140px] md:auto-rows-[240px]">
-                {province.images.map((img, i) => (
+                {(province.images || []).map((img, i) => (
                   <motion.div
                     key={i}
                     whileHover={{ scale: 0.98, rotate: i % 2 === 0 ? -1 : 1 }}
