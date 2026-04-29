@@ -218,7 +218,7 @@ export default function BidangEkonomiPage() {
           </div>
           <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-end">
             <Image
-              src="/images/gambardetaile/bidang ekonomi.svg"
+              src="/images/gambardetaile/bidang eko.svg"
               alt="Program Ekonomi"
               width={500}
               height={400}
