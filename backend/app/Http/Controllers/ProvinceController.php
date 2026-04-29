@@ -30,8 +30,11 @@ class ProvinceController extends Controller
 
         if ($request->hasFile('new_images')) {
             foreach ($request->file('new_images') as $file) {
-                $path = $file->store('provinces', 'public');
-                $uploadedImages[] = Storage::url($path);
+                if ($file->isValid()) {
+                    $path = $file->store('provinces', 'nextjs_public');
+                    // nextjs_public usually maps to public/uploads
+                    $uploadedImages[] = Storage::disk('nextjs_public')->url($path);
+                }
             }
         }
 
