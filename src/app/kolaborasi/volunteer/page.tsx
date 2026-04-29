@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const SparkIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 4v16M4 12h16M6.34 6.34l11.32 11.32M6.34 17.66L17.66 6.34"/>
+    <path d="M12 4v16M4 12h16M6.34 6.34l11.32 11.32M6.34 17.66L17.66 6.34" />
   </svg>
 )
 
@@ -38,10 +38,10 @@ const benefits = [
 ]
 
 const areas = [
-  { label: 'Pendidikan',            color: 'bg-[#EBF5D5] text-[#2d6e1f] border-[#a3cc72]' },
-  { label: 'Kesehatan',             color: 'bg-[#D6EDCA] text-[#3a7d27] border-[#8dc05e]' },
-  { label: 'Lingkungan',            color: 'bg-[#C8E6BC] text-[#2e6b1e] border-[#78b04a]' },
-  { label: 'Pemberdayaan Ekonomi',  color: 'bg-[#DDEFD0] text-[#336120] border-[#90c467]' },
+  { label: 'Pendidikan', color: 'bg-[#EBF5D5] text-[#2d6e1f] border-[#a3cc72]' },
+  { label: 'Kesehatan', color: 'bg-[#D6EDCA] text-[#3a7d27] border-[#8dc05e]' },
+  { label: 'Lingkungan', color: 'bg-[#C8E6BC] text-[#2e6b1e] border-[#78b04a]' },
+  { label: 'Pemberdayaan Ekonomi', color: 'bg-[#DDEFD0] text-[#336120] border-[#90c467]' },
   { label: 'Sosial Kemasyarakatan', color: 'bg-[#E4F2D8] text-[#3d7a29] border-[#9ecb6e]' },
   { label: 'Kemanusiaan & Bencana', color: 'bg-[#CFE8BE] text-[#285c18] border-[#6fa842]' },
 ]
@@ -83,7 +83,7 @@ export default function VolunteerPage() {
           </span>
 
           <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-white leading-tight mb-5 drop-shadow-lg">
-            Jadilah Bagian<br/>
+            Jadilah Bagian<br />
             <span className="text-[#FFE525]">Perubahan</span> Nyata
           </h1>
 
@@ -102,7 +102,7 @@ export default function VolunteerPage() {
         {/* wave divider */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 60V30C240 0 480 60 720 40C960 20 1200 50 1440 30V60H0Z" fill="white"/>
+            <path d="M0 60V30C240 0 480 60 720 40C960 20 1200 50 1440 30V60H0Z" fill="white" />
           </svg>
         </div>
       </section>

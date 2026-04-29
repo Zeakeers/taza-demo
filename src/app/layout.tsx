@@ -21,11 +21,69 @@ const awalRamadhan = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Taman Zakat Indonesia",
+  title: {
+    default: "Taman Zakat Indonesia | Lembaga Amil Zakat Terpercaya",
+    template: "%s | Taman Zakat Indonesia",
+  },
   description:
-    "Website resmi Taman Zakat Indonesia sebagai media informasi dan penyaluran donasi.",
+    "Taman Zakat Indonesia adalah Lembaga Amil Zakat (LAZ) terpercaya untuk menyalurkan donasi, zakat, infak, dan sedekah Anda. Mari berbagi kebaikan untuk masyarakat yang membutuhkan.",
+  keywords: [
+    "donasi zakat",
+    "bayar zakat online",
+    "sedekah online",
+    "lembaga amil zakat",
+    "infak",
+    "wakaf",
+    "taman zakat indonesia",
+    "zakat mal",
+    "zakat fitrah",
+    "donasi kemanusiaan",
+  ],
+  authors: [{ name: "Taman Zakat Indonesia" }],
+  creator: "Taman Zakat Indonesia",
+  publisher: "Taman Zakat Indonesia",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: "/images/icon/taman zakat  logo .svg",
+    apple: "/images/icon/taman zakat  logo .svg",
+  },
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://tamanzakat.org",
+    siteName: "Taman Zakat Indonesia",
+    title: "Taman Zakat Indonesia | Berbagi Kebaikan Lewat Zakat & Donasi",
+    description:
+      "Platform untuk menyalurkan zakat, infak, dan sedekah secara aman dan transparan bersama Taman Zakat Indonesia.",
+    images: [
+      {
+        url: "/images/og-image.jpg", // Pastikan file ini ada atau buat nanti
+        width: 1200,
+        height: 630,
+        alt: "Taman Zakat Indonesia",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Taman Zakat Indonesia",
+    description: "Lembaga Amil Zakat terpercaya untuk berbagi kebaikan.",
+    images: ["/images/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

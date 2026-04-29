@@ -104,6 +104,15 @@ export default function Navbar() {
               </Link>
             </li>
 
+            <li className={`shrink-0 ${isScrolled ? "md:flex" : "hidden"}`}>
+              <Link
+                href="/program"
+                className="group inline-flex w-full cursor-pointer items-center gap-1.5 transition-all duration-300 outline-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-2 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
+              >
+                Program
+              </Link>
+            </li>
+
             <li
               tabIndex={0}
               className="group relative inline-flex shrink-0 cursor-pointer items-center rounded-full border border-zinc-200 bg-zinc-50 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] outline-none md:rounded-none md:border-0 md:bg-transparent md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
@@ -281,25 +290,6 @@ export default function Navbar() {
               </Link>
             </li>
 
-            {/* Tampil sebagai bulatan di mobile, teks biasa saat desktop statis, tampil saat scroll*/}
-            <li className="shrink-0 flex md:hidden">
-              <Link
-                href="/program"
-                className={`group inline-flex w-full cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] ${isScrolled ? "flex" : "hidden"}`}
-              >
-                Program
-              </Link>
-            </li>
-            <li
-              className={`shrink-0 hidden md:flex ${isScrolled ? "block" : "hidden opacity-0"}`}
-            >
-              <Link
-                href="/program"
-                className="group inline-flex w-full cursor-pointer items-center gap-1.5 transition-all duration-300 outline-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-2 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
-              >
-                Program
-              </Link>
-            </li>
           </ul>
 
           {/* tampilan mobile */}
@@ -389,6 +379,16 @@ export default function Navbar() {
                 className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
               >
                 Tentang Kami
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                href="/program"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
+              >
+                Program
               </Link>
             </li>
 
@@ -500,15 +500,6 @@ export default function Navbar() {
               </Link>
             </li>
 
-            <li className="mt-2">
-              <Link
-                href="/program"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
-              >
-                Program
-              </Link>
-            </li>
           </ul>
         </div>
 

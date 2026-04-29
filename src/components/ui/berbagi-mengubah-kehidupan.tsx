@@ -3,18 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 
-// Placeholder untuk menaruh URL gambar masing-masing kategori
-// Isi string kosong ("") dengan URL gambar, misalnya: "/images/kesehatan.jpg"
-const categories = [
-  { id: "Kesehatan",   image: "https://picsum.photos/seed/kesehatan/1200/600" },
-  { id: "Ekonomi",    image: "https://picsum.photos/seed/ekonomi/1200/600" },
-  { id: "Dakwah",     image: "https://picsum.photos/seed/dakwah/1200/600" },
-  { id: "Sosial",     image: "https://picsum.photos/seed/sosial/1200/600" },
-  { id: "Kemanusiaan",image: "https://picsum.photos/seed/kemanusiaan/1200/600" },
-  { id: "Pendidikan", image: "https://picsum.photos/seed/pendidikan/1200/600" },
-];
+interface ProgramCategory {
+  id: string;
+  image: string;
+  description: string;
+}
 
-export default function BerbagiMengubahKehidupan() {
+export default function BerbagiMengubahKehidupan({ categories }: { categories: ProgramCategory[] }) {
   const [activeCategory, setActiveCategory] = useState("Kesehatan");
 
   const currentCategory = categories.find((c) => c.id === activeCategory) || categories[1];
@@ -68,7 +63,7 @@ export default function BerbagiMengubahKehidupan() {
         {/* Bottom Right Info Box inside Grid */}
         <div className="relative z-10 self-end m-6 sm:m-10 bg-[#F5F5F5] p-5 w-72 rounded-md border border-gray-400 shadow-sm">
           <p className="text-xs sm:text-sm text-black leading-relaxed font-medium">
-            Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien.
+            {currentCategory.description}
           </p>
           <a
             href="#"

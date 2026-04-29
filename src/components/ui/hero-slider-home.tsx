@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-const images = [
+const defaultImages = [
   "/images/gambardetaile/hero home 1.svg",
   "/images/gambardetaile/hero home 2.svg",
   "/images/gambardetaile/hero home 3.svg",
@@ -11,20 +11,21 @@ const images = [
   "/images/gambardetaile/hero home 5.svg",
 ];
 
-export default function HeroSliderHome() {
+export default function HeroSliderHome({ images = defaultImages }: { images?: string[] }) {
+  const sliderImages = images.length > 0 ? images : defaultImages;
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
     }, 8000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [sliderImages.length]);
 
   return (
     <div className="relative w-full aspect-[2/1] md:aspect-[21/9] lg:aspect-[3/1] xl:aspect-[10/3] bg-gradient-to-r from-white to-[#F4Fdf0] overflow-hidden flex items-center justify-center">
-      {images.map((img, index) => (
+      {sliderImages.map((img, index) => (
         <div
           key={index}
           className={`absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
@@ -43,7 +44,7 @@ export default function HeroSliderHome() {
       
       {/* Slider Indicators */}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 z-20">
-        {images.map((_, index) => (
+        {sliderImages.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}

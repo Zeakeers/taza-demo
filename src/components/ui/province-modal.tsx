@@ -13,11 +13,14 @@ interface ProvinceModalProps {
 
 export default function ProvinceModal({ province, isActive, onClose }: ProvinceModalProps) {
   const [mounted, setMounted] = useState(false);
+  const [orientations, setOrientations] = useState<Record<number, 'portrait' | 'landscape'>>({});
 
   useEffect(() => {
     setMounted(true);
     if (province) {
       document.body.style.overflow = "hidden";
+      // Reset orientations when a new province is opened
+      setOrientations({});
     } else {
       document.body.style.overflow = "unset";
     }
@@ -104,7 +107,7 @@ export default function ProvinceModal({ province, isActive, onClose }: ProvinceM
               <div className="mt-10 hidden md:block">
                 <div className="p-8 bg-[#7FC248]/5 rounded-[2.5rem] border border-[#7FC248]/10 relative overflow-hidden group">
                   <p className="text-base font-bold text-[#3B7A1C] italic leading-relaxed relative z-10">
-                    &quot;Setiap rupiah yang Anda salurkan menjadi harapan baru bagi saudara-saudara kita di {province.name}.&quot;
+                    &quot;{province.quote || `Setiap rupiah yang Anda salurkan menjadi harapan baru bagi saudara-saudara kita di ${province.name}.`}&quot;
                   </p>
                 </div>
               </div>
@@ -123,28 +126,57 @@ export default function ProvinceModal({ province, isActive, onClose }: ProvinceM
                 <span className="text-gray-400 text-[10px] md:text-[11px] font-black tracking-[0.4em] uppercase">DOKUMENTASI AKSI NYATA</span>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 md:gap-6 auto-rows-[140px] md:auto-rows-[240px]">
-                {province.images.map((img, i) => (
-                  <motion.div
-                    key={i}
-                    whileHover={{ scale: 0.98, rotate: i % 2 === 0 ? -1 : 1 }}
-                    className={`relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border border-gray-100 group/img ${i === 0 ? "col-span-2 row-span-2" :
-                        i === 1 ? "col-span-1 row-span-1" :
-                          "col-span-1 row-span-2"
-                      }`}
-                  >
-                    <Image
-                      src={img}
-                      alt={`Aksi Taman Zakat ${province.name} ${i + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-1000 group-hover/img:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
-                      <p className="text-white font-bold text-[10px] md:text-sm tracking-wide">Penyaluran Program #{i + 1}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              {(() => {
+                const images = province.images || [];
+
+                return (
+                  <div className="grid grid-cols-2 gap-4 md:gap-6 auto-rows-[140px] md:auto-rows-[180px] grid-flow-dense">
+                    {images.map((img, i) => {
+                      const orient = orientations[i] || 'landscape'; // default landscape
+                      
+                      let gridClass = "";
+                      if (orient === 'portrait') {
+                        // Portrait: 1 kolom lebar, 2 baris tinggi
+                        gridClass = "col-span-1 row-span-2";
+                      } else {
+                        // Landscape
+                        if (i === 0) {
+                          // Gambar pertama landscape dibuat besar (featured)
+                          gridClass = "col-span-2 row-span-2";
+                        } else {
+                          // Landscape lainnya dibuat kecil agar bisa mengisi slot kosong di mobile & desktop
+                          gridClass = "col-span-1 row-span-1";
+                        }
+                      }
+
+                      return (
+                        <motion.div
+                          key={i}
+                          whileHover={{ scale: 0.98, rotate: i % 2 === 0 ? -1 : 1 }}
+                          className={`relative rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-xl md:shadow-2xl border border-gray-100 group/img ${gridClass}`}
+                        >
+                          <Image
+                            src={img}
+                            alt={`Aksi Taman Zakat ${province.name} ${i + 1}`}
+                            fill
+                            className="object-cover transition-transform duration-1000 group-hover/img:scale-110"
+                            onLoad={(e) => {
+                              const { naturalWidth, naturalHeight } = e.currentTarget;
+                              setOrientations(prev => ({
+                                ...prev,
+                                [i]: naturalWidth >= naturalHeight ? 'landscape' : 'portrait'
+                              }));
+                            }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
+                            <p className="text-white font-bold text-[10px] md:text-sm tracking-wide">Penyaluran Program #{i + 1}</p>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                );
+              })()}
 
               <div className="mt-12 md:mt-16 border-t border-gray-100 pt-10 text-center">
                 <p className="text-xs md:text-sm text-gray-300 font-bold uppercase tracking-[0.3em]">Terima kasih atas kebaikan Anda</p>

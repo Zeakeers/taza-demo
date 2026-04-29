@@ -5,33 +5,87 @@ import HeroSliderHome from "@/components/ui/hero-slider-home";
 import BerbagiMengubahKehidupan from "@/components/ui/berbagi-mengubah-kehidupan";
 import BeritaTabs from "@/components/ui/berita-tabs";
 import ArtikelSlider from "@/components/ui/artikel-slider";
+import { getPageContent, getProvinces, API_URL } from "@/lib/api";
 
-export default function Home() {
+export default async function Home() {
+  const content = await getPageContent("home");
+  const provinces = await getProvinces();
+
+  const BASE_URL = API_URL.replace("/api", "");
+
+  // --- LOGIKA FALLBACK (Jika di Admin Kosong, Gunakan Default) ---
+
+  // Hero Data
+  const rawHeroImages = content?.hero?.images || [];
+  const heroImages = rawHeroImages.filter((img: string) => img.trim() !== "");
+
+  // About Data
+  const about = {
+    title: content?.about?.title || "TENTANG KAMI",
+    sub: content?.about?.sub || "TAMAN ZAKAT INDONESIA",
+    desc: content?.about?.desc || "Kami Memfasilitasi perkembangan generasi yang penuh berkah dan kami mempunyai mimpi bisa menjadi salah satu tulang punggung gerakan kebaikan ummat.",
+    highlight: content?.about?.highlight || "Lembaga Filantropi Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk Pengembangan Alqur'an, Pendidikan, Kesehatan dan Kemanusiaan",
+  };
+
+  // Stats Data
+  const stats = {
+    title: content?.stats?.title || "Setiap Zakat Anda Mengalirkan Keberkahan untuk Sesama",
+    desc: content?.stats?.desc || "Taman Zakat memastikan setiap titipan kebaikan Anda tersalurkan secara tepat sasaran kepada mereka yang membutuhkan di berbagai wilayah Indonesia melalui program-program yang akuntabel dan transparan.",
+    wilayah: content?.stats?.wilayah || "47",
+    manfaat: content?.stats?.manfaat || "102.088",
+    aksi: content?.stats?.aksi || "19",
+  };
+
+  // CTA Data
+  const cta = {
+    title: content?.cta?.title || "Bergabunglah Bersama Kami",
+    desc: content?.cta?.desc || "Mari menjadi bagian dari gerakan kebaikan untuk perubahan yang lebih baik bagi ummat.",
+    btn: content?.cta?.btn || "LIHAT SEMUA PELUANG",
+  };
+
+  // Programs Data
+  const rawPrograms = content?.programs?.programs || [];
+  const defaultCategories = [
+    { id: "Kesehatan", image: "https://picsum.photos/seed/kesehatan/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Ekonomi", image: "https://picsum.photos/seed/ekonomi/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Dakwah", image: "https://picsum.photos/seed/dakwah/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Sosial", image: "https://picsum.photos/seed/sosial/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Kemanusiaan", image: "https://picsum.photos/seed/kemanusiaan/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Pendidikan", image: "https://picsum.photos/seed/pendidikan/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+  ];
+  
+  const programs = defaultCategories.map(cat => {
+    const found = rawPrograms.find((p: any) => p.id === cat.id);
+    return found ? { ...cat, ...found } : cat;
+  });
+
   return (
     <section className="w-full min-h-screen flex flex-col bg-white overflow-x-hidden">
+      {/* SEO H1 (Visually Hidden) */}
+      <h1 className="sr-only">
+        Taman Zakat Indonesia - Lembaga Amil Zakat Terpercaya | Donasi Zakat, Sedekah, dan Infak Online
+      </h1>
+
       {/* Header */}
       <header>
-        <HeroSliderHome />
+        <HeroSliderHome images={heroImages} />
       </header>
 
       <main>
         {/* slider hero */}
-        <BerbagiMengubahKehidupan />
+        <BerbagiMengubahKehidupan categories={programs} />
 
         {/* Tentang Kami / About */}
         <section className="mt-20 px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-lg sm:text-xl font-bold uppercase tracking-widest text-[#3B7A1C]">
-              TENTANG KAMI
+              {about.title}
             </h2>
-            <h3 className="text-2xl sm:text-3xl mt-2 text-black font-bold">
-              <span className="font-bold text-[#7FC248]">TAMAN ZAKAT</span>{" "}
-              INDONESIA
+            <h3 className="text-2xl sm:text-3xl mt-2 text-black font-bold uppercase">
+              {about.sub}
             </h3>
             <p className="mt-6 text-base sm:text-lg text-black leading-relaxed font-medium">
-              Kami Memfasilitasi perkembangan generasi yang penuh berkah dan
-              kami mempunyai mimpi bisa menjadi salah satu tulang punggung
-              gerakan kebaikan ummat.
+              {about.desc}
             </p>
             <button className="mt-6 bg-[#7FC248] text-white px-6 py-2.5 rounded-md font-medium inline-flex items-center justify-center gap-2 hover:bg-[#6eb23a] transition-colors shadow-md">
               Selengkapnya{" "}
@@ -40,11 +94,8 @@ export default function Home() {
           </div>
 
           <div className="max-w-4xl mx-auto bg-[#EAFCDC] border border-[#7FC248] rounded-xl p-6 sm:p-8 text-center relative mt-16 shadow-sm">
-            
             <p className="text-base sm:text-lg text-black font-medium leading-relaxed mt-2 sm:mt-0 px-4 pt-2">
-              Lembaga Filantropi Profesional dan terpercaya yang berfokus pada
-              Sarana dakwah untuk Pengembangan Alqur&apos;an, Pendidikan,
-              Kesehatan dan Kemanusiaan
+              {about.highlight}
             </p>
           </div>
         </section>
@@ -53,14 +104,10 @@ export default function Home() {
         <section className="w-full mt-24 relative z-0 pt-16 pb-12 bg-[#0D2B05] sm:bg-[linear-gradient(180deg,#0D2B05_65%,#F4FAF0_65%)]">
           <div className="max-w-[1000px] mx-auto px-4">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 leading-tight text-white drop-shadow-md">
-              Setiap Zakat Anda Mengalirkan <br className="hidden sm:block" />{" "}
-              Keberkahan untuk Sesama
+              {stats.title}
             </h2>
             <p className="text-center text-sm sm:text-base text-gray-300 mb-12 max-w-4xl mx-auto opacity-90 drop-shadow-md">
-              Taman Zakat memastikan setiap titipan kebaikan Anda tersalurkan
-              secara tepat sasaran kepada mereka yang membutuhkan di berbagai
-              wilayah Indonesia melalui program-program yang akuntabel dan
-              transparan.
+              {stats.desc}
             </p>
 
             <div className="border border-gray-600 rounded-lg relative overflow-hidden flex flex-col items-center pt-10 shadow-lg">
@@ -78,7 +125,7 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-3 text-center w-full max-w-3xl gap-8 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-gray-700 px-4">
                 <div className="pt-4 sm:pt-0">
                   <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                    47
+                    {stats.wilayah}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-400">
                     Wilayah Jangkauan
@@ -86,7 +133,7 @@ export default function Home() {
                 </div>
                 <div className="pt-4 sm:pt-0">
                   <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                    102.088
+                    {stats.manfaat}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-400">
                     Penerima Manfaat
@@ -94,7 +141,7 @@ export default function Home() {
                 </div>
                 <div className="pt-4 sm:pt-0">
                   <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                    19
+                    {stats.aksi}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-400">
                     Aksi Kebaikan
@@ -103,7 +150,7 @@ export default function Home() {
               </div>
 
               <div className="w-[95%] md:w-[90%] mt-8 pb-6 relative z-20">
-                <IndonesiaMap />
+                <IndonesiaMap provinces={provinces} />
               </div>
             </div>
           </div>
@@ -130,14 +177,13 @@ export default function Home() {
             PELUANG KEBAIKAN
           </p>
           <h2 className="text-3xl font-bold mb-4 text-black">
-            Bergabunglah Bersama Kami
+            {cta.title}
           </h2>
           <p className="text-sm font-medium text-black mb-6">
-            Mari menjadi bagian dari gerakan kebaikan untuk perubahan yang lebih
-            baik bagi ummat.
+            {cta.desc}
           </p>
-          <button className="text-xs font-bold text-black border-b-2 border-black pb-1 hover:text-[#7FC248] hover:border-[#7FC248] transition-colors">
-            LIHAT SEMUA PELUANG
+          <button className="text-xs font-bold text-black border-b-2 border-black pb-1 hover:text-[#7FC248] hover:border-[#7FC248] transition-colors uppercase">
+            {cta.btn}
           </button>
         </section>
       </main>
