@@ -5,11 +5,13 @@ import HeroSliderHome from "@/components/ui/hero-slider-home";
 import BerbagiMengubahKehidupan from "@/components/ui/berbagi-mengubah-kehidupan";
 import BeritaTabs from "@/components/ui/berita-tabs";
 import ArtikelSlider from "@/components/ui/artikel-slider";
-import { getPageContent, getProvinces } from "@/lib/api";
+import { getPageContent, getProvinces, API_URL } from "@/lib/api";
 
 export default async function Home() {
   const content = await getPageContent("home");
   const provinces = await getProvinces();
+
+  const BASE_URL = API_URL.replace("/api", "");
 
   // --- LOGIKA FALLBACK (Jika di Admin Kosong, Gunakan Default) ---
 
@@ -41,6 +43,22 @@ export default async function Home() {
     btn: content?.cta?.btn || "LIHAT SEMUA PELUANG",
   };
 
+  // Programs Data
+  const rawPrograms = content?.programs?.programs || [];
+  const defaultCategories = [
+    { id: "Kesehatan", image: "https://picsum.photos/seed/kesehatan/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Ekonomi", image: "https://picsum.photos/seed/ekonomi/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Dakwah", image: "https://picsum.photos/seed/dakwah/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Sosial", image: "https://picsum.photos/seed/sosial/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Kemanusiaan", image: "https://picsum.photos/seed/kemanusiaan/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+    { id: "Pendidikan", image: "https://picsum.photos/seed/pendidikan/1200/600", description: "Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien." },
+  ];
+  
+  const programs = defaultCategories.map(cat => {
+    const found = rawPrograms.find((p: any) => p.id === cat.id);
+    return found ? { ...cat, ...found } : cat;
+  });
+
   return (
     <section className="w-full min-h-screen flex flex-col bg-white overflow-x-hidden">
       {/* SEO H1 (Visually Hidden) */}
@@ -55,7 +73,7 @@ export default async function Home() {
 
       <main>
         {/* slider hero */}
-        <BerbagiMengubahKehidupan />
+        <BerbagiMengubahKehidupan categories={programs} />
 
         {/* Tentang Kami / About */}
         <section className="mt-20 px-4">
