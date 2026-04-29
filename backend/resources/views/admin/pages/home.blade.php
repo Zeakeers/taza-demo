@@ -13,12 +13,34 @@
         </div>
 
         @if(session('success'))
-            <div
-                class="bg-primary text-white p-4 rounded-2xl shadow-lg shadow-primary/20 flex items-center gap-3 animate-bounce">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {{ session('success') }}
+            <div id="alert-success" class="bg-primary text-white p-4 rounded-2xl shadow-lg shadow-primary/20 flex items-center justify-between gap-3 animate-bounce">
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="font-medium">{{ session('success') }}</span>
+                </div>
+                <button type="button" onclick="document.getElementById('alert-success').remove()" class="text-white hover:text-gray-200 focus:outline-none p-1 bg-white/20 rounded-full hover:bg-white/30 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div id="alert-error" class="bg-red-500 text-white p-4 rounded-2xl shadow-lg shadow-red-500/20 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="font-medium">{{ session('error') }}</span>
+                </div>
+                <button type="button" onclick="document.getElementById('alert-error').remove()" class="text-white hover:text-gray-200 focus:outline-none p-1 bg-white/20 rounded-full hover:bg-white/30 transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
         @endif
 
@@ -33,6 +55,13 @@
                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                     Hero Slider
+                </button>
+                <button onclick="showSection('programs')" id="tab-programs"
+                    class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                    </svg>
+                    Program
                 </button>
                 <button onclick="showSection('about')" id="tab-about"
                     class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
@@ -84,7 +113,7 @@
                                 @php $heroData = $hero ? $hero->content : ['images' => []]; @endphp
 
                                 <!-- Grid Gambar Saat Ini -->
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="hero-preview-container">
                                     @foreach($heroData['images'] ?? [] as $img)
                                         <div
                                             class="group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden border border-gray-200">
@@ -104,7 +133,7 @@
                                     @endforeach
 
                                     <!-- Upload Box Baru -->
-                                    <label
+                                    <label id="hero-upload-box"
                                         class="cursor-pointer flex flex-col items-center justify-center aspect-video border-2 border-dashed border-gray-300 rounded-2xl hover:border-primary hover:bg-primary/5 transition-all">
                                         <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -113,7 +142,7 @@
                                         </svg>
                                         <span class="text-xs font-bold text-gray-500 mt-2">Tambah Gambar</span>
                                         <input type="file" name="new_images[]" multiple class="hidden"
-                                            onchange="this.form.submit()">
+                                            onchange="previewHeroImages(this)">
                                     </label>
                                 </div>
 
@@ -136,6 +165,63 @@
                                         </p>
                                     </div>
                                 </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    {{-- Form Program --}}
+                    <div id="section-programs" class="content-section hidden">
+                        <form action="{{ route('admin.home.update') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="section" value="programs">
+                            <div class="flex items-center justify-between mb-8">
+                                <div>
+                                    <h2 class="text-2xl font-bold text-dark">Konten Program</h2>
+                                    <p class="text-sm text-gray-400 mt-1">Kelola gambar dan deskripsi untuk 6 kategori program.</p>
+                                </div>
+                                <button type="submit" class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
+                            </div>
+
+                            @php
+                                $programsData = $programs ? $programs->content['programs'] ?? [] : [];
+                                $defaultCategories = ['Kesehatan', 'Ekonomi', 'Dakwah', 'Sosial', 'Kemanusiaan', 'Pendidikan'];
+                            @endphp
+
+                            <div class="space-y-6">
+                                @foreach($defaultCategories as $index => $cat)
+                                    @php
+                                        // Cari data program yang sudah tersimpan atau gunakan default
+                                        $prog = collect($programsData)->firstWhere('id', $cat) ?? ['id' => $cat, 'image' => '', 'description' => 'Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien.'];
+                                    @endphp
+                                    <div class="bg-gray-50 border border-gray-100 p-6 rounded-2xl">
+                                        <h3 class="font-bold text-lg text-primary mb-4">{{ $cat }}</h3>
+                                        <input type="hidden" name="content[programs][{{ $index }}][id]" value="{{ $cat }}">
+                                        
+                                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                            <!-- Image Upload -->
+                                            <div class="md:col-span-1">
+                                                <label class="block font-bold mb-2 text-sm text-gray-600">Gambar Program</label>
+                                                <div class="relative aspect-video bg-gray-200 rounded-xl overflow-hidden border border-gray-300 mb-3">
+                                                    @if($prog['image'])
+                                                        <img src="{{ $prog['image'] }}" id="preview-img-{{ $index }}" class="w-full h-full object-cover">
+                                                        <input type="hidden" name="content[programs][{{ $index }}][image]" value="{{ $prog['image'] }}">
+                                                    @else
+                                                        <div id="preview-placeholder-{{ $index }}" class="flex items-center justify-center h-full text-gray-400 text-sm">Belum ada gambar</div>
+                                                        <img src="" id="preview-img-{{ $index }}" class="w-full h-full object-cover hidden">
+                                                        <input type="hidden" name="content[programs][{{ $index }}][image]" value="">
+                                                    @endif
+                                                </div>
+                                                <input type="file" name="new_program_images[{{ $index }}]" accept="image/*" onchange="previewImage(this, '{{ $index }}')" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer">
+                                            </div>
+
+                                            <!-- Description -->
+                                            <div class="md:col-span-2">
+                                                <label class="block font-bold mb-2 text-sm text-gray-600">Deskripsi Program</label>
+                                                <textarea name="content[programs][{{ $index }}][description]" rows="5" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary transition-all outline-none text-sm">{{ $prog['description'] }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </form>
                     </div>
@@ -378,5 +464,71 @@
                 showSection(tab);
             }
         });
+
+        function previewImage(input, index) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgElement = document.getElementById('preview-img-' + index);
+                    const placeholder = document.getElementById('preview-placeholder-' + index);
+                    
+                    if (imgElement) {
+                        imgElement.src = e.target.result;
+                        imgElement.classList.remove('hidden');
+                    }
+                    if (placeholder) {
+                        placeholder.classList.add('hidden');
+                    }
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function previewHeroImages(input) {
+            const container = document.getElementById('hero-preview-container');
+            const uploadBox = document.getElementById('hero-upload-box');
+
+            if (input.files && input.files.length > 0) {
+                // Sembunyikan input saat ini dan pindahkan ke dalam wrapper agar ikut tersubmit
+                input.style.display = 'none';
+                input.classList.remove('hidden'); 
+                
+                // Buat wrapper untuk preview batch ini
+                const batchDiv = document.createElement('div');
+                batchDiv.className = 'contents'; 
+                batchDiv.appendChild(input);
+
+                Array.from(input.files).forEach(file => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const div = document.createElement('div');
+                        div.className = 'group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden border border-gray-200 shadow-sm';
+                        div.innerHTML = `
+                            <img src="${e.target.result}" class="w-full h-full object-cover">
+                            <div class="absolute top-2 left-2 bg-primary text-white text-[10px] px-2 py-1 rounded-full font-bold shadow">BARU</div>
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center">
+                                <button type="button" onclick="this.closest('.contents').remove()" class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all" title="Hapus Batch Ini">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        `;
+                        batchDiv.appendChild(div);
+                    }
+                    reader.readAsDataURL(file);
+                });
+                
+                container.insertBefore(batchDiv, uploadBox);
+
+                // Buat input baru untuk upload box agar user bisa memilih gambar lagi
+                const newInput = document.createElement('input');
+                newInput.type = 'file';
+                newInput.name = 'new_images[]';
+                newInput.multiple = true;
+                newInput.className = 'hidden';
+                newInput.onchange = function() { previewHeroImages(this); };
+                uploadBox.appendChild(newInput);
+            }
+        }
     </script>
 @endsection
