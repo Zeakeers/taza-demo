@@ -10,7 +10,10 @@ class AuthController extends Controller
     public function showLogin()
     {
         if (Auth::check()) {
-            return redirect()->route('admin.dashboard');
+            if (Auth::user()->role == 'program') {
+                return redirect('/admin/konfirmasi-donasi');
+            }
+            return redirect()->route('admin.home.edit');
         }
         return view('auth.login');
     }
@@ -25,7 +28,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/admin');
+            if (Auth::user()->role == 'program') {
+                return redirect()->intended('/admin/konfirmasi-donasi');
+            }
+            return redirect()->intended(route('admin.home.edit'));
         }
 
         return back()->withErrors([
