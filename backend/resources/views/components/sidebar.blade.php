@@ -10,14 +10,9 @@
     </div>
     
     <nav class="flex-1 px-4 py-4 space-y-2 overflow-y-auto sidebar-scroll">
-        <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.dashboard') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            Dashboard
-        </a>
-        
         {{-- Group 1: Manajemen Konten (Untuk Markom & Dev) --}}
         @if(auth()->user()->role == 'dev' || auth()->user()->role == 'markom')
-        <div class="pt-6 pb-2 px-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Manajemen Konten</div>
+        <div class="pt-2 pb-2 px-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Manajemen Konten</div>
         
         <a href="{{ route('admin.home.edit') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.home.edit') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all">
             <div class="w-1.5 h-1.5 rounded-full {{ request()->routeIs('admin.home.edit') ? 'bg-white' : 'bg-secondary opacity-0' }} group-hover:opacity-100 transition-all"></div>
@@ -80,8 +75,8 @@
         @if(auth()->user()->role == 'dev' || auth()->user()->role == 'program')
         <div class="pt-6 pb-2 px-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Data Form & Review</div>
         
-        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
-            <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all"></div>
+        <a href="{{ route('admin.donations.index') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.donations.*') || request()->is('admin/konfirmasi-donasi') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all group">
+            <div class="w-1.5 h-1.5 rounded-full {{ request()->routeIs('admin.donations.*') || request()->is('admin/konfirmasi-donasi') ? 'bg-white' : 'bg-secondary opacity-0' }} group-hover:opacity-100 transition-all"></div>
             Data Konfirmasi Donasi
         </a>
 
