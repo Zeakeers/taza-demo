@@ -10,7 +10,10 @@ Route::get('/', function () {
 });
 
 Route::get('/admin', function () {
-    return redirect()->route('admin.dashboard');
+    if (auth()->check() && auth()->user()->role == 'program') {
+        return redirect('/admin/konfirmasi-donasi');
+    }
+    return redirect()->route('admin.home.edit');
 });
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -18,9 +21,10 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    // Halaman Dummy Konfirmasi Donasi (Bisa diisi nanti)
+    Route::get('/konfirmasi-donasi', function() {
+        return view('admin.donations.index');
+    })->name('admin.donations.index');
 
     // Manajemen Konten Halaman Home
     Route::get('/home', [PageContentController::class, 'editHome'])->name('admin.home.edit');
