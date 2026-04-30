@@ -131,7 +131,12 @@ export default function ProvinceModal({ province, isActive, onClose }: ProvinceM
 
                 return (
                   <div className="grid grid-cols-2 gap-4 md:gap-6 auto-rows-[140px] md:auto-rows-[180px] grid-flow-dense">
-                    {images.map((img, i) => {
+                    {images.map((imgData, i) => {
+                      const isString = typeof imgData === 'string';
+                      const img = isString ? imgData : (imgData.url || '');
+                      const title = isString ? `Penyaluran Program #${i + 1}` : (imgData.title || `Penyaluran Program #${i + 1}`);
+                      const desc = isString ? '' : (imgData.description || '');
+
                       const orient = orientations[i] || 'landscape'; // default landscape
                       
                       let gridClass = "";
@@ -168,8 +173,9 @@ export default function ProvinceModal({ province, isActive, onClose }: ProvinceM
                               }));
                             }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
-                            <p className="text-white font-bold text-[10px] md:text-sm tracking-wide">Penyaluran Program #{i + 1}</p>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
+                            <p className="text-white font-bold text-[12px] md:text-sm tracking-wide mb-1">{title}</p>
+                            {desc && <p className="text-white/90 text-[10px] md:text-xs leading-relaxed line-clamp-2">{desc}</p>}
                           </div>
                         </motion.div>
                       );
