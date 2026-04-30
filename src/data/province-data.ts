@@ -1,9 +1,15 @@
+export interface ProvinceImage {
+  url: string;
+  title?: string;
+  description?: string;
+}
+
 export interface ProvinceData {
   id: string;
   name: string;
   beneficiaries: string;
   funds: string;
-  images: string[];
+  images: (string | ProvinceImage)[];
   quote?: string;
 }
 
