@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="space-y-8">
-        <div class="flex items-center justify-between">
-            <div>
-                <h1 class="text-3xl font-bold text-dark">Manajemen Halaman Home</h1>
-                <p class="text-gray-500 mt-1">Kelola konten visual dan teks untuk halaman utama website.</p>
+        <div class="flex items-start justify-between gap-4">
+            <div class="flex-1">
+                <h1 class="text-xl lg:text-3xl font-bold text-dark">Manajemen Halaman Home</h1>
+                <p class="text-gray-400 text-[10px] lg:text-base mt-1">Kelola konten visual dan teks untuk halaman utama website.</p>
             </div>
-            <div class="bg-primary/10 text-primary px-4 py-2 rounded-xl text-sm font-semibold border border-primary/20">
+            <div class="shrink-0 bg-primary/10 text-primary px-3 lg:px-4 py-1.5 lg:py-2 rounded-xl text-[10px] lg:text-sm font-semibold border border-primary/20 whitespace-nowrap">
                 Halaman Aktif
             </div>
         </div>
@@ -44,48 +44,48 @@
             </div>
         @endif
 
-        <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+        <div class="grid grid-cols-1 xl:grid-cols-4 gap-4 lg:gap-8">
             <!-- Sidebar Navigation (Tabs) -->
             <div
-                class="xl:col-span-1 space-y-2 sticky self-start top-8 bg-white p-4 rounded-[2rem] shadow-xl border border-white">
+                class="xl:col-span-1 flex xl:flex-col gap-2 overflow-x-auto pb-4 xl:pb-0 xl:space-y-2 xl:sticky xl:self-start xl:top-8 bg-transparent xl:bg-white xl:p-4 xl:rounded-[2rem] xl:shadow-xl xl:border xl:border-white hide-scrollbar">
                 <button onclick="showSection('hero')" id="tab-hero"
-                    class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-white text-dark shadow-sm hover:shadow-md border border-transparent">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-white text-dark shadow-sm hover:shadow-md border border-transparent whitespace-nowrap">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    Hero Slider
+                    <span class="text-left">Hero Slider</span>
                 </button>
                 <button onclick="showSection('programs')" id="tab-programs"
-                    class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent whitespace-nowrap">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                     </svg>
-                    Program
+                    <span class="text-left">Program</span>
                 </button>
                 <button onclick="showSection('about')" id="tab-about"
-                    class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent whitespace-nowrap">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    Tentang Kami
+                    <span class="text-left">Tentang Kami</span>
                 </button>
                 <button onclick="showSection('stats')" id="tab-stats"
-                    class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent whitespace-nowrap">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                     </svg>
-                    Statistik & Map
+                    <span class="text-left">Statistik & Map</span>
                 </button>
                 <button onclick="showSection('cta')" id="tab-cta"
-                    class="tab-btn w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent whitespace-nowrap">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.167H3.38a1.345 1.345 0 01-1.35-1.157 1.346 1.346 0 011.127-1.493l2.229-.351 1.633-4.667a1.76 1.76 0 013.417.592c0 .324-.132.628-.352.88zM15.424 7.21a1.042 1.042 0 011.41 0c2.56 2.56 2.56 6.71 0 9.27a1.042 1.042 0 11-1.41-1.41c1.78-1.78 1.78-4.67 0-6.45a1.042 1.042 0 010-1.41z" />
                     </svg>
-                    CTA Kebaikan
+                    <span class="text-left">CTA Kebaikan</span>
                 </button>
             </div>
 
@@ -100,12 +100,11 @@
                             <input type="hidden" name="section" value="hero">
                             <div class="flex items-center justify-between mb-8">
                                 <div>
-                                    <h2 class="text-2xl font-bold text-dark">Konten Hero Slider</h2>
-                                    <p class="text-sm text-gray-400 mt-1">Upload gambar ilustrasi untuk slider utama
-                                        website.</p>
+                                    <h2 class="text-lg lg:text-2xl font-bold text-dark">Konten Hero Slider</h2>
+                                    <p class="text-[10px] lg:text-sm text-gray-400 mt-1">Upload gambar ilustrasi untuk slider utama website.</p>
                                 </div>
                                 <button type="submit"
-                                    class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan
+                                    class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan
                                     Perubahan</button>
                             </div>
 
@@ -176,10 +175,10 @@
                             <input type="hidden" name="section" value="programs">
                             <div class="flex items-center justify-between mb-8">
                                 <div>
-                                    <h2 class="text-2xl font-bold text-dark">Konten Program</h2>
-                                    <p class="text-sm text-gray-400 mt-1">Kelola gambar dan deskripsi untuk 6 kategori program.</p>
+                                    <h2 class="text-lg lg:text-2xl font-bold text-dark">Konten Program</h2>
+                                    <p class="text-[10px] lg:text-sm text-gray-400 mt-1">Kelola gambar dan deskripsi untuk 6 kategori program.</p>
                                 </div>
-                                <button type="submit" class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
+                                <button type="submit" class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
                             </div>
 
                             @php
@@ -239,9 +238,9 @@
                             @csrf
                             <input type="hidden" name="section" value="about">
                             <div class="flex items-center justify-between mb-8">
-                                <h2 class="text-2xl font-bold text-dark">Teks Tentang Kami</h2>
+                                <h2 class="text-lg lg:text-2xl font-bold text-dark">Teks Tentang Kami</h2>
                                 <button type="submit"
-                                    class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan
+                                    class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan
                                     Perubahan</button>
                             </div>
 
@@ -277,9 +276,9 @@
                             @csrf
                             <input type="hidden" name="section" value="stats">
                             <div class="flex items-center justify-between mb-8">
-                                <h2 class="text-2xl font-bold text-dark">Data Statistik Website</h2>
+                                <h2 class="text-lg lg:text-2xl font-bold text-dark">Data Statistik Website</h2>
                                 <button type="submit"
-                                    class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan
+                                    class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan
                                     Perubahan</button>
                             </div>
 
@@ -404,9 +403,9 @@
                             @csrf
                             <input type="hidden" name="section" value="cta">
                             <div class="flex items-center justify-between mb-8">
-                                <h2 class="text-2xl font-bold text-dark">Banner Ajakan (CTA) Bottom</h2>
+                                <h2 class="text-lg lg:text-2xl font-bold text-dark">Banner Ajakan (CTA) Bottom</h2>
                                 <button type="submit"
-                                    class="bg-primary hover:bg-dark text-white px-8 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-primary/20">Simpan
+                                    class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan
                                     Perubahan</button>
                             </div>
 
