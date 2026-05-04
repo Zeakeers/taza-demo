@@ -3,6 +3,8 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Http\Exceptions\PostTooLargeException;
+use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -15,5 +17,9 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (PostTooLargeException $e, Request $request) {
+            $maxPost = ini_get('post_max_size');
+            $maxFile = ini_get('upload_max_filesize');
+            return back()->with('error', "Maaf, data atau file yang Anda unggah terlalu besar! Maksimal upload per file adalah {$maxFile} dan total data adalah {$maxPost}.");
+        });
     })->create();
