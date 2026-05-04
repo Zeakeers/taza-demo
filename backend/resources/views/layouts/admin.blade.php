@@ -73,7 +73,7 @@
             </div>
         </header>
 
-        <div class="flex-1 overflow-y-auto p-10 bg-white/50">
+        <div id="main-content-area" class="flex-1 overflow-y-auto p-10 bg-white/50">
             @yield('content')
         </div>
 
