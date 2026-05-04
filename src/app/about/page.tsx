@@ -227,15 +227,54 @@ const statDetails = {
   manfaat:
     "Curabitur pretium tincidunt lacus, penerima manfaat merupakan dhuafa dan amil yang berhak. Nulla gravida orci a odio. Nullam varius, turpis et commodo.",
   kebaikan:
-    "Suspendisse dictum feugiat nisl, aksi kebaikan meliputi pendidikan, ekonomi, dan kesehatan. Ut sem vamus vulputate eleifend. Praesent dapibus, neque id cursus.",
+"Suspendisse dictum feugiat nisl, aksi kebaikan meliputi pendidikan, ekonomi, dan kesehatan. Ut sem vamus vulputate eleifend. Praesent dapibus, neque id cursus.",
 };
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Sejarah");
-
-  const [activeKepengurusan, setActiveKepengurusan] = useState<KepengurusanTab>("Dewan Direksi");
+  const [activeKepengurusan, setActiveKepengurusan] = useState("Dewan Direksi");
   const [activeColor, setActiveColor] = useState<string>("#5DA630");
   const [activeModalInfo, setActiveModalInfo] = useState<string | null>(null);
+
+  // Data fetching state
+  const [content, setContent] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Setup dynamic kepengurusan tabs
+  const dynamicKepengurusanTabs = content?.kepengurusan 
+    ? Object.keys(content.kepengurusan) 
+    : kepengurusanTabs;
+
+  useEffect(() => {
+    if (dynamicKepengurusanTabs.length > 0 && !(dynamicKepengurusanTabs as string[]).includes(activeKepengurusan)) {
+      setActiveKepengurusan(dynamicKepengurusanTabs[0]);
+    }
+  }, [content, dynamicKepengurusanTabs, activeKepengurusan]);
+
+  useEffect(() => {
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api"}/content/about`)
+      .then((res) => res.json())
+      .then((data) => setContent(data))
+      .catch((err) => console.error("Failed to load about content", err));
+  }, []);
+
+  // --- MAPPED DYNAMIC CONTENT ---
+  const heroImage = content?.hero?.image || "/images/gambardetaile/Gemini_Generated_Image_iu64lviu64lviu64 1.svg";
+  const heroTitle = content?.hero?.title || "Hal paling sia-sia adalah \nsaat kita diam tanpa \nmelakukan apa-apa.";
+  const heroName = content?.hero?.name || "H. SLAMET BUDIONO, S.H., M.M";
+  const heroPos = content?.hero?.position || "FOUNDER & CEO TAMAN ZAKAT";
+  const heroQuote = content?.hero?.quote || "\"Semangat kami adalah memastikan setiap titipan kebaikan Anda mengalir menjadi keberkahan yang nyata bagi mereka yang paling membutuhkan.\"";
+
+  const statWilayahCount = content?.stats?.wilayah_count || "47";
+  const statWilayahDesc = content?.stats?.wilayah_desc || statDetails.wilayah;
+  const statPenerimaCount = content?.stats?.penerima_count || "102.088";
+  const statPenerimaDesc = content?.stats?.penerima_desc || statDetails.manfaat;
+  const statAksiCount = content?.stats?.aksi_count || "19";
+  const statAksiDesc = content?.stats?.aksi_desc || statDetails.kebaikan;
+
+  const valueTitle = content?.value?.title || "Kepuasan Anda adalah Amanah Kami";
+  const valueDesc = content?.value?.desc || "Setiap dana Zakat, Infaq, dan Sedekah yang Anda percayakan kepada kami akan dikelola dengan standar audit yang ketat. Kami memastikan 100% amanah disalurkan kepada program-program Al-Qur'an, Pendidikan, Kesehatan, dan Kemanusiaan.";
+  const valueImage = content?.value?.image || "";
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -265,7 +304,7 @@ export default function AboutPage() {
       <header className="relative w-full h-[480px] md:h-[580px] overflow-hidden">
         {/* Background Image */}
         <Image
-          src="/images/gambardetaile/Gemini_Generated_Image_iu64lviu64lviu64 1.svg"
+          src={heroImage}
           alt="Hero background"
           fill
           className="object-cover object-center"
@@ -276,27 +315,23 @@ export default function AboutPage() {
         <div className="relative z-20 mx-auto w-full max-w-[1240px] h-full flex items-center justify-center md:justify-end px-4 sm:px-6 lg:px-8">
           {/* Card */}
           <div className="bg-[#F9F9F9] p-8 md:p-12 w-full max-w-[460px] shadow-2xl flex flex-col items-center text-center">
-            <h1 className="text-black text-[24px] md:text-[28px] font-bold leading-tight">
-              Hal paling sia-sia adalah <br />
-              saat kita diam tanpa <br />
-              melakukan apa-apa.
+            <h1 className="text-black text-[24px] md:text-[28px] font-bold leading-tight whitespace-pre-line">
+              {heroTitle}
             </h1>
 
             <div className="mt-6 mb-4 text-zinc-800 text-[11px] md:text-xs font-bold tracking-wider uppercase flex flex-col items-center">
               <div className="flex items-center gap-2">
                 <span className="w-5 h-[1px] bg-zinc-400 block"></span>
-                <span>H. SLAMET BUDIONO, S.H., M.M</span>
+                <span>{heroName}</span>
                 <span className="w-5 h-[1px] bg-zinc-400 block"></span>
               </div>
               <span className="mt-1 text-[#7FC248]">
-                FOUNDER & CEO TAMAN ZAKAT
+                {heroPos}
               </span>
             </div>
 
-            <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed italic">
-              &quot;Semangat kami adalah memastikan setiap titipan kebaikan Anda
-              mengalir menjadi keberkahan yang nyata bagi mereka yang paling
-              membutuhkan.&quot;
+            <p className="mt-5 text-zinc-700 text-sm md:text-[15px] leading-relaxed italic whitespace-pre-line">
+              {heroQuote}
             </p>
 
             <button className="mt-8 bg-[#FDBA12] hover:bg-[#E5A810] text-black font-semibold px-8 py-3 rounded-sm transition-colors duration-200 uppercase tracking-widest text-xs">
@@ -422,23 +457,42 @@ export default function AboutPage() {
               <div className="flex flex-col md:flex-row gap-6 lg:gap-8">
                 {/* Side Image */}
                 {activeTab === "Sejarah" && (
-                  <div className="h-56 sm:h-[260px] w-full md:w-[320px] lg:w-[380px] bg-[#D9D9D9] flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-xl md:text-2xl">
-                      Gambar
-                    </span>
+                  <div className="relative h-56 sm:h-[260px] w-full md:w-[320px] lg:w-[380px] bg-[#D9D9D9] flex items-center justify-center flex-shrink-0 overflow-hidden">
+                    {content?.mengenal?.Sejarah?.image ? (
+                      <Image
+                        src={content.mengenal.Sejarah.image}
+                        alt="Sejarah"
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <span className="text-white font-bold text-xl md:text-2xl">
+                        Gambar
+                      </span>
+                    )}
                   </div>
                 )}
 
                 {/* Top Text Content */}
-                <div className="text-black text-[13px] md:text-[15px] leading-relaxed flex-1">
-                  {tabContent[activeTab].topText}
+                <div className="text-black text-[13px] md:text-[15px] leading-relaxed flex-1 whitespace-pre-line space-y-4">
+                  {content?.mengenal && (content.mengenal[activeTab]?.text || content.mengenal[activeTab]?.topText) ? (
+                    <div dangerouslySetInnerHTML={{ __html: content.mengenal[activeTab].text || content.mengenal[activeTab].topText }} />
+                  ) : (
+                    tabContent[activeTab].topText
+                  )}
                 </div>
               </div>
 
-              {/* Bottom Full-width Text */}
-              <div className="mt-6 md:mt-8 text-black text-[13px] md:text-[15px] leading-relaxed">
-                {tabContent[activeTab].bottomText}
-              </div>
+              {/* Bottom Full-width Text (Fallback if text is split into topText and bottomText) */}
+              {(!content?.mengenal || (!content.mengenal[activeTab]?.text && content.mengenal[activeTab]?.bottomText)) && (
+                <div className="mt-6 md:mt-8 text-black text-[13px] md:text-[15px] leading-relaxed whitespace-pre-line space-y-4">
+                  {content?.mengenal && content.mengenal[activeTab]?.bottomText ? (
+                    <div dangerouslySetInnerHTML={{ __html: content.mengenal[activeTab].bottomText }} />
+                  ) : (
+                    tabContent[activeTab].bottomText
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -464,7 +518,7 @@ export default function AboutPage() {
             <div className="mt-14 flex flex-col md:flex-row gap-10 lg:gap-20 items-stretch">
               {/* Sidebar Tabs */}
               <div className="w-full md:w-[35%] flex flex-col border border-zinc-300 rounded-2xl py-8 px-4 gap-4 bg-[#204f28] self-start shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                {kepengurusanTabs.map((tab) => (
+                {dynamicKepengurusanTabs.map((tab) => (
                   <button
                     key={tab}
                     onClick={() => setActiveKepengurusan(tab)}
@@ -482,7 +536,7 @@ export default function AboutPage() {
               {/* Content Grid */}
               <div className="w-full md:w-[65%]">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
-                  {kepengurusanData[activeKepengurusan].map((member, idx) => (
+                  {((content?.kepengurusan && content.kepengurusan[activeKepengurusan]) || (kepengurusanData as any)[activeKepengurusan] || []).map((member: any, idx: number) => (
                     <div
                       key={idx}
                       className="flex flex-col bg-[#7FC248] rounded-xl overflow-hidden shadow-[0_4px_25px_rgba(180,210,180,0.4)] pb-8 border border-white"
@@ -531,12 +585,12 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-8 text-center">
               <div className="flex flex-col items-center">
                 <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">
-                  47
+                  {statWilayahCount}
                 </h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Wilayah Jangkauan
                   <button
-                    onClick={() => setActiveModalInfo(statDetails.wilayah)}
+                    onClick={() => setActiveModalInfo(statWilayahDesc)}
                     className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer"
                   >
                     ?
@@ -545,12 +599,12 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col items-center">
                 <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">
-                  102.088
+                  {statPenerimaCount}
                 </h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Penerima Manfaat
                   <button
-                    onClick={() => setActiveModalInfo(statDetails.manfaat)}
+                    onClick={() => setActiveModalInfo(statPenerimaDesc)}
                     className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer"
                   >
                     ?
@@ -559,12 +613,12 @@ export default function AboutPage() {
               </div>
               <div className="flex flex-col items-center">
                 <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">
-                  19
+                  {statAksiCount}
                 </h3>
                 <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
                   Aksi Kebaikan
                   <button
-                    onClick={() => setActiveModalInfo(statDetails.kebaikan)}
+                    onClick={() => setActiveModalInfo(statAksiDesc)}
                     className="w-[18px] h-[18px] rounded-full bg-white text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer"
                   >
                     ?
@@ -586,35 +640,29 @@ export default function AboutPage() {
 
                 {/* gamabr bagian kiri*/}
                 <div className="w-full h-full border border-zinc-200/60 bg-[#FAFAFA] relative z-10 mt-6 md:mt-0 shadow-[10px_10px_15px_rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden">
-                  {/* hapus saja kalo sudah ada gamabrnya */}
-                  <span className="text-zinc-400 text-sm font-medium">
-                    Foto area
-                  </span>
-
-                  {/* Contoh kode Image siap pakai, hilangkan tanda komentar untuk menggunakannya */}
-                  {/* 
-                   <Image 
-                     src="/images/your-image-path.jpg" 
-                     alt="You have our word image" 
-                     fill 
-                     className="object-cover" 
-                   /> 
-                   */}
+                  {valueImage ? (
+                    <Image 
+                      src={valueImage} 
+                      alt="Value Image" 
+                      fill 
+                      className="object-cover" 
+                    />
+                  ) : (
+                    <span className="text-zinc-400 text-sm font-medium">
+                      Foto area
+                    </span>
+                  )}
                 </div>
-
 
               </div>
 
               {/* Right Text */}
               <div className="flex-1 text-center md:text-left pt-4 md:pt-0 md:pl-8">
-                <h3 className="text-black text-[22px] md:text-[26px] leading-tight mb-4 font-semibold text-zinc-800">
-                  Kepuasan Anda adalah Amanah Kami
+                <h3 className="text-black text-[22px] md:text-[26px] leading-tight mb-4 font-semibold text-zinc-800 whitespace-pre-line">
+                  {valueTitle}
                 </h3>
-                <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
-                  Setiap dana Zakat, Infaq, dan Sedekah yang Anda percayakan
-                  kepada kami akan dikelola dengan standar audit yang ketat.
-                  Kami memastikan 100% amanah disalurkan kepada program-program
-                  Al-Qur&apos;an, Pendidikan, Kesehatan, dan Kemanusiaan.
+                <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0 whitespace-pre-line">
+                  {valueDesc}
                 </p>
               </div>
             </div>
@@ -633,35 +681,52 @@ export default function AboutPage() {
           </div>
 
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-14">
-            {/* Awards grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-              <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
-                <Image
-                  src="/images/gambardetaile/fundraising award.jpg"
-                  alt="Fundraising Award"
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
-                <Image
-                  src="/images/gambardetaile/wtp award.jpeg"
-                  alt="WTP Award 2023"
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
-                <Image
-                  src="/images/gambardetaile/aww 1.png"
-                  alt="WTP Award 2022"
-                  width={600}
-                  height={600}
-                  className="w-full h-auto object-contain"
-                />
-              </div>
+              {content?.penghargaan && content.penghargaan.length > 0 ? (
+                content.penghargaan.map((item: any, idx: number) => (
+                  <div key={idx} className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white relative">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt="Award"
+                        className="w-full h-auto object-cover"
+                      />
+                    ) : (
+                      <div className="w-full aspect-square bg-gray-100"></div>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <>
+                  <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
+                    <Image
+                      src="/images/gambardetaile/fundraising award.jpg"
+                      alt="Fundraising Award"
+                      width={600}
+                      height={600}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
+                    <Image
+                      src="/images/gambardetaile/wtp award.jpeg"
+                      alt="WTP Award 2023"
+                      width={600}
+                      height={600}
+                      className="w-full h-auto object-cover"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
+                    <Image
+                      src="/images/gambardetaile/aww 1.png"
+                      alt="WTP Award 2022"
+                      width={600}
+                      height={600}
+                      className="w-full h-auto object-contain"
+                    />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>
