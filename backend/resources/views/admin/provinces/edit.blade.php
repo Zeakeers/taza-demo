@@ -4,16 +4,16 @@
 
 @section('content')
     <div class="space-y-8">
-        <div class="flex items-center gap-4">
+        <div class="flex items-start lg:items-center gap-4">
             <a href="{{ route('admin.home.edit', ['tab' => 'stats']) }}"
-                class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-all">
+                class="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-500 hover:bg-primary hover:text-white transition-all shrink-0 mt-1 lg:mt-0">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
             </a>
             <div>
-                <h1 class="text-3xl font-bold text-dark">Edit Provinsi: {{ $province->name }}</h1>
-                <p class="text-gray-500 mt-1">Kelola data penyebaran dan dokumentasi aksi kebaikan.</p>
+                <h1 class="text-xl lg:text-3xl font-bold text-dark">Edit Provinsi: {{ $province->name }}</h1>
+                <p class="text-gray-400 text-xs lg:text-base mt-1">Kelola data penyebaran dan dokumentasi aksi kebaikan.</p>
             </div>
         </div>
 
@@ -23,38 +23,37 @@
 
                 <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
                     <div class="space-y-6">
-                        <div class="bg-gray-50 p-6 rounded-2xl border border-gray-100">
-                            <label class="flex items-center gap-4 cursor-pointer">
+                        <div class="bg-gray-50 p-4 lg:p-6 rounded-2xl border border-gray-100">
+                            <label class="flex items-start lg:items-center gap-4 cursor-pointer">
                                 <input type="checkbox" name="is_active" class="peer sr-only" {{ $province->is_active ? 'checked' : '' }}>
                                 <div
-                                    class="relative w-14 h-8 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary">
+                                    class="relative shrink-0 w-12 lg:w-14 h-7 lg:h-8 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 lg:peer-checked:after:translate-x-6 peer-checked:after:border-white after:content-[''] after:absolute after:top-1 after:left-1 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 lg:after:h-6 after:w-5 lg:after:w-6 after:transition-all peer-checked:bg-primary">
                                 </div>
                                 <div>
-                                    <span class="font-bold text-dark text-lg">Aktifkan Wilayah Ini di Map</span>
-                                    <p class="text-sm text-gray-500 mt-1">Jika aktif, provinsi akan ditandai warna Hijau Tua
-                                        di Map Utama.</p>
+                                    <span class="font-bold text-dark text-base lg:text-lg">Aktifkan Wilayah Ini di Map</span>
+                                    <p class="text-[10px] lg:text-sm text-gray-400 mt-1">Jika aktif, provinsi akan ditandai warna Hijau Tua di Map Utama.</p>
                                 </div>
                             </label>
                         </div>
 
                         <div>
-                            <label class="block font-bold mb-2">Total Penerima Manfaat <span
-                                    class="text-xs text-gray-400 font-normal ml-2">(Contoh: 18,200)</span></label>
+                            <label class="block font-bold mb-2 text-sm lg:text-base">Total Penerima Manfaat <span
+                                    class="text-[10px] lg:text-xs text-gray-400 font-normal ml-2">(Contoh: 18,200)</span></label>
                             <input type="text" name="beneficiaries" value="{{ $province->beneficiaries }}"
-                                class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-primary transition-all outline-none font-bold text-xl">
+                                class="w-full px-4 lg:px-6 py-3 lg:py-4 rounded-xl lg:rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-primary transition-all outline-none font-bold text-lg lg:text-xl">
                         </div>
 
                         <div>
-                            <label class="block font-bold mb-2">Total Dana Disalurkan <span
-                                    class="text-xs text-gray-400 font-normal ml-2">(Contoh: Rp 1.8M)</span></label>
+                            <label class="block font-bold mb-2 text-sm lg:text-base">Total Dana Disalurkan <span
+                                    class="text-[10px] lg:text-xs text-gray-400 font-normal ml-2">(Contoh: Rp 1.8M)</span></label>
                             <input type="text" name="funds" value="{{ $province->funds }}"
-                                class="w-full px-6 py-4 rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-primary transition-all outline-none font-bold text-xl">
+                                class="w-full px-4 lg:px-6 py-3 lg:py-4 rounded-xl lg:rounded-2xl bg-gray-50 border border-gray-100 focus:bg-white focus:border-primary transition-all outline-none font-bold text-lg lg:text-xl">
                         </div>
 
                         <div>
-                            <label class="block font-bold mb-2 text-primary">Quote / Pesan Harapan</label>
+                            <label class="block font-bold mb-2 text-sm lg:text-base text-primary">Quote / Pesan Harapan</label>
                             <textarea name="quote" rows="3"
-                                class="w-full px-6 py-4 rounded-2xl bg-[#7FC248]/5 border border-[#7FC248]/20 focus:bg-white focus:border-primary transition-all outline-none italic font-medium text-dark">{{ $province->quote }}</textarea>
+                                class="w-full px-4 lg:px-6 py-3 lg:py-4 rounded-xl lg:rounded-2xl bg-[#7FC248]/5 border border-[#7FC248]/20 focus:bg-white focus:border-primary transition-all outline-none italic font-medium text-dark text-sm lg:text-base">{{ $province->quote }}</textarea>
                         </div>
                     </div>
 
