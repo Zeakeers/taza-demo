@@ -14,18 +14,21 @@
         }
 
         /* Hide scrollbar for Chrome, Safari and Opera */
-        .sidebar-scroll::-webkit-scrollbar {
+        .sidebar-scroll::-webkit-scrollbar,
+        .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
 
         /* Hide scrollbar for IE, Edge and Firefox */
-        .sidebar-scroll {
+        .sidebar-scroll,
+        .hide-scrollbar {
             -ms-overflow-style: none;
             /* IE and Edge */
             scrollbar-width: none;
             /* Firefox */
         }
     </style>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -41,16 +44,23 @@
     </script>
 </head>
 
-<body class="bg-[#F4FAF0] flex h-screen overflow-hidden text-zinc-800">
+<body x-data="{ sidebarOpen: false }" class="bg-[#F4FAF0] flex h-screen overflow-hidden text-zinc-800">
     <!-- Sidebar -->
     <x-sidebar />
 
     <!-- Main Content -->
     <main class="flex-1 flex flex-col overflow-hidden relative">
-        <header class="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-10 shrink-0">
-            <div>
-                <h1 class="text-2xl font-bold text-zinc-800">@yield('header', 'Dashboard')</h1>
-                <p class="text-gray-400 text-xs mt-0.5">Kelola konten website Anda dengan mudah.</p>
+        <header class="h-20 bg-white border-b border-gray-100 flex items-center justify-between px-6 lg:px-10 shrink-0">
+            <div class="flex items-center gap-4">
+                <button @click="sidebarOpen = true" class="lg:hidden p-2 rounded-xl bg-gray-50 text-gray-400 hover:bg-primary/10 hover:text-primary transition-all">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+                <div>
+                    <h1 class="text-lg lg:text-2xl font-bold text-zinc-800">@yield('header', 'Dashboard')</h1>
+                    <p class="hidden sm:block text-gray-400 text-[10px] lg:text-xs mt-0.5">Kelola konten website Anda dengan mudah.</p>
+                </div>
             </div>
             <div class="flex items-center gap-6">
                 <div class="relative group">
@@ -73,7 +83,7 @@
             </div>
         </header>
 
-        <div id="main-content-area" class="flex-1 overflow-y-auto p-10 bg-white/50">
+        <div id="main-content-area" class="flex-1 overflow-y-auto p-4 lg:p-10 bg-white/50">
             @yield('content')
         </div>
 
