@@ -30,6 +30,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/home', [PageContentController::class, 'editHome'])->name('admin.home.edit');
     Route::post('/home', [PageContentController::class, 'updateHome'])->name('admin.home.update');
 
+    // Manajemen Konten Halaman Tentang Kami
+    Route::get('/about', [PageContentController::class, 'editAbout'])->name('admin.about.edit');
+    Route::post('/about', [PageContentController::class, 'updateAbout'])->name('admin.about.update');
+
     // Manajemen Map Provinsi
     Route::get('/provinces/{province}/edit', [\App\Http\Controllers\ProvinceController::class, 'edit'])->name('admin.provinces.edit');
     Route::post('/provinces/{province}', [\App\Http\Controllers\ProvinceController::class, 'update'])->name('admin.provinces.update');
