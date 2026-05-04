@@ -59,47 +59,44 @@
 
                     <div>
                         <h3 class="text-xl font-bold text-dark mb-2">Dokumentasi Aksi Nyata</h3>
-                        <p class="text-sm text-gray-500 mb-2">Upload gambar-gambar yang menunjukkan bukti penyaluran program
-                            di provinsi ini.</p>
+                        <p class="text-sm text-gray-500 mb-6">Upload gambar-gambar yang menunjukkan bukti penyaluran program di provinsi ini.</p>
 
-                        <div class="grid grid-cols-2 gap-4 auto-rows-max" id="province-preview-container">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 auto-rows-max" id="province-preview-container">
                             @foreach($province->images ?? [] as $i => $img)
-                                            @php
-                                                $imgUrl = is_array($img) ? ($img['url'] ?? '') : $img;
-                                                $imgTitle = is_array($img) ? ($img['title'] ?? '') : '';
-                                                $imgDesc = is_array($img) ? ($img['description'] ?? '') : '';
-                                            @endphp
-                                 <div
-                                                class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm relative group contents-existing opacity-0 transition-opacity duration-500">
-                                                <div class="image-wrapper aspect-video bg-gray-100 relative">
-                                                    <img src="{{ $imgUrl }}" class="w-full h-full object-cover" onload="adjustExistingCard(this)" onerror="this.closest('.contents-existing').classList.remove('opacity-0')">
-                                                    <input type="hidden" name="existing_images[{{ $i }}][url]" value="{{ $imgUrl }}">
-                                                    <div
-                                                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center z-10">
-                                                        <button type="button" onclick="window.itemToDelete = this.closest('.contents-existing'); openDeleteModal('delete-image-modal', 'window.itemToDelete.remove()')"
-                                                            class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all shadow-lg">
-                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                            </svg>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="form-wrapper p-5 space-y-4">
-                                                    <div>
-                                                        <label class="block text-sm font-bold text-gray-600 mb-2">Judul Program</label>
-                                                        <input type="text" name="existing_images[{{ $i }}][title]" value="{{ $imgTitle }}"
-                                                            class="w-full px-4 py-3 rounded-2xl border border-gray-200 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                                                            placeholder="Contoh: Bantuan Beras">
-                                                    </div>
-                                                    <div>
-                                                        <label class="block text-sm font-bold text-gray-600 mb-2">Deskripsi Singkat</label>
-                                                        <textarea name="existing_images[{{ $i }}][description]" maxlength="100" rows="3"
-                                                            class="w-full px-4 py-3 rounded-2xl border border-gray-200 text-base focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-                                                            placeholder="Tuliskan deskripsi maksimal 100 karakter...">{{ $imgDesc }}</textarea>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                @php
+                                    $imgUrl = is_array($img) ? ($img['url'] ?? '') : $img;
+                                    $imgTitle = is_array($img) ? ($img['title'] ?? '') : '';
+                                    $imgDesc = is_array($img) ? ($img['description'] ?? '') : '';
+                                @endphp
+                                <div class="bg-gray-50 border border-gray-200 rounded-2xl overflow-hidden shadow-sm relative group contents-existing transition-all duration-300">
+                                    <div class="image-wrapper aspect-video bg-gray-100 relative">
+                                        <img src="{{ $imgUrl }}" class="w-full h-full object-cover">
+                                        <input type="hidden" name="existing_images[{{ $i }}][url]" value="{{ $imgUrl }}">
+                                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center z-10">
+                                            <button type="button" onclick="window.itemToDelete = this.closest('.contents-existing'); openDeleteModal('delete-image-modal', 'window.itemToDelete.remove()')"
+                                                class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all shadow-lg">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="form-wrapper p-4 space-y-3">
+                                        <div>
+                                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Judul Program</label>
+                                            <input type="text" name="existing_images[{{ $i }}][title]" value="{{ $imgTitle }}"
+                                                class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                placeholder="Judul...">
+                                        </div>
+                                        <div>
+                                            <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Deskripsi</label>
+                                            <textarea name="existing_images[{{ $i }}][description]" maxlength="100" rows="2"
+                                                class="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                                                placeholder="Deskripsi...">{{ $imgDesc }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
 
                             <label id="province-upload-box"
@@ -109,28 +106,24 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
-                                <span
-                                    class="text-xs font-bold text-gray-400 group-hover:text-primary mt-2 transition-colors">Tambah
-                                    Gambar</span>
-                                <input type="file" name="new_images[]" multiple class="hidden"
-                                    onchange="previewNewImages(this)">
+                                <span class="text-xs font-bold text-gray-400 group-hover:text-primary mt-2 transition-colors">Tambah Gambar</span>
+                                <input type="file" name="new_images[]" multiple class="hidden" onchange="previewNewImages(this)">
                             </label>
                         </div>
                     </div>
                 </div>
-        </div>
 
-        <div class="mt-10 pt-8 border-t border-gray-100 flex justify-end">
-            <button type="submit"
-                class="bg-primary hover:bg-dark text-white px-10 py-4 rounded-2xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center gap-3">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                Simpan Perubahan
-            </button>
+                <div class="mt-10 pt-8 border-t border-gray-100 flex justify-end">
+                    <button type="submit"
+                        class="bg-primary hover:bg-dark text-white px-10 py-4 rounded-2xl font-bold transition-all shadow-xl shadow-primary/20 flex items-center gap-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        Simpan Perubahan
+                    </button>
+                </div>
+            </form>
         </div>
-        </form>
-    </div>
     </div>
 
     <!-- Modal Konfirmasi Hapus Gambar -->
