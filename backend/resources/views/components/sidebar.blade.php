@@ -1,12 +1,34 @@
-<aside class="w-72 bg-dark text-white flex flex-col h-full shrink-0 shadow-2xl z-50">
-    <div class="p-8 flex items-center gap-4">
-         <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg overflow-hidden p-1">
-             <img src="{{ asset('images/logo.svg') }}" alt="TZ" class="w-full h-full object-contain">
+<div 
+    x-show="sidebarOpen" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 bg-dark/60 backdrop-blur-sm z-[60] lg:hidden"
+    @click="sidebarOpen = false"
+></div>
+
+<aside 
+    :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'"
+    class="fixed lg:static inset-y-0 left-0 w-72 bg-dark text-white flex flex-col h-full shrink-0 shadow-2xl z-[70] transition-transform duration-300 ease-in-out"
+>
+    <div class="p-8 flex items-center justify-between gap-4">
+         <div class="flex items-center gap-4">
+             <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg overflow-hidden p-1">
+                 <img src="{{ asset('images/logo.svg') }}" alt="TZ" class="w-full h-full object-contain">
+             </div>
+             <div>
+                <span class="block font-bold text-xl leading-none">Admin</span>
+                <span class="text-secondary text-xs font-medium tracking-widest uppercase">Taman Zakat</span>
+             </div>
          </div>
-         <div>
-            <span class="block font-bold text-xl leading-none">Admin</span>
-            <span class="text-secondary text-xs font-medium tracking-widest uppercase">Taman Zakat</span>
-         </div>
+         <button @click="sidebarOpen = false" class="lg:hidden p-2 rounded-xl bg-white/5 text-gray-400 hover:text-white transition-all">
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+             </svg>
+         </button>
     </div>
     
     <nav class="flex-1 px-4 py-4 space-y-2 overflow-y-auto sidebar-scroll">
