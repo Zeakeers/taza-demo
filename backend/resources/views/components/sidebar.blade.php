@@ -19,8 +19,8 @@
             Dashboard Home
         </a>
         
-        <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
-            <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all"></div>
+        <a href="{{ route('admin.about.edit') }}" class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.about.edit') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'hover:bg-white/5 text-gray-300 hover:text-white' }} transition-all group">
+            <div class="w-1.5 h-1.5 rounded-full {{ request()->routeIs('admin.about.edit') ? 'bg-white' : 'bg-secondary opacity-0' }} group-hover:opacity-100 transition-all"></div>
             Tentang Kami
         </a>
 
