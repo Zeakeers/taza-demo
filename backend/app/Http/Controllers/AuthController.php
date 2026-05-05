@@ -11,7 +11,7 @@ class AuthController extends Controller
     {
         if (Auth::check()) {
             if (Auth::user()->role == 'program') {
-                return redirect('/admin/konfirmasi-donasi');
+                return redirect()->route('admin.custom-forms.index');
             }
             return redirect()->route('admin.home.edit');
         }
@@ -29,7 +29,7 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->role == 'program') {
-                return redirect()->intended('/admin/konfirmasi-donasi');
+                return redirect()->intended(route('admin.custom-forms.index'));
             }
             return redirect()->intended(route('admin.home.edit'));
         }
