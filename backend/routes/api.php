@@ -30,3 +30,6 @@ Route::get('/provinces', function () {
 
 // Submit Permohonan Bantuan
 Route::post('/permohonan-bantuan', [\App\Http\Controllers\PermohonanBantuanController::class, 'apiStore']);
+
+// Submit Konfirmasi Donasi
+Route::post('/konfirmasi-donasi', [\App\Http\Controllers\KonfirmasiDonasiController::class, 'apiStore']);
