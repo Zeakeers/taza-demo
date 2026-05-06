@@ -23,7 +23,7 @@
         </button>
     </div>
 
-    <nav class="flex-1 px-4 py-4 space-y-2 overflow-y-auto sidebar-scroll">
+    <nav id="sidebar-nav-scroll" class="flex-1 px-4 py-4 space-y-2 overflow-y-auto sidebar-scroll">
         {{-- Group 1: Manajemen Konten (Untuk Markom & Dev) --}}
         @if(auth()->user()->role == 'dev' || auth()->user()->role == 'markom')
             <div class="pt-2 pb-2 px-4 text-[10px] font-bold text-gray-500 uppercase tracking-[0.2em]">Manajemen Konten
@@ -124,10 +124,10 @@
                 Kelola Formulir
             </a>
 
-            <a href="{{ route('admin.donations.index') }}"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.donations.*') || request()->is('admin/konfirmasi-donasi') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all group">
+            <a href="{{ route('admin.konfirmasi-donasi.index') }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.konfirmasi-donasi.*') || request()->is('admin/konfirmasi-donasi') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all group">
                 <div
-                    class="w-1.5 h-1.5 rounded-full {{ request()->routeIs('admin.donations.*') || request()->is('admin/konfirmasi-donasi') ? 'bg-white' : 'bg-secondary opacity-0' }} group-hover:opacity-100 transition-all">
+                    class="w-1.5 h-1.5 rounded-full {{ request()->routeIs('admin.konfirmasi-donasi.*') || request()->is('admin/konfirmasi-donasi') ? 'bg-white' : 'bg-secondary opacity-0' }} group-hover:opacity-100 transition-all">
                 </div>
                 Data Konfirmasi Donasi
             </a>
@@ -192,3 +192,20 @@
         </form>
     </div>
 </aside>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const sidebarNav = document.getElementById("sidebar-nav-scroll");
+        if (sidebarNav) {
+            // Restore scroll position
+            if (sessionStorage.getItem("sidebar-scroll")) {
+                sidebarNav.scrollTop = sessionStorage.getItem("sidebar-scroll");
+            }
+
+            // Save scroll position on scroll
+            sidebarNav.addEventListener("scroll", function() {
+                sessionStorage.setItem("sidebar-scroll", sidebarNav.scrollTop);
+            });
+        }
+    });
+</script>
