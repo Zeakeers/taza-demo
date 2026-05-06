@@ -53,6 +53,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         'destroy' => 'admin.users.destroy',
     ]);
 
+    // Permohonan Bantuan
+    Route::resource('permohonan-bantuan', \App\Http\Controllers\PermohonanBantuanController::class)
+        ->names('admin.permohonan-bantuan');
+    Route::post('permohonan-bantuan/{permohonanBantuan}/status', [\App\Http\Controllers\PermohonanBantuanController::class, 'updateStatus'])
+        ->name('admin.permohonan-bantuan.update-status');
+
     // Custom Form Builder (Untuk Program & Dev)
     Route::prefix('custom-forms')->group(function () {
         Route::get('/', [CustomFormController::class, 'index'])->name('admin.custom-forms.index');
