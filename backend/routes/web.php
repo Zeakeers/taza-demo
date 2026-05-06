@@ -26,10 +26,7 @@ Route::get('/form/{slug}', [CustomFormController::class, 'showPublicForm'])->nam
 Route::post('/form/{slug}', [CustomFormController::class, 'submitPublicForm'])->name('public.form.submit');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-    // Halaman Dummy Konfirmasi Donasi (Bisa diisi nanti)
-    Route::get('/konfirmasi-donasi', function() {
-        return view('admin.donations.index');
-    })->name('admin.donations.index');
+
 
     // Manajemen Konten Halaman Home
     Route::get('/home', [PageContentController::class, 'editHome'])->name('admin.home.edit');
@@ -52,6 +49,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         'update' => 'admin.users.update',
         'destroy' => 'admin.users.destroy',
     ]);
+
+    // Konfirmasi Donasi routes
+    Route::resource('konfirmasi-donasi', App\Http\Controllers\KonfirmasiDonasiController::class, [
+        'as' => 'admin'
+    ]);
+    Route::post('konfirmasi-donasi/{konfirmasi_donasi}/update-status', [App\Http\Controllers\KonfirmasiDonasiController::class, 'updateStatus'])->name('admin.konfirmasi-donasi.update-status');
 
     // Permohonan Bantuan
     Route::resource('permohonan-bantuan', \App\Http\Controllers\PermohonanBantuanController::class)
