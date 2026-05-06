@@ -27,3 +27,6 @@ Route::get('/content/{page}', function ($page) {
 Route::get('/provinces', function () {
     return response()->json(\App\Models\Province::orderBy('name')->get());
 });
+
+// Submit Permohonan Bantuan
+Route::post('/permohonan-bantuan', [\App\Http\Controllers\PermohonanBantuanController::class, 'apiStore']);
