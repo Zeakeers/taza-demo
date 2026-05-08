@@ -62,6 +62,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('permohonan-bantuan/{permohonanBantuan}/status', [\App\Http\Controllers\PermohonanBantuanController::class, 'updateStatus'])
         ->name('admin.permohonan-bantuan.update-status');
 
+    // Volunteer
+    Route::resource('volunteer', \App\Http\Controllers\VolunteerController::class)
+        ->names('admin.volunteer');
+    Route::post('volunteer/{volunteer}/status', [\App\Http\Controllers\VolunteerController::class, 'updateStatus'])
+        ->name('admin.volunteer.update-status');
+
     // Custom Form Builder (Untuk Program & Dev)
     Route::prefix('custom-forms')->group(function () {
         Route::get('/', [CustomFormController::class, 'index'])->name('admin.custom-forms.index');
