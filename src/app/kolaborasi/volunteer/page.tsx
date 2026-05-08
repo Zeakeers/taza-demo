@@ -208,11 +208,7 @@ export default function VolunteerPage() {
             <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#FDE8EC] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 relative z-10">
-              {success && (
-                <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-2xl text-sm font-medium">
-                  Terima kasih! Pendaftaran volunteer Anda telah berhasil dikirim.
-                </div>
-              )}
+
               {errorMsg && (
                 <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-2xl text-sm font-medium">
                   {errorMsg}
@@ -344,6 +340,35 @@ export default function VolunteerPage() {
           />
         </div>
       </div>
+
+    {/* SUCCESS POPUP MODAL */}
+      {success && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-white rounded-3xl w-full max-w-md p-8 text-center shadow-2xl animate-in zoom-in-95 duration-300 relative overflow-hidden">
+            {/* Decoration */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#EBF5D5] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#FDE8EC] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            
+            <div className="w-20 h-20 bg-[#D6EDCA] text-[#3a7d27] rounded-full flex items-center justify-center mx-auto mb-6 relative z-10">
+              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            
+            <h3 className="text-2xl font-black text-[#267a38] mb-3 relative z-10">Pendaftaran Berhasil!</h3>
+            <p className="text-zinc-500 text-base mb-8 relative z-10">
+              Terima kasih telah mendaftar. Tim Taman Zakat akan segera menghubungi Anda melalui WhatsApp atau Email untuk langkah selanjutnya.
+            </p>
+            
+            <button 
+              onClick={() => setSuccess(false)}
+              className="w-full bg-[#E12B5E] hover:bg-[#c72251] text-white font-bold py-3.5 rounded-2xl transition-all shadow-md hover:shadow-lg active:scale-95 relative z-10"
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      )}
 
     </div>
   )
