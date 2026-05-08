@@ -68,6 +68,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('volunteer/{volunteer}/status', [\App\Http\Controllers\VolunteerController::class, 'updateStatus'])
         ->name('admin.volunteer.update-status');
 
+    // Berita
+    Route::resource('berita', \App\Http\Controllers\BeritaController::class)
+        ->names('admin.berita');
+    Route::post('berita/{beritum}/toggle-home', [\App\Http\Controllers\BeritaController::class, 'toggleHome'])
+        ->name('admin.berita.toggle-home');
+    Route::post('berita/{beritum}/toggle-publish', [\App\Http\Controllers\BeritaController::class, 'togglePublish'])
+        ->name('admin.berita.toggle-publish');
+
     // Custom Form Builder (Untuk Program & Dev)
     Route::prefix('custom-forms')->group(function () {
         Route::get('/', [CustomFormController::class, 'index'])->name('admin.custom-forms.index');

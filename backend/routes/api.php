@@ -36,3 +36,8 @@ Route::post('/konfirmasi-donasi', [\App\Http\Controllers\KonfirmasiDonasiControl
 
 // Submit Volunteer
 Route::post('/volunteer', [\App\Http\Controllers\VolunteerController::class, 'apiStore']);
+
+// Berita
+Route::get('/berita', [\App\Http\Controllers\BeritaController::class, 'apiIndex']);
+Route::get('/berita/home', [\App\Http\Controllers\BeritaController::class, 'apiHome']);
+Route::get('/berita/{slug}', [\App\Http\Controllers\BeritaController::class, 'apiShow']);
