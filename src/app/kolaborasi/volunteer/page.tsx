@@ -55,8 +55,46 @@ export default function VolunteerPage() {
     keterangan: '',
   })
 
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+    setErrorMsg('')
+    setSuccess(false)
+
+    try {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
+      const response = await fetch(`${apiUrl}/volunteer`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nama: form.nama,
+          no_hp: form.noHp,
+          email: form.email,
+          kontribusi: form.kontribusi,
+          keterangan: form.keterangan,
+        }),
+      })
+
+      if (response.ok) {
+        setSuccess(true)
+        setForm({ nama: '', noHp: '', email: '', kontribusi: '', keterangan: '' })
+      } else {
+        const errorData = await response.json()
+        setErrorMsg(errorData.message || 'Terjadi kesalahan saat mengirim data.')
+      }
+    } catch (error) {
+      setErrorMsg('Gagal terhubung ke server. Silakan coba lagi.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -169,7 +207,18 @@ export default function VolunteerPage() {
             <div className="absolute top-0 right-0 w-40 h-40 bg-[#EBF5D5] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#FDE8EC] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-            <form className="flex flex-col gap-5 relative z-10">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 relative z-10">
+              {success && (
+                <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-2xl text-sm font-medium">
+                  Terima kasih! Pendaftaran volunteer Anda telah berhasil dikirim.
+                </div>
+              )}
+              {errorMsg && (
+                <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-2xl text-sm font-medium">
+                  {errorMsg}
+                </div>
+              )}
+
               {/* Nama */}
               <div className="flex flex-col">
                 <label className="text-zinc-600 mb-1.5 ml-1 text-sm font-semibold">Nama Lengkap <span className="text-[#E12B5E]">*</span></label>
@@ -179,6 +228,7 @@ export default function VolunteerPage() {
                   value={form.nama}
                   onChange={handleChange}
                   placeholder="Masukkan nama lengkap"
+                  required
                   className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all placeholder:text-zinc-400 text-sm"
                 />
               </div>
@@ -192,6 +242,7 @@ export default function VolunteerPage() {
                   value={form.noHp}
                   onChange={handleChange}
                   placeholder="Contoh: 08123456789"
+                  required
                   className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all placeholder:text-zinc-400 text-sm"
                 />
               </div>
@@ -205,6 +256,7 @@ export default function VolunteerPage() {
                   value={form.email}
                   onChange={handleChange}
                   placeholder="contoh@email.com"
+                  required
                   className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all placeholder:text-zinc-400 text-sm"
                 />
               </div>
@@ -242,10 +294,11 @@ export default function VolunteerPage() {
               {/* Submit + stamp row */}
               <div className="mt-2 flex items-center justify-between gap-4">
                 <button
-                  type="button"
-                  className="bg-[#E12B5E] hover:bg-[#c72251] text-white font-bold py-3.5 px-10 rounded-full transition-all text-base shadow-md hover:shadow-lg active:scale-95 hover:-translate-y-0.5"
+                  type="submit"
+                  disabled={loading}
+                  className="bg-[#E12B5E] hover:bg-[#c72251] disabled:bg-[#e12b5e]/50 disabled:cursor-not-allowed text-white font-bold py-3.5 px-10 rounded-full transition-all text-base shadow-md hover:shadow-lg active:scale-95 hover:-translate-y-0.5"
                 >
-                  Daftar Sekarang
+                  {loading ? 'Mengirim...' : 'Daftar Sekarang'}
                 </button>
 
                 <div className="w-24 h-24 opacity-80 pointer-events-none flex-shrink-0 mix-blend-multiply">
