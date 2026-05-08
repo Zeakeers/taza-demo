@@ -33,3 +33,6 @@ Route::post('/permohonan-bantuan', [\App\Http\Controllers\PermohonanBantuanContr
 
 // Submit Konfirmasi Donasi
 Route::post('/konfirmasi-donasi', [\App\Http\Controllers\KonfirmasiDonasiController::class, 'apiStore']);
+
+// Submit Volunteer
+Route::post('/volunteer', [\App\Http\Controllers\VolunteerController::class, 'apiStore']);
