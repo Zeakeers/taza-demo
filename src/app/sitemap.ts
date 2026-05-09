@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/layanan",
     "/kolaborasi",
-    "/news",
+    "/berita",
     "/tata-kelola",
     "/program",
   ].map((route) => ({
