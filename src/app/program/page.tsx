@@ -314,7 +314,7 @@ export default function ProgramPage() {
                 donasi Anda secara terbuka.
               </p>
               <a
-                href="/news"
+                href="/berita"
                 className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
               >
                 Lihat Laporan
