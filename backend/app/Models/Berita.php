@@ -12,9 +12,12 @@ class Berita extends Model
     protected $fillable = [
         'judul',
         'slug',
+        'kategori',
         'thumbnail',
         'konten',
         'show_on_home',
         'is_published',
+        'is_popular',
+        'tags',
     ];
 }
