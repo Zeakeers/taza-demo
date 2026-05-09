@@ -75,6 +75,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         ->name('admin.berita.toggle-home');
     Route::post('berita/{beritum}/toggle-publish', [\App\Http\Controllers\BeritaController::class, 'togglePublish'])
         ->name('admin.berita.toggle-publish');
+    Route::post('berita/upload-image', [\App\Http\Controllers\BeritaController::class, 'uploadImage'])
+        ->name('admin.berita.upload-image');
 
     // Custom Form Builder (Untuk Program & Dev)
     Route::prefix('custom-forms')->group(function () {
