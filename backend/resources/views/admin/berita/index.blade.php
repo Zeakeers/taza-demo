@@ -27,6 +27,7 @@
             <thead>
                 <tr class="text-gray-400 text-xs uppercase tracking-widest border-b border-gray-50">
                     <th class="pb-4 font-bold">Judul Berita</th>
+                    <th class="pb-4 font-bold text-center">Kategori</th>
                     <th class="pb-4 font-bold text-center">Status Publish</th>
                     <th class="pb-4 font-bold text-center">Tampil di Home</th>
                     <th class="pb-4 font-bold text-center">Tanggal</th>
@@ -41,6 +42,12 @@
                             <img src="{{ asset('storage/' . $item->thumbnail) }}" alt="Thumbnail" class="w-16 h-12 object-cover rounded-lg border border-gray-100 shadow-sm">
                             <span class="font-bold text-zinc-800 line-clamp-2 max-w-xs">{{ $item->judul }}</span>
                         </div>
+                    </td>
+
+                    <td class="py-5 text-center">
+                        <span class="inline-flex px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-50 text-blue-600">
+                            {{ $item->kategori ?? '-' }}
+                        </span>
                     </td>
                     
                     <td class="py-5 text-center">
@@ -78,7 +85,7 @@
                 </tr>
                 @empty
                 <tr>
-                    <td colspan="5" class="py-10 text-center text-gray-500">
+                    <td colspan="6" class="py-10 text-center text-gray-500">
                         <div class="flex flex-col items-center gap-3">
                             <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
                             Belum ada data berita.
