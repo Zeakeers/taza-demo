@@ -21,7 +21,6 @@ class BeritaController extends Controller
         $beritas = Berita::where('is_published', true)
             ->where('show_on_home', true)
             ->orderBy('created_at', 'desc')
-            ->take(7) // Tampilkan max 7 berita di home untuk layout tabs (1 main, 2 sub, 4 side)
             ->get();
         return response()->json($beritas);
     }
@@ -48,16 +47,20 @@ class BeritaController extends Controller
     {
         $request->validate([
             'judul' => 'required|string|max:255',
+            'kategori' => 'required|string|max:255',
             'thumbnail' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
             'konten' => 'required',
             'is_published' => 'boolean',
             'show_on_home' => 'boolean',
+            'is_popular' => 'boolean',
+            'tags' => 'nullable|string',
         ]);
 
         $data = $request->except('thumbnail');
         $data['slug'] = Str::slug($request->judul) . '-' . time();
         $data['is_published'] = $request->has('is_published') ? true : false;
         $data['show_on_home'] = $request->has('show_on_home') ? true : false;
+        $data['is_popular'] = $request->has('is_popular') ? true : false;
 
         if ($request->hasFile('thumbnail')) {
             $data['thumbnail'] = $request->file('thumbnail')->store('berita', 'public');
@@ -80,10 +83,13 @@ class BeritaController extends Controller
         $berita = $beritum;
         $request->validate([
             'judul' => 'required|string|max:255',
+            'kategori' => 'required|string|max:255',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
             'konten' => 'required',
             'is_published' => 'boolean',
             'show_on_home' => 'boolean',
+            'is_popular' => 'boolean',
+            'tags' => 'nullable|string',
         ]);
 
         $data = $request->except('thumbnail');
@@ -92,6 +98,7 @@ class BeritaController extends Controller
         }
         $data['is_published'] = $request->has('is_published') ? true : false;
         $data['show_on_home'] = $request->has('show_on_home') ? true : false;
+        $data['is_popular'] = $request->has('is_popular') ? true : false;
 
         if ($request->hasFile('thumbnail')) {
             if ($berita->thumbnail) {
@@ -128,5 +135,21 @@ class BeritaController extends Controller
         $berita->update(['is_published' => !$berita->is_published]);
         $status = $berita->is_published ? 'dipublikasikan' : 'di-draft';
         return redirect()->back()->with('success', "Berita berhasil {$status}.");
+    }
+
+    public function uploadImage(Request $request)
+    {
+        if ($request->hasFile('upload')) {
+            $originName = $request->file('upload')->getClientOriginalName();
+            $fileName = pathinfo($originName, PATHINFO_FILENAME);
+            $extension = $request->file('upload')->getClientOriginalExtension();
+            $fileName = $fileName . '_' . time() . '.' . $extension;
+
+            $request->file('upload')->storeAs('berita/images', $fileName, 'public');
+
+            $url = asset('storage/berita/images/' . $fileName);
+            return response()->json(['fileName' => $fileName, 'uploaded'=> 1, 'url' => $url]);
+        }
+        return response()->json(['error' => ['message' => 'No file uploaded']]);
     }
 }
