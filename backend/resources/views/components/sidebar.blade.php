@@ -65,7 +65,8 @@
                         Pelayanan</a>
                     <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">Hitung
                         Zakat</a>
-                    <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">No.
+                    <a href="{{ route('admin.rekening.index') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.rekening.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">No.
                         Rekening</a>
                     <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">FAQ</a>
                 </div>
