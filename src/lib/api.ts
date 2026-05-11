@@ -1,4 +1,4 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
 
 export async function getPageContent(page: string) {
   try {
@@ -31,5 +31,21 @@ export async function getProvinces() {
   } catch (error) {
     console.error("API Error:", error);
     return [];
+  }
+}
+export async function getRekening() {
+  try {
+    const res = await fetch(`${API_URL}/rekening`, {
+      next: { revalidate: 0 },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch rekening`);
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    return null;
   }
 }
