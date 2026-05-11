@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getRekening } from '@/lib/api';
 
 interface BankAccount {
   logo: string;
@@ -15,40 +16,18 @@ interface SectionData {
   accounts: BankAccount[];
 }
 
-const sections: SectionData[] = [
-  {
-    title: "Zakat",
-    accounts: [
-      { logo: "/images/logo bank/bank-negara-indonesia-(bni)-logo 2.svg", name: "BNI", number: "1900-9500-54", width: 110, height: 35 },
-      { logo: "/images/logo bank/bank mandiri.svg", name: "Mandiri", number: "14100-750-750-10", width: 140, height: 40 },
-      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7900-9400-46", width: 140, height: 40 }
-    ]
-  },
-  {
-    title: "Infaq",
-    accounts: [
-      { logo: "/images/logo bank/bank-central-asia-(bca)-logo 1.svg", name: "BCA", number: "271-909-5555", width: 130, height: 45 },
-      { logo: "/images/logo bank/bank-rakyat-indonesia-(bri)-logo 1.svg", name: "BRI", number: "0211-0100-2263-302", width: 140, height: 40 },
-      { logo: "/images/logo bank/bank-negara-indonesia-(bni)-logo 2.svg", name: "BNI", number: "0900950051", width: 110, height: 35 },
-      { logo: "/images/logo bank/bank mandiri.svg", name: "Mandiri", number: "14100-750-750-02", width: 140, height: 40 },
-      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "744-664-4003", width: 140, height: 40 }
-    ]
-  },
-  {
-    title: "Jariyah",
-    accounts: [
-      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7930-4482-90", width: 140, height: 40 }
-    ]
-  }
-];
-
-export default function NoRekeningPage() {
+export default async function NoRekeningPage() {
+  const data = await getRekening();
+  
+  const heroImage = data?.hero?.image || "/images/gambardetaile/hero no rekening.svg";
+  const sections: SectionData[] = data?.sections || [];
+  
   return (
     <div className="bg-[#fcfee1] min-h-screen font-poppins">
       {/* Hero Section */}
       <div className="relative w-full h-[450px] md:h-[500px]">
         <Image
-          src="/images/gambardetaile/hero no rekening.svg"
+          src={heroImage}
           alt="Hero Pilihan Rekening Donasi"
           fill
           priority
