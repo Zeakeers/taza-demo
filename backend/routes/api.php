@@ -41,3 +41,6 @@ Route::post('/volunteer', [\App\Http\Controllers\VolunteerController::class, 'ap
 Route::get('/berita', [\App\Http\Controllers\BeritaController::class, 'apiIndex']);
 Route::get('/berita/home', [\App\Http\Controllers\BeritaController::class, 'apiHome']);
 Route::get('/berita/{slug}', [\App\Http\Controllers\BeritaController::class, 'apiShow']);
+
+// Rekening
+Route::get('/rekening', [\App\Http\Controllers\RekeningController::class, 'apiIndex']);
