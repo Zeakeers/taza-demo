@@ -91,4 +91,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::delete('/submissions/{submission}', [CustomFormController::class, 'destroySubmission'])->name('admin.custom-forms.destroy-submission');
         Route::put('/submissions/{submission}', [CustomFormController::class, 'updateSubmission'])->name('admin.custom-forms.update-submission');
     });
+
+    // Manajemen No Rekening
+    Route::get('/rekening', [\App\Http\Controllers\RekeningController::class, 'index'])->name('admin.rekening.index');
+    Route::post('/rekening/hero', [\App\Http\Controllers\RekeningController::class, 'updateHero'])->name('admin.rekening.update-hero');
+    Route::post('/rekening/category', [\App\Http\Controllers\RekeningController::class, 'storeCategory'])->name('admin.rekening.category.store');
+    Route::put('/rekening/category/{category}', [\App\Http\Controllers\RekeningController::class, 'updateCategory'])->name('admin.rekening.category.update');
+    Route::delete('/rekening/category/{category}', [\App\Http\Controllers\RekeningController::class, 'destroyCategory'])->name('admin.rekening.category.destroy');
+    Route::post('/rekening/bank', [\App\Http\Controllers\RekeningController::class, 'storeBank'])->name('admin.rekening.bank.store');
+    Route::put('/rekening/bank/{bank}', [\App\Http\Controllers\RekeningController::class, 'updateBank'])->name('admin.rekening.bank.update');
+    Route::delete('/rekening/bank/{bank}', [\App\Http\Controllers\RekeningController::class, 'destroyBank'])->name('admin.rekening.bank.destroy');
+    Route::post('/rekening/update-order', [\App\Http\Controllers\RekeningController::class, 'updateOrder'])->name('admin.rekening.update-order');
 });
