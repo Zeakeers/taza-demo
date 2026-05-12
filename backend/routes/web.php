@@ -78,6 +78,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('berita/upload-image', [\App\Http\Controllers\BeritaController::class, 'uploadImage'])
         ->name('admin.berita.upload-image');
 
+    // Program Management
+    Route::prefix('program')->name('admin.program.')->group(function () {
+        Route::get('/{program}', [\App\Http\Controllers\Admin\ProgramController::class, 'edit'])->name('edit');
+        Route::post('/{program}', [\App\Http\Controllers\Admin\ProgramController::class, 'update'])->name('update');
+    });
+
     // Custom Form Builder (Untuk Program & Dev)
     Route::prefix('custom-forms')->group(function () {
         Route::get('/', [CustomFormController::class, 'index'])->name('admin.custom-forms.index');
