@@ -3,10 +3,27 @@
 import Image from "next/image";
 import { useEffect, useState, useRef } from "react";
 
+
 const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
 
 export default function BidangDakwahPage() {
   const [animateBadge, setAnimateBadge] = useState(false);
+  const [pageData, setPageData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api'}/content/program_dakwah`);
+        const data = await response.json();
+        if (data && data.content) {
+          setPageData(data.content);
+        }
+      } catch (err) {
+        console.error("Error fetching page content:", err);
+      }
+    };
+    fetchContent();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -162,7 +179,7 @@ export default function BidangDakwahPage() {
             </div>
 
             <h1 className="text-[26px] md:text-[32px] font-poppins font-bold text-black mb-5 mt-4 ml-6 md:ml-8 text-left drop-shadow-sm">
-              Bidang <span className="text-[#8cc63f]">Dakwah</span>
+              {pageData ? pageData.hero_title : <>Bidang <span className="text-[#8cc63f]">Dakwah</span></>}
             </h1>
 
             <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10 ml-2 md:ml-8">
@@ -230,7 +247,7 @@ export default function BidangDakwahPage() {
       <section className="w-full bg-[#323232] pt-8 pb-6 border-y-8 border-[#3A3D40]">
         <div className="w-full text-center">
           <h3 className="text-white text-xl md:text-2xl font-poppins mb-8">
-            Program Dakwah - Taman Zakat
+            {pageData?.slider_title || "Program Dakwah - Taman Zakat"}
           </h3>
           <div
             ref={sliderRef}
@@ -240,28 +257,14 @@ export default function BidangDakwahPage() {
             onMouseMove={handleMouseMove}
             className={`flex gap-4 md:gap-6 overflow-x-auto justify-start lg:justify-center px-4 md:px-12 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${isDown ? "cursor-grabbing" : "cursor-grab"}`}
           >
-            {[
-              {
-                title: "Da'i Pedalaman",
-                image: "/images/gambardetaile/santri 1.svg",
-              },
-              {
-                title: "Sebar Al-Quran",
-                image:
-                  "/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg",
-              },
-              {
-                title: "Pembinaan Mualaf",
-                image: "/images/gambardetaile/bidang pendidikan.svg",
-              },
-            ].map((program, i) => (
+            {(pageData?.programs || []).map((program: any, i: number) => (
               <div
                 key={i}
                 className={`relative min-w-[220px] md:min-w-[280px] h-[180px] md:h-[220px] bg-[#d9d9d9] rounded-lg shrink-0 flex items-center justify-center shadow-lg transition-transform ${isDown ? "" : "hover:scale-[1.02]"} overflow-hidden group select-none`}
               >
                 {/* Kontainer untuk Image */}
                 <Image
-                  src={program.image}
+                  src={program.image || "/images/placeholder.png"}
                   alt={program.title}
                   fill
                   className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
@@ -278,7 +281,7 @@ export default function BidangDakwahPage() {
 
           <hr className="border-t border-zinc-500 mt-6 mb-4 mx-4 md:mx-12" />
           <p className="text-zinc-300 text-sm md:text-base">
-            Berikut Program - Program Kami
+            {pageData?.slider_subtitle || "Berikut Program - Program Kami"}
           </p>
         </div>
       </section>
@@ -315,226 +318,80 @@ export default function BidangDakwahPage() {
       </section>
 
       {/* ===================== ALTERNATING PROGRAM LIST ===================== */}
-
-      {/* 1. Da'i Pedalaman */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
-
-              {/* Icon Percantik 1 */}
-              <div className="absolute -top-5 left-4 md:left-6 z-20 w-[24px] md:w-[28px] h-[55px] md:h-[65px]">
-                <Image
-                  src="/images/icon/penjepit kertas.svg"
-                  alt="Penjepit Kertas"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
-                <Image
-                  src="/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg"
-                  alt="Da'i Pedalaman"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-            <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
-                Da&apos;i Pedalaman
-              </h2>
-              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Mendukung perjuangan para ustadz dan da&apos;i yang rela
-                menyebarkan syiar Islam hingga ke pelosok dan daerah terpencil.
-                Donasi Anda membantu menyediakan kebutuhan pokok, transportasi,
-                hingga fasilitas penunjang bagi keseharian mereka.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <div className="relative inline-block">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
-                  />
-                  <a
-                    href="#donasi"
-                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
-                  >
-                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
-                        <span>Donasi Disini</span>
-                        <Image
-                          src="/images/icon/Donation.svg"
-                          alt="Ikon donasi"
-                          width={18}
-                          height={18}
-                          className="h-[18px] w-[18px]"
-                        />
+      {pageData?.programs?.map((item: any, index: number) => {
+        const isEven = index % 2 === 0;
+        return (
+          <section key={index} className={`w-full py-16 px-4 md:px-12 ${isEven ? "bg-[#EBF5D5]" : "bg-white"}`}>
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
+              {isEven ? (
+                <>
+                  <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+                    <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                      <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                      <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                        <Image src={item.image || "/images/placeholder.png"} alt={item.title} fill className="object-cover" />
                       </div>
                     </div>
-                  </a>
-                </div>
-                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
-                  Lihat Detail Program
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Sebar Al-Quran */}
-      <section className="w-full py-16 px-4 md:px-12 bg-white">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-          <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
-                Sebar Al-Quran
-              </h2>
-              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Masih banyak saudara muslim di pedalaman yang kesulitan
-                mendapatkan mushaf Al-Quran dengan kondisi layak. Bersama Taman
-                Zakat, mari hadirkan cahaya Illahi melalui sedekah Al-Quran yang
-                akan dialirkan pahalanya untuk Anda.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
-                  Lihat Detail Program
-                </button>
-                <div className="relative inline-block">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
-                  />
-                  <a
-                    href="#donasi"
-                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
-                  >
-                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
-                        <span>Donasi Disini</span>
-                        <Image
-                          src="/images/icon/Donation.svg"
-                          alt="Ikon donasi"
-                          width={18}
-                          height={18}
-                          className="h-[18px] w-[18px]"
-                        />
+                  </div>
+                  <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                    <div className="max-w-md">
+                      <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">{item.title}</h2>
+                      <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium whitespace-pre-line">{item.description}</p>
+                      <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <div className="relative inline-block">
+                          <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                          <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5">
+                            <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                              <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
+                                <span>Donasi Sekarang</span>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                          Lihat Detail Program
+                        </button>
                       </div>
                     </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
-            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
-
-              {/* Icon Percantik 2 (Pushpin) */}
-              <div className="absolute -top-[25px] right-[25%] z-20 w-[45px] h-[50px] md:w-[50px] md:h-[55px] drop-shadow-md">
-                <Image
-                  src="/images/icon/pin paku.svg"
-                  alt="Pin Paku"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
-                <Image
-                  src="/images/gambardetaile/santri 1.svg"
-                  alt="Sebar Al-Quran"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. Pembinaan Mualaf */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
-
-              {/* Icon Percantik 3 */}
-              <div className="absolute -top-[14px] md:-top-[18px] left-[20%] z-20 w-[14px] md:w-[16px] h-[35px] md:h-[45px]">
-                <Image
-                  src="/images/icon/penjepit majalah.svg"
-                  alt="Clip"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="absolute -top-[14px] md:-top-[18px] right-[20%] z-20 w-[14px] md:w-[16px] h-[35px] md:h-[45px]">
-                <Image
-                  src="/images/icon/penjepit majalah.svg"
-                  alt="Clip"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-
-              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
-                <Image
-                  src="/images/gambardetaile/bidang pendidikan.svg"
-                  alt="Pembinaan Mualaf"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-            <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
-                Pembinaan Mualaf
-              </h2>
-              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Menumbuhkan kecintaan para saudara mualaf terhadap Islam dengan
-                memberikan pelatihan berkesinambungan dan modal usaha agar
-                mereka terus mandiri dalam keyakinan yang lurus.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <div className="relative inline-block">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
-                  />
-                  <a
-                    href="#donasi"
-                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
-                  >
-                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
-                        <span>Donasi Disini</span>
-                        <Image
-                          src="/images/icon/Donation.svg"
-                          alt="Ikon donasi"
-                          width={18}
-                          height={18}
-                          className="h-[18px] w-[18px]"
-                        />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="max-w-md">
+                      <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">{item.title}</h2>
+                      <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium whitespace-pre-line">{item.description}</p>
+                      <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                          Lihat Detail Program
+                        </button>
+                        <div className="relative inline-block">
+                          <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                          <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5">
+                            <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                              <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
+                                <span>Donasi Sekarang</span>
+                              </div>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </a>
-                </div>
-                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
-                  Lihat Detail Program
-                </button>
-              </div>
+                  </div>
+                  <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
+                    <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                      <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                      <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                        <Image src={item.image || "/images/placeholder.png"} alt={item.title} fill className="object-cover" />
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        );
+      })}
 
       {/* ===================== DARI AMANAH MENJADI MANFAAT (COLLAGE VERTICAL 1-2) ===================== */}
       <section className="w-full relative bg-[#FEFDF9] py-16 md:py-24 overflow-visible mt-8 md:mt-16">
@@ -582,7 +439,7 @@ export default function BidangDakwahPage() {
             <div className="w-[85%] sm:w-[50%] md:w-[55%] lg:w-[50%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-xl z-50 rotate-[3deg] transition-transform hover:scale-[1.03] hover:z-[60] ml-auto">
               <div className="relative w-full h-full overflow-hidden">
                 <Image
-                  src="/images/gambardetaile/bidang pendidikan.svg"
+                  src={pageData?.collage_images?.[2] || "/images/gambardetaile/bidang pendidikan.svg"}
                   alt="Image 1"
                   fill
                   className="object-cover"
@@ -596,7 +453,7 @@ export default function BidangDakwahPage() {
               <div className="w-[48%] md:w-[50%] lg:w-[48%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-lg z-20 rotate-[-3deg] transition-transform hover:scale-[1.03] hover:z-[60]">
                 <div className="relative w-full h-full overflow-hidden">
                   <Image
-                    src="/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg"
+                    src={pageData?.collage_images?.[1] || "/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg"}
                     alt="Image 2"
                     fill
                     className="object-cover object-top"
@@ -607,7 +464,7 @@ export default function BidangDakwahPage() {
               <div className="w-[45%] md:w-[45%] lg:w-[42%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-lg z-40 rotate-[2deg] transition-transform hover:scale-[1.03] hover:z-[60] mt-4 md:mt-8">
                 <div className="relative w-full h-full overflow-hidden">
                   <Image
-                    src="/images/gambardetaile/santri 1.svg"
+                    src={pageData?.collage_images?.[0] || "/images/gambardetaile/santri 1.svg"}
                     alt="Image 3"
                     fill
                     className="object-cover"
