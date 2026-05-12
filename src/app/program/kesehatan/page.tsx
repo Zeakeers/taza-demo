@@ -5,8 +5,24 @@ import { useEffect, useState, useRef } from "react";
 
 const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
 
-export default function BidangKesehatanPage() {
+  export default function BidangKesehatanPage() {
   const [animateBadge, setAnimateBadge] = useState(false);
+  const [pageData, setPageData] = useState<any>(null);
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api'}/content/program_kesehatan`);
+        const data = await response.json();
+        if (data && data.content) {
+          setPageData(data.content);
+        }
+      } catch (err) {
+        console.error("Error fetching page content:", err);
+      }
+    };
+    fetchContent();
+  }, []);
   const [animateAmbulance, setAnimateAmbulance] = useState(false);
   const ambulanceRef = useRef<HTMLElement>(null);
 
@@ -116,7 +132,7 @@ export default function BidangKesehatanPage() {
         {/* BACKGROUND IMAGE FILL */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/gambardetaile/hero page bidang kesehatan.svg"
+            src={pageData?.hero_image || "/images/gambardetaile/hero page bidang kesehatan.svg"}
             alt="Background Bidang Kesehatan"
             fill
             className="object-cover object-[15%_center] md:object-center"
@@ -179,7 +195,7 @@ export default function BidangKesehatanPage() {
             </div>
 
             <h1 className="text-[26px] md:text-[32px] font-poppins font-bold text-black mb-5 mt-4 ml-6 md:ml-8 text-left drop-shadow-sm">
-              Bidang <span className="text-[#8cc63f]">Kesehatan</span>
+              {pageData ? pageData.hero_title : <>Bidang <span className="text-[#8cc63f]">Kesehatan</span></>}
             </h1>
 
             <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10 ml-2 md:ml-8">
@@ -244,24 +260,17 @@ export default function BidangKesehatanPage() {
           <div className="w-full md:w-1/2 order-2 md:order-1 flex justify-center md:justify-start">
             <div className="max-w-md w-full">
               <h2 className="text-2xl md:text-3xl font-poppins text-black mb-4">
-                Program Kesehatan
+                {pageData?.intro_title || "Program Kesehatan"}
               </h2>
-              <p className="text-zinc-700 text-sm md:text-base md:leading-relaxed text-left">
-                Taman Zakat adalah lembaga amil zakat nasional milik masyarakat
-                Indonesia yang mengelola zakat, infak, sedekah, serta dana
-                kemanusiaan lainnya melalui serangkaian program salah satunya
-                adalah kesehatan. Isu permasalahan yang diintervensi Rumah Zakat
-                dalam bidang kesehatan adalah stunting & wasting (gizi buruk),
-                ancaman kesejahteraan lansia (pemenuhan kebutuhan dasar,
-                penelantaran, dll), akses terhadap air minum dan sanitasi yang
-                layak, dan kerawanan pangan.
+              <p className="text-zinc-700 text-sm md:text-base md:leading-relaxed text-left whitespace-pre-line">
+                {pageData?.intro_desc || "Deskripsi Intro"}
               </p>
             </div>
           </div>
           <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-end">
             <Image
-              src="/images/gambardetaile/bidang keseha.svg"
-              alt="Program Kesehatan"
+              src={pageData?.intro_image || "/images/gambardetaile/bidang keseha.svg"}
+              alt={pageData?.intro_title || "Program Kesehatan"}
               width={500}
               height={400}
               className="w-full max-w-sm md:max-w-md object-contain"
@@ -364,254 +373,82 @@ export default function BidangKesehatanPage() {
       </section>
 
       {/* ===================== LIST KESEHATAN BLOCKS ===================== */}
-
-      {/* Ambulan Gratis Taman Zakat */}
-      <section className="w-full py-16 px-4 md:px-12 bg-white">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              {/* Card Background Putih dengan Shadow Kiri Atas Tebal dan Solid */}
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
-
-              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
-                <Image
-                  src="/images/gambardetaile/footage ambul 2 1.svg"
-                  alt="Ambulan Gratis Taman Zakat"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-            <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
-                Ambulan Gratis Taman Zakat
-              </h2>
-              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Program infak ambulans Taman Zakat diharapkan dapat mengurangi
-                hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas
-                kesehatan yang layak dan terjamin dalam pertolongan pertama pada
-                kesehatan.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <div className="relative inline-block">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
-                  />
-                  <a
-                    href="#donasi"
-                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
-                  >
-                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
-                        <span>Donasi Disini</span>
-                        <Image
-                          src="/images/icon/Donation.svg"
-                          alt="Ikon donasi"
-                          width={18}
-                          height={18}
-                          className="h-[18px] w-[18px]"
-                        />
+      {pageData?.programs?.map((item: any, index: number) => {
+        const isEven = index % 2 === 0;
+        return (
+          <section key={index} className={`w-full py-16 px-4 md:px-12 ${isEven ? "bg-[#EBF5D5]" : "bg-white"}`}>
+            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
+              {isEven ? (
+                <>
+                  <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+                    <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                      <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                      <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                        <Image src={item.image || "/images/placeholder.png"} alt={item.title} fill className="object-cover" />
                       </div>
                     </div>
-                  </a>
-                </div>
-                <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
-                  Lihat Detail Program
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Operasi Katarak Gratis */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-          <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
-                Operasi Katarak Gratis
-              </h2>
-              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Program infak ambulans Taman Zakat diharapkan dapat mengurangi
-                hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas
-                kesehatan yang layak dan terjamin dalam pertolongan pertama pada
-                kesehatan.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
-                  Lihat Detail Program
-                </button>
-                <div className="relative inline-block">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
-                  />
-                  <a
-                    href="#donasi"
-                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
-                  >
-                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
-                        <span>Donasi Disini</span>
-                        <Image
-                          src="/images/icon/Donation.svg"
-                          alt="Ikon donasi"
-                          width={18}
-                          height={18}
-                          className="h-[18px] w-[18px]"
-                        />
+                  </div>
+                  <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+                    <div className="max-w-md">
+                      <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">{item.title}</h2>
+                      <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium whitespace-pre-line">{item.description}</p>
+                      <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <div className="relative inline-block">
+                          <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                          <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5">
+                            <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                              <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
+                                <span>Donasi Disini</span>
+                                <Image src="/images/icon/Donation.svg" alt="Ikon donasi" width={18} height={18} className="h-[18px] w-[18px]" />
+                              </div>
+                            </div>
+                          </a>
+                        </div>
+                        <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                          Lihat Detail Program
+                        </button>
                       </div>
                     </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
-            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              {/* Card Background Coklat dengan Shadow Kanan Atas Tebal dan Solid */}
-              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
-
-              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
-                <Image
-                  src="/images/gambardetaile/Oprasi Katarak.svg"
-                  alt="Operasi Katarak Gratis"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Toilet Keluarga Sehat */}
-      <section className="w-full py-16 px-4 md:px-12 bg-white">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              {/* Card Background Putih dengan Shadow Kiri Atas Tebal dan Solid */}
-              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
-
-              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
-                <Image
-                  src="/images/gambardetaile/toilet keluarga  sehat.svg"
-                  alt="Toilet Keluarga Sehat"
-                  fill
-                  className="object-cover scale-x-[-1]"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
-            <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
-                Toilet Keluarga Sehat
-              </h2>
-              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Program infak ambulans Taman Zakat diharapkan dapat mengurangi
-                hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas
-                kesehatan yang layak dan terjamin dalam pertolongan pertama pada
-                kesehatan.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <div className="relative inline-block">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
-                  />
-                  <a
-                    href="#donasi"
-                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
-                  >
-                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
-                        <span>Donasi Disini</span>
-                        <Image
-                          src="/images/icon/Donation.svg"
-                          alt="Ikon donasi"
-                          width={18}
-                          height={18}
-                          className="h-[18px] w-[18px]"
-                        />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div className="max-w-md">
+                      <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">{item.title}</h2>
+                      <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium whitespace-pre-line">{item.description}</p>
+                      <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                        <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                          Lihat Detail Program
+                        </button>
+                        <div className="relative inline-block">
+                          <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                          <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5">
+                            <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                              <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
+                                <span>Donasi Disini</span>
+                                <Image src="/images/icon/Donation.svg" alt="Ikon donasi" width={18} height={18} className="h-[18px] w-[18px]" />
+                              </div>
+                            </div>
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </a>
-                </div>
-                <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
-                  Lihat Detail Program
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Cek Kesehatan Gratis */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#EBF5D5]">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-          <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
-            <div className="max-w-md">
-              <h2 className="text-lg md:text-2xl font-poppins font-bold text-black mb-3">
-                Cek Kesehatan Gratis
-              </h2>
-              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                Program infak ambulans Taman Zakat diharapkan dapat mengurangi
-                hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas
-                kesehatan yang layak dan terjamin dalam pertolongan pertama pada
-                kesehatan.
-              </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-                <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
-                  Lihat Detail Program
-                </button>
-                <div className="relative inline-block">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
-                  />
-                  <a
-                    href="#donasi"
-                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
-                  >
-                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
-                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-poppins text-white">
-                        <span>Donasi Disini</span>
-                        <Image
-                          src="/images/icon/Donation.svg"
-                          alt="Ikon donasi"
-                          width={18}
-                          height={18}
-                          className="h-[18px] w-[18px]"
-                        />
+                  </div>
+                  <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
+                    <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                      <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                      <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                        <Image src={item.image || "/images/placeholder.png"} alt={item.title} fill className="object-cover" />
                       </div>
                     </div>
-                  </a>
-                </div>
-              </div>
+                  </div>
+                </>
+              )}
             </div>
-          </div>
-          <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
-            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
-              {/* Card Background Coklat dengan Shadow Kanan Atas Tebal dan Solid */}
-              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#EBF5D5] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
-
-              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
-                <Image
-                  src="/images/gambardetaile/cek kesehatan.svg"
-                  alt="Cek Kesehatan Gratis"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+          </section>
+        );
+      })}
     </main>
   );
 }
