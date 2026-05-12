@@ -93,11 +93,27 @@
                 </div>
             </div>
 
-            <a href="#"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
-                <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all"></div>
-                Program
-            </a>
+            <div class="space-y-1">
+                <button onclick="this.nextElementSibling.classList.toggle('hidden')"
+                    class="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
+                    <span class="flex items-center gap-3">
+                        <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all">
+                        </div>
+                        Program
+                    </span>
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="pl-10 space-y-1 {{ request()->routeIs('admin.program.*') ? '' : 'hidden' }}">
+                    <a href="{{ route('admin.program.edit', 'dakwah') }}" class="block py-2 text-sm {{ request()->is('admin/program/dakwah') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Dakwah</a>
+                    <a href="{{ route('admin.program.edit', 'ekonomi') }}" class="block py-2 text-sm {{ request()->is('admin/program/ekonomi') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Ekonomi</a>
+                    <a href="{{ route('admin.program.edit', 'kemanusiaan') }}" class="block py-2 text-sm {{ request()->is('admin/program/kemanusiaan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kemanusiaan</a>
+                    <a href="{{ route('admin.program.edit', 'kesehatan') }}" class="block py-2 text-sm {{ request()->is('admin/program/kesehatan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kesehatan</a>
+                    <a href="{{ route('admin.program.edit', 'pendidikan') }}" class="block py-2 text-sm {{ request()->is('admin/program/pendidikan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Pendidikan</a>
+                </div>
+            </div>
 
             <a href="{{ route('admin.berita.index') }}"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.berita.*') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all group">
