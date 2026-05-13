@@ -15,9 +15,10 @@ class PageContentController extends Controller
         $about = PageContent::where('page_name', 'home')->where('section_name', 'about')->first();
         $stats = PageContent::where('page_name', 'home')->where('section_name', 'stats')->first();
         $cta = PageContent::where('page_name', 'home')->where('section_name', 'cta')->first();
+        $testimoni = PageContent::where('page_name', 'home')->where('section_name', 'testimoni')->first();
         $provinces = \App\Models\Province::orderBy('name')->get();
 
-        return view('admin.pages.home', compact('hero', 'programs', 'about', 'stats', 'cta', 'provinces'));
+        return view('admin.pages.home', compact('hero', 'programs', 'about', 'stats', 'cta', 'testimoni', 'provinces'));
     }
 
     public function editAbout()
@@ -191,6 +192,25 @@ class PageContentController extends Controller
             }
 
             $content['programs'] = $programsData;
+        }
+
+        // Handle File Uploads for Testimoni Section
+        if ($section === 'testimoni') {
+            $testimoniData = $request->input('content', []);
+            $newImages = $request->file('new_images', []);
+
+            $cleanedTestimoni = [];
+            foreach ($testimoniData as $index => &$item) {
+                if (isset($newImages[$index]) && $newImages[$index]->isValid()) {
+                    $path = $newImages[$index]->store('page_contents', 'nextjs_public');
+                    $item['image'] = Storage::disk('nextjs_public')->url($path);
+                } else {
+                    $item['image'] = $item['existing_image'] ?? '';
+                }
+                unset($item['existing_image']); // Clean up
+                $cleanedTestimoni[] = $item;
+            }
+            $content = $cleanedTestimoni;
         }
 
         PageContent::updateOrCreate(
