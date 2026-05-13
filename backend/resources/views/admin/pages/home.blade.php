@@ -87,7 +87,15 @@
                     </svg>
                     <span class="text-left">CTA Kebaikan</span>
                 </button>
-            </div>
+                            <button onclick="showSection('testimoni')" id="tab-testimoni"
+                    class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent whitespace-nowrap">
+                    <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                    </svg>
+                    <span class="text-left">Testimoni</span>
+                </button>
+</div>
 
             <!-- Content Area -->
             <div class="xl:col-span-3">
@@ -430,6 +438,80 @@
                         </form>
                     </div>
 
+
+                    {{-- Form Testimoni --}}
+                    <div id="section-testimoni" class="content-section hidden">
+                        <form action="{{ route('admin.home.update') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="section" value="testimoni">
+                            
+                            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                                <h2 class="text-lg lg:text-2xl font-bold text-dark">Daftar Testimoni</h2>
+                                <button type="submit"
+                                    class="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1 w-full sm:w-auto">
+                                    Simpan Testimoni
+                                </button>
+                            </div>
+
+                            @php
+                                $testimoniList = $testimoni ? (is_string($testimoni->content) ? json_decode($testimoni->content, true) : $testimoni->content) : [];
+                            @endphp
+
+                            <div id="testimoni-list" class="space-y-6">
+                                @forelse ($testimoniList as $index => $item)
+                                    <div class="testimoni-item bg-gray-50 p-6 rounded-2xl border border-gray-100 relative group">
+                                        <button type="button" onclick="this.parentElement.remove()" 
+                                            class="absolute -top-3 -right-3 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors z-10">
+                                            &times;
+                                        </button>
+                                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                                            <div class="lg:col-span-3">
+                                                <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-gray-200 group-hover:border-primary transition-colors">
+                                                    @if(isset($item['image']) && $item['image'])
+                                                        <img src="{{ $item['image'] }}" id="preview-testimoni-img-{{$index}}" class="w-full h-full object-cover">
+                                                        <div id="preview-testimoni-placeholder-{{$index}}" class="hidden absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                                                            <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                            <span class="text-xs font-medium">Foto (1:1)</span>
+                                                        </div>
+                                                    @else
+                                                        <img src="" id="preview-testimoni-img-{{$index}}" class="hidden w-full h-full object-cover">
+                                                        <div id="preview-testimoni-placeholder-{{$index}}" class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                                                            <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                            <span class="text-xs font-medium">Foto (1:1)</span>
+                                                        </div>
+                                                    @endif
+                                                    <input type="file" name="new_images[]" accept="image/*" onchange="previewTestimoniImage(this, {{$index}})" class="absolute inset-0 opacity-0 cursor-pointer">
+                                                    <input type="hidden" name="content[{{$index}}][existing_image]" value="{{ $item['image'] ?? '' }}">
+                                                </div>
+                                            </div>
+                                            <div class="lg:col-span-9 space-y-4">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <div>
+                                                        <label class="block font-bold mb-2 text-sm text-gray-600">Nama</label>
+                                                        <input type="text" name="content[{{$index}}][name]" value="{{ $item['name'] ?? '' }}" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                                                    </div>
+                                                    <div>
+                                                        <label class="block font-bold mb-2 text-sm text-gray-600">Peran/Pekerjaan</label>
+                                                        <input type="text" name="content[{{$index}}][role]" value="{{ $item['role'] ?? '' }}" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label class="block font-bold mb-2 text-sm text-gray-600">Isi Testimoni</label>
+                                                    <textarea name="content[{{$index}}][quote]" rows="3" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>{{ $item['quote'] ?? '' }}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @empty
+                                @endforelse
+                            </div>
+
+                            <button type="button" onclick="addTestimoni()" class="mt-6 flex items-center justify-center gap-2 w-full py-4 rounded-2xl border-2 border-dashed border-primary/30 text-primary hover:bg-primary/5 transition-colors font-bold">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                                Tambah Testimoni
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -568,7 +650,67 @@
                 uploadBox.appendChild(newInput);
             }
         }
-    </script>
+    
+        let testimoniCount = {{ isset($testimoniList) ? count($testimoniList) : 0 }};
+        
+        function addTestimoni() {
+            const index = testimoniCount++;
+            const div = document.createElement('div');
+            div.className = 'testimoni-item bg-gray-50 p-6 rounded-2xl border border-gray-100 relative group';
+            div.innerHTML = `
+                <button type="button" onclick="this.parentElement.remove()" 
+                    class="absolute -top-3 -right-3 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors z-10">
+                    &times;
+                </button>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                    <div class="lg:col-span-3">
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-gray-200 group-hover:border-primary transition-colors">
+                            <img src="" id="preview-testimoni-img-${index}" class="hidden w-full h-full object-cover">
+                            <div id="preview-testimoni-placeholder-${index}" class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                                <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span class="text-xs font-medium">Foto (1:1)</span>
+                            </div>
+                            <input type="file" name="new_images[]" accept="image/*" onchange="previewTestimoniImage(this, ${index})" class="absolute inset-0 opacity-0 cursor-pointer">
+                            <input type="hidden" name="content[${index}][existing_image]" value="">
+                        </div>
+                    </div>
+                    <div class="lg:col-span-9 space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-bold mb-2 text-sm text-gray-600">Nama</label>
+                                <input type="text" name="content[${index}][name]" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-2 text-sm text-gray-600">Peran/Pekerjaan</label>
+                                <input type="text" name="content[${index}][role]" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block font-bold mb-2 text-sm text-gray-600">Isi Testimoni</label>
+                            <textarea name="content[${index}][quote]" rows="3" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('testimoni-list').appendChild(div);
+        }
+
+        function previewTestimoniImage(input, index) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('preview-testimoni-img-' + index);
+                    const placeholder = document.getElementById('preview-testimoni-placeholder-' + index);
+                    if(img) {
+                        img.src = e.target.result;
+                        img.classList.remove('hidden');
+                    }
+                    if(placeholder) placeholder.classList.add('hidden');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+</script>
     
     <!-- Modal Konfirmasi Hapus Gambar -->
     <x-admin.delete-modal id="delete-image-modal" action="js" title="Hapus Gambar" message="Apakah Anda yakin ingin menghapus gambar ini?" />
