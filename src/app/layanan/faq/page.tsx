@@ -2,7 +2,16 @@
 import { HelpCircle, Search, ChevronDown } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 
-const faqList = Array(8).fill({
+interface FAQData {
+  header?: {
+    title?: string;
+    search_placeholder?: string;
+  };
+  items?: { question: string; answer: string }[];
+  topics?: string[];
+}
+
+const defaultFaqList = Array(8).fill({
   question:
     "Saya sudah transfer, tapi status donasi masih 'Belum Dibayar', apa yang harus saya lakukan?",
   answer:
@@ -19,7 +28,7 @@ const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
         strokeWidth={2}
       />
       <div className="flex-1">
-        <button 
+        <button
           onClick={() => setIsOpen(!isOpen)}
           className="flex w-fit items-center gap-3 group text-left cursor-pointer focus:outline-none bg-[#8DC63F] text-white px-4 py-2.5 rounded-md transition-transform active:scale-[0.98]"
         >
@@ -28,7 +37,7 @@ const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
           </h3>
           <ChevronDown className={`w-5 h-5 text-white transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} />
         </button>
-        
+
         <div className={`grid transition-all duration-300 overflow-hidden ${isOpen ? 'grid-rows-[1fr] opacity-100 mt-3 mb-2' : 'grid-rows-[0fr] opacity-0 mt-0 mb-0'}`}>
           <div className="min-h-0">
             <p className="text-sm text-zinc-600 md:text-[15px] md:leading-relaxed text-left px-1">
@@ -41,9 +50,30 @@ const FAQItem = ({ item }: { item: { question: string; answer: string } }) => {
   );
 };
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+
 export default function FAQPage() {
   const decorRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [faqData, setFaqData] = useState<FAQData | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(`${API_URL}/content/layanan`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.faq) {
+            setFaqData(data.faq);
+          }
+        }
+      } catch (e) {
+        console.error("Failed to fetch FAQ data:", e);
+      }
+    }
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,6 +92,20 @@ export default function FAQPage() {
 
     return () => observer.disconnect();
   }, []);
+
+  const headerTitle = faqData?.header?.title || "Haloo,ada yang bisa kami bantu?";
+  const searchPlaceholder = faqData?.header?.search_placeholder || "Cari bantuan disini ...";
+  const faqList = faqData?.items && faqData.items.length > 0 ? faqData.items : defaultFaqList;
+  const topics = faqData?.topics && faqData.topics.length > 0 ? faqData.topics : Array(8).fill("Verification");
+
+  // Filter FAQ items based on search
+  const filteredFaq = searchQuery
+    ? faqList.filter(
+      (item) =>
+        item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.answer.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    : faqList;
 
   return (
     <>
@@ -96,13 +140,15 @@ export default function FAQPage() {
           {/* Title & Search */}
           <div className="mb-14">
             <h1 className="mb-8 text-center text-2xl font-bold text-black md:text-[28px]">
-              Haloo,ada yang bisa kami bantu?
+              {headerTitle}
             </h1>
 
             <div className="relative mx-auto max-w-[550px]">
               <input
                 type="text"
-                placeholder="Cari bantuan disini ..."
+                placeholder={searchPlaceholder}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full rounded-full border border-zinc-200 bg-[#FAFAFA] py-3.5 pl-8 pr-16 text-sm font-medium text-zinc-800 outline-none placeholder:text-zinc-400 focus:border-[#7FC248] md:text-base"
               />
               <button
@@ -120,9 +166,13 @@ export default function FAQPage() {
             <div>
               <h2 className="mb-6 text-lg font-bold text-black md:text-xl">Pencarian terbanyak</h2>
               <div className="flex flex-col gap-6">
-                {faqList.map((item, index) => (
-                  <FAQItem key={index} item={item} />
-                ))}
+                {filteredFaq.length > 0 ? (
+                  filteredFaq.map((item, index) => (
+                    <FAQItem key={index} item={item} />
+                  ))
+                ) : (
+                  <p className="text-zinc-400 text-sm italic py-4">Tidak ditemukan pertanyaan yang cocok.</p>
+                )}
               </div>
             </div>
 
@@ -133,13 +183,13 @@ export default function FAQPage() {
                   Populer Topic
                 </h3>
                 <ul className="relative z-10 flex flex-col gap-2.5">
-                  {[...Array(8)].map((_, idx) => (
+                  {topics.map((topic, idx) => (
                     <li key={idx}>
                       <a
                         href="#"
                         className="text-[15px] font-medium text-[#7fb539] transition hover:text-[#5DA630] hover:underline"
                       >
-                        Verification
+                        {topic}
                       </a>
                     </li>
                   ))}
@@ -168,20 +218,6 @@ export default function FAQPage() {
             </div>
           </div>
         </div>
-
-        {/* Tiga kotak kosong (Section bawah hijau muda) */}
-        {/* <section className="w-full bg-[#EAF2DE] py-14">
-        <div className="mx-auto w-full max-w-[1200px] px-6">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-            {[1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className="h-[220px] w-full border border-[#D5E6C1] bg-[#E2EDD3] md:h-[260px]"
-              ></div>
-            ))}
-          </div>
-        </div>
-      </section> */}
       </main>
     </>
   );
