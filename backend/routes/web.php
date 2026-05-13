@@ -108,4 +108,17 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::put('/rekening/bank/{bank}', [\App\Http\Controllers\RekeningController::class, 'updateBank'])->name('admin.rekening.bank.update');
     Route::delete('/rekening/bank/{bank}', [\App\Http\Controllers\RekeningController::class, 'destroyBank'])->name('admin.rekening.bank.destroy');
     Route::post('/rekening/update-order', [\App\Http\Controllers\RekeningController::class, 'updateOrder'])->name('admin.rekening.update-order');
+
+    // Manajemen Halaman Layanan (Sub-pages)
+    Route::get('/layanan-pages/qrcode', [\App\Http\Controllers\LayananPageController::class, 'editQrCode'])->name('admin.layanan-pages.qrcode');
+    Route::post('/layanan-pages/qrcode', [\App\Http\Controllers\LayananPageController::class, 'updateQrCode'])->name('admin.layanan-pages.qrcode.update');
+
+    Route::get('/layanan-pages/kantor', [\App\Http\Controllers\LayananPageController::class, 'editKantor'])->name('admin.layanan-pages.kantor');
+    Route::post('/layanan-pages/kantor', [\App\Http\Controllers\LayananPageController::class, 'updateKantor'])->name('admin.layanan-pages.kantor.update');
+
+    Route::get('/layanan-pages/faq', [\App\Http\Controllers\LayananPageController::class, 'editFaq'])->name('admin.layanan-pages.faq');
+    Route::post('/layanan-pages/faq', [\App\Http\Controllers\LayananPageController::class, 'updateFaq'])->name('admin.layanan-pages.faq.update');
+
+    Route::get('/layanan-pages/hitung-zakat', [\App\Http\Controllers\LayananPageController::class, 'editHitungZakat'])->name('admin.layanan-pages.hitung-zakat');
+    Route::post('/layanan-pages/hitung-zakat', [\App\Http\Controllers\LayananPageController::class, 'updateHitungZakat'])->name('admin.layanan-pages.hitung-zakat.update');
 });
