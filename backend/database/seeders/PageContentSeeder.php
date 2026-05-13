@@ -95,6 +95,73 @@ class PageContentSeeder extends Seeder
                     ['title' => 'WTP Award 2023', 'year' => '2023', 'image' => '/images/gambardetaile/wtp award.jpeg'],
                     ['title' => 'WTP Award 2022', 'year' => '2022', 'image' => '/images/gambardetaile/aww 1.png']
                 ]
+            ],
+            [
+                'page_name' => 'home',
+                'section_name' => 'hero',
+                'content' => [
+                    'images' => [
+                        '/images/gambardetaile/hero home 1.svg',
+                        '/images/gambardetaile/hero home 2.svg',
+                        '/images/gambardetaile/hero home 3.svg',
+                        '/images/gambardetaile/hero home 4.svg',
+                        '/images/gambardetaile/hero home 5.svg'
+                    ]
+                ]
+            ],
+            [
+                'page_name' => 'home',
+                'section_name' => 'about',
+                'content' => [
+                    'title' => 'TENTANG KAMI',
+                    'sub' => 'TAMAN ZAKAT INDONESIA',
+                    'desc' => 'Kami Memfasilitasi perkembangan generasi yang penuh berkah dan kami mempunyai mimpi bisa menjadi salah satu tulang punggung gerakan kebaikan ummat.',
+                    'highlight' => "Lembaga Filantropi Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk Pengembangan Alqur'an, Pendidikan, Kesehatan dan Kemanusiaan"
+                ]
+            ],
+            [
+                'page_name' => 'home',
+                'section_name' => 'stats',
+                'content' => [
+                    'title' => 'Setiap Zakat Anda Mengalirkan Keberkahan untuk Sesama',
+                    'desc' => 'Taman Zakat memastikan setiap titipan kebaikan Anda tersalurkan secara tepat sasaran kepada mereka yang membutuhkan di berbagai wilayah Indonesia.',
+                    'wilayah' => '47',
+                    'manfaat' => '102.088',
+                    'aksi' => '19'
+                ]
+            ],
+            [
+                'page_name' => 'home',
+                'section_name' => 'cta',
+                'content' => [
+                    'title' => 'Bergabunglah Bersama Kami',
+                    'desc' => 'Mari menjadi bagian dari gerakan kebaikan untuk perubahan yang lebih baik bagi ummat.',
+                    'btn' => 'LIHAT SEMUA PELUANG'
+                ]
+            ],
+            [
+                'page_name' => 'home',
+                'section_name' => 'testimoni',
+                'content' => [
+                    [
+                        'name' => 'Bapak Ahmad Faisal',
+                        'role' => 'Donatur Rutin',
+                        'quote' => 'Taman Zakat sangat amanah dan transparan. Laporan pendayagunaannya sangat detil dan dikirimkan secara berkala kepada kami.',
+                        'image' => 'https://i.pravatar.cc/150?u=ahmad'
+                    ],
+                    [
+                        'name' => 'Ibu Siti Aminah',
+                        'role' => 'Penerima Manfaat',
+                        'quote' => 'Alhamdulillah, bantuan pendidikan dari Taman Zakat sangat membantu sekolah anak saya hingga lulus dengan nilai memuaskan.',
+                        'image' => 'https://i.pravatar.cc/150?u=siti'
+                    ],
+                    [
+                        'name' => 'Bapak Budi Santoso',
+                        'role' => 'Tokoh Masyarakat',
+                        'quote' => 'Program pemberdayaan ekonominya nyata dirasakan oleh warga kami. Banyak UMKM yang terbantu dengan modal dan pendampingannya.',
+                        'image' => 'https://i.pravatar.cc/150?u=budi'
+                    ]
+                ]
             ]
         ];
 

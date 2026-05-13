@@ -100,7 +100,7 @@ const milestones = [
     logoRender: () => (
       <div className="py-4 px-6 md:pr-10">
         <Image
-          src="/images/icon/Taman Zakat Logo.svg"
+          src="/images/icon/Taman zakat hijau hitam.png"
           alt="Taman Zakat"
           width={240}
           height={100}
@@ -227,7 +227,7 @@ const statDetails = {
   manfaat:
     "Curabitur pretium tincidunt lacus, penerima manfaat merupakan dhuafa dan amil yang berhak. Nulla gravida orci a odio. Nullam varius, turpis et commodo.",
   kebaikan:
-"Suspendisse dictum feugiat nisl, aksi kebaikan meliputi pendidikan, ekonomi, dan kesehatan. Ut sem vamus vulputate eleifend. Praesent dapibus, neque id cursus.",
+    "Suspendisse dictum feugiat nisl, aksi kebaikan meliputi pendidikan, ekonomi, dan kesehatan. Ut sem vamus vulputate eleifend. Praesent dapibus, neque id cursus.",
 };
 
 export default function AboutPage() {
@@ -241,8 +241,8 @@ export default function AboutPage() {
   const [loading, setLoading] = useState(true);
 
   // Setup dynamic kepengurusan tabs
-  const dynamicKepengurusanTabs = content?.kepengurusan 
-    ? Object.keys(content.kepengurusan) 
+  const dynamicKepengurusanTabs = content?.kepengurusan
+    ? Object.keys(content.kepengurusan)
     : kepengurusanTabs;
 
   useEffect(() => {
@@ -441,11 +441,10 @@ export default function AboutPage() {
                 <button
                   key={t}
                   onClick={() => setActiveTab(t)}
-                  className={`px-4 sm:px-8 pb-3 text-[15px] md:text-lg font-semibold whitespace-nowrap outline-none flex-auto text-center ${
-                    activeTab === t
-                      ? "text-black"
-                      : "text-zinc-700 hover:text-black"
-                  }`}
+                  className={`px-4 sm:px-8 pb-3 text-[15px] md:text-lg font-semibold whitespace-nowrap outline-none flex-auto text-center ${activeTab === t
+                    ? "text-black"
+                    : "text-zinc-700 hover:text-black"
+                    }`}
                 >
                   {t}
                 </button>
@@ -522,11 +521,10 @@ export default function AboutPage() {
                   <button
                     key={tab}
                     onClick={() => setActiveKepengurusan(tab)}
-                    className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${
-                      activeKepengurusan === tab
-                        ? "bg-[#7FC248] text-white"
-                        : "bg-transparent text-white hover:bg-black/5"
-                    }`}
+                    className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${activeKepengurusan === tab
+                      ? "bg-[#7FC248] text-white"
+                      : "bg-transparent text-white hover:bg-black/5"
+                      }`}
                   >
                     {tab}
                   </button>
@@ -641,11 +639,11 @@ export default function AboutPage() {
                 {/* gamabr bagian kiri*/}
                 <div className="w-full h-full border border-zinc-200/60 bg-[#FAFAFA] relative z-10 mt-6 md:mt-0 shadow-[10px_10px_15px_rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden">
                   {valueImage ? (
-                    <Image 
-                      src={valueImage} 
-                      alt="Value Image" 
-                      fill 
-                      className="object-cover" 
+                    <Image
+                      src={valueImage}
+                      alt="Value Image"
+                      fill
+                      className="object-cover"
                     />
                   ) : (
                     <span className="text-zinc-400 text-sm font-medium">

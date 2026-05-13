@@ -5,6 +5,7 @@ import HeroSliderHome from "@/components/ui/hero-slider-home";
 import BerbagiMengubahKehidupan from "@/components/ui/berbagi-mengubah-kehidupan";
 import BeritaTabs from "@/components/ui/berita-tabs";
 import ArtikelSlider from "@/components/ui/artikel-slider";
+import TestimoniSlider from "@/components/ui/testimoni-slider";
 import { getPageContent, getProvinces, API_URL } from "@/lib/api";
 
 export default async function Home() {
@@ -58,6 +59,23 @@ export default async function Home() {
     const found = rawPrograms.find((p: any) => p.id === cat.id);
     return found ? { ...cat, ...found } : cat;
   });
+
+  // Testimoni Data
+  const rawTestimoni = content?.testimoni;
+  let testimoniList = [];
+  if (typeof rawTestimoni === 'string') {
+    try {
+      testimoniList = JSON.parse(rawTestimoni);
+    } catch(e){}
+  } else if (Array.isArray(rawTestimoni)) {
+    testimoniList = rawTestimoni;
+  } else if (rawTestimoni?.content && Array.isArray(rawTestimoni.content)) {
+    testimoniList = rawTestimoni.content;
+  } else if (typeof rawTestimoni?.content === 'string') {
+    try {
+      testimoniList = JSON.parse(rawTestimoni.content);
+    } catch(e){}
+  }
 
   return (
     <section className="w-full min-h-screen flex flex-col bg-white overflow-x-hidden">
@@ -158,6 +176,9 @@ export default async function Home() {
 
         {/* Section Berita Interactive */}
         <BeritaTabs />
+
+        {/* Section Testimoni */}
+        <TestimoniSlider data={testimoniList} />
 
         {/* Section Artikel (Green BG) */}
         <section className="bg-[#7fc248] border-t border-[#B8DDA1] pt-12 pb-16 w-full mt-10">
