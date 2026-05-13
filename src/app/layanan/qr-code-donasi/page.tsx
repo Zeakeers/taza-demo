@@ -1,6 +1,14 @@
 import React from 'react';
+import { getPageContent } from '@/lib/api';
 
-export default function QRCodeDonasiPage() {
+export default async function QRCodeDonasiPage() {
+  const pageData = await getPageContent('layanan');
+  const data = pageData?.qrcode;
+
+  const title = data?.title || 'Satu Scan, Banyak Kebaikan';
+  const description = data?.description || 'Berbagi kini semakin mudah. Dukung berbagai program kebaikan melalui satu QR code sederhana.';
+  const qrImage = data?.qr_image || '/images/gambardetaile/qr 1.svg';
+
   return (
     <div className="bg-white text-zinc-800 min-h-screen relative overflow-hidden font-poppins">
       <div className="mx-auto max-w-[1280px] px-4 md:px-8 lg:px-12 py-12 md:py-20 relative min-h-[800px]">
@@ -16,15 +24,12 @@ export default function QRCodeDonasiPage() {
           
           {/* Titles */}
           <div className="text-center mb-8 relative z-20">
-            {/* To mask the line under the title if it overlaps, though the bg is white */}
             <div className="bg-white inline-block px-4">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-sans font-bold text-black mb-4">
-                Satu Scan, Banyak Kebaikan
+                {title}
               </h1>
               <p className="text-base md:text-lg lg:text-[20px] font-sans text-zinc-800 max-w-[700px] mx-auto leading-relaxed">
-                Berbagi kini semakin mudah. Dukung berbagai program
-                <br className="hidden md:block" />
-                {" "}kebaikan melalui satu QR code sederhana.
+                {description}
               </p>
             </div>
           </div>
@@ -54,7 +59,7 @@ export default function QRCodeDonasiPage() {
               {/* Center Image */}
               <div className="relative z-40 bg-white">
                 <img 
-                  src="/images/gambardetaile/qr 1.svg" 
+                  src={qrImage} 
                   alt="QR Code Donasi Taman Zakat" 
                   className="w-full h-auto object-contain relative mx-auto shadow-sm"
                   style={{ aspectRatio: '729/1027' }}
