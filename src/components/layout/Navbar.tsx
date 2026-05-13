@@ -117,20 +117,16 @@ export default function Navbar() {
               tabIndex={0}
               className="group relative inline-flex shrink-0 cursor-pointer items-center rounded-full border border-zinc-200 bg-zinc-50 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] outline-none md:rounded-none md:border-0 md:bg-transparent md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
             >
-              <Link
-                href="/layanan"
-                className="flex items-center gap-1.5 px-3 py-1.5 md:px-0 md:py-2 w-full h-full outline-none"
+              Layanan
+              <svg
+                className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 group-focus:rotate-180 md:h-4 md:w-5 md:text-black group-hover:text-[#5DA630]"
+                viewBox="4 2 18 17"
+                fill="none"
+                stroke="currentColor"
               >
-                Layanan
-                <svg
-                  className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 group-focus:rotate-180 md:h-4 md:w-5 md:text-black group-hover:text-[#5DA630]"
-                  viewBox="4 2 18 17"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </Link>
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+
 
               {/* Dropdown Menu */}
               <div
