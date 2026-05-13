@@ -5,20 +5,57 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, HeartHandshake, Phone, TriangleAlert, Calculator, RotateCcw, HandHeart, ChevronDown } from "lucide-react";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+
 export default function HitungZakatPage() {
   const [jenisZakat, setJenisZakat] = useState("PENGHASILAN");
   const [gaji, setGaji] = useState("");
   const [penghasilanLain, setPenghasilanLain] = useState("");
   const [jumlahEmas, setJumlahEmas] = useState("");
-  const [hargaEmas, setHargaEmas] = useState("2.864.143"); // Default estimasi harga emas
+  const [hargaEmas, setHargaEmas] = useState("2.864.143");
   const [jumlahJiwa, setJumlahJiwa] = useState("1");
-  const [hargaBeras, setHargaBeras] = useState("50.000"); // Default BAZNAS
+  const [hargaBeras, setHargaBeras] = useState("50.000");
 
   const [showResult, setShowResult] = useState(false);
   const [zakatResult, setZakatResult] = useState(0);
   const [isNisab, setIsNisab] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Dynamic content from API
+  const [heading, setHeading] = useState("TUNAIKAN ZAKAT, INFAK, DAN SEDEKAH ANDA DENGAN AMAN DAN MUDAH");
+  const [kalkulatorTitle, setKalkulatorTitle] = useState("Kalkulator Zakat");
+  const [kalkulatorDescription, setKalkulatorDescription] = useState(
+    "Kalkulator zakat adalah layanan untuk mempermudah perhitungan jumlah zakat yang harus ditunaikan oleh setiap umat muslim sesuai ketetapan syariah. Oleh karena itu, bagi Anda yang ingin mengetahui berapa jumlah zakat yang harus ditunaikan, silahkan gunakan fasilitas Kalkulator Zakat dibawah ini."
+  );
+  const [disclaimerItems, setDisclaimerItems] = useState<string[]>([
+    "Fatwa MUI No. 3 Tahun 2003 tentang Zakat Penghasilan",
+    "Keputusan Majma' Fiqih Islami (OKI) tentang Zakat Kontemporer",
+    "Pendapat mayoritas ulama kontemporer (Dr. Yusuf Qardhawi, dll)",
+  ]);
+
+  useEffect(() => {
+    async function fetchContent() {
+      try {
+        const res = await fetch(`${API_URL}/content/layanan`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data?.hitung_zakat) {
+            const hz = data.hitung_zakat;
+            if (hz.heading) setHeading(hz.heading);
+            if (hz.kalkulator_title) setKalkulatorTitle(hz.kalkulator_title);
+            if (hz.kalkulator_description) setKalkulatorDescription(hz.kalkulator_description);
+            if (hz.default_harga_emas) setHargaEmas(hz.default_harga_emas);
+            if (hz.default_harga_beras) setHargaBeras(hz.default_harga_beras);
+            if (hz.disclaimer_items && hz.disclaimer_items.length > 0) setDisclaimerItems(hz.disclaimer_items);
+          }
+        }
+      } catch (e) {
+        console.error("Failed to fetch hitung zakat content:", e);
+      }
+    }
+    fetchContent();
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -121,8 +158,9 @@ export default function HitungZakatPage() {
             className="h-14 md:h-20 w-auto mb-6"
           />
           <h1 className="text-xl md:text-2xl font-bold text-zinc-900 uppercase tracking-wide max-w-2xl">
-            TUNAIKAN ZAKAT, INFAK, DAN SEDEKAH ANDA DENGAN{" "}
-            <span className="text-[#5DA630]">AMAN DAN MUDAH</span>
+            {heading.includes("AMAN DAN MUDAH") ? (
+              <>{heading.split("AMAN DAN MUDAH")[0]}<span className="text-[#5DA630]">AMAN DAN MUDAH</span></>
+            ) : heading}
           </h1>
         </div>
 
@@ -131,14 +169,10 @@ export default function HitungZakatPage() {
           {/* Kalkulator Header */}
           <div className="mb-6">
             <h2 className="text-2xl font-bold text-[#5DA630] mb-3 border-b-2 border-[#5DA630] inline-block pb-1">
-              Kalkulator Zakat
+              {kalkulatorTitle}
             </h2>
             <p className="text-zinc-700 text-[15px] leading-relaxed">
-              Kalkulator zakat adalah layanan untuk mempermudah perhitungan
-              jumlah zakat yang harus ditunaikan oleh setiap umat muslim sesuai
-              ketetapan syariah. Oleh karena itu, bagi Anda yang ingin
-              mengetahui berapa jumlah zakat yang harus ditunaikan, silahkan
-              gunakan fasilitas Kalkulator Zakat dibawah ini.
+              {kalkulatorDescription}
             </p>
           </div>
 
@@ -515,14 +549,9 @@ export default function HitungZakatPage() {
               Perhitungan ini menggunakan :
             </p>
             <ul className="list-disc list-outside ml-6 text-zinc-700 text-[14px] md:text-[15px] space-y-2 marker:text-zinc-500 font-medium">
-              <li>Fatwa MUI No. 3 Tahun 2003 tentang Zakat Penghasilan</li>
-              <li>
-                Keputusan Majma&apos; Fiqih Islami (OKI) tentang Zakat
-                Kontemporer
-              </li>
-              <li>
-                Pendapat mayoritas ulama kontemporer (Dr. Yusuf Qardhawi, dll)
-              </li>
+              {disclaimerItems.map((item, idx) => (
+                <li key={idx}>{item}</li>
+              ))}
             </ul>
           </div>
         </div>
