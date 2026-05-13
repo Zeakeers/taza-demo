@@ -58,17 +58,21 @@
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="pl-10 space-y-1 hidden">
-                    <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">QR Code
+                <div class="pl-10 space-y-1 {{ request()->routeIs('admin.rekening.*') || request()->routeIs('admin.layanan-pages.*') ? '' : 'hidden' }}">
+                    <a href="{{ route('admin.layanan-pages.qrcode') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.layanan-pages.qrcode*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">QR Code
                         Donasi</a>
-                    <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">Kantor
+                    <a href="{{ route('admin.layanan-pages.kantor') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.layanan-pages.kantor*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kantor
                         Pelayanan</a>
-                    <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">Hitung
+                    <a href="{{ route('admin.layanan-pages.hitung-zakat') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.layanan-pages.hitung-zakat*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Hitung
                         Zakat</a>
                     <a href="{{ route('admin.rekening.index') }}"
                         class="block py-2 text-sm {{ request()->routeIs('admin.rekening.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">No.
                         Rekening</a>
-                    <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">FAQ</a>
+                    <a href="{{ route('admin.layanan-pages.faq') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.layanan-pages.faq*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">FAQ</a>
                 </div>
             </div>
 
