@@ -49,3 +49,21 @@ export async function getRekening() {
     return null;
   }
 }
+
+export async function getMitra() {
+  try {
+    const res = await fetch(`${API_URL}/mitra`, {
+      next: { revalidate: 0 },
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch mitra`);
+    }
+
+    return await res.json();
+  } catch (error) {
+    console.error("API Error:", error);
+    return null;
+  }
+}
+
