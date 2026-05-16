@@ -89,8 +89,9 @@
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="pl-10 space-y-1 hidden">
-                    <a href="#" class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">Mitra
+                <div class="pl-10 space-y-1 {{ request()->routeIs('admin.mitra.*') ? '' : 'hidden' }}">
+                    <a href="{{ route('admin.mitra.index') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.mitra.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Mitra
                         Kami</a>
                     <a href="#"
                         class="block py-2 text-sm text-gray-500 hover:text-secondary transition-colors">Volunteer</a>
