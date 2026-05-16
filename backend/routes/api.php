@@ -44,3 +44,7 @@ Route::get('/berita/{slug}', [\App\Http\Controllers\BeritaController::class, 'ap
 
 // Rekening
 Route::get('/rekening', [\App\Http\Controllers\RekeningController::class, 'apiIndex']);
+
+// Mitra
+Route::get('/mitra', [\App\Http\Controllers\MitraController::class, 'apiIndex']);
+
