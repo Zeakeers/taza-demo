@@ -109,6 +109,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::delete('/rekening/bank/{bank}', [\App\Http\Controllers\RekeningController::class, 'destroyBank'])->name('admin.rekening.bank.destroy');
     Route::post('/rekening/update-order', [\App\Http\Controllers\RekeningController::class, 'updateOrder'])->name('admin.rekening.update-order');
 
+    // Manajemen Mitra
+    Route::get('/mitra', [\App\Http\Controllers\MitraController::class, 'index'])->name('admin.mitra.index');
+    Route::post('/mitra/section', [\App\Http\Controllers\MitraController::class, 'storeSection'])->name('admin.mitra.section.store');
+    Route::put('/mitra/section/{section}', [\App\Http\Controllers\MitraController::class, 'updateSection'])->name('admin.mitra.section.update');
+    Route::delete('/mitra/section/{section}', [\App\Http\Controllers\MitraController::class, 'destroySection'])->name('admin.mitra.section.destroy');
+    Route::post('/mitra/logo', [\App\Http\Controllers\MitraController::class, 'storeLogo'])->name('admin.mitra.logo.store');
+    Route::put('/mitra/logo/{logo}', [\App\Http\Controllers\MitraController::class, 'updateLogo'])->name('admin.mitra.logo.update');
+    Route::delete('/mitra/logo/{logo}', [\App\Http\Controllers\MitraController::class, 'destroyLogo'])->name('admin.mitra.logo.destroy');
+    Route::post('/mitra/update-order', [\App\Http\Controllers\MitraController::class, 'updateOrder'])->name('admin.mitra.update-order');
     // Manajemen Halaman Layanan (Sub-pages)
     Route::get('/layanan-pages/qrcode', [\App\Http\Controllers\LayananPageController::class, 'editQrCode'])->name('admin.layanan-pages.qrcode');
     Route::post('/layanan-pages/qrcode', [\App\Http\Controllers\LayananPageController::class, 'updateQrCode'])->name('admin.layanan-pages.qrcode.update');
