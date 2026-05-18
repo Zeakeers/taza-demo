@@ -63,6 +63,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         ->name('admin.permohonan-bantuan.update-status');
 
     // Volunteer
+    Route::get('volunteer/page', [\App\Http\Controllers\VolunteerController::class, 'editPage'])->name('admin.volunteer.page.edit');
+    Route::post('volunteer/page', [\App\Http\Controllers\VolunteerController::class, 'updatePage'])->name('admin.volunteer.page.update');
     Route::resource('volunteer', \App\Http\Controllers\VolunteerController::class)
         ->names('admin.volunteer');
     Route::post('volunteer/{volunteer}/status', [\App\Http\Controllers\VolunteerController::class, 'updateStatus'])
