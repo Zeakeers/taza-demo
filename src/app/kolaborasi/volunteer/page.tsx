@@ -8,7 +8,7 @@ const SparkIcon = ({ className }: { className?: string }) => (
   </svg>
 )
 
-const stats = [
+const defaultStats = [
   { number: '10K+', label: 'Penerima Manfaat' },
   { number: '50+', label: 'Program Sosial' },
   { number: '8', label: 'Kota Cakupan' },
@@ -37,55 +37,79 @@ const benefits = [
   },
 ]
 
-const areas = [
-  { label: 'Pendidikan', color: 'bg-[#EBF5D5] text-[#2d6e1f] border-[#a3cc72]' },
-  { label: 'Kesehatan', color: 'bg-[#D6EDCA] text-[#3a7d27] border-[#8dc05e]' },
-  { label: 'Lingkungan', color: 'bg-[#C8E6BC] text-[#2e6b1e] border-[#78b04a]' },
-  { label: 'Pemberdayaan Ekonomi', color: 'bg-[#DDEFD0] text-[#336120] border-[#90c467]' },
-  { label: 'Sosial Kemasyarakatan', color: 'bg-[#E4F2D8] text-[#3d7a29] border-[#9ecb6e]' },
-  { label: 'Kemanusiaan & Bencana', color: 'bg-[#CFE8BE] text-[#285c18] border-[#6fa842]' },
+const areaColors = [
+  'bg-[#EBF5D5] text-[#2d6e1f] border-[#a3cc72]',
+  'bg-[#D6EDCA] text-[#3a7d27] border-[#8dc05e]',
+  'bg-[#C8E6BC] text-[#2e6b1e] border-[#78b04a]',
+  'bg-[#DDEFD0] text-[#336120] border-[#90c467]',
+  'bg-[#E4F2D8] text-[#3d7a29] border-[#9ecb6e]',
+  'bg-[#CFE8BE] text-[#285c18] border-[#6fa842]',
+]
+
+const defaultAreas = [
+  'Pendidikan',
+  'Kesehatan',
+  'Lingkungan',
+  'Pemberdayaan Ekonomi',
+  'Sosial Kemasyarakatan',
+  'Kemanusiaan & Bencana',
+]
+
+const defaultFormFields = [
+  { name: 'nama', label: 'Nama Lengkap', type: 'text', placeholder: 'Masukkan nama lengkap', required: '1' },
+  { name: 'no_hp', label: 'No. HP / WhatsApp', type: 'text', placeholder: 'Contoh: 08123456789', required: '1' },
+  { name: 'email', label: 'Email', type: 'email', placeholder: 'contoh@email.com', required: '1' },
+  { name: 'kontribusi', label: 'Bidang Kontribusi', type: 'select', options: 'Pendidikan,Kesehatan,Lingkungan,Pemberdayaan Ekonomi,Sosial Kemasyarakatan,Kemanusiaan & Bencana', required: '1' },
+  { name: 'keterangan', label: 'Ceritakan Motivasimu', type: 'textarea', placeholder: 'Kenapa kamu ingin jadi volunteer Taman Zakat?', required: '0' }
 ]
 
 export default function VolunteerPage() {
-  const [form, setForm] = useState({
-    nama: '',
-    noHp: '',
-    email: '',
-    kontribusi: '',
-    keterangan: '',
-  })
+  const [pageData, setPageData] = useState<any>(null)
+  const [isLoadingData, setIsLoadingData] = useState(true)
 
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  React.useEffect(() => {
+    const fetchPageData = async () => {
+      try {
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
+        const res = await fetch(`${apiUrl}/content/volunteer`)
+        const data = await res.json()
+        if (data && data.main) {
+          setPageData(data.main)
+        }
+      } catch (error) {
+        console.error('Failed to fetch page data:', error)
+      }
+    }
+    fetchPageData()
+  }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const formFields = pageData?.form_fields || defaultFormFields;
+  const kontribusiField = formFields.find((f: any) => f.name === 'kontribusi');
+  const areasList = kontribusiField?.options ? kontribusiField.options.split(',').map((o: string) => o.trim()) : [];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
     setErrorMsg('')
     setSuccess(false)
 
     try {
+      const formData = new FormData(e.currentTarget);
+      const data = Object.fromEntries(formData.entries());
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
       const response = await fetch(`${apiUrl}/volunteer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          nama: form.nama,
-          no_hp: form.noHp,
-          email: form.email,
-          kontribusi: form.kontribusi,
-          keterangan: form.keterangan,
-        }),
+        body: JSON.stringify(data),
       })
 
       if (response.ok) {
         setSuccess(true)
-        setForm({ nama: '', noHp: '', email: '', kontribusi: '', keterangan: '' })
+        e.currentTarget.reset();
       } else {
         const errorData = await response.json()
         setErrorMsg(errorData.message || 'Terjadi kesalahan saat mengirim data.')
@@ -102,31 +126,26 @@ export default function VolunteerPage() {
 
       {/* HERO BANNER */}
       <section className="relative w-full h-[420px] sm:h-[500px] md:h-[560px] overflow-hidden">
-        {/* banner image (dummy — ganti src saat gambar tersedia) */}
         <Image
-          src="/images/gambardetaile/hero bidang kemanusian.svg"
+          src={pageData?.hero_image || "/images/gambardetaile/hero bidang kemanusian.svg"}
           alt="Volunteer Banner"
           fill
           className="object-cover object-center"
           priority
         />
 
-        {/* overlay gelap agar teks terbaca */}
         <div className="absolute inset-0 bg-black/55" />
 
-        {/* konten teks */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
           <span className="inline-block bg-[#FFE525] text-[#1a5c2a] text-xs font-black uppercase tracking-widest px-4 py-1.5 rounded-full mb-5">
             Bergabung Sekarang
           </span>
 
-          <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-white leading-tight mb-5 drop-shadow-lg">
-            Jadilah Bagian<br />
-            <span className="text-[#FFE525]">Perubahan</span> Nyata
+          <h1 className="text-4xl sm:text-5xl md:text-[56px] font-black text-white leading-tight mb-5 drop-shadow-lg" dangerouslySetInnerHTML={{ __html: pageData?.hero_title || 'Jadilah Bagian<br /><span class="text-[#FFE525]">Perubahan</span> Nyata' }}>
           </h1>
 
           <p className="text-white/85 text-base sm:text-lg leading-relaxed max-w-xl mb-8 drop-shadow">
-            Bersama Taman Zakat, setiap langkahmu memberi dampak bagi ribuan keluarga. Jadilah relawan dan ukir kisah yang berarti.
+            {pageData?.hero_subtitle || 'Bersama Taman Zakat, setiap langkahmu memberi dampak bagi ribuan keluarga. Jadilah relawan dan ukir kisah yang berarti.'}
           </p>
 
           <a
@@ -137,7 +156,6 @@ export default function VolunteerPage() {
           </a>
         </div>
 
-        {/* wave divider */}
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
             <path d="M0 60V30C240 0 480 60 720 40C960 20 1200 50 1440 30V60H0Z" fill="white" />
@@ -146,9 +164,9 @@ export default function VolunteerPage() {
       </section>
 
       {/* STATS */}
-      <section className="max-w-4xl mx-auto px-4 -mt-2 pb-16">
+      <section className="max-w-4xl mx-auto px-4 -mt-2 pb-16 relative z-20">
         <div className="flex flex-wrap justify-center gap-4">
-          {stats.map((s, i) => (
+          {(pageData?.stats || defaultStats).map((s: any, i: number) => (
             <div key={i} className="bg-white rounded-2xl border border-zinc-100 shadow-sm p-5 text-center hover:shadow-md transition-shadow w-40 sm:w-48">
               <div className="text-3xl sm:text-4xl font-black text-[#267a38] mb-1">{s.number}</div>
               <div className="text-zinc-500 text-sm font-medium">{s.label}</div>
@@ -165,11 +183,14 @@ export default function VolunteerPage() {
             <p className="text-zinc-500 text-base max-w-xl mx-auto">Temukan area yang sesuai dengan passion dan keahlianmu.</p>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">
-            {areas.map((a, i) => (
-              <span key={i} className={`border rounded-full px-5 py-2.5 text-sm font-semibold cursor-default select-none ${a.color}`}>
-                {a.label}
-              </span>
-            ))}
+            {areasList.map((label: string, i: number) => {
+              const colorClass = areaColors[i % areaColors.length];
+              return (
+                <span key={i} className={`border rounded-full px-5 py-2.5 text-sm font-semibold cursor-default select-none ${colorClass}`}>
+                  {label}
+                </span>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -197,125 +218,97 @@ export default function VolunteerPage() {
                 VOLUNTEER
               </div>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-[#267a38] mb-3">Siap Beraksi? Daftarkan Dirimu!</h2>
-            <p className="text-zinc-500 text-sm">Isi formulir di bawah ini dan tim kami akan segera menghubungimu.</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-[#267a38] mb-3">{pageData?.form_title || 'Siap Beraksi? Daftarkan Dirimu!'}</h2>
+            <p className="text-zinc-500 text-sm">{pageData?.form_subtitle || 'Isi formulir di bawah ini dan tim kami akan segera menghubungimu.'}</p>
           </div>
 
           {/* form card */}
-          <div className="bg-white rounded-3xl shadow-lg border border-zinc-100 p-6 sm:p-10 relative overflow-hidden">
-            {/* subtle bg decoration */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-[#EBF5D5] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-            <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#FDE8EC] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+            <div className="bg-white rounded-3xl shadow-lg border border-zinc-100 p-6 sm:p-10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-40 h-40 bg-[#EBF5D5] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <div className="absolute bottom-0 left-0 w-28 h-28 bg-[#FDE8EC] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5 relative z-10">
+              <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
 
-              {errorMsg && (
-                <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-2xl text-sm font-medium">
-                  {errorMsg}
+                {errorMsg && (
+                  <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-2xl text-sm font-medium">
+                    {errorMsg}
+                  </div>
+                )}
+                
+                {formFields.map((field: any, idx: number) => {
+                  const isRequired = field.required === '1';
+
+                  return (
+                    <div key={idx}>
+                      <label className="block text-zinc-700 font-bold mb-2 ml-1 text-sm">
+                        {field.label} {isRequired && <span className="text-[#E12B5E]">*</span>}
+                      </label>
+                      
+                      {field.type === 'textarea' ? (
+                        <textarea
+                          name={field.name}
+                          required={isRequired}
+                          placeholder={field.placeholder}
+                          rows={4}
+                          className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all text-sm resize-none"
+                        ></textarea>
+                      ) : field.type === 'select' ? (
+                        <div className="relative">
+                          <select
+                            name={field.name}
+                            required={isRequired}
+                            className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-5 py-4 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all text-sm appearance-none cursor-pointer"
+                          >
+                            <option value="">Pilih {field.label.toLowerCase()}</option>
+                            {field.options && field.options.split(',').map((opt: string, i: number) => (
+                              <option key={i} value={opt.trim()}>{opt.trim()}</option>
+                            ))}
+                          </select>
+                          <div className="absolute inset-y-0 right-5 flex items-center pointer-events-none text-zinc-400">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+                          </div>
+                        </div>
+                      ) : (
+                        <input
+                          type={field.type || 'text'}
+                          name={field.name}
+                          required={isRequired}
+                          placeholder={field.placeholder}
+                          className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all text-sm"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+
+                <div className="pt-2 flex items-center justify-between gap-4">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="bg-[#E12B5E] hover:bg-[#c72251] disabled:bg-[#e12b5e]/50 disabled:cursor-not-allowed text-white font-bold py-3.5 px-10 rounded-full transition-all text-base shadow-md hover:shadow-lg active:scale-95 hover:-translate-y-0.5"
+                  >
+                    {loading ? 'Mengirim...' : 'Daftar Sekarang'}
+                  </button>
+
+                  <div className="w-24 h-24 opacity-80 pointer-events-none flex-shrink-0 mix-blend-multiply">
+                    <Image
+                      src="/images/icon/cap volunter.svg"
+                      alt="Cap Volunteer"
+                      width={96}
+                      height={96}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
                 </div>
-              )}
 
-              {/* Nama */}
-              <div className="flex flex-col">
-                <label className="text-zinc-600 mb-1.5 ml-1 text-sm font-semibold">Nama Lengkap <span className="text-[#E12B5E]">*</span></label>
-                <input
-                  type="text"
-                  name="nama"
-                  value={form.nama}
-                  onChange={handleChange}
-                  placeholder="Masukkan nama lengkap"
-                  required
-                  className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all placeholder:text-zinc-400 text-sm"
-                />
-              </div>
+                <p className="text-zinc-400 text-xs text-center -mt-2">
+                  Dengan mendaftar, kamu menyetujui ketentuan sukarela Taman Zakat.
+                </p>
+              </form>
+            </div>
 
-              {/* No HP */}
-              <div className="flex flex-col">
-                <label className="text-zinc-600 mb-1.5 ml-1 text-sm font-semibold">No. HP / WhatsApp <span className="text-[#E12B5E]">*</span></label>
-                <input
-                  type="tel"
-                  name="noHp"
-                  value={form.noHp}
-                  onChange={handleChange}
-                  placeholder="Contoh: 08123456789"
-                  required
-                  className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all placeholder:text-zinc-400 text-sm"
-                />
-              </div>
-
-              {/* Email */}
-              <div className="flex flex-col">
-                <label className="text-zinc-600 mb-1.5 ml-1 text-sm font-semibold">Email <span className="text-[#E12B5E]">*</span></label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="contoh@email.com"
-                  required
-                  className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all placeholder:text-zinc-400 text-sm"
-                />
-              </div>
-
-              {/* Kontribusi */}
-              <div className="flex flex-col">
-                <label className="text-zinc-600 mb-1.5 ml-1 text-sm font-semibold">Bidang Kontribusi</label>
-                <select
-                  name="kontribusi"
-                  value={form.kontribusi}
-                  onChange={handleChange}
-                  className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all text-sm appearance-none cursor-pointer"
-                >
-                  <option value="">Pilih bidang kontribusi</option>
-                  {areas.map((a, i) => (
-                    <option key={i} value={a.label}>{a.label}</option>
-                  ))}
-                  <option value="Lainnya">Lainnya</option>
-                </select>
-              </div>
-
-              {/* Keterangan */}
-              <div className="flex flex-col">
-                <label className="text-zinc-600 mb-1.5 ml-1 text-sm font-semibold">Ceritakan Motivasimu</label>
-                <textarea
-                  name="keterangan"
-                  value={form.keterangan}
-                  onChange={handleChange}
-                  rows={4}
-                  placeholder="Kenapa kamu ingin jadi volunteer Taman Zakat?"
-                  className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-2xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#5DA630]/40 focus:border-[#5DA630] transition-all resize-none placeholder:text-zinc-400 text-sm"
-                />
-              </div>
-
-              {/* Submit + stamp row */}
-              <div className="mt-2 flex items-center justify-between gap-4">
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="bg-[#E12B5E] hover:bg-[#c72251] disabled:bg-[#e12b5e]/50 disabled:cursor-not-allowed text-white font-bold py-3.5 px-10 rounded-full transition-all text-base shadow-md hover:shadow-lg active:scale-95 hover:-translate-y-0.5"
-                >
-                  {loading ? 'Mengirim...' : 'Daftar Sekarang'}
-                </button>
-
-                <div className="w-24 h-24 opacity-80 pointer-events-none flex-shrink-0 mix-blend-multiply">
-                  <Image
-                    src="/images/icon/cap volunter.svg"
-                    alt="Cap Volunteer"
-                    width={96}
-                    height={96}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-              </div>
-
-              <p className="text-zinc-400 text-xs text-center -mt-2">
-                Dengan mendaftar, kamu menyetujui ketentuan sukarela Taman Zakat.
-              </p>
-            </form>
           </div>
-
-        </div>
-      </section>
+        </section>
 
       {/* ─── FOOTER ILLUSTRATION ───────────────────────────── */}
       <div className="w-full flex flex-row overflow-hidden">
