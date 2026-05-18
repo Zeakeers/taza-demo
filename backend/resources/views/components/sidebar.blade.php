@@ -58,9 +58,11 @@
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="pl-10 space-y-1 {{ request()->routeIs('admin.rekening.*') || request()->routeIs('admin.layanan-pages.*') ? '' : 'hidden' }}">
+                <div
+                    class="pl-10 space-y-1 {{ request()->routeIs('admin.rekening.*') || request()->routeIs('admin.layanan-pages.*') ? '' : 'hidden' }}">
                     <a href="{{ route('admin.layanan-pages.qrcode') }}"
-                        class="block py-2 text-sm {{ request()->routeIs('admin.layanan-pages.qrcode*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">QR Code
+                        class="block py-2 text-sm {{ request()->routeIs('admin.layanan-pages.qrcode*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">QR
+                        Code
                         Donasi</a>
                     <a href="{{ route('admin.layanan-pages.kantor') }}"
                         class="block py-2 text-sm {{ request()->routeIs('admin.layanan-pages.kantor*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kantor
@@ -89,7 +91,8 @@
                         <path d="M19 9l-7 7-7-7" />
                     </svg>
                 </button>
-                <div class="pl-10 space-y-1 {{ request()->routeIs('admin.mitra.*') || request()->routeIs('admin.volunteer.page.*') ? '' : 'hidden' }}">
+                <div
+                    class="pl-10 space-y-1 {{ request()->routeIs('admin.mitra.*') || request()->routeIs('admin.volunteer.page.*') ? '' : 'hidden' }}">
                     <a href="{{ route('admin.mitra.index') }}"
                         class="block py-2 text-sm {{ request()->routeIs('admin.mitra.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Mitra
                         Kami</a>
@@ -112,11 +115,16 @@
                     </svg>
                 </button>
                 <div class="pl-10 space-y-1 {{ request()->routeIs('admin.program.*') ? '' : 'hidden' }}">
-                    <a href="{{ route('admin.program.edit', 'dakwah') }}" class="block py-2 text-sm {{ request()->is('admin/program/dakwah') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Dakwah</a>
-                    <a href="{{ route('admin.program.edit', 'ekonomi') }}" class="block py-2 text-sm {{ request()->is('admin/program/ekonomi') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Ekonomi</a>
-                    <a href="{{ route('admin.program.edit', 'kemanusiaan') }}" class="block py-2 text-sm {{ request()->is('admin/program/kemanusiaan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kemanusiaan</a>
-                    <a href="{{ route('admin.program.edit', 'kesehatan') }}" class="block py-2 text-sm {{ request()->is('admin/program/kesehatan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kesehatan</a>
-                    <a href="{{ route('admin.program.edit', 'pendidikan') }}" class="block py-2 text-sm {{ request()->is('admin/program/pendidikan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Pendidikan</a>
+                    <a href="{{ route('admin.program.edit', 'dakwah') }}"
+                        class="block py-2 text-sm {{ request()->is('admin/program/dakwah') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Dakwah</a>
+                    <a href="{{ route('admin.program.edit', 'ekonomi') }}"
+                        class="block py-2 text-sm {{ request()->is('admin/program/ekonomi') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Ekonomi</a>
+                    <a href="{{ route('admin.program.edit', 'kemanusiaan') }}"
+                        class="block py-2 text-sm {{ request()->is('admin/program/kemanusiaan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kemanusiaan</a>
+                    <a href="{{ route('admin.program.edit', 'kesehatan') }}"
+                        class="block py-2 text-sm {{ request()->is('admin/program/kesehatan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Kesehatan</a>
+                    <a href="{{ route('admin.program.edit', 'pendidikan') }}"
+                        class="block py-2 text-sm {{ request()->is('admin/program/pendidikan') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Pendidikan</a>
                 </div>
             </div>
 
@@ -171,12 +179,6 @@
                 </div>
                 Data Pendaftar Volunteer
             </a>
-
-            <a href="#"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
-                <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all"></div>
-                Pesan Hubungi Kami
-            </a>
         @endif
 
         {{-- Group 3: Sistem (Hanya untuk Dev) --}}
@@ -220,7 +222,7 @@
 </aside>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
         const sidebarNav = document.getElementById("sidebar-nav-scroll");
         if (sidebarNav) {
             // Restore scroll position
@@ -229,7 +231,7 @@
             }
 
             // Save scroll position on scroll
-            sidebarNav.addEventListener("scroll", function() {
+            sidebarNav.addEventListener("scroll", function () {
                 sessionStorage.setItem("sidebar-scroll", sidebarNav.scrollTop);
             });
         }
