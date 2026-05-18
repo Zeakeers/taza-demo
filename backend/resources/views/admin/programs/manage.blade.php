@@ -41,9 +41,9 @@
                                     <label class="block text-sm font-bold text-gray-700 mb-2">{{ $field['label'] }}</label>
                                     
                                     @if($field['type'] == 'text')
-                                        <input type="text" :name="`{{ $rName }}[${index}][{{ $fName }}]`" x-model="item.{{ $fName }}" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                                        <input type="text" :name="`{{ $rName }}[${index}][{{ $fName }}]`" x-model="item.{{ $fName }}" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
                                     @elseif($field['type'] == 'textarea')
-                                        <textarea :name="`{{ $rName }}[${index}][{{ $fName }}]`" x-model="item.{{ $fName }}" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors"></textarea>
+                                        <textarea :name="`{{ $rName }}[${index}][{{ $fName }}]`" x-model="item.{{ $fName }}" rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors"></textarea>
                                     @elseif($field['type'] == 'image')
                                         <div class="mt-2">
                                             <!-- Existing Image Preview -->
@@ -112,9 +112,9 @@
                         <label class="block text-sm font-bold text-gray-700 mb-2">{{ $field['label'] }}</label>
                         
                         @if($field['type'] == 'text')
-                            <input type="text" name="{{ $fName }}" value="{{ $val }}" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
+                            <input type="text" name="{{ $fName }}" value="{{ $val }}" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors">
                         @elseif($field['type'] == 'textarea')
-                            <textarea name="{{ $fName }}" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-primary focus:border-primary transition-colors">{{ $val }}</textarea>
+                            <textarea name="{{ $fName }}" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors">{{ $val }}</textarea>
                         @elseif($field['type'] == 'image')
                             @if($val)
                                 <div class="relative w-48 aspect-video rounded-xl overflow-hidden border border-gray-200 mb-3 group bg-gray-50 flex items-center justify-center">
