@@ -22,25 +22,53 @@
         <table class="w-full text-left">
             <thead>
                 <tr class="text-gray-400 text-xs uppercase tracking-widest border-b border-gray-50">
-                    <th class="pb-4 font-bold">Nama Lengkap</th>
-                    <th class="pb-4 font-bold">No WhatsApp</th>
-                    <th class="pb-4 font-bold">Bidang Kontribusi</th>
+                    @foreach($form_fields as $field)
+                        @if($field['type'] != 'textarea' && $loop->iteration <= 4) 
+                            <th class="pb-4 font-bold">{{ $field['label'] }}</th>
+                        @endif
+                    @endforeach
                     <th class="pb-4 font-bold text-center">Status</th>
                     <th class="pb-4 font-bold text-center">Tanggal</th>
                     <th class="pb-4 font-bold text-right">Aksi</th>
                 </tr>
             </thead>
             <tbody class="text-sm">
+                @php
+                    function getFieldValue($item, $fieldName) {
+                        $coreFields = ['nama', 'no_hp', 'email', 'kontribusi', 'keterangan'];
+                        if (in_array($fieldName, $coreFields)) {
+                            return $item->$fieldName ?? '-';
+                        }
+                        if ($item->additional_data && isset($item->additional_data[$fieldName])) {
+                            return $item->additional_data[$fieldName];
+                        }
+                        return '-';
+                    }
+                @endphp
                 @forelse($volunteers as $item)
                 <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors group">
-                    <td class="py-5 font-bold text-zinc-800">{{ $item->nama }}</td>
-                    <td class="py-5 text-gray-500">
-                        @php $wa = preg_replace('/^0/', '62', preg_replace('/[^0-9]/', '', $item->no_hp)); @endphp
-                        <a href="https://wa.me/{{ $wa }}" target="_blank" class="text-[#25D366] hover:underline hover:text-green-600 font-medium transition-colors">
-                            {{ $item->no_hp }}
-                        </a>
-                    </td>
-                    <td class="py-5 text-gray-500">{{ $item->kontribusi ?? '-' }}</td>
+                    @foreach($form_fields as $field)
+                        @if($field['type'] != 'textarea' && $loop->iteration <= 4)
+                            @php $val = getFieldValue($item, $field['name']); @endphp
+                            
+                            @if($field['name'] == 'nama')
+                                <td class="py-5 font-bold text-zinc-800">{{ $val }}</td>
+                            @elseif($field['name'] == 'no_hp' || $field['type'] == 'tel')
+                                <td class="py-5 text-gray-500">
+                                    @php $wa = preg_replace('/^0/', '62', preg_replace('/[^0-9]/', '', $val)); @endphp
+                                    @if($wa)
+                                        <a href="https://wa.me/{{ $wa }}" target="_blank" class="text-[#25D366] hover:underline hover:text-green-600 font-medium transition-colors">
+                                            {{ $val }}
+                                        </a>
+                                    @else
+                                        -
+                                    @endif
+                                </td>
+                            @else
+                                <td class="py-5 text-gray-500">{{ Str::limit($val, 30) }}</td>
+                            @endif
+                        @endif
+                    @endforeach
                     <td class="py-5 text-center">
                         @if($item->status == 'pending')
                             <span class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Pending</span>
