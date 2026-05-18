@@ -16,5 +16,10 @@ class Volunteer extends Model
         'kontribusi',
         'keterangan',
         'status',
+        'additional_data',
+    ];
+
+    protected $casts = [
+        'additional_data' => 'array',
     ];
 }
