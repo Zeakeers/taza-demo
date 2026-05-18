@@ -37,32 +37,46 @@
             </h3>
             
             <div class="space-y-5">
-                <div>
-                    <label class="block text-sm font-bold text-zinc-700 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
-                    <input type="text" name="nama" value="{{ old('nama', $volunteer->nama) }}" required class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
-                </div>
+                @php
+                    if (!function_exists('getFieldValue')) {
+                        function getFieldValue($item, $fieldName) {
+                            $coreFields = ['nama', 'no_hp', 'email', 'kontribusi', 'keterangan'];
+                            if (in_array($fieldName, $coreFields)) {
+                                return $item->$fieldName ?? '';
+                            }
+                            if ($item->additional_data && isset($item->additional_data[$fieldName])) {
+                                return $item->additional_data[$fieldName];
+                            }
+                            return '';
+                        }
+                    }
+                @endphp
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                        <label class="block text-sm font-bold text-zinc-700 mb-2">No WhatsApp <span class="text-red-500">*</span></label>
-                        <input type="text" name="no_hp" value="{{ old('no_hp', $volunteer->no_hp) }}" required class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
-                    </div>
+                @foreach($form_fields as $field)
+                    @php 
+                        $val = old($field['name'], getFieldValue($volunteer, $field['name'])); 
+                        $required = (isset($field['required']) && $field['required'] == '1') ? 'required' : '';
+                    @endphp
                     
                     <div>
-                        <label class="block text-sm font-bold text-zinc-700 mb-2">Email <span class="text-red-500">*</span></label>
-                        <input type="email" name="email" value="{{ old('email', $volunteer->email) }}" required class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
+                        <label class="block text-sm font-bold text-zinc-700 mb-2">{{ $field['label'] }} @if($required) <span class="text-red-500">*</span> @endif</label>
+                        
+                        @if($field['type'] == 'textarea')
+                            <textarea name="{{ $field['name'] }}" {{ $required }} rows="4" class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none">{{ $val }}</textarea>
+                        @elseif($field['type'] == 'select')
+                            <select name="{{ $field['name'] }}" {{ $required }} class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
+                                <option value="">Pilih {{ $field['label'] }}</option>
+                                @if(isset($field['options']))
+                                    @foreach(explode(',', $field['options']) as $opt)
+                                        <option value="{{ trim($opt) }}" {{ $val == trim($opt) ? 'selected' : '' }}>{{ trim($opt) }}</option>
+                                    @endforeach
+                                @endif
+                            </select>
+                        @else
+                            <input type="{{ $field['type'] == 'email' ? 'email' : ($field['type'] == 'tel' ? 'tel' : 'text') }}" name="{{ $field['name'] }}" value="{{ $val }}" {{ $required }} class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
+                        @endif
                     </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-zinc-700 mb-2">Bidang Kontribusi</label>
-                    <input type="text" name="kontribusi" value="{{ old('kontribusi', $volunteer->kontribusi) }}" class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-zinc-700 mb-2">Motivasi & Keterangan</label>
-                    <textarea name="keterangan" rows="4" class="w-full bg-gray-50 border border-gray-200 text-zinc-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none">{{ old('keterangan', $volunteer->keterangan) }}</textarea>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
