@@ -30,7 +30,7 @@
 
 <div class="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
     <div class="overflow-x-auto">
-        <table class="w-full text-left">
+        <table class="w-full text-left whitespace-nowrap">
             <thead>
                 <tr class="text-gray-400 text-xs uppercase tracking-widest border-b border-gray-50">
                     <th class="pb-4 font-bold">Pengguna</th>
