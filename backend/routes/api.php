@@ -42,6 +42,12 @@ Route::get('/berita', [\App\Http\Controllers\BeritaController::class, 'apiIndex'
 Route::get('/berita/home', [\App\Http\Controllers\BeritaController::class, 'apiHome']);
 Route::get('/berita/{slug}', [\App\Http\Controllers\BeritaController::class, 'apiShow']);
 
+// Artikel
+Route::get('/artikel', [\App\Http\Controllers\ArtikelController::class, 'apiIndex']);
+Route::get('/artikel/home', [\App\Http\Controllers\ArtikelController::class, 'apiHome']);
+Route::get('/artikel/editor-choice', [\App\Http\Controllers\ArtikelController::class, 'apiEditorChoice']);
+Route::get('/artikel/{slug}', [\App\Http\Controllers\ArtikelController::class, 'apiShow']);
+
 // Rekening
 Route::get('/rekening', [\App\Http\Controllers\RekeningController::class, 'apiIndex']);
 
