@@ -18,6 +18,7 @@
 @endif
 
 <div class="bg-white rounded-3xl border border-gray-100 p-8 shadow-sm">
+    <x-admin.table-filter route="{{ route('admin.permohonan-bantuan.index') }}" />
     <div class="overflow-x-auto">
         <table class="w-full text-left whitespace-nowrap">
             <thead>
