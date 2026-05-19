@@ -5,22 +5,22 @@
         <div class="flex items-start justify-between gap-4">
             <div class="flex-1">
                 <h1 class="text-xl lg:text-3xl font-bold text-dark">Manajemen Halaman Home</h1>
-                <p class="text-gray-400 text-[10px] lg:text-base mt-1">Kelola konten visual dan teks untuk halaman utama website.</p>
-            </div>
-            <div class="shrink-0 bg-primary/10 text-primary px-3 lg:px-4 py-1.5 lg:py-2 rounded-xl text-[10px] lg:text-sm font-semibold border border-primary/20 whitespace-nowrap">
-                Halaman Aktif
+                <p class="text-gray-400 text-[10px] lg:text-base mt-1">Kelola konten visual dan teks untuk halaman utama
+                    website.</p>
             </div>
         </div>
 
         @if(session('success'))
-            <div id="alert-success" class="bg-primary text-white p-4 rounded-2xl shadow-lg shadow-primary/20 flex items-center justify-between gap-3 animate-bounce">
+            <div id="alert-success"
+                class="bg-primary text-white p-4 rounded-2xl shadow-lg shadow-primary/20 flex items-center justify-between gap-3 animate-bounce">
                 <div class="flex items-center gap-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                     </svg>
                     <span class="font-medium">{{ session('success') }}</span>
                 </div>
-                <button type="button" onclick="document.getElementById('alert-success').remove()" class="text-white hover:text-gray-200 focus:outline-none p-1 bg-white/20 rounded-full hover:bg-white/30 transition-all">
+                <button type="button" onclick="document.getElementById('alert-success').remove()"
+                    class="text-white hover:text-gray-200 focus:outline-none p-1 bg-white/20 rounded-full hover:bg-white/30 transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -29,14 +29,17 @@
         @endif
 
         @if(session('error'))
-            <div id="alert-error" class="bg-red-500 text-white p-4 rounded-2xl shadow-lg shadow-red-500/20 flex items-center justify-between gap-3">
+            <div id="alert-error"
+                class="bg-red-500 text-white p-4 rounded-2xl shadow-lg shadow-red-500/20 flex items-center justify-between gap-3">
                 <div class="flex items-center gap-3">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     <span class="font-medium">{{ session('error') }}</span>
                 </div>
-                <button type="button" onclick="document.getElementById('alert-error').remove()" class="text-white hover:text-gray-200 focus:outline-none p-1 bg-white/20 rounded-full hover:bg-white/30 transition-all">
+                <button type="button" onclick="document.getElementById('alert-error').remove()"
+                    class="text-white hover:text-gray-200 focus:outline-none p-1 bg-white/20 rounded-full hover:bg-white/30 transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
@@ -59,7 +62,8 @@
                 <button onclick="showSection('programs')" id="tab-programs"
                     class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent whitespace-nowrap">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                     </svg>
                     <span class="text-left">Program</span>
                 </button>
@@ -87,7 +91,7 @@
                     </svg>
                     <span class="text-left">CTA Kebaikan</span>
                 </button>
-                            <button onclick="showSection('testimoni')" id="tab-testimoni"
+                <button onclick="showSection('testimoni')" id="tab-testimoni"
                     class="tab-btn flex-shrink-0 xl:w-full flex items-center gap-3 px-6 py-4 rounded-2xl transition-all font-semibold bg-transparent text-gray-500 hover:bg-white border border-transparent whitespace-nowrap">
                     <svg class="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -95,7 +99,7 @@
                     </svg>
                     <span class="text-left">Testimoni</span>
                 </button>
-</div>
+            </div>
 
             <!-- Content Area -->
             <div class="xl:col-span-3">
@@ -109,7 +113,8 @@
                             <div class="flex items-center justify-between mb-8">
                                 <div>
                                     <h2 class="text-lg lg:text-2xl font-bold text-dark">Konten Hero Slider</h2>
-                                    <p class="text-[10px] lg:text-sm text-gray-400 mt-1">Upload gambar ilustrasi untuk slider utama website.</p>
+                                    <p class="text-[10px] lg:text-sm text-gray-400 mt-1">Upload gambar ilustrasi untuk
+                                        slider utama website.</p>
                                 </div>
                                 <button type="submit"
                                     class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan
@@ -184,9 +189,12 @@
                             <div class="flex items-center justify-between mb-8">
                                 <div>
                                     <h2 class="text-lg lg:text-2xl font-bold text-dark">Konten Program</h2>
-                                    <p class="text-[10px] lg:text-sm text-gray-400 mt-1">Kelola gambar dan deskripsi untuk 6 kategori program.</p>
+                                    <p class="text-[10px] lg:text-sm text-gray-400 mt-1">Kelola gambar dan deskripsi untuk 6
+                                        kategori program.</p>
                                 </div>
-                                <button type="submit" class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan Perubahan</button>
+                                <button type="submit"
+                                    class="bg-primary hover:bg-dark text-white px-4 lg:px-8 py-2.5 lg:py-3 rounded-xl lg:rounded-2xl font-bold text-sm lg:text-base transition-all shadow-lg shadow-primary/20">Simpan
+                                    Perubahan</button>
                             </div>
 
                             @php
@@ -203,35 +211,59 @@
                                     <div class="bg-gray-50 border border-gray-100 p-6 rounded-2xl">
                                         <h3 class="font-bold text-lg text-primary mb-4">{{ $cat }}</h3>
                                         <input type="hidden" name="content[programs][{{ $index }}][id]" value="{{ $cat }}">
-                                        
+
                                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                             <!-- Image Upload -->
                                             <div class="md:col-span-1">
                                                 <label class="block font-bold mb-2 text-sm text-gray-600">Gambar Program</label>
-                                                <div class="relative aspect-video bg-gray-200 rounded-xl overflow-hidden border border-gray-300 mb-3 group">
+                                                <div
+                                                    class="relative aspect-video bg-gray-200 rounded-xl overflow-hidden border border-gray-300 mb-3 group">
                                                     @if($prog['image'])
-                                                        <img src="{{ $prog['image'] }}" id="preview-img-{{ $index }}" class="w-full h-full object-cover">
-                                                        <input type="hidden" id="hidden-img-{{ $index }}" name="content[programs][{{ $index }}][image]" value="{{ $prog['image'] }}">
-                                                        <div id="preview-placeholder-{{ $index }}" class="flex items-center justify-center h-full text-gray-400 text-sm hidden">Belum ada gambar</div>
+                                                        <img src="{{ $prog['image'] }}" id="preview-img-{{ $index }}"
+                                                            class="w-full h-full object-cover">
+                                                        <input type="hidden" id="hidden-img-{{ $index }}"
+                                                            name="content[programs][{{ $index }}][image]"
+                                                            value="{{ $prog['image'] }}">
+                                                        <div id="preview-placeholder-{{ $index }}"
+                                                            class="flex items-center justify-center h-full text-gray-400 text-sm hidden">
+                                                            Belum ada gambar</div>
                                                     @else
-                                                        <div id="preview-placeholder-{{ $index }}" class="flex items-center justify-center h-full text-gray-400 text-sm">Belum ada gambar</div>
-                                                        <img src="" id="preview-img-{{ $index }}" class="w-full h-full object-cover hidden">
-                                                        <input type="hidden" id="hidden-img-{{ $index }}" name="content[programs][{{ $index }}][image]" value="">
+                                                        <div id="preview-placeholder-{{ $index }}"
+                                                            class="flex items-center justify-center h-full text-gray-400 text-sm">
+                                                            Belum ada gambar</div>
+                                                        <img src="" id="preview-img-{{ $index }}"
+                                                            class="w-full h-full object-cover hidden">
+                                                        <input type="hidden" id="hidden-img-{{ $index }}"
+                                                            name="content[programs][{{ $index }}][image]" value="">
                                                     @endif
 
-                                                    <div id="delete-btn-{{ $index }}" class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center {{ !$prog['image'] ? 'hidden' : '' }}">
-                                                        <button type="button" onclick="openDeleteModal('delete-image-modal', 'removeProgramImage(\'{{ $index }}\')')" class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all shadow-lg" title="Hapus Gambar">
-                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                                    <div id="delete-btn-{{ $index }}"
+                                                        class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center {{ !$prog['image'] ? 'hidden' : '' }}">
+                                                        <button type="button"
+                                                            onclick="openDeleteModal('delete-image-modal', 'removeProgramImage(\'{{ $index }}\')')"
+                                                            class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all shadow-lg"
+                                                            title="Hapus Gambar">
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                            </svg>
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <input type="file" id="file-input-{{ $index }}" name="new_program_images[{{ $index }}]" accept="image/*" onchange="previewImage(this, '{{ $index }}')" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer">
+                                                <input type="file" id="file-input-{{ $index }}"
+                                                    name="new_program_images[{{ $index }}]" accept="image/*"
+                                                    onchange="previewImage(this, '{{ $index }}')"
+                                                    class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 cursor-pointer">
                                             </div>
 
                                             <!-- Description -->
                                             <div class="md:col-span-2">
-                                                <label class="block font-bold mb-2 text-sm text-gray-600">Deskripsi Program</label>
-                                                <textarea name="content[programs][{{ $index }}][description]" rows="5" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary transition-all outline-none text-sm">{{ $prog['description'] }}</textarea>
+                                                <label class="block font-bold mb-2 text-sm text-gray-600">Deskripsi
+                                                    Program</label>
+                                                <textarea name="content[programs][{{ $index }}][description]" rows="5"
+                                                    class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary transition-all outline-none text-sm">{{ $prog['description'] }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -444,7 +476,7 @@
                         <form action="{{ route('admin.home.update') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="section" value="testimoni">
-                            
+
                             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
                                 <h2 class="text-lg lg:text-2xl font-bold text-dark">Daftar Testimoni</h2>
                                 <button type="submit"
@@ -459,45 +491,76 @@
 
                             <div id="testimoni-list" class="space-y-6">
                                 @forelse ($testimoniList as $index => $item)
-                                    <div class="testimoni-item bg-gray-50 p-6 rounded-2xl border border-gray-100 relative group">
-                                        <button type="button" onclick="this.parentElement.remove()" 
+                                    <div
+                                        class="testimoni-item bg-gray-50 p-6 rounded-2xl border border-gray-100 relative group">
+                                        <button type="button" onclick="this.parentElement.remove()"
                                             class="absolute -top-3 -right-3 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors z-10">
                                             &times;
                                         </button>
                                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                                             <div class="lg:col-span-3">
-                                                <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-gray-200 group-hover:border-primary transition-colors">
+                                                <div
+                                                    class="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-gray-200 group-hover:border-primary transition-colors">
                                                     @if(isset($item['image']) && $item['image'])
-                                                        <img src="{{ $item['image'] }}" id="preview-testimoni-img-{{$index}}" class="w-full h-full object-cover">
-                                                        <div id="preview-testimoni-placeholder-{{$index}}" class="hidden absolute inset-0 flex flex-col items-center justify-center text-gray-400">
-                                                            <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                        <img src="{{ $item['image'] }}" id="preview-testimoni-img-{{$index}}"
+                                                            class="w-full h-full object-cover">
+                                                        <div id="preview-testimoni-placeholder-{{$index}}"
+                                                            class="hidden absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                                                            <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                                </path>
+                                                            </svg>
                                                             <span class="text-xs font-medium">Foto (1:1)</span>
                                                         </div>
                                                     @else
-                                                        <img src="" id="preview-testimoni-img-{{$index}}" class="hidden w-full h-full object-cover">
-                                                        <div id="preview-testimoni-placeholder-{{$index}}" class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
-                                                            <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                                        <img src="" id="preview-testimoni-img-{{$index}}"
+                                                            class="hidden w-full h-full object-cover">
+                                                        <div id="preview-testimoni-placeholder-{{$index}}"
+                                                            class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                                                            <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor"
+                                                                viewBox="0 0 24 24">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                                </path>
+                                                            </svg>
                                                             <span class="text-xs font-medium">Foto (1:1)</span>
                                                         </div>
                                                     @endif
-                                                    <input type="file" name="new_images[]" accept="image/*" onchange="previewTestimoniImage(this, {{$index}})" class="absolute inset-0 opacity-0 cursor-pointer">
-                                                    <input type="hidden" name="content[{{$index}}][existing_image]" value="{{ $item['image'] ?? '' }}">
+                                                    <input type="file" name="new_images[]" accept="image/*"
+                                                        onchange="previewTestimoniImage(this, {{$index}})"
+                                                        class="absolute inset-0 opacity-0 cursor-pointer">
+                                                    <input type="hidden" name="content[{{$index}}][existing_image]"
+                                                        value="{{ $item['image'] ?? '' }}">
                                                 </div>
                                             </div>
                                             <div class="lg:col-span-9 space-y-4">
                                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                     <div>
                                                         <label class="block font-bold mb-2 text-sm text-gray-600">Nama</label>
-                                                        <input type="text" name="content[{{$index}}][name]" value="{{ $item['name'] ?? '' }}" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                                                        <input type="text" name="content[{{$index}}][name]"
+                                                            value="{{ $item['name'] ?? '' }}"
+                                                            class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all"
+                                                            required>
                                                     </div>
                                                     <div>
-                                                        <label class="block font-bold mb-2 text-sm text-gray-600">Peran/Pekerjaan</label>
-                                                        <input type="text" name="content[{{$index}}][role]" value="{{ $item['role'] ?? '' }}" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                                                        <label
+                                                            class="block font-bold mb-2 text-sm text-gray-600">Peran/Pekerjaan</label>
+                                                        <input type="text" name="content[{{$index}}][role]"
+                                                            value="{{ $item['role'] ?? '' }}"
+                                                            class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all"
+                                                            required>
                                                     </div>
                                                 </div>
                                                 <div>
-                                                    <label class="block font-bold mb-2 text-sm text-gray-600">Isi Testimoni</label>
-                                                    <textarea name="content[{{$index}}][quote]" rows="3" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>{{ $item['quote'] ?? '' }}</textarea>
+                                                    <label class="block font-bold mb-2 text-sm text-gray-600">Isi
+                                                        Testimoni</label>
+                                                    <textarea name="content[{{$index}}][quote]" rows="3"
+                                                        class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all"
+                                                        required>{{ $item['quote'] ?? '' }}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -506,8 +569,12 @@
                                 @endforelse
                             </div>
 
-                            <button type="button" onclick="addTestimoni()" class="mt-6 flex items-center justify-center gap-2 w-full py-4 rounded-2xl border-2 border-dashed border-primary/30 text-primary hover:bg-primary/5 transition-colors font-bold">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                            <button type="button" onclick="addTestimoni()"
+                                class="mt-6 flex items-center justify-center gap-2 w-full py-4 rounded-2xl border-2 border-dashed border-primary/30 text-primary hover:bg-primary/5 transition-colors font-bold">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v16m8-8H4"></path>
+                                </svg>
                                 Tambah Testimoni
                             </button>
                         </form>
@@ -538,9 +605,9 @@
             const div = document.createElement('div');
             div.className = 'flex gap-2';
             div.innerHTML = `
-                <input type="text" name="content[images][]" placeholder="/images/baru.svg" class="flex-1 px-5 py-3 rounded-xl border border-gray-200 outline-none focus:border-primary">
-                <button type="button" onclick="this.parentElement.remove()" class="p-3 text-red-500 hover:bg-red-50 rounded-xl">&times;</button>
-            `;
+                    <input type="text" name="content[images][]" placeholder="/images/baru.svg" class="flex-1 px-5 py-3 rounded-xl border border-gray-200 outline-none focus:border-primary">
+                    <button type="button" onclick="this.parentElement.remove()" class="p-3 text-red-500 hover:bg-red-50 rounded-xl">&times;</button>
+                `;
             document.getElementById('hero-inputs').appendChild(div);
         }
 
@@ -556,11 +623,11 @@
         function previewImage(input, index) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const imgElement = document.getElementById('preview-img-' + index);
                     const placeholder = document.getElementById('preview-placeholder-' + index);
                     const deleteBtn = document.getElementById('delete-btn-' + index);
-                    
+
                     if (imgElement) {
                         imgElement.src = e.target.result;
                         imgElement.classList.remove('hidden');
@@ -610,34 +677,34 @@
             if (input.files && input.files.length > 0) {
                 // Sembunyikan input saat ini dan pindahkan ke dalam wrapper agar ikut tersubmit
                 input.style.display = 'none';
-                input.classList.remove('hidden'); 
-                
+                input.classList.remove('hidden');
+
                 // Buat wrapper untuk preview batch ini
                 const batchDiv = document.createElement('div');
-                batchDiv.className = 'contents'; 
+                batchDiv.className = 'contents';
                 batchDiv.appendChild(input);
 
                 Array.from(input.files).forEach(file => {
                     const reader = new FileReader();
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         const div = document.createElement('div');
                         div.className = 'group relative aspect-video bg-gray-100 rounded-2xl overflow-hidden border border-gray-200 shadow-sm';
                         div.innerHTML = `
-                            <img src="${e.target.result}" class="w-full h-full object-cover">
-                            <div class="absolute top-2 left-2 bg-primary text-white text-[10px] px-2 py-1 rounded-full font-bold shadow">BARU</div>
-                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center">
-                                <button type="button" onclick="window.itemToDelete = this.closest('.contents'); openDeleteModal('delete-image-modal', 'window.itemToDelete.remove()')" class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all" title="Hapus Batch Ini">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                </button>
-                            </div>
-                        `;
+                                <img src="${e.target.result}" class="w-full h-full object-cover">
+                                <div class="absolute top-2 left-2 bg-primary text-white text-[10px] px-2 py-1 rounded-full font-bold shadow">BARU</div>
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center">
+                                    <button type="button" onclick="window.itemToDelete = this.closest('.contents'); openDeleteModal('delete-image-modal', 'window.itemToDelete.remove()')" class="bg-red-500 text-white p-2 rounded-full hover:scale-110 transition-all" title="Hapus Batch Ini">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            `;
                         batchDiv.appendChild(div);
                     }
                     reader.readAsDataURL(file);
                 });
-                
+
                 container.insertBefore(batchDiv, uploadBox);
 
                 // Buat input baru untuk upload box agar user bisa memilih gambar lagi
@@ -646,72 +713,73 @@
                 newInput.name = 'new_images[]';
                 newInput.multiple = true;
                 newInput.className = 'hidden';
-                newInput.onchange = function() { previewHeroImages(this); };
+                newInput.onchange = function () { previewHeroImages(this); };
                 uploadBox.appendChild(newInput);
             }
         }
-    
+
         let testimoniCount = {{ isset($testimoniList) ? count($testimoniList) : 0 }};
-        
+
         function addTestimoni() {
             const index = testimoniCount++;
             const div = document.createElement('div');
             div.className = 'testimoni-item bg-gray-50 p-6 rounded-2xl border border-gray-100 relative group';
             div.innerHTML = `
-                <button type="button" onclick="this.parentElement.remove()" 
-                    class="absolute -top-3 -right-3 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors z-10">
-                    &times;
-                </button>
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <div class="lg:col-span-3">
-                        <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-gray-200 group-hover:border-primary transition-colors">
-                            <img src="" id="preview-testimoni-img-${index}" class="hidden w-full h-full object-cover">
-                            <div id="preview-testimoni-placeholder-${index}" class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
-                                <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                <span class="text-xs font-medium">Foto (1:1)</span>
+                    <button type="button" onclick="this.parentElement.remove()" 
+                        class="absolute -top-3 -right-3 bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-colors z-10">
+                        &times;
+                    </button>
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                        <div class="lg:col-span-3">
+                            <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-white border border-gray-200 group-hover:border-primary transition-colors">
+                                <img src="" id="preview-testimoni-img-${index}" class="hidden w-full h-full object-cover">
+                                <div id="preview-testimoni-placeholder-${index}" class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+                                    <svg class="w-8 h-8 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    <span class="text-xs font-medium">Foto (1:1)</span>
+                                </div>
+                                <input type="file" name="new_images[]" accept="image/*" onchange="previewTestimoniImage(this, ${index})" class="absolute inset-0 opacity-0 cursor-pointer">
+                                <input type="hidden" name="content[${index}][existing_image]" value="">
                             </div>
-                            <input type="file" name="new_images[]" accept="image/*" onchange="previewTestimoniImage(this, ${index})" class="absolute inset-0 opacity-0 cursor-pointer">
-                            <input type="hidden" name="content[${index}][existing_image]" value="">
+                        </div>
+                        <div class="lg:col-span-9 space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block font-bold mb-2 text-sm text-gray-600">Nama</label>
+                                    <input type="text" name="content[${index}][name]" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                                </div>
+                                <div>
+                                    <label class="block font-bold mb-2 text-sm text-gray-600">Peran/Pekerjaan</label>
+                                    <input type="text" name="content[${index}][role]" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block font-bold mb-2 text-sm text-gray-600">Isi Testimoni</label>
+                                <textarea name="content[${index}][quote]" rows="3" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required></textarea>
+                            </div>
                         </div>
                     </div>
-                    <div class="lg:col-span-9 space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label class="block font-bold mb-2 text-sm text-gray-600">Nama</label>
-                                <input type="text" name="content[${index}][name]" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
-                            </div>
-                            <div>
-                                <label class="block font-bold mb-2 text-sm text-gray-600">Peran/Pekerjaan</label>
-                                <input type="text" name="content[${index}][role]" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block font-bold mb-2 text-sm text-gray-600">Isi Testimoni</label>
-                            <textarea name="content[${index}][quote]" rows="3" class="w-full px-4 py-3 rounded-xl bg-white border border-gray-200 focus:border-primary outline-none transition-all" required></textarea>
-                        </div>
-                    </div>
-                </div>
-            `;
+                `;
             document.getElementById('testimoni-list').appendChild(div);
         }
 
         function previewTestimoniImage(input, index) {
             if (input.files && input.files[0]) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     const img = document.getElementById('preview-testimoni-img-' + index);
                     const placeholder = document.getElementById('preview-testimoni-placeholder-' + index);
-                    if(img) {
+                    if (img) {
                         img.src = e.target.result;
                         img.classList.remove('hidden');
                     }
-                    if(placeholder) placeholder.classList.add('hidden');
+                    if (placeholder) placeholder.classList.add('hidden');
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
-</script>
-    
+    </script>
+
     <!-- Modal Konfirmasi Hapus Gambar -->
-    <x-admin.delete-modal id="delete-image-modal" action="js" title="Hapus Gambar" message="Apakah Anda yakin ingin menghapus gambar ini?" />
+    <x-admin.delete-modal id="delete-image-modal" action="js" title="Hapus Gambar"
+        message="Apakah Anda yakin ingin menghapus gambar ini?" />
 @endsection
