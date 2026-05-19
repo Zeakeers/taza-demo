@@ -164,7 +164,7 @@ export default function Footer() {
                   { label: "Program", href: "/program" },
                   { label: "Berita", href: "/berita" },
                   { label: "Layanan", href: "/layanan" },
-                  { label: "Artikel", href: "/artrikel" },
+                  { label: "Artikel", href: "/artikel" },
                   { label: "Syarat & Ketentuan", href: "/syarat-ketentuan" },
                 ].map((item) => (
                   <li key={item.href}>
