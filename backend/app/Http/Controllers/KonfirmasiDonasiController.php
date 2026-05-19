@@ -34,9 +34,25 @@ class KonfirmasiDonasiController extends Controller
     }
 
     // Admin: List all donasi
-    public function index()
+    public function index(Request $request)
     {
-        $donasis = KonfirmasiDonasi::orderBy('created_at', 'desc')->paginate(10);
+        $query = KonfirmasiDonasi::query();
+        
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama_lengkap', 'like', "%{$search}%")
+                  ->orWhere('no_whatsapp', 'like', "%{$search}%");
+            });
+        }
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->start_date);
+        }
+        if ($request->filled('end_date')) {
+            $query->whereDate('created_at', '<=', $request->end_date);
+        }
+
+        $donasis = $query->orderBy('created_at', 'desc')->paginate(10);
         return view('admin.konfirmasi_donasi.index', compact('donasis'));
     }
 
