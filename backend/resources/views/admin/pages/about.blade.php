@@ -7,9 +7,6 @@
                 <h1 class="text-xl lg:text-3xl font-bold text-dark">Manajemen Halaman Tentang Kami</h1>
                 <p class="text-gray-400 text-[10px] lg:text-base mt-1">Kelola konten visual dan teks untuk halaman Tentang Kami.</p>
             </div>
-            <div class="shrink-0 bg-primary/10 text-primary px-3 lg:px-4 py-1.5 lg:py-2 rounded-xl text-[10px] lg:text-sm font-semibold border border-primary/20 whitespace-nowrap">
-                Halaman Aktif
-            </div>
         </div>
 
 
