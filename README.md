@@ -68,24 +68,33 @@ Aplikasi Next.js (`Frontend`) akan selalu melakukan operasi *fetch* ke rute `/ap
 #### 1. API Pengambilan Konten Halaman Dinamis
 - **URL**: `GET /api/content/{page_name}`
 - **Fungsi**: Memuat kumpulan teks atau konfigurasi untuk merender struktur halaman dari database secara dinamis.
-- **Contoh Response**:
-  ```json
-  {
-    "hero_title": "Sedekah Membawa Berkah",
-    "hero_subtitle": "Mari mulai berdonasi."
-  }
-  ```
 
 #### 2. API Wilayah / Provinsi
 - **URL**: `GET /api/provinces`
-- **Fungsi**: Menyuplai data dropdown bagi formulir (seperti Form Permohonan Tambahan, Pendaftaran Relawan, dll).
-- **Contoh Response**:
-  ```json
-  [
-    { "id": 1, "name": "ACEH" },
-    { "id": 2, "name": "SUMATERA UTARA" }
-  ]
-  ```
+- **Fungsi**: Menyuplai data dropdown bagi formulir.
+
+#### 3. API Publikasi (Artikel & Berita)
+- **URL**: `GET /api/artikel`, `GET /api/berita`
+- **Fungsi**: Mendapatkan daftar artikel atau berita dengan kemampuan *pagination*, pencarian, dan filter kategori.
+- **Endpoint Spesifik**: 
+  - `GET /api/artikel/home` & `GET /api/berita/home` (Daftar artikel/berita terpilih untuk landing page)
+  - `GET /api/artikel/editor-choice` (Daftar artikel Pilihan Editor)
+  - `GET /api/artikel/{slug}` & `GET /api/berita/{slug}` (Mengambil detail isi bacaan)
+  - `GET /api/artikel/{slug}/related` & `GET /api/berita/{slug}/related` (Mengambil rekomendasi bacaan sejenis)
+
+#### 4. API Formulir Publik (Submission)
+- **URL**: `POST /api/permohonan-bantuan`
+- **Fungsi**: Mengirim formulir pengajuan bantuan sosial.
+- **URL**: `POST /api/konfirmasi-donasi`
+- **Fungsi**: Menerima laporan konfirmasi transfer donasi beserta unggahan gambar bukti.
+- **URL**: `POST /api/volunteer`
+- **Fungsi**: Mendaftarkan akun relawan/volunteer baru.
+
+#### 5. API Data Pendukung (Dinamis)
+- **URL**: `GET /api/rekening`
+- **Fungsi**: Memuat informasi daftar rekening bank resmi milik lembaga.
+- **URL**: `GET /api/mitra`
+- **Fungsi**: Memuat daftar mitra yang bekerja sama secara struktural.
 
 ### Manajemen Hak Akses Admin (Roles)
 Sistem di `/admin` membagi sesi user menjadi 3 tingkatan kontrol (*Role*):
