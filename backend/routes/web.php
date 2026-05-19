@@ -80,6 +80,18 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::post('berita/upload-image', [\App\Http\Controllers\BeritaController::class, 'uploadImage'])
         ->name('admin.berita.upload-image');
 
+    // Artikel
+    Route::resource('artikel', \App\Http\Controllers\ArtikelController::class)
+        ->names('admin.artikel');
+    Route::post('artikel/{artikel}/toggle-home', [\App\Http\Controllers\ArtikelController::class, 'toggleHome'])
+        ->name('admin.artikel.toggle-home');
+    Route::post('artikel/{artikel}/toggle-publish', [\App\Http\Controllers\ArtikelController::class, 'togglePublish'])
+        ->name('admin.artikel.toggle-publish');
+    Route::post('artikel/{artikel}/toggle-editor-choice', [\App\Http\Controllers\ArtikelController::class, 'toggleEditorChoice'])
+        ->name('admin.artikel.toggle-editor-choice');
+    Route::post('artikel/upload-image', [\App\Http\Controllers\ArtikelController::class, 'uploadImage'])
+        ->name('admin.artikel.upload-image');
+
     // Program Management
     Route::prefix('program')->name('admin.program.')->group(function () {
         Route::get('/{program}', [\App\Http\Controllers\Admin\ProgramController::class, 'edit'])->name('edit');
