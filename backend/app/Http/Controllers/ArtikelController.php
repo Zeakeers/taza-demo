@@ -87,9 +87,25 @@ class ArtikelController extends Controller
     }
 
     // Admin Routes
-    public function index()
+    public function index(Request $request)
     {
-        $artikels = Artikel::latest()->get();
+        $query = Artikel::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('judul', 'like', "%{$search}%")
+                  ->orWhere('kategori', 'like', "%{$search}%");
+            });
+        }
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->start_date);
+        }
+        if ($request->filled('end_date')) {
+            $query->whereDate('created_at', '<=', $request->end_date);
+        }
+
+        $artikels = $query->latest()->get();
         return view('admin.artikel.index', compact('artikels'));
     }
 
