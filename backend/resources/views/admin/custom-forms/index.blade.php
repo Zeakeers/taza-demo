@@ -175,7 +175,7 @@
                 {{-- Data Table --}}
                 @if($submissions->count() > 0)
                     <div class="overflow-x-auto rounded-2xl border border-gray-100 hide-scrollbar">
-                        <table class="w-full text-sm">
+                        <table class="w-full text-sm whitespace-nowrap">
                             <thead>
                                 <tr class="bg-gradient-to-r from-dark to-dark/90 text-white">
                                     <th class="px-4 py-4 text-left font-bold text-xs uppercase tracking-wider rounded-tl-2xl whitespace-nowrap">No</th>
