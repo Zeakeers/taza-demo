@@ -39,6 +39,53 @@ class ArtikelController extends Controller
         return response()->json($artikel);
     }
 
+    public function apiRelated($slug)
+    {
+        $current = Artikel::where('slug', $slug)->firstOrFail();
+        
+        $related = collect();
+        $limit = 2; 
+
+        // 1. By Tags
+        if ($current->tags) {
+            $tags = array_map('trim', explode(',', $current->tags));
+            $query = Artikel::where('is_published', true)->where('id', '!=', $current->id);
+            $query->where(function ($q) use ($tags) {
+                foreach ($tags as $tag) {
+                    $q->orWhere('tags', 'LIKE', '%' . $tag . '%');
+                }
+            });
+            $related = $query->inRandomOrder()->take($limit)->get();
+        }
+
+        // 2. By Category
+        if ($related->count() < $limit) {
+            $needed = $limit - $related->count();
+            $byCategory = Artikel::where('is_published', true)
+                ->where('id', '!=', $current->id)
+                ->whereNotIn('id', $related->pluck('id'))
+                ->where('kategori', $current->kategori)
+                ->inRandomOrder()
+                ->take($needed)
+                ->get();
+            $related = $related->merge($byCategory);
+        }
+
+        // 3. Random
+        if ($related->count() < $limit) {
+            $needed = $limit - $related->count();
+            $random = Artikel::where('is_published', true)
+                ->where('id', '!=', $current->id)
+                ->whereNotIn('id', $related->pluck('id'))
+                ->inRandomOrder()
+                ->take($needed)
+                ->get();
+            $related = $related->merge($random);
+        }
+
+        return response()->json($related);
+    }
+
     // Admin Routes
     public function index()
     {
