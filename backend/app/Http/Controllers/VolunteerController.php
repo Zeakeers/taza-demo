@@ -74,9 +74,25 @@ class VolunteerController extends Controller
         return back()->with('success', 'Halaman Volunteer berhasil diperbarui!');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $volunteers = Volunteer::latest()->get();
+        $query = Volunteer::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama', 'like', "%{$search}%")
+                  ->orWhere('no_hp', 'like', "%{$search}%");
+            });
+        }
+        if ($request->filled('start_date')) {
+            $query->whereDate('created_at', '>=', $request->start_date);
+        }
+        if ($request->filled('end_date')) {
+            $query->whereDate('created_at', '<=', $request->end_date);
+        }
+
+        $volunteers = $query->latest()->get();
         
         $page = PageContent::where('page_name', 'volunteer')->where('section_name', 'main')->first();
         $form_fields = $page->content['form_fields'] ?? [
