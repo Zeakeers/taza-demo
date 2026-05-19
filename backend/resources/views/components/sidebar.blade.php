@@ -136,6 +136,14 @@
                 Berita
             </a>
 
+            <a href="{{ route('admin.artikel.index') }}"
+                class="flex items-center gap-3 px-4 py-3 rounded-xl {{ request()->routeIs('admin.artikel.*') ? 'bg-primary text-white font-semibold shadow-lg shadow-primary/20' : 'text-gray-300 hover:bg-white/5' }} transition-all group">
+                <div
+                    class="w-1.5 h-1.5 rounded-full {{ request()->routeIs('admin.artikel.*') ? 'bg-white' : 'bg-secondary opacity-0' }} group-hover:opacity-100 transition-all">
+                </div>
+                Artikel
+            </a>
+
             <a href="#"
                 class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
                 <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all"></div>
