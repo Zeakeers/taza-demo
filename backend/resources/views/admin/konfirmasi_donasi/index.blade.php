@@ -17,7 +17,8 @@
 </div>
 @endif
 
-<div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
+<div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden p-8">
+    <x-admin.table-filter route="{{ route('admin.konfirmasi-donasi.index') }}" />
     <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse whitespace-nowrap">
             <thead>
