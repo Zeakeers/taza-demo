@@ -27,6 +27,12 @@
             scrollbar-width: none;
             /* Firefox */
         }
+        
+        /* Global Table Padding for Readability */
+        table th, table td {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
     </style>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <script>
