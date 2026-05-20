@@ -27,7 +27,7 @@ export default function AuditSyariah() {
           </p>
 
           <a
-            href="/tata-kelola/audit"
+            href="/tata-kelola/audit-syariah/#"
             className=" bg-[#5DA630] text-white px-7 py-2.5 rounded-full hover:bg-[#4A8A25] transition-colors"
           >
             Detail Audit Syariah
