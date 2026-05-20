@@ -14,7 +14,7 @@ export default function BeritaTabs() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api';
+        const apiUrl = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`;
         const response = await fetch(`${apiUrl}/berita/home`);
         if (response.ok) {
           const data = await response.json();
@@ -29,7 +29,7 @@ export default function BeritaTabs() {
     fetchNews();
   }, []);
 
-  const backendUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api').replace('/api', '');
+  const backendUrl = (`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`).replace('/api', '');
 
   // Filter berita berdasarkan kategori aktif
   const filteredNews = activeTab === "Semua" ? newsData : newsData.filter((article: any) => article.kategori === activeTab);
