@@ -56,3 +56,10 @@ Route::get('/rekening', [\App\Http\Controllers\RekeningController::class, 'apiIn
 // Mitra
 Route::get('/mitra', [\App\Http\Controllers\MitraController::class, 'apiIndex']);
 
+// Tata Kelola
+Route::prefix('tata-kelola')->group(function () {
+    Route::get('/annual-report', [\App\Http\Controllers\AnnualReportController::class, 'apiIndex']);
+    Route::get('/financial-report', [\App\Http\Controllers\FinancialReportController::class, 'apiIndex']);
+    Route::get('/audit-iso', [\App\Http\Controllers\AuditIsoController::class, 'apiIndex']);
+    Route::get('/legal-formal', [\App\Http\Controllers\LegalFormalController::class, 'apiIndex']);
+});
