@@ -7,9 +7,25 @@ import { useEffect, useState } from "react";
 
 export default function TataKelolaPage() {
   const [activeSection, setActiveSection] = useState("laporan-publikasi");
+  const [annualReports, setAnnualReports] = useState<any[]>([]);
+  const [legalFormals, setLegalFormals] = useState<any[]>([]);
 
   useEffect(() => {
     document.title = "Tata Kelola - Taman Zakat";
+
+    const fetchData = async () => {
+      try {
+        const url = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`;
+        const resAnnual = await fetch(`${url}/tata-kelola/annual-report`);
+        if (resAnnual.ok) setAnnualReports(await resAnnual.json());
+
+        const resLegal = await fetch(`${url}/tata-kelola/legal-formal`);
+        if (resLegal.ok) setLegalFormals(await resLegal.json());
+      } catch (err) {
+        console.error("Failed to fetch tata kelola data", err);
+      }
+    };
+    fetchData();
 
     const handleScroll = () => {
       const sections = ["laporan-publikasi", "hasil-audit", "legal-formal"];
@@ -132,101 +148,80 @@ export default function TataKelolaPage() {
             </div>
 
             <div className="flex flex-col gap-32 relative pb-20 overflow-hidden px-4 md:px-0">
-              <div className="flex flex-col lg:flex-row items-center justify-between min-h-[300px] gap-8 lg:gap-0">
-                <div className="relative w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                  {/* ini jangan diganti gambar karena cuma hiasan bg-[#E3F2D4]*/}
-                  <div className="absolute top-20 -left-4 md:-left-10 lg:-left-20 w-24 md:w-32 lg:w-[220px] h-[300px] md:h-[400px] bg-[#E3F2D4] z-0"></div>
-                  {/* 3 box dibawah diisi gambar dummy */}
-                  <div className="absolute top-40 left-10 md:left-20 lg:left-12 w-32 md:w-56 h-32 md:h-48 z-10 shadow-sm overflow-hidden">
-                    <img
-                      src="https://picsum.photos/seed/laporan1/400/300"
-                      alt="Laporan 1"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute top-16 left-36 md:left-56 lg:left-40 w-44 md:w-60 h-44 md:h-60 z-20 shadow-md overflow-hidden">
-                    <img
-                      src="https://picsum.photos/seed/laporan2/400/400"
-                      alt="Laporan 2"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute top-52 md:top-64 left-52 md:left-80 lg:left-64 w-28 md:w-40 h-28 md:h-40 z-30 shadow-sm overflow-hidden">
-                    <img
-                      src="https://picsum.photos/seed/laporan3/300/300"
-                      alt="Laporan 3"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
+              {annualReports.map((report, index) => {
+                const isEven = index % 2 === 0;
+                
+                return (
+                  <div key={report.id} className={`flex flex-col ${isEven ? 'lg:flex-row' : 'flex-col-reverse lg:flex-row'} items-center justify-between min-h-[300px] gap-8 lg:gap-0 mt-8 md:mt-24`}>
+                    
+                    {!isEven && (
+                      <div className="w-full lg:w-1/2 flex flex-col justify-center items-start lg:items-end text-left lg:text-left pr-0 lg:pr-[10%] z-40 relative mt-16 md:mt-0">
+                        <div className="lg:max-w-sm">
+                          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3">
+                            {report.title}
+                            <br />
+                            {report.year}
+                          </h3>
+                          <p className="text-sm md:text-base text-zinc-600 mb-6 whitespace-pre-wrap">
+                            {report.description}
+                          </p>
+                          <div className="flex w-full">
+                            {report.file_url ? (
+                              <a href={report.file_url} target="_blank" rel="noopener noreferrer" className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
+                                Annual Report
+                                <span className="hidden group-hover:inline">→</span>
+                              </a>
+                            ) : (
+                              <button className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
+                                Annual Report
+                                <span className="hidden group-hover:inline">→</span>
+                              </button>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
-                <div className="w-full lg:w-1/2 flex flex-col justify-center items-start pl-0 lg:pl-[10%] z-40 relative">
-                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3">
-                    Annual Report
-                    <br />
-                    2024
-                  </h3>
-                  <p className="text-sm md:text-base text-zinc-600 mb-6 max-w-sm">
-                    Jelajahi rangkaian perjalanan kami selama setahun dalam
-                    menebar manfaat dan mewujudkan kemandirian bagi ribuan
-                    penerima manfaat.
-                  </p>
-                  <button className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
-                    Annual Report
-                    <span className="hidden group-hover:inline">→</span>
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex flex-col-reverse lg:flex-row items-center justify-between min-h-[300px] gap-8 lg:gap-0 mt-8 md:mt-24">
-                <div className="w-full lg:w-1/2 flex flex-col justify-center items-start lg:items-end text-left lg:text-left pr-0 lg:pr-[10%] z-40 relative mt-16 md:mt-0">
-                  <div className="lg:max-w-sm">
-                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3">
-                      Annual Report
-                      <br />
-                      2024
-                    </h3>
-                    <p className="text-sm md:text-base text-zinc-600 mb-6">
-                      Sinergi hebat yang melahirkan dampak luas, simak rangkuman
-                      dedikasi kami dalam mengelola amanah untuk memberdayakan
-                      sesama di tahun ini.
-                    </p>
-                    <div className="flex w-full">
-                      <button className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
-                        Annual Report
-                        <span className="hidden group-hover:inline">→</span>
-                      </button>
+                    <div className="relative w-full lg:w-1/2 h-[300px] md:h-[400px]">
+                      <div className={`absolute ${isEven ? 'top-20 -left-4 md:-left-10 lg:-left-20 w-24 md:w-32 lg:w-[220px] bg-[#E3F2D4]' : 'top-10 -right-4 md:-right-10 lg:-right-0 w-24 md:w-32 lg:w-[150px] bg-[#FAF1E3]'} h-[300px] md:h-[400px] z-0`}></div>
+                      
+                      <div className={`absolute top-40 ${isEven ? 'left-10 md:left-20 lg:left-12' : 'left-10 md:left-24 lg:left-12'} w-32 md:w-56 h-32 md:h-48 z-10 shadow-sm overflow-hidden`}>
+                        <img src={report.image_url || "https://picsum.photos/seed/laporan1/400/300"} alt="Laporan" className="w-full h-full object-cover" />
+                      </div>
+                      <div className={`absolute top-16 ${isEven ? 'left-36 md:left-56 lg:left-40' : 'left-32 md:left-56 lg:left-40'} w-44 md:w-60 h-44 md:h-60 z-20 shadow-md overflow-hidden`}>
+                        <img src={report.image2_url || "https://picsum.photos/seed/laporan2/400/400"} alt="Laporan" className="w-full h-full object-cover" />
+                      </div>
+                      <div className={`absolute ${isEven ? 'top-52 md:top-64 left-52 md:left-80 lg:left-64 w-28 md:w-40 h-28 md:h-40' : 'top-48 md:top-64 left-44 md:left-80 lg:left-64 w-32 md:w-44 h-32 md:h-44'} z-30 shadow-sm overflow-hidden`}>
+                        <img src={report.image3_url || "https://picsum.photos/seed/laporan3/300/300"} alt="Laporan" className="w-full h-full object-cover" />
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <div className="relative w-full lg:w-1/2 h-[300px] md:h-[400px]">
-                  {/* ini jangan diganti gambar karena cuma hiasan bg-[#FAF1E3]*/}
-                  <div className="absolute top-10 -right-4 md:-right-10 lg:-right-0 w-24 md:w-32 lg:w-[150px] h-[300px] md:h-[400px] bg-[#FAF1E3] z-0"></div>
-                  {/* 3 box dibawah diisi gambar dummy */}
-                  <div className="absolute top-36 left-10 md:left-24 lg:left-12 w-40 md:w-56 h-32 md:h-48 z-10 shadow-sm overflow-hidden">
-                    <img
-                      src="https://picsum.photos/seed/laporan4/400/300"
-                      alt="Laporan 4"
-                      className="w-full h-full object-cover"
-                    />
+                    {isEven && (
+                      <div className="w-full lg:w-1/2 flex flex-col justify-center items-start pl-0 lg:pl-[10%] z-40 relative">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-black mb-3">
+                          {report.title}
+                          <br />
+                          {report.year}
+                        </h3>
+                        <p className="text-sm md:text-base text-zinc-600 mb-6 max-w-sm whitespace-pre-wrap">
+                          {report.description}
+                        </p>
+                        {report.file_url ? (
+                          <a href={report.file_url} target="_blank" rel="noopener noreferrer" className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
+                            Annual Report
+                            <span className="hidden group-hover:inline">→</span>
+                          </a>
+                        ) : (
+                          <button className="border border-black rounded-full px-5 py-1.5 text-sm md:text-base font-semibold hover:bg-black hover:text-white transition-colors group flex items-center gap-2">
+                            Annual Report
+                            <span className="hidden group-hover:inline">→</span>
+                          </button>
+                        )}
+                      </div>
+                    )}
                   </div>
-                  <div className="absolute top-16 left-32 md:left-56 lg:left-40 w-40 md:w-56 h-40 md:h-56 z-20 shadow-md overflow-hidden">
-                    <img
-                      src="https://picsum.photos/seed/laporan5/400/400"
-                      alt="Laporan 5"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute top-48 md:top-64 left-44 md:left-80 lg:left-64 w-32 md:w-44 h-32 md:h-44 z-30 shadow-sm overflow-hidden">
-                    <img
-                      src="https://picsum.photos/seed/laporan6/300/300"
-                      alt="Laporan 6"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
+                );
+              })}
             </div>
           </section>
 
@@ -282,226 +277,36 @@ export default function TataKelolaPage() {
               Legal Formal
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-6 justify-items-center">
-              <div className="relative w-[280px] h-[340px] flex flex-col justify-center">
-                <Image
-                  src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
-                  alt="Paper note"
-                  fill
-                  className="object-cover z-0"
-                />
-                <div className="relative z-10 flex flex-col text-center px-8 pt-6 pb-4 w-full h-full">
-                  <h3 className="font-semibold text-zinc-900 text-lg mb-2 leading-tight mt-12">
-                    Akta Pendiri Yayasan
-                  </h3>
-                  <div className="text-[32px] font-light text-black my-2">
-                    34
-                  </div>
-                  <p className="text-sm text-black mb-1 text-left ml-6">
-                    Notaris :
-                  </p>
-                  <div className="inline-block mx-auto">
-                    <p className="text-[15px] text-black font-semibold border-b-[3px] border-[#5DA630] pb-0.5 inline-block">
-                      Wahyu Hidayat, SH., M.Kn
-                    </p>
-                  </div>
-                  <div className="absolute bottom-10 right-8 bg-[#A52A2A] text-white text-[11px] px-3 py-1 font-medium rounded-sm">
-                    29 Desember 2018
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-[280px] h-[340px] flex flex-col justify-center">
-                <Image
-                  src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
-                  alt="Paper note"
-                  fill
-                  className="object-cover z-0"
-                />
-                <div className="relative z-10 flex flex-col items-center px-6 pt-6 pb-4 w-full h-full">
-                  <h3 className="font-semibold text-zinc-900 text-[17px] mb-6 leading-tight mt-12 text-center">
-                    S.K Kemenkum &
-                    <br />
-                    KemenHAM
-                  </h3>
-
-                  <div className="w-full flex justify-center mb-1">
-                    <div className="bg-[#A52A2A] text-white text-[10px] px-3 py-1 rounded-sm w-[90%] font-medium">
-                      AHU-0000016.AH.01.04.Tahun 2019
-                    </div>
-                  </div>
-                  <div className="w-full flex justify-end pr-[5%] mb-5 mt-1">
-                    <div className="border border-zinc-500 text-[10px] px-4 py-0.5 rounded-full font-medium">
-                      Pengesahan Pendirian
-                    </div>
-                  </div>
-
-                  <div className="w-full flex justify-center mb-1">
-                    <div className="bg-[#A52A2A] text-white text-[10px] px-3 py-1 rounded-sm w-[90%] font-medium">
-                      AHU-AH.01.06.0008536.Tahun 2021
-                    </div>
-                  </div>
-                  <div className="w-full flex justify-end pr-[5%] mt-1">
-                    <div className="border border-zinc-500 text-[10px] px-4 py-0.5 rounded-full font-medium">
-                      Perubahan data yayasan
-                    </div>
+            <div className="flex flex-wrap justify-center gap-y-12 gap-x-6">
+              {legalFormals.map((item, idx) => (
+                <div key={item.id || idx} className="relative w-[280px] h-[340px] flex flex-col justify-center">
+                  <Image
+                    src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
+                    alt="Paper note"
+                    fill
+                    className="object-cover z-0"
+                  />
+                  <div className="relative z-10 flex flex-col items-center text-center px-6 pt-6 pb-4 w-full h-full">
+                    <h3 className="font-semibold text-zinc-900 text-lg mb-2 leading-tight mt-12 whitespace-pre-wrap">
+                      {item.title}
+                    </h3>
+                    
+                    {item.elements && item.elements.map((el: any, eidx: number) => {
+                        // Use provided class if exists, otherwise use nice default styles
+                        const textClass = el.class || "text-[14px] text-zinc-800 my-1 font-medium whitespace-pre-wrap leading-tight";
+                        const textLargeClass = el.class || "text-[32px] font-light text-black my-2";
+                        const badgeClass = el.class || "bg-[#A52A2A] text-white text-[12px] px-4 py-1.5 font-medium rounded-md my-1.5 mx-auto shadow-sm w-[90%]";
+                        const outlineClass = el.class || "border-2 border-zinc-500 text-[11px] px-5 py-1 rounded-full font-semibold my-1 mx-auto text-zinc-700";
+                        
+                        if (el.type === 'text') return <p key={eidx} className={textClass}>{el.content}</p>;
+                        if (el.type === 'text_large') return <p key={eidx} className={textLargeClass}>{el.content}</p>;
+                        if (el.type === 'badge') return <div key={eidx} className={badgeClass}>{el.content}</div>;
+                        if (el.type === 'outline') return <div key={eidx} className={outlineClass}>{el.content}</div>;
+                        return null;
+                    })}
                   </div>
                 </div>
-              </div>
-
-              <div className="relative w-[280px] h-[340px] flex flex-col justify-center">
-                <Image
-                  src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
-                  alt="Paper note"
-                  fill
-                  className="object-cover z-0"
-                />
-                <div className="relative z-10 flex flex-col items-center pt-8 px-6 w-full h-full">
-                  <h3 className="font-semibold text-zinc-900 text-lg mb-8 leading-tight mt-12 text-center">
-                    Nomor Pokok
-                    <br />
-                    Wajib Pajak
-                  </h3>
-                  <div className="bg-[#A52A2A] text-white text-[13px] px-4 py-1.5 font-semibold mb-4 rounded-sm tracking-wide">
-                    90.042.146.2-603.000
-                  </div>
-                  <div className="border border-zinc-500 text-xs px-5 py-1 rounded-sm font-medium">
-                    NPWP
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-[280px] h-[340px] flex flex-col justify-center">
-                <Image
-                  src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
-                  alt="Paper note"
-                  fill
-                  className="object-cover z-0"
-                />
-                <div className="relative z-10 flex flex-col items-center pt-8 px-6 w-full h-full">
-                  <h3 className="font-semibold text-zinc-900 text-[17px] mb-8 leading-tight mt-12 text-center">
-                    Izin Lembaga
-                    <br />
-                    Kesejahteraan Sosial
-                  </h3>
-                  <div className="bg-[#A52A2A] text-white text-[13px] px-4 py-1.5 rounded-sm mb-4 font-medium tracking-wide">
-                    466.4/2149/438.5.6/2019
-                  </div>
-                  <div className="border border-zinc-800 text-xs px-3 py-1 rounded-md font-medium text-black">
-                    Dinas Sosial Kabupaten
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-[280px] h-[340px] flex flex-col justify-center">
-                <Image
-                  src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
-                  alt="Paper note"
-                  fill
-                  className="object-cover z-0"
-                />
-                <div className="relative z-10 flex flex-col items-center px-6 pt-6 pb-4 w-full h-full">
-                  <h3 className="font-semibold text-zinc-900 text-lg mb-6 leading-tight mt-12 text-center">
-                    Keanggotaan Resmi
-                    <br />
-                    Forum Zakat
-                  </h3>
-                  <div className="w-full flex justify-center mb-1">
-                    <div className="bg-[#A52A2A] text-white text-[12px] px-4 py-1 rounded-sm font-medium">
-                      130/SK/PH-FOZ/X/2019
-                    </div>
-                  </div>
-                  <div className="w-full flex justify-end pr-[15%] mb-5 mt-1">
-                    <div className="border border-zinc-600 text-[10px] px-3 py-0.5 rounded-full font-medium">
-                      S. K
-                    </div>
-                  </div>
-                  <div className="w-full flex justify-center mb-1 ml-[-20px]">
-                    <div className="bg-[#A52A2A] text-white text-[12px] px-5 py-1 rounded-sm font-medium">
-                      130.FOZ.2019
-                    </div>
-                  </div>
-                  <div className="w-full flex justify-end pr-[15%] mt-1">
-                    <div className="border border-zinc-600 text-[10px] px-3 py-0.5 rounded-full font-medium">
-                      Nomor Anggota
-                    </div>
-                  </div>
-                  <div className="absolute bottom-8 left-10">
-                    <Image
-                      src="/images/icon/Forum Zakat.svg"
-                      alt="Forum Zakat"
-                      width={60}
-                      height={30}
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-[280px] h-[340px] flex flex-col justify-center">
-                <Image
-                  src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
-                  alt="Paper note"
-                  fill
-                  className="object-cover z-0"
-                />
-                <div className="relative z-10 flex flex-col items-center px-6 pt-6 pb-4 w-full h-full">
-                  <h3 className="font-semibold text-zinc-900 text-[15.5px] mb-6 leading-tight mt-12 text-center">
-                    Rekomendasi LAZ
-                    <br />
-                    Tingkat Provinsi dari
-                    <br />
-                    BAZNAS
-                  </h3>
-                  <div className="w-full flex justify-center mb-1">
-                    <div className="bg-[#A52A2A] text-white text-[11px] px-3 py-1.5 rounded-sm font-medium">
-                      617/ANG/BAZNAS/XI/2020
-                    </div>
-                  </div>
-                  <div className="w-full flex justify-end pr-[12%] mt-1">
-                    <div className="border border-zinc-600 text-[10px] px-2 py-0.5 rounded-sm font-medium">
-                      Nomor Surat
-                    </div>
-                  </div>
-                  <div className="absolute bottom-8 left-10">
-                    <Image
-                      src="/images/icon/Logo BAZNAS RI-Hijau-01 2.svg"
-                      alt="BAZNAS"
-                      width={55}
-                      height={55}
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative w-[280px] h-[340px] flex flex-col justify-center lg:col-start-2">
-                <Image
-                  src="/images/icon/Yellow Paper Clip Open Donation Instagram Post 1.svg"
-                  alt="Paper note"
-                  fill
-                  className="object-cover z-0"
-                />
-                <div className="relative z-10 flex flex-col items-center px-6 pt-6 pb-4 w-full h-full">
-                  <h3 className="font-semibold text-zinc-900 text-[17px] mb-8 leading-tight mt-12 text-center">
-                    S. K Dirjen Bimas
-                    <br />
-                    Islam Kementerian
-                    <br />
-                    Agama RI
-                  </h3>
-                  <div className="bg-[#A52A2A] text-white text-sm px-5 py-1.5 font-bold mb-5 rounded-sm">
-                    245 Tahun 2021
-                  </div>
-                  <div className="border border-zinc-600 text-[10px] px-3 py-2 rounded-sm text-center leading-relaxed font-medium text-black">
-                    Pemberian Izin kepada Yayasan Taman
-                    <br />
-                    Zakat Indonesia sebagai Lembaga
-                    <br />
-                    Amil Zakat Skala Provinsi.
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </section>
         </div>
