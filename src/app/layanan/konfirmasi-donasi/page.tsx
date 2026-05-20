@@ -47,7 +47,8 @@ export default function KonfirmasiDonasiPage() {
         return;
       }
 
-      const response = await fetch('http://localhost:8000/api/konfirmasi-donasi', {
+      const apiUrl = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`;
+      const response = await fetch(`${apiUrl}/konfirmasi-donasi`, {
         method: 'POST',
         body: data,
         headers: {
