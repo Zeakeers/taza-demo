@@ -144,11 +144,30 @@
                 Artikel
             </a>
 
-            <a href="#"
-                class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
-                <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all"></div>
-                Tata Kelola
-            </a>
+            <div class="space-y-1">
+                <button onclick="this.nextElementSibling.classList.toggle('hidden')"
+                    class="w-full flex items-center justify-between px-4 py-3 rounded-xl hover:bg-white/5 transition-all text-gray-300 hover:text-white group">
+                    <span class="flex items-center gap-3">
+                        <div class="w-1.5 h-1.5 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-all">
+                        </div>
+                        Tata Kelola
+                    </span>
+                    <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="pl-10 space-y-1 {{ request()->routeIs('admin.tata-kelola.*') ? '' : 'hidden' }}">
+                    <a href="{{ route('admin.tata-kelola.annual-report.index') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.tata-kelola.annual-report.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Laporan Publikasi</a>
+                    <a href="{{ route('admin.tata-kelola.financial-report.index') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.tata-kelola.financial-report.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Audit Keuangan</a>
+                    <a href="{{ route('admin.tata-kelola.audit-iso.index') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.tata-kelola.audit-iso.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Audit ISO</a>
+                    <a href="{{ route('admin.tata-kelola.legal-formal.index') }}"
+                        class="block py-2 text-sm {{ request()->routeIs('admin.tata-kelola.legal-formal.*') ? 'text-secondary font-bold' : 'text-gray-500 hover:text-secondary' }} transition-colors">Legal Formal</a>
+                </div>
+            </div>
         @endif
 
         {{-- Group 2: Hasil Form User (Untuk Program & Dev) --}}
