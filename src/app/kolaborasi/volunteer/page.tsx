@@ -74,7 +74,7 @@ export default function VolunteerPage() {
   React.useEffect(() => {
     const fetchPageData = async () => {
       try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
+        const apiUrl = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`
         const res = await fetch(`${apiUrl}/content/volunteer`)
         const data = await res.json()
         if (data && data.main) {
@@ -100,7 +100,7 @@ export default function VolunteerPage() {
     try {
       const formData = new FormData(e.currentTarget);
       const data = Object.fromEntries(formData.entries());
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
+      const apiUrl = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`
       const response = await fetch(`${apiUrl}/volunteer`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
