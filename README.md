@@ -96,11 +96,48 @@ Aplikasi Next.js (`Frontend`) akan selalu melakukan operasi *fetch* ke rute `/ap
 - **URL**: `GET /api/mitra`
 - **Fungsi**: Memuat daftar mitra yang bekerja sama secara struktural.
 
+#### 6. API Tata Kelola (Governance)
+Menyediakan data transparansi dan akuntabilitas lembaga untuk halaman publik Tata Kelola.
+
+- **URL**: `GET /api/tata-kelola/annual-report`
+- **Fungsi**: Mengambil daftar Laporan Tahunan (*Annual Report*) beserta gambar sampul dan file PDF.
+- **URL**: `GET /api/tata-kelola/financial-report`
+- **Fungsi**: Mengambil daftar Laporan Keuangan per tahun beserta file PDF.
+- **URL**: `GET /api/tata-kelola/audit-iso`
+- **Fungsi**: Mengambil daftar sertifikat Audit & ISO beserta file PDF.
+- **URL**: `GET /api/tata-kelola/legal-formal`
+- **Fungsi**: Mengambil daftar dokumen Legal Formal (Akta, SK, NPWP, dll) beserta elemen konten terstruktur dalam format JSON.
+
+### Arsitektur Database (Skema Tabel)
+
+Database menggunakan teknik **Single Table Inheritance (STI)** untuk mengurangi jumlah tabel redundan dan menjaga normalisasi:
+
+| Tabel | Deskripsi | Kolom `type` |
+|---|---|---|
+| `users` | Akun admin dashboard | - |
+| `sessions` | Sesi login Laravel | - |
+| `page_contents` | Konten CMS halaman dinamis (key-value) | - |
+| `provinces` | Data wilayah/provinsi | - |
+| `posts` | Artikel & Berita (digabung) | `artikel`, `berita` |
+| `tata_kelolas` | Annual Report, Financial Report, Audit ISO, Legal Formal (digabung) | `annual`, `financial`, `audit_iso`, `legal_formal` |
+| `custom_forms` | Form dinamis | - |
+| `custom_form_fields` | Field dari form (FK → `custom_forms`) | - |
+| `custom_form_submissions` | Isian form publik (FK → `custom_forms`) | - |
+| `permohonan_bantuans` | Pengajuan bantuan sosial | - |
+| `konfirmasi_donasis` | Konfirmasi transfer donasi | - |
+| `volunteers` | Pendaftaran relawan | - |
+| `rekening_categories` | Kategori rekening bank | - |
+| `rekening_banks` | Data rekening bank (FK → `rekening_categories`) | - |
+| `mitra_sections` | Seksi halaman mitra | - |
+| `mitra_logos` | Logo mitra (FK → `mitra_sections`) | - |
+
+> **Catatan STI:** Tabel `posts` dan `tata_kelolas` masing-masing menampung beberapa entitas berbeda yang dibedakan oleh kolom `type`. Model Eloquent (seperti `Artikel`, `Berita`, `AnnualReport`, dll) menggunakan **Global Scope** untuk otomatis memfilter berdasarkan tipe, sehingga Controller dan API tidak perlu berubah.
+
 ### Manajemen Hak Akses Admin (Roles)
 Sistem di `/admin` membagi sesi user menjadi 3 tingkatan kontrol (*Role*):
-- ** Dev Admin (`dev`)**: Punya kendali penuh terhadap sistem dan panel kendali akun.
-- ** Markom Admin (`markom`)**: Hak akses eksklusif untuk mengubah tampilan serta teks Landing Page.
-- ** Program Admin (`program`)**: Hak akses untuk memantau formulir pendaftaran relawan dan aliran donasi.
+- **Dev Admin (`dev`)**: Punya kendali penuh terhadap sistem dan panel kendali akun.
+- **Markom Admin (`markom`)**: Hak akses eksklusif untuk mengubah tampilan serta teks Landing Page.
+- **Program Admin (`program`)**: Hak akses untuk memantau formulir pendaftaran relawan dan aliran donasi.
 
 ## License
 Hak Cipta &copy; 2026 **Taman Zakat Indonesia**. Dikembangkan oleh tim web Developer Zamedia. Seluruh hak cipta dilindungi undang-undang.
