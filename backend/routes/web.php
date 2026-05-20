@@ -144,4 +144,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('/layanan-pages/hitung-zakat', [\App\Http\Controllers\LayananPageController::class, 'editHitungZakat'])->name('admin.layanan-pages.hitung-zakat');
     Route::post('/layanan-pages/hitung-zakat', [\App\Http\Controllers\LayananPageController::class, 'updateHitungZakat'])->name('admin.layanan-pages.hitung-zakat.update');
+
+    // Tata Kelola
+    Route::prefix('tata-kelola')->name('admin.tata-kelola.')->group(function () {
+        Route::resource('annual-report', \App\Http\Controllers\AnnualReportController::class);
+        Route::resource('financial-report', \App\Http\Controllers\FinancialReportController::class);
+        Route::resource('audit-iso', \App\Http\Controllers\AuditIsoController::class);
+        Route::resource('legal-formal', \App\Http\Controllers\LegalFormalController::class);
+    });
 });
