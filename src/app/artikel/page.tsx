@@ -54,7 +54,7 @@ function ArticleCard({ article }: { article: ArtikelAPI }) {
     >
       <div className="relative w-full h-44 md:h-52 overflow-hidden bg-gray-100">
         <img
-          src={`http://127.0.0.1:8000/storage/${article.thumbnail}`}
+          src={`/storage/${article.thumbnail}`}
           alt={article.judul}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
@@ -85,7 +85,7 @@ export default function ArticlePage() {
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/artikel");
+        const res = await fetch(`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}/artikel`);
         const data = await res.json();
         setArticles(data);
       } catch (error) {
@@ -229,7 +229,7 @@ export default function ArticlePage() {
           >
             <div className="relative w-full h-64 md:h-80 lg:h-[420px] overflow-hidden bg-gray-100">
               <img
-                src={`http://127.0.0.1:8000/storage/${featured.thumbnail}`}
+                src={`/storage/${featured.thumbnail}`}
                 alt={featured.judul}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
