@@ -56,7 +56,7 @@ export default function BeritaDetailPage() {
   useEffect(() => {
     async function fetchBerita() {
       try {
-        const res = await fetch(`http://127.0.0.1:8000/api/berita/${slug}`);
+        const res = await fetch(`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}/berita/${slug}`);
         if (!res.ok) {
           if (res.status === 404) {
             setError("Berita tidak ditemukan.");
@@ -71,7 +71,7 @@ export default function BeritaDetailPage() {
 
         // Fetch related berita
         try {
-          const resRelated = await fetch(`http://127.0.0.1:8000/api/berita/${slug}/related`);
+          const resRelated = await fetch(`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}/berita/${slug}/related`);
           if (resRelated.ok) {
             const dataRelated = await resRelated.json();
             setRelated(dataRelated);
@@ -197,7 +197,7 @@ export default function BeritaDetailPage() {
         {/* Hero Image */}
         <figure className="mb-12 relative w-full aspect-[16/9] md:aspect-[2/1] rounded-2xl overflow-hidden shadow-lg bg-gray-100 group">
           <img
-            src={`http://127.0.0.1:8000/storage/${berita.thumbnail}`}
+            src={`/storage/${berita.thumbnail}`}
             alt={berita.judul}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
           />
@@ -289,7 +289,7 @@ export default function BeritaDetailPage() {
             {related.map((item) => (
               <Link key={item.id} href={`/berita/${item.slug}`} className="group flex flex-col sm:flex-row gap-4 bg-white rounded-2xl p-4 border border-gray-100 shadow-sm hover:shadow-md transition-all">
                 <div className="w-full aspect-[16/9] sm:aspect-auto sm:w-32 sm:h-24 bg-gray-200 rounded-xl flex-shrink-0 relative overflow-hidden">
-                  <img src={`http://127.0.0.1:8000/storage/${item.thumbnail}`} alt={item.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <img src={`/storage/${item.thumbnail}`} alt={item.judul} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                 </div>
                 <div className="flex flex-col justify-center">
                   <p className="text-xs text-[#7FC248] font-bold uppercase tracking-wider mb-1">{item.kategori}</p>
