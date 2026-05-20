@@ -252,7 +252,7 @@ export default function AboutPage() {
   }, [content, dynamicKepengurusanTabs, activeKepengurusan]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api"}/content/about`)
+    fetch(`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}/content/about`)
       .then((res) => res.json())
       .then((data) => setContent(data))
       .catch((err) => console.error("Failed to load about content", err));
