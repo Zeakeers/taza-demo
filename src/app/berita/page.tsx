@@ -178,7 +178,7 @@ export default function NewsPage() {
   useEffect(() => {
     async function fetchBerita() {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/berita");
+        const res = await fetch(`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}/berita`);
         const data: BeritaAPI[] = await res.json();
         
         let popularCount = 0;
@@ -212,7 +212,7 @@ export default function NewsPage() {
             excerpt: excerpt,
             tags: b.tags || "",
             tier: tier,
-            thumbnailUrl: `http://127.0.0.1:8000/storage/${b.thumbnail}`
+            thumbnailUrl: `/storage/${b.thumbnail}`
           };
         });
         
