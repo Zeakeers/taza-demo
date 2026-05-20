@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { BookOpen, HeartHandshake, Phone, TriangleAlert, Calculator, RotateCcw, HandHeart, ChevronDown } from "lucide-react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
+const API_URL = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`;
 
 export default function HitungZakatPage() {
   const [jenisZakat, setJenisZakat] = useState("PENGHASILAN");
