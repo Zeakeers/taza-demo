@@ -12,7 +12,7 @@ const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api'}/content/program_kesehatan`);
+        const response = await fetch(`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}/content/program_kesehatan`);
         const data = await response.json();
         if (data && data.content) {
           setPageData(data.content);
