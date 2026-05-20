@@ -50,7 +50,8 @@ export default function PermohonanBantuanPage() {
         data.append('foto_ktp', file);
       }
 
-      const response = await fetch('http://localhost:8000/api/permohonan-bantuan', {
+      const apiUrl = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`;
+      const response = await fetch(`${apiUrl}/permohonan-bantuan`, {
         method: 'POST',
         body: data,
         headers: {
