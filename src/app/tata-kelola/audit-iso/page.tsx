@@ -1,53 +1,56 @@
+"use client";
+
 import RightBarAudit from "@/components/layout/rightbar-audit";
+import { useEffect, useState } from "react";
 
 export default function AuditISO() {
+  const [items, setItems] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const url = `${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}`;
+        const res = await fetch(`${url}/tata-kelola/audit-iso`);
+        if (res.ok) setItems(await res.json());
+      } catch (err) {
+        console.error("Failed to fetch audit iso data", err);
+      }
+    };
+    fetchData();
+  }, []);
+
   return (
     <section className="bg-white min-h-screen p-10 md:p-14 font-poppins">
-      {/* isi konten audit */}
       <div className="min-h-[100px] flex flex-col md:flex-row justify-between gap-8 md:gap-4">
         <div className="">
           <h3 className="mt-10 text-black font-semibold text-xl md:text-2xl text-zinc-black">
             Audit ISO
           </h3>
 
-          <p className="mt-5 text-base md:text-lg text-black max-w-2xl">
-            Dengan mengusung semangat continuous improvement untuk menjaga
-            kepercayaan dari para stakeholder, Rumah Zakat senantiasa terus
-            berbenah dalam banyak aspek, salah satunya dalam perbaikan system
-            management. Semangat tersebut kami wujudkan dengan menerapkan
-            standar internasional ISO sejak tahun 2012.
-          </p>
-
-          <p className="mt-2 mb-5 text-base md:text-lg text-black max-w-2xl">
-            Rumah Zakat pertama kali menerapkan standar QMS (quality management
-            system) ISO 9001:2008 untuk lingkup zakat distribution di tahun
-            2012, yang kemudian dilakukan upgrade sesuai standar ISO 9001:2015
-            sejak tahun 2017.{" "}
-            <span className="text-[#7fc248]">
-              Klik Sertifikat ISO 9001 Zakat Distribution
-            </span>
-          </p>
-
-          <p className="mt-2 mb-5 text-base md:text-lg text-black max-w-2xl">
-            Pada tahun 2018, setelah 6 tahun menerapakan standar QMS ISO 9001
-            untuk lingkup zakat distribution, Rumah Zakat menerapkan standar ISO
-            yang sama untuk lingkup customer relationship management for donors.{" "}
-            <span className="text-[#7fc248]">
-              Klik Sertifikat ISO 9001 Customer Relationship Management for
-              Donors
-            </span>
-          </p>
-
-          <p className="mt-2 mb-5 text-base md:text-lg text-black max-w-2xl">
-            Sejak tahun 2021, Rumah Zakat menerapkan standar ABMS (anti-bribery
-            management system) ISO 37001:2016 untuk lingkup operational
-            activities for human capital management process and procurement
-            process. Di tahun 2025, lingkup sertifikasi difokuskan pada salah
-            satu kegiatan utama yaitu “Unrestricted Zakat Distribution”.
-            <span className="text-[#7fc248]">
-              Klik Sertifikat ISO 37001 Unrestricted Zakat Distribution
-            </span>
-          </p>
+          {items.map((item) => (
+            <p key={item.id} className="mt-5 mb-5 text-base md:text-lg text-black max-w-2xl whitespace-pre-wrap">
+              {item.description}{" "}
+              {item.link_text && (
+                <a 
+                  href={item.file_url || "#"} 
+                  target={item.file_url ? "_blank" : "_self"} 
+                  rel={item.file_url ? "noopener noreferrer" : ""} 
+                  className="text-[#7fc248] hover:underline cursor-pointer"
+                  onClick={(e) => {
+                    if (!item.file_url) {
+                      e.preventDefault();
+                      alert('File sertifikat belum diunggah oleh admin.');
+                    }
+                  }}
+                >
+                  {item.link_text}
+                </a>
+              )}
+            </p>
+          ))}
+          {items.length === 0 && (
+            <p className="mt-5 text-gray-400">Belum ada data Audit ISO.</p>
+          )}
         </div>
 
         {/* kanan */}
