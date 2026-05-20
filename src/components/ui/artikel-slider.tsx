@@ -24,7 +24,7 @@ export default function ArtikelSlider() {
   useEffect(() => {
     async function fetchArtikel() {
       try {
-        const res = await fetch("http://127.0.0.1:8000/api/artikel/home");
+        const res = await fetch(`${typeof window === "undefined" ? "http://127.0.0.1:8000/api" : "/api"}/artikel/home`);
         const json = await res.json();
         setData(json);
       } catch (error) {
@@ -196,7 +196,7 @@ export default function ArtikelSlider() {
                   {/* Image Column */}
                   <div className="w-full sm:w-1/2 h-44 sm:h-full rounded-[1.5rem] relative overflow-hidden flex-shrink-0 border border-gray-50 bg-gray-100">
                     <img 
-                      src={`http://127.0.0.1:8000/storage/${artikel.thumbnail}`} 
+                      src={`/storage/${artikel.thumbnail}`} 
                       alt={artikel.judul} 
                       className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-700"
                     />
