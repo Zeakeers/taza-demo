@@ -39,6 +39,10 @@ type Berita = {
   konten: string;
   tags?: string;
   created_at: string;
+  user?: {
+    id: number;
+    name: string;
+  };
 };
 
 export default function BeritaDetailPage() {
@@ -161,10 +165,12 @@ export default function BeritaDetailPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between py-4 border-y border-gray-100 gap-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#7FC248] flex items-center justify-center text-white font-bold text-lg">
-                TZ
+                {berita.user?.name 
+                  ? berita.user.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase()
+                  : "TZ"}
               </div>
               <div>
-                <p className="text-sm font-semibold text-gray-900">Redaksi Taman Zakat</p>
+                <p className="text-sm font-semibold text-gray-900">{berita.user?.name || "Redaksi Taman Zakat"}</p>
                 <div className="flex items-center text-xs text-gray-500 gap-2 mt-0.5">
                   <Calendar className="w-3.5 h-3.5" />
                   <span>{formattedDate}</span>
