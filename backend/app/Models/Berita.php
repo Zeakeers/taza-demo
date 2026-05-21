@@ -12,9 +12,14 @@ class Berita extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'judul', 'slug', 'kategori', 'thumbnail', 'konten',
+        'user_id', 'judul', 'slug', 'kategori', 'thumbnail', 'konten',
         'show_on_home', 'is_published', 'is_popular', 'tags',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     protected static function boot()
     {
