@@ -12,13 +12,13 @@ class BeritaController extends Controller
     // API Routes untuk Frontend Next.js
     public function apiIndex()
     {
-        $beritas = Berita::where('is_published', true)->orderBy('created_at', 'desc')->get();
+        $beritas = Berita::with('user:id,name')->where('is_published', true)->orderBy('created_at', 'desc')->get();
         return response()->json($beritas);
     }
 
     public function apiHome()
     {
-        $beritas = Berita::where('is_published', true)
+        $beritas = Berita::with('user:id,name')->where('is_published', true)
             ->where('show_on_home', true)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -27,7 +27,7 @@ class BeritaController extends Controller
 
     public function apiShow($slug)
     {
-        $berita = Berita::where('slug', $slug)->where('is_published', true)->firstOrFail();
+        $berita = Berita::with('user:id,name')->where('slug', $slug)->where('is_published', true)->firstOrFail();
         return response()->json($berita);
     }
 
@@ -120,6 +120,7 @@ class BeritaController extends Controller
         ]);
 
         $data = $request->except('thumbnail');
+        $data['user_id'] = auth()->id();
         $data['slug'] = Str::slug($request->judul) . '-' . time();
         $data['is_published'] = $request->has('is_published') ? true : false;
         $data['show_on_home'] = $request->has('show_on_home') ? true : false;
