@@ -12,13 +12,13 @@ class ArtikelController extends Controller
     // API Routes untuk Frontend Next.js
     public function apiIndex()
     {
-        $artikels = Artikel::where('is_published', true)->orderBy('created_at', 'desc')->get();
+        $artikels = Artikel::with('user:id,name')->where('is_published', true)->orderBy('created_at', 'desc')->get();
         return response()->json($artikels);
     }
 
     public function apiHome()
     {
-        $artikels = Artikel::where('is_published', true)
+        $artikels = Artikel::with('user:id,name')->where('is_published', true)
             ->where('show_on_home', true)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -27,13 +27,13 @@ class ArtikelController extends Controller
 
     public function apiShow($slug)
     {
-        $artikel = Artikel::where('slug', $slug)->where('is_published', true)->firstOrFail();
+        $artikel = Artikel::with('user:id,name')->where('slug', $slug)->where('is_published', true)->firstOrFail();
         return response()->json($artikel);
     }
     
     public function apiEditorChoice()
     {
-        $artikel = Artikel::where('is_published', true)
+        $artikel = Artikel::with('user:id,name')->where('is_published', true)
             ->where('is_editor_choice', true)
             ->first();
         return response()->json($artikel);
@@ -128,6 +128,7 @@ class ArtikelController extends Controller
         ]);
 
         $data = $request->except('thumbnail');
+        $data['user_id'] = auth()->id();
         $data['slug'] = Str::slug($request->judul) . '-' . time();
         $data['is_published'] = $request->has('is_published') ? true : false;
         $data['show_on_home'] = $request->has('show_on_home') ? true : false;
