@@ -24,7 +24,7 @@ Ikuti langkah-langkah berikut untuk menjalankan project ini di komputer lokal An
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/itzamedia/tamanzakat.git
+git clone https://github.com/Zeakeers/taza-demo.git
 cd tamanzakat
 ```
 
